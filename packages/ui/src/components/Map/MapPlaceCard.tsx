@@ -1,5 +1,6 @@
 import React, { type SyntheticEvent } from 'react';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { Features } from '../Feature';
 import { cn } from '../../utils/cn';
@@ -250,8 +251,10 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
     return (
       <div className={cn(styles.mapPlaceCard, styles.emptyCard, className)} data-testid={testId}>
         <div className={styles.emptyContainer}>
-          <div className={styles.emptyTitle}>{emptyTitle}</div>
-          {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
+          <EmptyMessage fill="none">
+            <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+            {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+          </EmptyMessage>
         </div>
       </div>
     );

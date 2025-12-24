@@ -3,6 +3,7 @@ import type { ComponentPropsWithoutRef, SyntheticEvent } from 'react';
 import { cn } from '../../utils/cn';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import { Skeleton } from '../Skeleton';
 import type { Album } from './types';
@@ -260,8 +261,10 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
         data-testid={testId}
       >
         <div className={styles.emptyContainer}>
-          <div className={styles.emptyTitle}>{emptyTitle}</div>
-          {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
+          <EmptyMessage fill="none">
+            <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+            {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+          </EmptyMessage>
         </div>
       </div>
     );

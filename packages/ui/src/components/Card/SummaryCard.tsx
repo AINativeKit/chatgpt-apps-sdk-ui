@@ -4,6 +4,7 @@ import { Card, type CardProps } from './Card';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Overlay, type OverlayProps } from '../Overlay';
 import { Skeleton } from '../Skeleton';
 import styles from './SummaryCard.module.css';
@@ -656,8 +657,10 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
           )}
 
           <div className={styles.emptyState}>
-            <h4 className={styles.emptyTitle}>{emptyTitle}</h4>
-            {emptyMessage && <p className={styles.emptyMessage}>{emptyMessage}</p>}
+            <EmptyMessage fill="none">
+              <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+              {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+            </EmptyMessage>
           </div>
         </div>
       )}

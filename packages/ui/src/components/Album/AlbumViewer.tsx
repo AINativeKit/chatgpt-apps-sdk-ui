@@ -2,6 +2,7 @@ import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../utils/cn';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { XCrossed, ArrowLeftSm, ArrowRightSm } from '@openai/apps-sdk-ui/components/Icon';
 import { FilmStrip } from './FilmStrip';
 import type { Album } from './types';
@@ -199,7 +200,9 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
           </Button>
         </div>
         <div className={styles.emptyState}>
-          <p className={styles.emptyMessage}>No photos available</p>
+          <EmptyMessage fill="none">
+            <EmptyMessage.Title>No photos available</EmptyMessage.Title>
+          </EmptyMessage>
         </div>
       </div>
     );

@@ -4,6 +4,7 @@ import type { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { ChevronLeftMd, ChevronRightMd } from '@openai/apps-sdk-ui/components/Icon';
 import { Card } from '../Card';
 import { cn } from '../../utils/cn';
@@ -362,10 +363,10 @@ export const Carousel: React.FC<CarouselProps> = ({
     return (
       <div className={cn(styles.carouselContainer, className)} style={style}>
         <div className={styles.emptyContainer}>
-          <div className={styles.emptyContent}>
-            <div className={styles.emptyTitle}>{emptyTitle}</div>
-            {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
-          </div>
+          <EmptyMessage fill="none">
+            <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+            {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+          </EmptyMessage>
         </div>
       </div>
     );

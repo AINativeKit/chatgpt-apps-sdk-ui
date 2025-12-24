@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, type CardProps } from './Card';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { EditPencil, Plus } from '@openai/apps-sdk-ui/components/Icon';
 import { Skeleton } from '../Skeleton';
 import styles from './ListCard.module.css';
@@ -316,13 +317,11 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
             )}
 
             <div className={styles.emptyState}>
-              {emptyIcon && (
-                <div className={styles.emptyIcon} aria-hidden="true">
-                  {emptyIcon}
-                </div>
-              )}
-              <h4 className={styles.emptyTitle}>{emptyTitle}</h4>
-              {emptyMessage && <p className={styles.emptyMessage}>{emptyMessage}</p>}
+              <EmptyMessage fill="none">
+                {emptyIcon && <EmptyMessage.Icon>{emptyIcon}</EmptyMessage.Icon>}
+                <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+                {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+              </EmptyMessage>
             </div>
           </div>
         )}

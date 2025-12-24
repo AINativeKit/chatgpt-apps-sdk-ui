@@ -3,6 +3,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '../../utils/cn';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Skeleton } from '../Skeleton';
 import styles from './List.module.css';
 
@@ -229,20 +230,15 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
       return <div className={styles.emptyContainer}>{emptyState}</div>;
     }
 
-    // Default empty state with title and message
-    if (emptyTitle || emptyMessage) {
-      return (
-        <div className={styles.emptyContainer}>
-          <div className={styles.emptyContent}>
-            <div className={styles.emptyTitle}>{emptyTitle}</div>
-            {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
-          </div>
-        </div>
-      );
-    }
-
-    // Fallback to old behavior
-    return <div className={styles.emptyState}>{emptyMessage}</div>;
+    // Default empty state with EmptyMessage from apps-sdk-ui
+    return (
+      <div className={styles.emptyContainer}>
+        <EmptyMessage fill="none">
+          <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+          {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+        </EmptyMessage>
+      </div>
+    );
   };
 
   return (
