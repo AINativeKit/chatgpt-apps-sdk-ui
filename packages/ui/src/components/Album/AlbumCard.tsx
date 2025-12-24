@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { type CSSProperties } from 'react';
 import type { ComponentPropsWithoutRef, SyntheticEvent } from 'react';
 import { cn } from '../../utils/cn';
-import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
-import { Badge, type BadgeProps } from '../Badge';
-import { Chip, type ChipProps } from '../Chip';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import type { Album } from './types';
 import styles from './AlbumCard.module.css';
+
+/**
+ * Simple inline skeleton placeholder for loading states
+ */
+const Skeleton = ({
+  width,
+  height,
+  className,
+  style,
+}: {
+  width?: string | number;
+  height?: string | number;
+  className?: string;
+  style?: CSSProperties;
+}) => (
+  <div
+    className={className}
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
+      borderRadius: 'var(--radius-sm, 4px)',
+      animation: 'pulse 1.5s ease-in-out infinite',
+      ...style,
+    }}
+  />
+);
 
 export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>, 'onSelect'> {
   /**
@@ -97,9 +123,9 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
   badgePosition?: 'top-left' | 'top-right';
 
   /**
-   * Badge/Chip variant style
+   * Badge variant style
    */
-  badgeVariant?: BadgeProps['variant'] | ChipProps['variant'];
+  badgeVariant?: BadgeProps['variant'];
 
   // Text Display
   /**
@@ -178,7 +204,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     onImageError,
     badge,
     badgePosition = 'top-right',
-    badgeVariant = 'default',
+    badgeVariant = 'soft',
     titleLines = 1,
     subtitleLines = 1,
     'data-testid': testId,
@@ -233,7 +259,19 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
         data-testid={testId}
       >
         <div className={styles.errorContainer}>
-          <Alert title={errorTitle} message={errorMessage} onAction={onErrorRetry} />
+          <Alert
+            color="danger"
+            variant="soft"
+            title={errorTitle}
+            description={errorMessage}
+            actions={
+              onErrorRetry ? (
+                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                  Retry
+                </Button>
+              ) : undefined
+            }
+          />
         </div>
       </div>
     );
@@ -276,7 +314,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
           onLoad={onImageLoad}
           onError={onImageError}
         />
-        {/* Badge/Chip - Uses Chip for longer text, Badge for short content */}
+        {/* Badge */}
         {badge && (
           <div
             className={cn(
@@ -284,13 +322,9 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
               badgePosition === 'top-left' ? styles.badgeTopLeft : styles.badgeTopRight
             )}
           >
-            {String(badge).length > 4 ? (
-              <Chip variant={badgeVariant as ChipProps['variant']} size="sm">
-                {badge}
-              </Chip>
-            ) : (
-              <Badge variant={badgeVariant as BadgeProps['variant']}>{badge}</Badge>
-            )}
+            <Badge variant={badgeVariant} size="sm">
+              {badge}
+            </Badge>
           </div>
         )}
       </div>

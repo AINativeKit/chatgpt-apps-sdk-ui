@@ -1,7 +1,8 @@
 import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../utils/cn';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { XCrossed, ArrowLeftSm, ArrowRightSm } from '@openai/apps-sdk-ui/components/Icon';
 import { FilmStrip } from './FilmStrip';
 import type { Album } from './types';
 import styles from './AlbumViewer.module.css';
@@ -186,12 +187,16 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
       >
         <div className={styles.header}>
           <Button
+            color="secondary"
             variant="ghost"
-            iconOnly="x-crossed"
+            uniform
+            size="md"
             onClick={onClose}
             aria-label="Close viewer"
             className={styles.closeButton}
-          />
+          >
+            <XCrossed />
+          </Button>
         </div>
         <div className={styles.emptyState}>
           <p className={styles.emptyMessage}>No photos available</p>
@@ -210,12 +215,16 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
       {/* Close Button */}
       <div className={styles.header}>
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="x-crossed"
+          uniform
+          size="md"
           onClick={onClose}
           aria-label="Close viewer"
           className={styles.closeButton}
-        />
+        >
+          <XCrossed />
+        </Button>
       </div>
 
       <div className={styles.content}>
@@ -255,21 +264,29 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
         <>
           {currentIndex > 0 && (
             <Button
+              color="secondary"
               variant="ghost"
-              iconOnly="arrow-left-sm"
+              uniform
+              size="md"
               onClick={() => emblaApi?.scrollPrev()}
               aria-label="Previous photo"
               className={cn(styles.navButton, styles.navButtonPrev)}
-            />
+            >
+              <ArrowLeftSm />
+            </Button>
           )}
           {currentIndex < album.photos.length - 1 && (
             <Button
+              color="secondary"
               variant="ghost"
-              iconOnly="arrow-right-sm"
+              uniform
+              size="md"
               onClick={() => emblaApi?.scrollNext()}
               aria-label="Next photo"
               className={cn(styles.navButton, styles.navButtonNext)}
-            />
+            >
+              <ArrowRightSm />
+            </Button>
           )}
         </>
       )}

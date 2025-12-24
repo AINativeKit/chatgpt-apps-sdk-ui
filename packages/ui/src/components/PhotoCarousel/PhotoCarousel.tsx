@@ -1,7 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Overlay } from '../Overlay';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { ChevronLeftMd, ChevronRightMd } from '@openai/apps-sdk-ui/components/Icon';
 import { cn } from '../../utils/cn';
 import styles from './PhotoCarousel.module.css';
 
@@ -173,21 +174,29 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
       {/* Navigation Arrows */}
       {showArrows && images.length > 1 && hasPrev && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="chevron-left-md"
+          uniform
+          size="md"
           onClick={scrollPrev}
           aria-label="Previous photo"
           className={cn(styles.navButton, styles.navButtonPrev)}
-        />
+        >
+          <ChevronLeftMd />
+        </Button>
       )}
       {showArrows && images.length > 1 && hasNext && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="chevron-right-md"
+          uniform
+          size="md"
           onClick={scrollNext}
           aria-label="Next photo"
           className={cn(styles.navButton, styles.navButtonNext)}
-        />
+        >
+          <ChevronRightMd />
+        </Button>
       )}
 
       {/* Navigation Dots */}
