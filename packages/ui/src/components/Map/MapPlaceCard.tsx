@@ -1,13 +1,37 @@
-import React from 'react';
-import type { SyntheticEvent } from 'react';
-import { Skeleton } from '../Skeleton';
+import React, { type CSSProperties, type SyntheticEvent } from 'react';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
-import { Badge, type BadgeProps } from '../Badge';
-import { Chip, type ChipProps } from '../Chip';
 import { Features } from '../Feature';
 import { cn } from '../../utils/cn';
 import type { Feature } from './types';
 import styles from './MapPlaceCard.module.css';
+
+/**
+ * Simple inline skeleton placeholder for loading states
+ */
+const Skeleton = ({
+  width,
+  height,
+  className,
+  style,
+}: {
+  width?: string | number;
+  height?: string | number;
+  className?: string;
+  style?: CSSProperties;
+}) => (
+  <div
+    className={className}
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
+      borderRadius: 'var(--radius-sm, 4px)',
+      animation: 'pulse 1.5s ease-in-out infinite',
+      ...style,
+    }}
+  />
+);
 
 export type MapPlaceCardVariant = 'carousel' | 'list';
 
@@ -200,7 +224,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   onImageError,
   badge,
   badgePosition: _badgePosition = 'top-right',
-  badgeVariant = 'default',
+  badgeVariant = 'soft',
   titleLines = 1,
   subtitleLines = 1,
   'data-testid': testId,
@@ -241,8 +265,6 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
             title={errorTitle || 'Failed to load'}
             message={errorMessage}
             onAction={onErrorRetry}
-            layout="default"
-            hideIcon={false}
           />
         </div>
       </div>
@@ -299,16 +321,12 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
         />
       </div>
       <div className={styles.content}>
-        {/* Badge/Chip - positioned in the content area, away from the image */}
+        {/* Badge - positioned in the content area, away from the image */}
         {badge && (
           <div className={cn(styles.badge, typeof badge !== 'number' && styles.badgeChip)}>
-            {typeof badge === 'number' ? (
-              <Badge variant={badgeVariant as BadgeProps['variant']}>{badge}</Badge>
-            ) : (
-              <Chip variant={(badgeVariant as ChipProps['variant']) || 'default'} size="sm">
-                {badge}
-              </Chip>
-            )}
+            <Badge variant={badgeVariant} size="sm">
+              {badge}
+            </Badge>
           </div>
         )}
 

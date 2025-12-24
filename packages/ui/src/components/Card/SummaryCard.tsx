@@ -346,7 +346,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     title,
     subtitle,
     badge,
-    badgeVariant = 'default',
+    badgeVariant = 'soft',
     variant = 'default',
     size = 'default',
     imageAspectRatio = 'auto',

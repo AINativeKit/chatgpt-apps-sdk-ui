@@ -1,17 +1,41 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, type CSSProperties } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { MapSidebar } from './MapSidebar';
 import { MapInspector } from './MapInspector';
 import { LocationCarousel } from './LocationCarousel';
 import { MapView } from './MapView';
-import { Button } from '../Button';
-import { Skeleton } from '../Skeleton';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { CollapseLg } from '@openai/apps-sdk-ui/components/Icon';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { getErrorState, resolveErrorStateValues } from './useErrorState';
 import { cn } from '../../utils/cn';
 import type { LocationData } from './types';
 import type { MapViewProps } from './MapView';
 import styles from './FullscreenMap.module.css';
+
+/**
+ * Simple inline skeleton placeholder for loading states
+ */
+const Skeleton = ({
+  width,
+  height,
+  style,
+}: {
+  width?: string | number;
+  height?: string | number;
+  style?: CSSProperties;
+}) => (
+  <div
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
+      borderRadius: 'var(--radius-sm, 4px)',
+      animation: 'pulse 1.5s ease-in-out infinite',
+      ...style,
+    }}
+  />
+);
 
 // Lazy load MapContent to avoid SSR issues with Leaflet
 const MapContent = lazy(() =>
@@ -186,12 +210,16 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
       {/* Collapse Button */}
       {onCollapse && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="collapse-lg"
+          uniform
+          size="md"
           onClick={onCollapse}
           aria-label="Collapse map to compact view"
           className={styles.collapseButton}
-        />
+        >
+          <CollapseLg />
+        </Button>
       )}
 
       {/* Desktop Sidebar */}

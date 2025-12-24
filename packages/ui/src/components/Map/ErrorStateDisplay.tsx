@@ -4,8 +4,8 @@
  */
 
 import React from 'react';
-import { Alert } from '../Alert';
-import type { AlertLayout, AlertVariant } from '../Alert';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 
 export interface ErrorStateDisplayProps {
   /**
@@ -34,18 +34,6 @@ export interface ErrorStateDisplayProps {
   actionLabel?: string;
 
   /**
-   * Whether to hide the icon
-   * @default true
-   */
-  hideIcon?: boolean;
-
-  /**
-   * Alert layout variant
-   * @default 'card'
-   */
-  layout?: AlertLayout;
-
-  /**
    * Additional className
    */
   className?: string;
@@ -66,24 +54,27 @@ export const ErrorStateDisplay: React.FC<ErrorStateDisplayProps> = ({
   message,
   onAction,
   actionLabel,
-  hideIcon = true,
-  layout = 'card',
   className,
   containerClassName,
 }) => {
-  const variant: AlertVariant = state === 'error' ? 'error' : 'info';
+  const color = state === 'error' ? 'danger' : 'info';
   const defaultActionLabel = state === 'error' ? 'Try again' : undefined;
+  const buttonLabel = actionLabel ?? defaultActionLabel;
 
   return (
     <div className={containerClassName}>
       <Alert
-        variant={variant}
-        hideIcon={hideIcon}
-        layout={layout}
+        color={color}
+        variant="soft"
         title={title}
-        message={message}
-        onAction={onAction}
-        actionLabel={actionLabel ?? defaultActionLabel}
+        description={message}
+        actions={
+          onAction && buttonLabel ? (
+            <Button color="primary" size="sm" variant="ghost" onClick={onAction}>
+              {buttonLabel}
+            </Button>
+          ) : undefined
+        }
         className={className}
       />
     </div>

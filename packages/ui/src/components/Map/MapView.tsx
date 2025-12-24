@@ -1,8 +1,31 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, type CSSProperties } from 'react';
 import type { LocationData, RenderMarkerParams } from './types';
 import type { TileProviderConfig, TileProviderPreset } from './tileProviders';
-import { Skeleton } from '../Skeleton';
 import styles from './Map.module.css';
+
+/**
+ * Simple inline skeleton placeholder for loading states
+ */
+const Skeleton = ({
+  width,
+  height,
+  style,
+}: {
+  width?: string | number;
+  height?: string | number;
+  style?: CSSProperties;
+}) => (
+  <div
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
+      borderRadius: 'var(--radius-sm, 4px)',
+      animation: 'pulse 1.5s ease-in-out infinite',
+      ...style,
+    }}
+  />
+);
 
 export interface MapViewProps {
   /**

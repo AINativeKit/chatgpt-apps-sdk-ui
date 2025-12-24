@@ -1,11 +1,9 @@
-import type { IconName } from '../../tokens/icons';
-
 export interface Feature {
   /**
    * Optional icon to display before label.
-   * Can be either an IconName string or a React element (e.g., custom SVG component).
+   * Pass a React element (e.g., icon component from apps-sdk-ui).
    */
-  icon?: IconName | React.ReactElement;
+  icon?: React.ReactNode;
 
   /**
    * Label text to display (e.g., "4.8", "$$", "Open now").

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '../Icon';
+import { User } from '@openai/apps-sdk-ui/components/Icon';
 import type { GenericList as GenericListType } from './types';
 import styles from './GenericList.module.css';
 
@@ -26,7 +26,7 @@ export const GenericList: React.FC<GenericListProps> = ({ list }) => {
             )}
             {!item.image && (
               <div className={styles.itemImage}>
-                <Icon name="user" size={16} />
+                <User />
               </div>
             )}
             <div className={styles.itemMeta}>

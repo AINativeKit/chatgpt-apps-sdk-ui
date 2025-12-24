@@ -3,7 +3,8 @@ import { MapView } from './MapView';
 import type { MapViewProps } from './MapView';
 import { LocationCarousel } from './LocationCarousel';
 import type { LocationCarouselProps } from './LocationCarousel';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { ExpandLg } from '@openai/apps-sdk-ui/components/Icon';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { cn } from '../../utils/cn';
 import styles from './CompactMap.module.css';
@@ -124,12 +125,16 @@ export const CompactMap: React.FC<CompactMapProps> = ({
         {/* Expand Button */}
         {onExpand && (
           <Button
+            color="secondary"
             variant="ghost"
-            iconOnly="expand-lg"
+            uniform
+            size="md"
             onClick={onExpand}
             aria-label="Expand map to fullscreen"
             className={styles.expandButton}
-          />
+          >
+            <ExpandLg />
+          </Button>
         )}
       </div>
 
@@ -162,8 +167,6 @@ export const CompactMap: React.FC<CompactMapProps> = ({
             state="empty"
             title="No locations yet"
             message="Add locations to see them on the map"
-            hideIcon={true}
-            layout="card"
           />
         </div>
       )}

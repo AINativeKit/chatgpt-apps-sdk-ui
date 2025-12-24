@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Icon } from '../Icon';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { CloseBold } from '@openai/apps-sdk-ui/components/Icon';
 import { Features } from '../Feature';
 import { PhotoCarousel } from '../PhotoCarousel';
 import { ExpandableText } from '../ExpandableText';
@@ -101,14 +101,17 @@ export const MapInspector: React.FC<MapInspectorProps> = ({ location, onClose, c
           exit={cardVariants.exit}
           transition={{ type: 'spring', bounce: 0, duration: 0.3 }}
         >
-          <button
-            type="button"
+          <Button
+            color="secondary"
+            variant="ghost"
+            uniform
+            size="sm"
             aria-label="Close details"
             className={styles.closeButton}
             onClick={onClose}
           >
-            <Icon name="close-bold" size={18} />
-          </button>
+            <CloseBold />
+          </Button>
           <div className={styles.scrollableContent}>
             {/* Photo Carousel or Single Image */}
             {location.images && location.images.length > 0 ? (
@@ -161,7 +164,8 @@ export const MapInspector: React.FC<MapInspectorProps> = ({ location, onClose, c
               {location.bottomAction && (
                 <div className={styles.bottomAction}>
                   <Button
-                    variant="secondary"
+                    color="secondary"
+                    variant="outline"
                     onClick={location.bottomAction.onClick}
                     className={styles.bottomActionButton}
                   >
