@@ -2,9 +2,10 @@ import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { ChevronLeftMd, ChevronRightMd } from '@openai/apps-sdk-ui/components/Icon';
 import { Card } from '../Card';
-import { Alert } from '../Alert';
 import { cn } from '../../utils/cn';
 import styles from './Carousel.module.css';
 
@@ -258,19 +259,27 @@ export const Carousel: React.FC<CarouselProps> = ({
         {showNavigation && (
           <>
             <Button
+              color="secondary"
               variant="ghost"
-              iconOnly="chevron-left-md"
+              uniform
+              size="md"
               className={cn(styles.navButton, styles.navButtonPrev)}
               disabled
               aria-label="Previous slide"
-            />
+            >
+              <ChevronLeftMd />
+            </Button>
             <Button
+              color="secondary"
               variant="ghost"
-              iconOnly="chevron-right-md"
+              uniform
+              size="md"
               className={cn(styles.navButton, styles.navButtonNext)}
               disabled
               aria-label="Next slide"
-            />
+            >
+              <ChevronRightMd />
+            </Button>
           </>
         )}
 
@@ -318,7 +327,19 @@ export const Carousel: React.FC<CarouselProps> = ({
     return (
       <div className={cn(styles.carouselContainer, className)} style={style}>
         <div className={styles.errorContainer}>
-          <Alert layout="card" title={errorTitle} message={errorMessage} onAction={onErrorRetry} />
+          <Alert
+            color="danger"
+            variant="soft"
+            title={errorTitle}
+            description={errorMessage}
+            actions={
+              onErrorRetry ? (
+                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                  Retry
+                </Button>
+              ) : undefined
+            }
+          />
         </div>
       </div>
     );
@@ -396,21 +417,29 @@ export const Carousel: React.FC<CarouselProps> = ({
       {/* Navigation Buttons */}
       {showNavigation && canPrev && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="chevron-left-md"
+          uniform
+          size="md"
           onClick={scrollPrev}
           aria-label="Previous slide"
           className={`${styles.navButton} ${styles.navButtonPrev}`}
-        />
+        >
+          <ChevronLeftMd />
+        </Button>
       )}
       {showNavigation && canNext && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="chevron-right-md"
+          uniform
+          size="md"
           onClick={scrollNext}
           aria-label="Next slide"
           className={`${styles.navButton} ${styles.navButtonNext}`}
-        />
+        >
+          <ChevronRightMd />
+        </Button>
       )}
     </div>
   );
