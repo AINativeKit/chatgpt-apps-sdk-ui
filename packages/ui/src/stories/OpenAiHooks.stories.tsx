@@ -11,7 +11,7 @@ import {
   type OpenAiGlobals,
   type OpenAiApi,
 } from '../hooks/openai';
-import { Button } from '../components/Button/Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Card, CardBody, CardDescription, CardTitle } from '../components/Card';
 
 type PlaygroundToolOutput = { message: string };
@@ -187,10 +187,10 @@ const HostControlPanel: React.FC = () => {
         borderRadius: '12px',
       }}
     >
-      <Button variant="primary" onClick={cycleDisplayMode}>
+      <Button color="primary" variant="solid" onClick={cycleDisplayMode}>
         Cycle Display Mode
       </Button>
-      <Button variant="tertiary" onClick={sendHostMessage}>
+      <Button color="secondary" variant="ghost" onClick={sendHostMessage}>
         Push Host Tool Message
       </Button>
     </div>
@@ -375,16 +375,21 @@ const HooksDashboard: React.FC<{ initialWidgetCount: number }> = ({ initialWidge
           marginTop: '4px',
         }}
       >
-        <Button variant="primary" onClick={() => increment(1)}>
+        <Button color="primary" variant="solid" onClick={() => increment(1)}>
           Increment Count
         </Button>
-        <Button variant="secondary" onClick={() => increment(-1)} disabled={currentCount === 0}>
+        <Button
+          color="secondary"
+          variant="outline"
+          onClick={() => increment(-1)}
+          disabled={currentCount === 0}
+        >
           Decrement Count
         </Button>
-        <Button variant="tertiary" onClick={resetToInitial}>
+        <Button color="secondary" variant="ghost" onClick={resetToInitial}>
           Reset to Initial
         </Button>
-        <Button variant="ghost" onClick={clearWidgetState}>
+        <Button color="secondary" variant="ghost" onClick={clearWidgetState}>
           Clear (null)
         </Button>
       </div>

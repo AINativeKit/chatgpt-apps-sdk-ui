@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './Card';
-import { Skeleton } from '../Skeleton';
+// Skeleton removed - using inline skeleton in components
 import { Features } from '../Feature/Features';
 import { PropsTable } from '../../tokens/PropsTable';
 import { codeBlockStyles } from '../storybook/codeBlockStyles';
@@ -153,7 +153,7 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="end">
-                <Card.ActionButton variant="primary">Action</Card.ActionButton>
+                <Card.ActionButton variant="solid">Action</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -314,15 +314,59 @@ const CardsComponent: React.FC = () => {
                       marginBottom: '16px',
                     }}
                   >
-                    <Skeleton variant="circular" width={48} height={48} />
+                    <div
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: '50%',
+                        backgroundColor: 'var(--ai-color-bg-tertiary)',
+                      }}
+                    />
                     <div style={{ flex: 1 }}>
-                      <Skeleton variant="text" width="40%" style={{ marginBottom: '8px' }} />
-                      <Skeleton variant="text" width="60%" />
+                      <div
+                        style={{
+                          width: '40%',
+                          height: 16,
+                          backgroundColor: 'var(--ai-color-bg-tertiary)',
+                          borderRadius: 4,
+                          marginBottom: '8px',
+                        }}
+                      />
+                      <div
+                        style={{
+                          width: '60%',
+                          height: 16,
+                          backgroundColor: 'var(--ai-color-bg-tertiary)',
+                          borderRadius: 4,
+                        }}
+                      />
                     </div>
                   </div>
-                  <Skeleton height={150} style={{ marginBottom: '12px' }} />
-                  <Skeleton variant="text" width="80%" style={{ marginBottom: '8px' }} />
-                  <Skeleton variant="text" width="90%" />
+                  <div
+                    style={{
+                      height: 150,
+                      backgroundColor: 'var(--ai-color-bg-tertiary)',
+                      borderRadius: 8,
+                      marginBottom: '12px',
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: '80%',
+                      height: 16,
+                      backgroundColor: 'var(--ai-color-bg-tertiary)',
+                      borderRadius: 4,
+                      marginBottom: '8px',
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: '90%',
+                      height: 16,
+                      backgroundColor: 'var(--ai-color-bg-tertiary)',
+                      borderRadius: 4,
+                    }}
+                  />
                 </>
               }
               style={{ minHeight: '320px' }}
@@ -544,7 +588,7 @@ const CardsComponent: React.FC = () => {
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
               >
                 <Card.Title>Premium Headphones</Card.Title>
-                <Card.Chip variant="success" size="sm">
+                <Card.Chip variant="soft" size="sm">
                   New
                 </Card.Chip>
               </div>
@@ -561,8 +605,8 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="stretch">
-                <Card.ActionButton variant="secondary">Details</Card.ActionButton>
-                <Card.ActionButton variant="primary">Add to Cart</Card.ActionButton>
+                <Card.ActionButton variant="outline">Details</Card.ActionButton>
+                <Card.ActionButton variant="solid">Add to Cart</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -571,13 +615,13 @@ const CardsComponent: React.FC = () => {
           <Card elevationLevel={1} interactive>
             <Card.Header>
               <Card.ChipGroup>
-                <Card.Chip variant="neutral" size="sm">
+                <Card.Chip variant="soft" size="sm">
                   ChatGPT Apps
                 </Card.Chip>
-                <Card.Chip variant="neutral" size="sm">
+                <Card.Chip variant="soft" size="sm">
                   AI-Native
                 </Card.Chip>
-                <Card.Chip variant="neutral" size="sm">
+                <Card.Chip variant="soft" size="sm">
                   UI Components
                 </Card.Chip>
               </Card.ChipGroup>
@@ -604,7 +648,7 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="start">
-                <Card.ActionButton variant="primary">Read More</Card.ActionButton>
+                <Card.ActionButton variant="solid">Read More</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -621,7 +665,7 @@ const CardsComponent: React.FC = () => {
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Card.Title as="h3">Sarah Johnson</Card.Title>
-                    <Card.Chip variant="filled" size="sm">
+                    <Card.Chip variant="solid" size="sm">
                       Pro
                     </Card.Chip>
                   </div>
@@ -638,8 +682,8 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="stretch">
-                <Card.ActionButton variant="secondary">Follow</Card.ActionButton>
-                <Card.ActionButton variant="primary">Message</Card.ActionButton>
+                <Card.ActionButton variant="outline">Follow</Card.ActionButton>
+                <Card.ActionButton variant="solid">Message</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -664,8 +708,8 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="stretch">
-                <Card.ActionButton variant="secondary">Details</Card.ActionButton>
-                <Card.ActionButton variant="primary">Book Table</Card.ActionButton>
+                <Card.ActionButton variant="outline">Details</Card.ActionButton>
+                <Card.ActionButton variant="solid">Book Table</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -678,10 +722,10 @@ const CardsComponent: React.FC = () => {
             />
             <Card.Header>
               <Card.ChipGroup>
-                <Card.Chip variant="success" size="sm">
+                <Card.Chip variant="soft" size="sm">
                   Completed
                 </Card.Chip>
-                <Card.Chip variant="filled" size="sm">
+                <Card.Chip variant="solid" size="sm">
                   2024
                 </Card.Chip>
               </Card.ChipGroup>
@@ -701,7 +745,7 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="start">
-                <Card.ActionButton variant="primary">View Case Study</Card.ActionButton>
+                <Card.ActionButton variant="solid">View Case Study</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -734,21 +778,21 @@ const CardsComponent: React.FC = () => {
                 </p>
               </div>
               <Card.ChipGroup>
-                <Card.Chip variant="filled" size="sm">
+                <Card.Chip variant="solid" size="sm">
                   React
                 </Card.Chip>
-                <Card.Chip variant="filled" size="sm">
+                <Card.Chip variant="solid" size="sm">
                   TypeScript
                 </Card.Chip>
-                <Card.Chip variant="filled" size="sm">
+                <Card.Chip variant="solid" size="sm">
                   Design Systems
                 </Card.Chip>
               </Card.ChipGroup>
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="stretch">
-                <Card.ActionButton variant="secondary">View Profile</Card.ActionButton>
-                <Card.ActionButton variant="primary">Contact</Card.ActionButton>
+                <Card.ActionButton variant="outline">View Profile</Card.ActionButton>
+                <Card.ActionButton variant="solid">Contact</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -790,7 +834,7 @@ const CardsComponent: React.FC = () => {
                     SKU: PROD-12345
                   </div>
                 </div>
-                <Card.Chip variant="success">In Stock</Card.Chip>
+                <Card.Chip variant="soft">In Stock</Card.Chip>
               </div>
             </Card.Header>
             <Card.Image
@@ -815,19 +859,17 @@ const CardsComponent: React.FC = () => {
                 >
                   $399.99
                 </div>
-                <Card.Chip variant="error" size="sm">
+                <Card.Chip variant="soft" size="sm">
                   25% OFF
                 </Card.Chip>
               </div>
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="stretch">
-                <Card.ActionButton variant="secondary" leftIcon="user-heart">
+                <Card.ActionButton color="secondary" variant="outline">
                   Wishlist
                 </Card.ActionButton>
-                <Card.ActionButton variant="primary" leftIcon="shopping-bag">
-                  Add to Cart
-                </Card.ActionButton>
+                <Card.ActionButton variant="solid">Add to Cart</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -870,8 +912,8 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="stretch">
-                <Card.ActionButton variant="secondary">Details</Card.ActionButton>
-                <Card.ActionButton variant="primary">Register</Card.ActionButton>
+                <Card.ActionButton variant="outline">Details</Card.ActionButton>
+                <Card.ActionButton variant="solid">Register</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -904,7 +946,7 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="start">
-                <Card.ActionButton variant="primary">Action</Card.ActionButton>
+                <Card.ActionButton variant="solid">Action</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -918,8 +960,8 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="stretch">
-                <Card.ActionButton variant="secondary">Cancel</Card.ActionButton>
-                <Card.ActionButton variant="primary">Confirm</Card.ActionButton>
+                <Card.ActionButton variant="outline">Cancel</Card.ActionButton>
+                <Card.ActionButton variant="solid">Confirm</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -933,12 +975,10 @@ const CardsComponent: React.FC = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="stretch">
-                <Card.ActionButton variant="secondary" leftIcon="arrow-left-lg">
+                <Card.ActionButton color="secondary" variant="outline">
                   Back
                 </Card.ActionButton>
-                <Card.ActionButton variant="primary" rightIcon="arrow-right-lg">
-                  Next
-                </Card.ActionButton>
+                <Card.ActionButton variant="solid">Next</Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -1003,7 +1043,7 @@ const CardsComponent: React.FC = () => {
               <code>{`<Card elevationLevel={1} interactive>
   <Card.Header>
     <Card.Title>Product Name</Card.Title>
-    <Card.Chip variant="success">New</Card.Chip>
+    <Card.Chip variant="soft">New</Card.Chip>
   </Card.Header>
   <Card.Image src="..." alt="..." />
   <Card.Body>
@@ -1011,7 +1051,7 @@ const CardsComponent: React.FC = () => {
   </Card.Body>
   <Card.Footer>
     <Card.Actions align="stretch">
-      <Card.ActionButton variant="primary">Buy Now</Card.ActionButton>
+      <Card.ActionButton variant="solid">Buy Now</Card.ActionButton>
     </Card.Actions>
   </Card.Footer>
 </Card>`}</code>

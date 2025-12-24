@@ -210,9 +210,7 @@ export const CustomMarkers: FC = () => {
           stroke="white"
           strokeWidth={strokeWidth}
         />
-        {params.isSelected && (
-          <circle cx="18" cy="18" r="6" fill="white" fillOpacity="0.9" />
-        )}
+        {params.isSelected && <circle cx="18" cy="18" r="6" fill="white" fillOpacity="0.9" />}
       </svg>
     );
   }, []);
@@ -384,8 +382,9 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
             fontSize: '14px',
           }}
         >
-          <strong>Three ways to customize:</strong> Global renderMarker prop (all locations), per-location
-          renderMarker (individual control), or hybrid with both (per-location overrides global).
+          <strong>Three ways to customize:</strong> Global renderMarker prop (all locations),
+          per-location renderMarker (individual control), or hybrid with both (per-location
+          overrides global).
         </div>
       </section>
 
@@ -464,7 +463,9 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
         />
       </ExampleSection>
 
-      <section style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}>
+      <section
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+      >
         <h2 style={{ marginBottom: '16px' }}>RenderMarkerParams API</h2>
         <p style={{ margin: '0 0 16px', color: 'var(--ai-color-text-secondary)', lineHeight: 1.6 }}>
           Your renderMarker function receives these parameters to customize marker appearance:
@@ -494,7 +495,7 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
             {
               name: 'variant',
               type: "'pin' | 'dot'",
-              desc: "Marker variant (useful for hybrid mode support)",
+              desc: 'Marker variant (useful for hybrid mode support)',
             },
           ].map(({ name, type, desc }) => (
             <div
@@ -506,7 +507,9 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
                 border: '1px solid var(--ai-color-border-default)',
               }}
             >
-              <div style={{ display: 'flex', gap: '8px', alignItems: 'baseline', marginBottom: '4px' }}>
+              <div
+                style={{ display: 'flex', gap: '8px', alignItems: 'baseline', marginBottom: '4px' }}
+              >
                 <code
                   style={{
                     fontSize: '14px',
@@ -525,7 +528,9 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
                   {type}
                 </code>
               </div>
-              <div style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>{desc}</div>
+              <div style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+                {desc}
+              </div>
             </div>
           ))}
         </div>

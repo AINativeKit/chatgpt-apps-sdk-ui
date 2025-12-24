@@ -4,7 +4,7 @@ import { AlbumCarousel } from './AlbumCarousel';
 import { AlbumViewer } from './AlbumViewer';
 import type { Album as AlbumType } from './types';
 import { PropsTable } from '../../tokens/PropsTable';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { useState } from 'react';
 
 // Sample album data with varied aspect ratios
@@ -407,7 +407,7 @@ const AlbumSystemComponent: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '8px' }}>
             <strong>Selected Album:</strong>
             <span>{selectedAlbum?.title || 'None'}</span>
-            <Button onClick={() => setSelectedAlbum(null)} variant="secondary">
+            <Button color="secondary" variant="outline" onClick={() => setSelectedAlbum(null)}>
               Reset Selection
             </Button>
           </div>
@@ -433,6 +433,7 @@ const AlbumSystemComponent: React.FC = () => {
 
         <div style={{ marginBottom: '16px' }}>
           <Button
+            color="primary"
             onClick={() => {
               setViewerAlbum(sampleAlbums[0]);
               setShowViewer(true);
@@ -441,11 +442,12 @@ const AlbumSystemComponent: React.FC = () => {
             Open Album Viewer (3 photos)
           </Button>{' '}
           <Button
+            color="secondary"
+            variant="outline"
             onClick={() => {
               setViewerAlbum(sampleAlbums[4]);
               setShowViewer(true);
             }}
-            variant="secondary"
           >
             Open Pizza Tour (7 photos)
           </Button>
@@ -497,7 +499,14 @@ const AlbumSystemComponent: React.FC = () => {
           <h3 style={{ fontSize: '14px', marginTop: 0, marginBottom: '12px' }}>
             Mobile (&lt; 640px)
           </h3>
-          <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: '20px',
+              fontSize: '14px',
+              color: 'var(--ai-color-text-secondary)',
+            }}
+          >
             <li>No thumbnail sidebar</li>
             <li>Touch-enabled swipe navigation</li>
             <li>Prev/Next navigation buttons visible</li>
@@ -514,10 +523,15 @@ const AlbumSystemComponent: React.FC = () => {
             marginBottom: '16px',
           }}
         >
-          <h3 style={{ fontSize: '14px', marginTop: 0, marginBottom: '12px' }}>
-            Tablet (≥ 640px)
-          </h3>
-          <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <h3 style={{ fontSize: '14px', marginTop: 0, marginBottom: '12px' }}>Tablet (≥ 640px)</h3>
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: '20px',
+              fontSize: '14px',
+              color: 'var(--ai-color-text-secondary)',
+            }}
+          >
             <li>Thumbnail sidebar appears (160px width)</li>
             <li>Thumbnails centered vertically in sidebar</li>
             <li>Navigation buttons hidden (sidebar provides navigation)</li>
@@ -537,7 +551,14 @@ const AlbumSystemComponent: React.FC = () => {
           <h3 style={{ fontSize: '14px', marginTop: 0, marginBottom: '12px' }}>
             Desktop-wide (≥ 1024px)
           </h3>
-          <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: '20px',
+              fontSize: '14px',
+              color: 'var(--ai-color-text-secondary)',
+            }}
+          >
             <li>All tablet features maintained</li>
             <li>Maximum padding for optimal viewing (24px horizontal, 24px vertical)</li>
             <li>Generous breathing room around photos</li>
@@ -552,7 +573,14 @@ const AlbumSystemComponent: React.FC = () => {
             marginTop: '16px',
           }}
         >
-          <p style={{ margin: 0, fontSize: '13px', color: 'var(--ai-color-text-secondary)', fontStyle: 'italic' }}>
+          <p
+            style={{
+              margin: 0,
+              fontSize: '13px',
+              color: 'var(--ai-color-text-secondary)',
+              fontStyle: 'italic',
+            }}
+          >
             <strong>Note:</strong> All breakpoints use CSS custom properties from the design system
             (--ai-breakpoint-tablet: 640px, --ai-breakpoint-desktop-wide: 1024px)
           </p>
@@ -578,17 +606,20 @@ const AlbumSystemComponent: React.FC = () => {
           >
             Default Empty State
           </h3>
-          <p style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--ai-color-text-secondary)' }}>
+          <p
+            style={{
+              fontSize: '14px',
+              marginBottom: '12px',
+              color: 'var(--ai-color-text-secondary)',
+            }}
+          >
             Shows default "No photos available" message with close button
           </p>
-          <Button onClick={() => setShowEmptyDefault(true)}>
+          <Button color="primary" variant="solid" onClick={() => setShowEmptyDefault(true)}>
             Open Empty Album (Default)
           </Button>
           {showEmptyDefault && (
-            <AlbumViewer
-              album={sampleAlbums[5]}
-              onClose={() => setShowEmptyDefault(false)}
-            />
+            <AlbumViewer album={sampleAlbums[5]} onClose={() => setShowEmptyDefault(false)} />
           )}
         </div>
 
@@ -602,10 +633,16 @@ const AlbumSystemComponent: React.FC = () => {
           >
             Custom Empty State Content
           </h3>
-          <p style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--ai-color-text-secondary)' }}>
+          <p
+            style={{
+              fontSize: '14px',
+              marginBottom: '12px',
+              color: 'var(--ai-color-text-secondary)',
+            }}
+          >
             Provide custom UI via emptyStateContent prop
           </p>
-          <Button onClick={() => setShowEmptyCustom(true)} variant="secondary">
+          <Button color="secondary" variant="outline" onClick={() => setShowEmptyCustom(true)}>
             Open Empty Album (Custom)
           </Button>
           {showEmptyCustom && (
@@ -613,24 +650,28 @@ const AlbumSystemComponent: React.FC = () => {
               album={sampleAlbums[5]}
               onClose={() => setShowEmptyCustom(false)}
               emptyStateContent={
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '100%',
-                  gap: '16px',
-                }}>
-                  <div style={{
-                    fontSize: '48px',
-                  }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '100%',
+                    gap: '16px',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: '48px',
+                    }}
+                  >
                     📸
                   </div>
                   <h3 style={{ margin: 0, fontSize: '20px' }}>No Photos Yet</h3>
                   <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
                     This album is waiting for its first photo
                   </p>
-                  <Button onClick={() => setShowEmptyCustom(false)}>
+                  <Button color="primary" onClick={() => setShowEmptyCustom(false)}>
                     Close Viewer
                   </Button>
                 </div>
@@ -649,13 +690,26 @@ const AlbumSystemComponent: React.FC = () => {
           >
             Hide When Empty
           </h3>
-          <p style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--ai-color-text-secondary)' }}>
+          <p
+            style={{
+              fontSize: '14px',
+              marginBottom: '12px',
+              color: 'var(--ai-color-text-secondary)',
+            }}
+          >
             Returns null when album has no photos (hideWhenEmpty=true)
           </p>
-          <Button onClick={() => setShowEmptyHidden(true)} variant="secondary">
+          <Button color="secondary" variant="outline" onClick={() => setShowEmptyHidden(true)}>
             Try Opening Empty Album (Hidden)
           </Button>
-          <p style={{ fontSize: '12px', marginTop: '8px', color: 'var(--ai-color-text-secondary)', fontStyle: 'italic' }}>
+          <p
+            style={{
+              fontSize: '12px',
+              marginTop: '8px',
+              color: 'var(--ai-color-text-secondary)',
+              fontStyle: 'italic',
+            }}
+          >
             Note: Nothing will appear because the viewer returns null when empty
           </p>
           {showEmptyHidden && (
@@ -798,11 +852,13 @@ const AlbumSystemComponent: React.FC = () => {
             },
             {
               name: 'emptyStateContent',
-              description: 'Custom content to display when album has no photos. If not provided, shows default empty state with message and close button. Type: React.ReactNode',
+              description:
+                'Custom content to display when album has no photos. If not provided, shows default empty state with message and close button. Type: React.ReactNode',
             },
             {
               name: 'hideWhenEmpty',
-              description: 'Hide the viewer completely when album has no photos. When true, returns null instead of showing empty state - default: false',
+              description:
+                'Hide the viewer completely when album has no photos. When true, returns null instead of showing empty state - default: false',
             },
           ]}
         />

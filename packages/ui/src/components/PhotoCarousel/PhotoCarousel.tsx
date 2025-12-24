@@ -114,10 +114,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   // Loading state
   if (loading) {
     return (
-      <div
-        className={cn(styles.photoCarousel, className)}
-        style={{ aspectRatio }}
-      >
+      <div className={cn(styles.photoCarousel, className)} style={{ aspectRatio }}>
         <div className={styles.loading}>Loading photos...</div>
       </div>
     );
@@ -126,10 +123,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   // Error state
   if (error) {
     return (
-      <div
-        className={cn(styles.photoCarousel, className)}
-        style={{ aspectRatio }}
-      >
+      <div className={cn(styles.photoCarousel, className)} style={{ aspectRatio }}>
         <div className={styles.error}>Failed to load photos</div>
       </div>
     );
@@ -138,10 +132,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   // Empty state
   if (!images || images.length === 0) {
     return (
-      <div
-        className={cn(styles.photoCarousel, className)}
-        style={{ aspectRatio }}
-      >
+      <div className={cn(styles.photoCarousel, className)} style={{ aspectRatio }}>
         <div className={styles.empty}>No photos available</div>
       </div>
     );

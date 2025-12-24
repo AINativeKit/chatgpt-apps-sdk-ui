@@ -195,7 +195,7 @@ describe('MapPlaceCard', () => {
     });
 
     it('renders badge with custom variant', () => {
-      render(<MapPlaceCard {...defaultProps} badge="Sale" badgeVariant="success" />);
+      render(<MapPlaceCard {...defaultProps} badge="Sale" badgeVariant="soft" />);
       const badge = screen.getByText('Sale');
       expect(badge).toBeInTheDocument();
     });

@@ -194,125 +194,128 @@ const sampleAlbums: AlbumType[] = [
 const AlbumsComponent: React.FC = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<AlbumType | null>(null);
 
-    return (
-      <div
-        style={{
-          maxWidth: '768px',
-          margin: '0 auto',
-          fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
-        }}
-      >
-        {/* Header Section */}
-        <section style={{ marginBottom: '48px' }}>
-          <h1
+  return (
+    <div
+      style={{
+        maxWidth: '768px',
+        margin: '0 auto',
+        fontFamily:
+          'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+      }}
+    >
+      {/* Header Section */}
+      <section style={{ marginBottom: '48px' }}>
+        <h1
+          style={{
+            fontSize: '32px',
+            fontWeight: '700',
+            marginBottom: '12px',
+            color: 'var(--ai-color-text-primary)',
+          }}
+        >
+          📸 Photo Gallery - Albums
+        </h1>
+        <p
+          style={{
+            fontSize: '16px',
+            color: 'var(--ai-color-text-secondary)',
+            margin: 0,
+            lineHeight: '1.6',
+          }}
+        >
+          A complete photo gallery system with carousel navigation and fullscreen viewer. Browse
+          albums, view photos in different aspect ratios, and see them beautifully displayed when
+          opened in full screen. Perfect for portfolios, image collections, and social media
+          integrations in your ChatGPT App.
+        </p>
+      </section>
+
+      {/* Live Demo */}
+      <section style={{ marginBottom: '64px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--ai-color-text-primary)',
+          }}
+        >
+          Live Demo
+        </h2>
+
+        <div style={{ marginBottom: '24px' }}>
+          <Album
+            albums={sampleAlbums}
+            selectedAlbum={selectedAlbum}
+            onAlbumSelect={setSelectedAlbum}
+            align="center"
+            showNavigation={true}
+            showEdgeGradients={true}
+          />
+        </div>
+
+        <div
+          style={{
+            padding: '16px',
+            background: 'var(--ai-color-bg-secondary)',
+            borderRadius: '8px',
+            fontSize: '13px',
+            color: 'var(--ai-color-text-secondary)',
+            border: '1px solid var(--ai-color-border)',
+          }}
+        >
+          <strong style={{ color: 'var(--ai-color-text-primary)' }}>✨ Features:</strong>
+          <ul
             style={{
-              fontSize: '32px',
-              fontWeight: '700',
-              marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              margin: '8px 0 0 0',
+              paddingLeft: '20px',
+              lineHeight: '1.6',
             }}
           >
-            📸 Photo Gallery - Albums
-          </h1>
-          <p
+            <li>Click any album card to browse photos in fullscreen</li>
+            <li>Use arrow keys to navigate between photos</li>
+            <li>Responsive design works on all devices</li>
+            <li>Smooth carousel scrolling and transitions</li>
+            <li>Loading, error, and empty states supported</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Data Structure Section */}
+      <section style={{ marginBottom: '64px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--ai-color-text-primary)',
+          }}
+        >
+          Data Structure
+        </h2>
+
+        <p
+          style={{
+            fontSize: '14px',
+            color: 'var(--ai-color-text-secondary)',
+            marginBottom: '16px',
+            lineHeight: '1.6',
+          }}
+        >
+          Define your albums using this TypeScript interface. Each album contains metadata and an
+          array of photos.
+        </p>
+
+        <div style={codeBlockStyles.primary}>
+          <pre
             style={{
-              fontSize: '16px',
-              color: 'var(--ai-color-text-secondary)',
               margin: 0,
-              lineHeight: '1.6',
-            }}
-          >
-            A complete photo gallery system with carousel navigation and fullscreen viewer. Browse albums, view photos
-            in different aspect ratios, and see them beautifully displayed when opened in full screen. Perfect for
-            portfolios, image collections, and social media integrations in your ChatGPT App.
-          </p>
-        </section>
-
-        {/* Live Demo */}
-        <section style={{ marginBottom: '64px' }}>
-          <h2
-            style={{
-              fontSize: '20px',
-              fontWeight: '600',
-              marginBottom: '24px',
               color: 'var(--ai-color-text-primary)',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
             }}
           >
-            Live Demo
-          </h2>
-
-          <div style={{ marginBottom: '24px' }}>
-            <Album
-              albums={sampleAlbums}
-              selectedAlbum={selectedAlbum}
-              onAlbumSelect={setSelectedAlbum}
-              align="center"
-              showNavigation={true}
-              showEdgeGradients={true}
-            />
-          </div>
-
-          <div
-            style={{
-              padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
-              borderRadius: '8px',
-              fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
-              border: '1px solid var(--ai-color-border)',
-            }}
-          >
-            <strong style={{ color: 'var(--ai-color-text-primary)' }}>✨ Features:</strong>
-            <ul
-              style={{
-                margin: '8px 0 0 0',
-                paddingLeft: '20px',
-                lineHeight: '1.6',
-              }}
-            >
-              <li>Click any album card to browse photos in fullscreen</li>
-              <li>Use arrow keys to navigate between photos</li>
-              <li>Responsive design works on all devices</li>
-              <li>Smooth carousel scrolling and transitions</li>
-              <li>Loading, error, and empty states supported</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* Data Structure Section */}
-        <section style={{ marginBottom: '64px' }}>
-          <h2
-            style={{
-              fontSize: '20px',
-              fontWeight: '600',
-              marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
-            }}
-          >
-            Data Structure
-          </h2>
-
-          <p
-            style={{
-              fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
-              marginBottom: '16px',
-              lineHeight: '1.6',
-            }}
-          >
-            Define your albums using this TypeScript interface. Each album contains metadata and an array of photos.
-          </p>
-
-          <div style={codeBlockStyles.primary}>
-            <pre
-              style={{
-                margin: 0,
-                color: 'var(--ai-color-text-primary)',
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-              }}
-            >
-{`interface Album {
+            {`interface Album {
   id: string;
   title: string;
   cover: string;
@@ -343,59 +346,60 @@ const albums: Album[] = [
     ],
   },
 ];`}
-            </pre>
-          </div>
+          </pre>
+        </div>
 
-          <div
-            style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border)',
-              borderRadius: '8px',
-              padding: '16px',
-              fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
-            }}
-          >
-            <p style={{ margin: '0 0 12px 0' }}>
-              <strong style={{ color: 'var(--ai-color-text-primary)' }}>💡 Pro Tip:</strong> Use the{' '}
-              <code
-                style={{
-                  background: 'var(--ai-color-bg-primary)',
-                  padding: '2px 6px',
-                  borderRadius: '4px',
-                  fontFamily: 'monospace',
-                }}
-              >
-                alt
-              </code>{' '}
-              field for accessibility and SEO. It describes the image for screen readers and search engines.
-            </p>
-          </div>
-        </section>
-
-        {/* Usage Section */}
-        <section style={{ marginBottom: '64px' }}>
-          <h2
-            style={{
-              fontSize: '20px',
-              fontWeight: '600',
-              marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
-            }}
-          >
-            Quick Start
-          </h2>
-
-          <div style={codeBlockStyles.primary}>
-            <pre
+        <div
+          style={{
+            background: 'var(--ai-color-bg-secondary)',
+            border: '1px solid var(--ai-color-border)',
+            borderRadius: '8px',
+            padding: '16px',
+            fontSize: '13px',
+            color: 'var(--ai-color-text-secondary)',
+          }}
+        >
+          <p style={{ margin: '0 0 12px 0' }}>
+            <strong style={{ color: 'var(--ai-color-text-primary)' }}>💡 Pro Tip:</strong> Use the{' '}
+            <code
               style={{
-                margin: 0,
-                color: 'var(--ai-color-text-primary)',
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
+                background: 'var(--ai-color-bg-primary)',
+                padding: '2px 6px',
+                borderRadius: '4px',
+                fontFamily: 'monospace',
               }}
             >
-{`import { Album } from '@ainativekit/ui';
+              alt
+            </code>{' '}
+            field for accessibility and SEO. It describes the image for screen readers and search
+            engines.
+          </p>
+        </div>
+      </section>
+
+      {/* Usage Section */}
+      <section style={{ marginBottom: '64px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--ai-color-text-primary)',
+          }}
+        >
+          Quick Start
+        </h2>
+
+        <div style={codeBlockStyles.primary}>
+          <pre
+            style={{
+              margin: 0,
+              color: 'var(--ai-color-text-primary)',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
+            }}
+          >
+            {`import { Album } from '@ainativekit/ui';
 
 // 1. Define your albums data
 const albums = [
@@ -429,181 +433,181 @@ function MyGallery() {
     />
   );
 }`}
-            </pre>
-          </div>
-        </section>
+          </pre>
+        </div>
+      </section>
 
-        {/* Component Props Section */}
-        <section style={{ marginBottom: '48px' }}>
-          <h2
-            style={{
-              fontSize: '20px',
-              fontWeight: '600',
-              marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
-            }}
-          >
-            Component Props
-          </h2>
+      {/* Component Props Section */}
+      <section style={{ marginBottom: '48px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--ai-color-text-primary)',
+          }}
+        >
+          Component Props
+        </h2>
 
-          <PropsTable
-            hideThemeColumn
-            rows={[
-              {
-                name: 'albums',
-                description: 'Array of album objects to display (required)',
-              },
-              {
-                name: 'onAlbumSelect',
-                description: 'Callback when album is selected: (album: Album | null) => void',
-              },
-              {
-                name: 'selectedAlbum',
-                description: 'Currently selected album for controlled state (Album | null)',
-              },
-              {
-                name: 'align',
-                description: 'Carousel alignment: "start" | "center" (default: "center")',
-              },
-              {
-                name: 'showNavigation',
-                description: 'Show previous/next carousel buttons (default: true)',
-              },
-              {
-                name: 'showEdgeGradients',
-                description: 'Show fade effect at carousel edges (default: false)',
-              },
-              {
-                name: 'initialPhotoIndex',
-                description: 'Starting photo index in viewer (default: 0)',
-              },
-            ]}
-          />
-        </section>
+        <PropsTable
+          hideThemeColumn
+          rows={[
+            {
+              name: 'albums',
+              description: 'Array of album objects to display (required)',
+            },
+            {
+              name: 'onAlbumSelect',
+              description: 'Callback when album is selected: (album: Album | null) => void',
+            },
+            {
+              name: 'selectedAlbum',
+              description: 'Currently selected album for controlled state (Album | null)',
+            },
+            {
+              name: 'align',
+              description: 'Carousel alignment: "start" | "center" (default: "center")',
+            },
+            {
+              name: 'showNavigation',
+              description: 'Show previous/next carousel buttons (default: true)',
+            },
+            {
+              name: 'showEdgeGradients',
+              description: 'Show fade effect at carousel edges (default: false)',
+            },
+            {
+              name: 'initialPhotoIndex',
+              description: 'Starting photo index in viewer (default: 0)',
+            },
+          ]}
+        />
+      </section>
 
-        {/* Use Cases Section */}
-        <section style={{ marginBottom: '48px' }}>
-          <h2
-            style={{
-              fontSize: '20px',
-              fontWeight: '600',
-              marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
-            }}
-          >
-            Use Cases
-          </h2>
+      {/* Use Cases Section */}
+      <section style={{ marginBottom: '48px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--ai-color-text-primary)',
+          }}
+        >
+          Use Cases
+        </h2>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '16px',
-            }}
-          >
-            {[
-              {
-                emoji: '🖼️',
-                title: 'Portfolio Showcase',
-                desc: 'Display your design or photography portfolio with organized collections',
-              },
-              {
-                emoji: '📱',
-                title: 'Social Media Integration',
-                desc: 'Embed Instagram, Flickr, or other photo feeds in your ChatGPT App',
-              },
-              {
-                emoji: '🏢',
-                title: 'Product Gallery',
-                desc: 'Showcase product images, variations, and detailed views',
-              },
-              {
-                emoji: '📸',
-                title: 'Memory Archive',
-                desc: 'Create organized albums for trips, events, or personal memories',
-              },
-            ].map((useCase) => (
-              <div
-                key={useCase.title}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '16px',
+          }}
+        >
+          {[
+            {
+              emoji: '🖼️',
+              title: 'Portfolio Showcase',
+              desc: 'Display your design or photography portfolio with organized collections',
+            },
+            {
+              emoji: '📱',
+              title: 'Social Media Integration',
+              desc: 'Embed Instagram, Flickr, or other photo feeds in your ChatGPT App',
+            },
+            {
+              emoji: '🏢',
+              title: 'Product Gallery',
+              desc: 'Showcase product images, variations, and detailed views',
+            },
+            {
+              emoji: '📸',
+              title: 'Memory Archive',
+              desc: 'Create organized albums for trips, events, or personal memories',
+            },
+          ].map((useCase) => (
+            <div
+              key={useCase.title}
+              style={{
+                background: 'var(--ai-color-bg-secondary)',
+                border: '1px solid var(--ai-color-border)',
+                borderRadius: '8px',
+                padding: '16px',
+              }}
+            >
+              <div style={{ fontSize: '24px', marginBottom: '8px' }}>{useCase.emoji}</div>
+              <h4
                 style={{
-                  background: 'var(--ai-color-bg-secondary)',
-                  border: '1px solid var(--ai-color-border)',
-                  borderRadius: '8px',
-                  padding: '16px',
+                  margin: '0 0 8px 0',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: 'var(--ai-color-text-primary)',
                 }}
               >
-                <div style={{ fontSize: '24px', marginBottom: '8px' }}>{useCase.emoji}</div>
-                <h4
-                  style={{
-                    margin: '0 0 8px 0',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: 'var(--ai-color-text-primary)',
-                  }}
-                >
-                  {useCase.title}
-                </h4>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: '13px',
-                    color: 'var(--ai-color-text-secondary)',
-                    lineHeight: '1.5',
-                  }}
-                >
-                  {useCase.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+                {useCase.title}
+              </h4>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: '13px',
+                  color: 'var(--ai-color-text-secondary)',
+                  lineHeight: '1.5',
+                }}
+              >
+                {useCase.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {/* Related Components */}
-        <section>
-          <h2
-            style={{
-              fontSize: '20px',
-              fontWeight: '600',
-              marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
-            }}
-          >
-            Related Components
-          </h2>
+      {/* Related Components */}
+      <section>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '16px',
+            color: 'var(--ai-color-text-primary)',
+          }}
+        >
+          Related Components
+        </h2>
 
-          <div
-            style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border)',
-              borderRadius: '8px',
-              padding: '16px',
-              fontSize: '14px',
-              lineHeight: '1.6',
-              color: 'var(--ai-color-text-secondary)',
-            }}
-          >
-            <p style={{ margin: '0 0 12px 0' }}>
-              The Album component is built from these core components:
-            </p>
-            <ul style={{ margin: 0, paddingLeft: '20px' }}>
-              <li>
-                <strong>AlbumCarousel</strong> - Horizontal carousel for browsing albums
-              </li>
-              <li>
-                <strong>AlbumCard</strong> - Individual album preview card
-              </li>
-              <li>
-                <strong>AlbumViewer</strong> - Fullscreen photo viewer with navigation
-              </li>
-              <li>
-                <strong>Carousel</strong> - Base carousel component used internally
-              </li>
-            </ul>
-          </div>
-        </section>
-      </div>
-    );
-  };
+        <div
+          style={{
+            background: 'var(--ai-color-bg-secondary)',
+            border: '1px solid var(--ai-color-border)',
+            borderRadius: '8px',
+            padding: '16px',
+            fontSize: '14px',
+            lineHeight: '1.6',
+            color: 'var(--ai-color-text-secondary)',
+          }}
+        >
+          <p style={{ margin: '0 0 12px 0' }}>
+            The Album component is built from these core components:
+          </p>
+          <ul style={{ margin: 0, paddingLeft: '20px' }}>
+            <li>
+              <strong>AlbumCarousel</strong> - Horizontal carousel for browsing albums
+            </li>
+            <li>
+              <strong>AlbumCard</strong> - Individual album preview card
+            </li>
+            <li>
+              <strong>AlbumViewer</strong> - Fullscreen photo viewer with navigation
+            </li>
+            <li>
+              <strong>Carousel</strong> - Base carousel component used internally
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 // Single comprehensive story
 export const Albums: Story = {

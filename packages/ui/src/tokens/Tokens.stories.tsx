@@ -5,7 +5,7 @@ import { spacing as spacingRaw } from './spacing'; // Use raw for display in Sto
 import type { ElevationLevel } from './elevation';
 import { Card, SummaryCard } from '../components/Card';
 import { List, ListItem } from '../components/List';
-import { Button } from '../components/Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { PropsTable } from './PropsTable';
 import { codeBlockStyles } from '../components/storybook/codeBlockStyles';
 
@@ -1415,14 +1415,16 @@ const ResponsiveBreakpointsComponent: React.FC = () => {
       name: "Tony's Pizza Napoletana",
       city: 'North Beach',
       rating: 4.8,
-      thumbnail: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=200&fit=crop',
+      thumbnail:
+        'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=200&fit=crop',
     },
     {
       id: '2',
       name: 'Golden Boy Pizza',
       city: 'North Beach',
       rating: 4.6,
-      thumbnail: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=200&fit=crop',
+      thumbnail:
+        'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=200&fit=crop',
     },
   ];
 
@@ -1685,7 +1687,7 @@ const ResponsiveBreakpointsComponent: React.FC = () => {
               title="Little Nona's"
               subtitle="1427 Via Campania, North Beach"
               badge="9.2"
-              badgeVariant="success"
+              badgeVariant="soft"
               description="A tiny, brick-walled trattoria tucked down a side street near Washington Square Park."
               metadata={[
                 { icon: 'star', label: '9.2 rating' },
@@ -1757,7 +1759,11 @@ const ResponsiveBreakpointsComponent: React.FC = () => {
               subtitle: 'Best pizzerias in San Francisco',
               thumbnail:
                 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=200&fit=crop',
-              action: <Button variant="primary">Save List</Button>,
+              action: (
+                <Button color="primary" variant="solid">
+                  Save List
+                </Button>
+              ),
             }}
             items={pizzaPlaces}
             renderItem={(place, index) => (

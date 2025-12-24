@@ -6,9 +6,8 @@ import type { Album as AlbumType } from './components/Album/types';
 import { Carousel as CarouselComponent } from './components/Carousel';
 import { Card, SummaryCard } from './components/Card';
 import { List, ListItem } from './components/List';
-import { Button } from './components/Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Map, FullscreenMap } from './components/Map';
-import { Icon } from './components/Icon';
 import { Features } from './components/Feature/Features';
 import { codeBlockStyles } from './components/storybook/codeBlockStyles';
 import type { LocationData } from './components/Map/types';
@@ -393,10 +392,18 @@ const AssistantMessage = ({ children }: { children: ReactNode }) => (
 
 const ActionButtons = () => (
   <div style={actionButtonsStyle}>
-    <Icon name="thumb-up" size="sm" tone="secondary" interactive />
-    <Icon name="thumb-down" size="sm" tone="secondary" interactive />
-    <Icon name="copy" size="sm" tone="secondary" interactive />
-    <Icon name="dots-horizontal-more-menu" size="sm" tone="secondary" interactive />
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--ai-color-icon-secondary)' }}>
+      👍
+    </span>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--ai-color-icon-secondary)' }}>
+      👎
+    </span>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--ai-color-icon-secondary)' }}>
+      📋
+    </span>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--ai-color-icon-secondary)' }}>
+      ⋯
+    </span>
   </div>
 );
 
@@ -504,7 +511,7 @@ const IntroductionPage = () => {
             title="Little Nona's"
             subtitle="1427 Via Campania, North Beach"
             badge="9.2"
-            badgeVariant="success"
+            badgeVariant="soft"
             description="A tiny, brick-walled trattoria tucked down a side street near Washington Square Park. The windows glow warm gold at night."
             metadata={[
               { icon: 'star', label: '9.2 rating' },
@@ -612,7 +619,11 @@ const IntroductionPage = () => {
               subtitle: 'A ranking of the best pizzerias',
               thumbnail:
                 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=200&fit=crop',
-              action: <Button variant="primary">Save List</Button>,
+              action: (
+                <Button color="primary" variant="solid">
+                  Save List
+                </Button>
+              ),
             }}
             items={pizzaPlaces}
             renderItem={(place: PizzaPlace, index: number) => (
@@ -634,9 +645,8 @@ const IntroductionPage = () => {
                 interactive
                 action={
                   <Button
-                    iconOnly={
-                      selectedPlaces.includes(place.id) ? 'check-circle-filled' : 'plus-circle-add'
-                    }
+                    uniform
+                    color="secondary"
                     aria-label={`${selectedPlaces.includes(place.id) ? 'Remove from' : 'Add to'} favorites`}
                     variant="ghost"
                     onClick={(e: MouseEvent) => {
@@ -647,7 +657,9 @@ const IntroductionPage = () => {
                           : [...prev, place.id]
                       );
                     }}
-                  />
+                  >
+                    {selectedPlaces.includes(place.id) ? '✓' : '+'}
+                  </Button>
                 }
               />
             )}
@@ -831,7 +843,7 @@ const IntroductionPage = () => {
           &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Actions align="start">'}
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.ActionButton variant="primary">Explore Docs</Card.ActionButton>'}
+          {'<Card.ActionButton color="primary" variant="solid">Explore Docs</Card.ActionButton>'}
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.Actions>'}
           <br />
@@ -852,10 +864,10 @@ const IntroductionPage = () => {
           <Card elevationLevel={1} interactive>
             <Card.Header>
               <Card.ChipGroup>
-                <Card.Chip variant="neutral" size="sm">
+                <Card.Chip variant="soft" size="sm">
                   ChatGPT Apps SDK
                 </Card.Chip>
-                <Card.Chip variant="neutral" size="sm">
+                <Card.Chip variant="soft" size="sm">
                   UI Components
                 </Card.Chip>
               </Card.ChipGroup>
@@ -882,7 +894,9 @@ const IntroductionPage = () => {
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="start">
-                <Card.ActionButton variant="primary">Explore Docs</Card.ActionButton>
+                <Card.ActionButton color="primary" variant="solid">
+                  Explore Docs
+                </Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>

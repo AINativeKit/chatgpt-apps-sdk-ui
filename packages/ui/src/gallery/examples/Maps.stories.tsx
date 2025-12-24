@@ -28,10 +28,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Award-winning Neapolitan pies in North Beach. A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [
-      { icon: 'star', label: '4.8' },
-      { label: '$$$' },
-    ],
+    features: [{ icon: 'star', label: '4.8' }, { label: '$$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Contact', variant: 'secondary' },
@@ -65,10 +62,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Focaccia-style squares, late-night favorite. Classic North Beach spot known for thick, fluffy focaccia pizza by the slice.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [
-      { icon: 'star', label: '4.6' },
-      { label: '$' },
-    ],
+    features: [{ icon: 'star', label: '4.6' }, { label: '$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Call', variant: 'secondary' },
@@ -95,10 +89,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Thin-crust classics on 18th Street. Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [
-      { icon: 'star', label: '4.5' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Reservations', variant: 'secondary' },
@@ -112,10 +103,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Deep-dish and cornmeal crust favorites. Innovative pizzeria from the Flour + Water team with seasonal rotating menu.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-6.png',
-    features: [
-      { icon: 'star', label: '4.5' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
   },
   {
     id: 'beretta',
@@ -125,10 +113,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Wood-fired pies and burrata in North Beach. Stylish spot combining pizza excellence with a full cocktail program.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
-    features: [
-      { icon: 'star', label: '4.6' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.6' }, { label: '$$' }],
   },
   {
     id: 'slice-house',
@@ -138,10 +123,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Neighborhood spot with seasonal toppings. Local favorite featuring creative combinations and locally-sourced ingredients.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [
-      { icon: 'star', label: '4.4' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.4' }, { label: '$$' }],
   },
   {
     id: 'pizza-palace',
@@ -151,10 +133,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Sourdough, wood-fired pies near Nob Hill. San Francisco sourdough meets traditional Italian pizza-making.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [
-      { icon: 'star', label: '4.6' },
-      { label: '$$$' },
-    ],
+    features: [{ icon: 'star', label: '4.6' }, { label: '$$$' }],
   },
   {
     id: 'crispy-crust',
@@ -164,10 +143,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Crispy-edged Detroit-style in SoMa. Bringing Detroit-style square pizza to San Francisco with creative toppings.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [
-      { icon: 'star', label: '4.5' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
   },
 ];
 
@@ -187,7 +163,8 @@ const MapsComponent: React.FC = () => {
           backgroundColor: 'var(--ai-color-bg-primary)',
           display: 'flex',
           flexDirection: 'column',
-          fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+          fontFamily:
+            'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
         }}
       >
         <div style={{ flex: 1, overflow: 'auto' }}>
@@ -213,7 +190,8 @@ const MapsComponent: React.FC = () => {
       style={{
         maxWidth: '900px',
         margin: '0 auto',
-        fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+        fontFamily:
+          'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
       }}
     >
       {/* Header Section */}
@@ -236,9 +214,10 @@ const MapsComponent: React.FC = () => {
             lineHeight: '1.6',
           }}
         >
-          A complete location-based map system with interactive markers, carousel navigation, and fullscreen expansion.
-          Click on locations to explore details, use the carousel to browse, and expand to fullscreen for a complete map
-          experience. Perfect for travel guides, restaurant finders, and location discovery in your ChatGPT App.
+          A complete location-based map system with interactive markers, carousel navigation, and
+          fullscreen expansion. Click on locations to explore details, use the carousel to browse,
+          and expand to fullscreen for a complete map experience. Perfect for travel guides,
+          restaurant finders, and location discovery in your ChatGPT App.
         </p>
       </section>
 
@@ -263,8 +242,8 @@ const MapsComponent: React.FC = () => {
             fontStyle: 'italic',
           }}
         >
-          Try clicking the expand button (↗️) in the top-right corner to enter fullscreen, or click locations on the map
-          and in the carousel below.
+          Try clicking the expand button (↗️) in the top-right corner to enter fullscreen, or click
+          locations on the map and in the carousel below.
         </p>
 
         <div
@@ -339,7 +318,8 @@ const MapsComponent: React.FC = () => {
           {[
             {
               title: '🍕 Restaurant Finder',
-              description: 'Browse nearby restaurants with ratings, hours, and reviews. Expand to see detailed location info.',
+              description:
+                'Browse nearby restaurants with ratings, hours, and reviews. Expand to see detailed location info.',
             },
             {
               title: '✈️ Travel Guide',
@@ -348,7 +328,8 @@ const MapsComponent: React.FC = () => {
             },
             {
               title: '🏠 Real Estate',
-              description: 'Browse properties on an interactive map with details, photos, and agent information.',
+              description:
+                'Browse properties on an interactive map with details, photos, and agent information.',
             },
             {
               title: '🎵 Event Discovery',
@@ -362,14 +343,15 @@ const MapsComponent: React.FC = () => {
             },
             {
               title: '🛍️ Shopping Outlets',
-              description: 'Find retail locations, compare stores, and check inventory at different branches.',
+              description:
+                'Find retail locations, compare stores, and check inventory at different branches.',
             },
           ].map((useCase, index) => (
             <div
               key={index}
               style={{
                 padding: '16px',
-                    borderRadius: '8px',
+                borderRadius: '8px',
                 background: 'var(--ai-color-bg-primary)',
               }}
             >
@@ -419,9 +401,10 @@ const MapsComponent: React.FC = () => {
             lineHeight: '1.6',
           }}
         >
-          The Map component is designed specifically for ChatGPT Apps SDK integration. Use the controlled mode pattern
-          shown below to let ChatGPT manage the iframe expansion when users click the expand button. The component
-          automatically syncs with ChatGPT's display mode changes, so clicking ChatGPT's X button will collapse the map.
+          The Map component is designed specifically for ChatGPT Apps SDK integration. Use the
+          controlled mode pattern shown below to let ChatGPT manage the iframe expansion when users
+          click the expand button. The component automatically syncs with ChatGPT's display mode
+          changes, so clicking ChatGPT's X button will collapse the map.
         </p>
 
         <div style={codeBlockStyles.primary}>
@@ -433,7 +416,7 @@ const MapsComponent: React.FC = () => {
               wordBreak: 'break-word',
             }}
           >
-{`import { useState } from 'react';
+            {`import { useState } from 'react';
 import { Map } from '@ainativekit/ui';
 
 function MyMapApp() {
@@ -473,25 +456,28 @@ function MyMapApp() {
             }}
           >
             <li>
-              <strong>Controlled Mode:</strong> Always use controlled mode with ChatGPT integration so ChatGPT can manage
-              iframe expansion
+              <strong>Controlled Mode:</strong> Always use controlled mode with ChatGPT integration
+              so ChatGPT can manage iframe expansion
             </li>
             <li>
-              <strong>isFullscreen + onToggleFullscreen:</strong> Map calls your callback when user clicks expand/collapse
-              button
+              <strong>isFullscreen + onToggleFullscreen:</strong> Map calls your callback when user
+              clicks expand/collapse button
             </li>
             <li>
-              <strong>Automatic Display Mode Sync:</strong> Map listens to ChatGPT's display mode changes - clicking
-              ChatGPT's X button automatically collapses the map
+              <strong>Automatic Display Mode Sync:</strong> Map listens to ChatGPT's display mode
+              changes - clicking ChatGPT's X button automatically collapses the map
             </li>
             <li>
-              <strong>Default Size:</strong> CompactMap uses 478px height (ChatGPT Apps SDK standard)
+              <strong>Default Size:</strong> CompactMap uses 478px height (ChatGPT Apps SDK
+              standard)
             </li>
             <li>
-              <strong>Responsive:</strong> Design automatically adapts to mobile/desktop viewport sizes
+              <strong>Responsive:</strong> Design automatically adapts to mobile/desktop viewport
+              sizes
             </li>
             <li>
-              <strong>Location Data:</strong> Include rich details (description, actions, reviews) for best UX
+              <strong>Location Data:</strong> Include rich details (description, actions, reviews)
+              for best UX
             </li>
           </ul>
         </div>
@@ -518,23 +504,44 @@ function MyMapApp() {
           }}
         >
           {[
-            { title: 'Interactive Map', description: 'Leaflet-powered with smooth interactions and animations' },
-            { title: 'Expand/Collapse', description: 'Toggle between compact and fullscreen views' },
-            { title: 'Carousel', description: 'Browse locations with synchronized carousel navigation' },
+            {
+              title: 'Interactive Map',
+              description: 'Leaflet-powered with smooth interactions and animations',
+            },
+            {
+              title: 'Expand/Collapse',
+              description: 'Toggle between compact and fullscreen views',
+            },
+            {
+              title: 'Carousel',
+              description: 'Browse locations with synchronized carousel navigation',
+            },
             {
               title: 'Inspector Panel',
               description: 'View detailed location info with actions and reviews in fullscreen',
             },
-            { title: 'Responsive Design', description: 'Adaptive sidebar on desktop, carousel on mobile' },
-            { title: 'Customizable', description: 'Marker colors, zoom levels, and center coordinates' },
-            { title: 'State Management', description: 'Controlled and uncontrolled modes supported' },
-            { title: 'Loading States', description: 'Built-in loading, error, and empty state handling' },
+            {
+              title: 'Responsive Design',
+              description: 'Adaptive sidebar on desktop, carousel on mobile',
+            },
+            {
+              title: 'Customizable',
+              description: 'Marker colors, zoom levels, and center coordinates',
+            },
+            {
+              title: 'State Management',
+              description: 'Controlled and uncontrolled modes supported',
+            },
+            {
+              title: 'Loading States',
+              description: 'Built-in loading, error, and empty state handling',
+            },
           ].map((feature, index) => (
             <div
               key={index}
               style={{
                 padding: '16px',
-                    borderRadius: '8px',
+                borderRadius: '8px',
                 background: 'var(--ai-color-bg-primary)',
               }}
             >

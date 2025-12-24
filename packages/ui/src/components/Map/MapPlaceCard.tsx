@@ -199,7 +199,7 @@ export interface MapPlaceCardProps {
  *   onClick={() => console.log('Selected')}
  *   loading={isLoading}
  *   badge="Popular"
- *   badgeVariant="success"
+ *   badgeVariant="soft"
  * />
  * ```
  */

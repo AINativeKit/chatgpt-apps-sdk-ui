@@ -79,13 +79,13 @@ const pizzaRestaurants = [
 // Single comprehensive story
 export const Carousel: Story = {
   render: () => {
-
     return (
       <div
         style={{
           maxWidth: '768px',
           margin: '0 auto',
-          fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+          fontFamily:
+            'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
         }}
       >
         {/* Header Section */}
@@ -108,8 +108,8 @@ export const Carousel: Story = {
               lineHeight: '1.6',
             }}
           >
-            A horizontal scrolling carousel showcasing rich card content. Perfect for restaurant listings, product
-            catalogs, or content discovery experiences in your ChatGPT App.
+            A horizontal scrolling carousel showcasing rich card content. Perfect for restaurant
+            listings, product catalogs, or content discovery experiences in your ChatGPT App.
           </p>
         </section>
 
@@ -138,7 +138,7 @@ export const Carousel: Story = {
                   badge={restaurant.badge}
                   size="compact"
                   imageAspectRatio="4/3"
-                  metadata={restaurant.features.map(f => ({ label: f, separator: '•' }))}
+                  metadata={restaurant.features.map((f) => ({ label: f, separator: '•' }))}
                   description={restaurant.description}
                   buttonText="Order now"
                   onButtonClick={() => alert(`Order from ${restaurant.title}`)}
@@ -195,7 +195,8 @@ export const Carousel: Story = {
               lineHeight: '1.6',
             }}
           >
-            Define your carousel items with rich content including images, descriptions, and metadata.
+            Define your carousel items with rich content including images, descriptions, and
+            metadata.
           </p>
 
           <div style={codeBlockStyles.primary}>
@@ -207,7 +208,7 @@ export const Carousel: Story = {
                 wordBreak: 'break-word',
               }}
             >
-{`type FeatureItem = string | { icon?: IconName; label: string };
+              {`type FeatureItem = string | { icon?: IconName; label: string };
 
 interface SummaryCardItem {
   id: string;
@@ -263,8 +264,9 @@ const items: SummaryCardItem[] = [
               >
                 badgeIcon
               </code>{' '}
-              prop to display icons alongside ratings (e.g., star-filled, verified). SummaryCard with size="compact" is optimized
-              for discovery/carousel layouts with 4:3 images and dense typography.
+              prop to display icons alongside ratings (e.g., star-filled, verified). SummaryCard
+              with size="compact" is optimized for discovery/carousel layouts with 4:3 images and
+              dense typography.
             </p>
           </div>
         </section>
@@ -291,7 +293,7 @@ const items: SummaryCardItem[] = [
                 wordBreak: 'break-word',
               }}
             >
-{`import { Carousel } from '@ainativekit/ui';
+              {`import { Carousel } from '@ainativekit/ui';
 import { SummaryCard } from '@ainativekit/ui';
 
 // 1. Define your carousel items with flexible features
@@ -436,7 +438,8 @@ function MyCarousel() {
                 },
                 {
                   name: 'features',
-                  description: 'Array of feature items (strings or {icon, label} objects with dot separator)',
+                  description:
+                    'Array of feature items (strings or {icon, label} objects with dot separator)',
                 },
                 {
                   name: 'description',
@@ -561,14 +564,17 @@ function MyCarousel() {
             }}
           >
             <p style={{ margin: '0 0 12px 0' }}>
-              This carousel gallery uses <strong>SummaryCard (compact)</strong>, which pairs well with:
+              This carousel gallery uses <strong>SummaryCard (compact)</strong>, which pairs well
+              with:
             </p>
             <ul style={{ margin: 0, paddingLeft: '20px' }}>
               <li>
-                <strong>SummaryCard (size="compact")</strong> - Optimized for discovery/carousel layouts with 4:3 images and dense typography
+                <strong>SummaryCard (size="compact")</strong> - Optimized for discovery/carousel
+                layouts with 4:3 images and dense typography
               </li>
               <li>
-                <strong>SummaryCard (default)</strong> - General-purpose cards with flexible image layouts (1 or multiple images)
+                <strong>SummaryCard (default)</strong> - General-purpose cards with flexible image
+                layouts (1 or multiple images)
               </li>
               <li>
                 <strong>ImageCard</strong> - Image-focused cards with minimal text overlay

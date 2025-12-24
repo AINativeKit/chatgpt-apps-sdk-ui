@@ -498,11 +498,11 @@ const MapSystemComponent: React.FC = () => {
             CompactMap.
           </p>
           <p style={{ margin: 0 }}>
-            <strong>🔄 Display Mode Sync:</strong> The Map component automatically listens to ChatGPT's{' '}
-            <code>displayMode</code> changes using the <code>useDisplayMode()</code> hook. This means
-            clicking ChatGPT's close button (X) will automatically collapse the map back to compact view
-            without requiring manual interaction. Two-way sync ensures your map stays in sync with
-            ChatGPT's UI state.
+            <strong>🔄 Display Mode Sync:</strong> The Map component automatically listens to
+            ChatGPT's <code>displayMode</code> changes using the <code>useDisplayMode()</code> hook.
+            This means clicking ChatGPT's close button (X) will automatically collapse the map back
+            to compact view without requiring manual interaction. Two-way sync ensures your map
+            stays in sync with ChatGPT's UI state.
           </p>
         </div>
 
@@ -560,8 +560,8 @@ const handleMapToggle = (fullscreen: boolean) => {
             <li>Expand/collapse buttons automatically shown in both views</li>
             <li>Buttons automatically disabled if callbacks not provided</li>
             <li>
-              <strong>Automatic sync with ChatGPT's display mode</strong> - clicking ChatGPT's X button
-              automatically collapses the map
+              <strong>Automatic sync with ChatGPT's display mode</strong> - clicking ChatGPT's X
+              button automatically collapses the map
             </li>
             <li>Responsive design works on all device sizes</li>
           </ul>
@@ -931,14 +931,20 @@ const handleMapToggle = (fullscreen: boolean) => {
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
               Custom Marker Rendering
             </h3>
-            <p style={{ margin: '0 0 12px', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+            <p
+              style={{
+                margin: '0 0 12px',
+                fontSize: '14px',
+                color: 'var(--ai-color-text-secondary)',
+              }}
+            >
               Use the <code>renderMarker</code> prop to customize map markers with your own React
               components. Supports global styling, per-location customization, and hybrid modes.
             </p>
             <div style={{ fontSize: '13px', color: 'var(--ai-color-text-secondary)' }}>
               <strong>See:</strong> "Custom Markers" story in the sidebar for comprehensive examples
-              including global markers, hybrid mode, per-location customization, performance optimization,
-              and fallback patterns.
+              including global markers, hybrid mode, per-location customization, performance
+              optimization, and fallback patterns.
             </div>
           </div>
 
@@ -954,9 +960,15 @@ const handleMapToggle = (fullscreen: boolean) => {
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
               Popup Control
             </h3>
-            <p style={{ margin: '0 0 12px', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
-              Use <code>showPopup={'{false}'}</code> to disable marker popup bubbles when using external
-              UI like Inspector panels or sidebars for location details.
+            <p
+              style={{
+                margin: '0 0 12px',
+                fontSize: '14px',
+                color: 'var(--ai-color-text-secondary)',
+              }}
+            >
+              Use <code>showPopup={'{false}'}</code> to disable marker popup bubbles when using
+              external UI like Inspector panels or sidebars for location details.
             </p>
             <div style={{ fontSize: '13px', color: 'var(--ai-color-text-secondary)' }}>
               <strong>See:</strong> "CompactMap" story → "Popup Control" section for side-by-side
@@ -977,9 +989,9 @@ const handleMapToggle = (fullscreen: boolean) => {
               Scroll Wheel Zoom
             </h3>
             <p style={{ margin: '0', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
-              Control zoom behavior with <code>scrollWheelZoom</code> prop. Set to <code>true</code> for
-              native Leaflet scroll zoom (best for fullscreen), or <code>false</code> (default) for
-              custom pinch-to-zoom in embedded maps.
+              Control zoom behavior with <code>scrollWheelZoom</code> prop. Set to <code>true</code>{' '}
+              for native Leaflet scroll zoom (best for fullscreen), or <code>false</code> (default)
+              for custom pinch-to-zoom in embedded maps.
             </p>
           </div>
 
@@ -995,12 +1007,25 @@ const handleMapToggle = (fullscreen: boolean) => {
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
               Auto-Expand on Carousel Click
             </h3>
-            <p style={{ margin: '0 0 12px', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
-              Set <code>autoExpandOnCarouselClick={'{true}'}</code> on the <code>Map</code> component
-              (top-level prop) to automatically expand to fullscreen when users click a carousel card.
-              This provides faster access to detailed location information (one click instead of two).
+            <p
+              style={{
+                margin: '0 0 12px',
+                fontSize: '14px',
+                color: 'var(--ai-color-text-secondary)',
+              }}
+            >
+              Set <code>autoExpandOnCarouselClick={'{true}'}</code> on the <code>Map</code>{' '}
+              component (top-level prop) to automatically expand to fullscreen when users click a
+              carousel card. This provides faster access to detailed location information (one click
+              instead of two).
             </p>
-            <div style={{ fontSize: '13px', color: 'var(--ai-color-text-secondary)', marginBottom: '12px' }}>
+            <div
+              style={{
+                fontSize: '13px',
+                color: 'var(--ai-color-text-secondary)',
+                marginBottom: '12px',
+              }}
+            >
               <strong>Default:</strong> <code>false</code> (users must click expand button manually)
             </div>
             <pre
@@ -1033,13 +1058,26 @@ const handleMapToggle = (fullscreen: boolean) => {
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
               Attribution Control
             </h3>
-            <p style={{ margin: '0 0 12px', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
-              Control the visibility of Leaflet attribution using the <code>hideAttribution</code> prop.
-              By default, attribution is hidden. Set to <code>false</code> to display tile provider
-              credits in the bottom-right corner.
+            <p
+              style={{
+                margin: '0 0 12px',
+                fontSize: '14px',
+                color: 'var(--ai-color-text-secondary)',
+              }}
+            >
+              Control the visibility of Leaflet attribution using the <code>hideAttribution</code>{' '}
+              prop. By default, attribution is hidden. Set to <code>false</code> to display tile
+              provider credits in the bottom-right corner.
             </p>
-            <div style={{ fontSize: '13px', color: 'var(--ai-color-text-secondary)', marginBottom: '12px' }}>
-              <strong>Note:</strong> Attribution is required by most tile providers' terms of service.
+            <div
+              style={{
+                fontSize: '13px',
+                color: 'var(--ai-color-text-secondary)',
+                marginBottom: '12px',
+              }}
+            >
+              <strong>Note:</strong> Attribution is required by most tile providers' terms of
+              service.
             </div>
             <pre
               style={{

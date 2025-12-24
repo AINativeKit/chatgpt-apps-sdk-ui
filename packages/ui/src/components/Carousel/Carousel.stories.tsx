@@ -4,7 +4,7 @@ import { Carousel } from './Carousel';
 import { ImageCard } from '../Card/ImageCard';
 import { SummaryCard } from '../Card/SummaryCard';
 import { ListCard } from '../Card/ListCard';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { PropsTable } from '../../tokens/PropsTable';
 
 const meta: Meta<typeof Carousel> = {
@@ -119,11 +119,12 @@ const SummaryCardCarouselDemo: React.FC = () => {
       </div>
 
       <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-        <Button variant="secondary" onClick={() => setIsLoading((prev) => !prev)}>
+        <Button color="secondary" variant="outline" onClick={() => setIsLoading((prev) => !prev)}>
           {isLoading ? '▶️ Show Content' : '⏸️ Show Loading'}
         </Button>
         <Button
-          variant={autoToggle ? 'primary' : 'secondary'}
+          color={autoToggle ? 'primary' : 'secondary'}
+          variant={autoToggle ? 'solid' : 'outline'}
           onClick={() => setAutoToggle((prev) => !prev)}
         >
           {autoToggle ? '⏹️ Stop Auto-Toggle' : '🔄 Auto-Toggle (3s)'}

@@ -136,7 +136,7 @@ const AlbumCardShowcase: React.FC = () => {
           <AlbumCard
             album={SAMPLE_ALBUMS[0]}
             badge="New"
-            badgeVariant="filled"
+            badgeVariant="solid"
             badgePosition="top-left"
             onSelect={(album) => console.log('Selected:', album.title)}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -144,7 +144,7 @@ const AlbumCardShowcase: React.FC = () => {
           <AlbumCard
             album={SAMPLE_ALBUMS[1]}
             badge={15}
-            badgeVariant="filled"
+            badgeVariant="solid"
             badgePosition="top-right"
             onSelect={(album) => console.log('Selected:', album.title)}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -152,7 +152,7 @@ const AlbumCardShowcase: React.FC = () => {
           <AlbumCard
             album={SAMPLE_ALBUMS[2]}
             badge="Featured"
-            badgeVariant="filled"
+            badgeVariant="solid"
             badgePosition="top-right"
             onSelect={(album) => console.log('Selected:', album.title)}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -373,7 +373,7 @@ const AlbumCardShowcase: React.FC = () => {
           <AlbumCard
             album={SAMPLE_ALBUMS[0]}
             badge="New"
-            badgeVariant="filled"
+            badgeVariant="solid"
             onImageLoad={() => console.log('Image loaded')}
             onSelect={(album) => console.log('Opening album:', album.title)}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -381,7 +381,7 @@ const AlbumCardShowcase: React.FC = () => {
           <AlbumCard
             album={SAMPLE_ALBUMS[1]}
             badge={15}
-            badgeVariant="filled"
+            badgeVariant="solid"
             titleLines={2}
             onSelect={(album) => console.log('Opening album:', album.title)}
             style={{ maxWidth: `${CARD_WIDTH}px` }}

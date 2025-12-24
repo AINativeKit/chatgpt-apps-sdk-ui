@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SummaryCard } from './SummaryCard';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { PropsTable } from '../../tokens/PropsTable';
 
 const meta: Meta<typeof SummaryCard> = {
@@ -44,14 +44,15 @@ const LoadingTransitionDemo: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-        <Button variant="secondary" onClick={() => setIsLoading((prev) => !prev)}>
-          {isLoading ? '▶️ Show Content' : '⏸️ Show Loading'}
+        <Button color="secondary" variant="outline" onClick={() => setIsLoading((prev) => !prev)}>
+          {isLoading ? 'Show Content' : 'Show Loading'}
         </Button>
         <Button
-          variant={autoToggle ? 'primary' : 'secondary'}
+          color={autoToggle ? 'primary' : 'secondary'}
+          variant={autoToggle ? 'solid' : 'outline'}
           onClick={() => setAutoToggle((prev) => !prev)}
         >
-          {autoToggle ? '⏹️ Stop Auto-Toggle' : '🔄 Auto-Toggle (2s)'}
+          {autoToggle ? 'Stop Auto-Toggle' : 'Auto-Toggle (2s)'}
         </Button>
         <span style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
           Current: <strong>{isLoading ? 'Loading' : 'Loaded'}</strong>
@@ -193,14 +194,15 @@ const FlatLoadingTransitionDemo: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-        <Button variant="secondary" onClick={() => setIsLoading((prev) => !prev)}>
-          {isLoading ? '▶️ Show Content' : '⏸️ Show Loading'}
+        <Button color="secondary" variant="outline" onClick={() => setIsLoading((prev) => !prev)}>
+          {isLoading ? 'Show Content' : 'Show Loading'}
         </Button>
         <Button
-          variant={autoToggle ? 'primary' : 'secondary'}
+          color={autoToggle ? 'primary' : 'secondary'}
+          variant={autoToggle ? 'solid' : 'outline'}
           onClick={() => setAutoToggle((prev) => !prev)}
         >
-          {autoToggle ? '⏹️ Stop Auto-Toggle' : '🔄 Auto-Toggle (2s)'}
+          {autoToggle ? 'Stop Auto-Toggle' : 'Auto-Toggle (2s)'}
         </Button>
         <span style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
           Current: <strong>{isLoading ? 'Loading' : 'Loaded'}</strong>
@@ -688,7 +690,7 @@ const SummaryCardsComponent: React.FC = () => {
             title="Default Badge"
             subtitle="Neutral style"
             badge="9.2"
-            badgeVariant="default"
+            badgeVariant="soft"
             description="Standard accent badge for general ratings"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -697,7 +699,7 @@ const SummaryCardsComponent: React.FC = () => {
             title="Success Chip"
             subtitle="Positive indicator"
             badge="Verified"
-            badgeVariant="success"
+            badgeVariant="soft"
             description="Green chip for positive status"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -706,7 +708,7 @@ const SummaryCardsComponent: React.FC = () => {
             title="Warning Chip"
             subtitle="Attention needed"
             badge="Limited"
-            badgeVariant="warning"
+            badgeVariant="soft"
             description="Warning chip for warnings or alerts"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -715,7 +717,7 @@ const SummaryCardsComponent: React.FC = () => {
             title="Error Chip"
             subtitle="Critical status"
             badge="Closed"
-            badgeVariant="error"
+            badgeVariant="soft"
             description="Red chip for errors or unavailable"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -2188,7 +2190,7 @@ const SummaryCardsComponent: React.FC = () => {
               title="Luxury Beach House"
               subtitle="98 Parnki Parade, Palm Beach"
               badge="$4,449,000"
-              badgeVariant="filled"
+              badgeVariant="solid"
               description="Stunning oceanfront property with modern architecture"
               metadata={[{ label: '5 beds' }, { label: '2 baths' }, { label: '625m²' }]}
               buttonText="View property"
@@ -2290,7 +2292,7 @@ const SummaryCardsComponent: React.FC = () => {
               title="Coastal Retreat"
               subtitle="Ocean View Estate"
               badge="New"
-              badgeVariant="success"
+              badgeVariant="soft"
               description="Exclusive waterfront property"
               buttonText="Learn More"
               topOverlay={
@@ -2488,7 +2490,7 @@ const SummaryCardsComponent: React.FC = () => {
               title="Penthouse Suite"
               subtitle="City Center"
               badge="Premium"
-              badgeVariant="filled"
+              badgeVariant="solid"
               description="Luxury high-rise living with panoramic city views"
               variant="flat"
               topOverlay={
@@ -2661,7 +2663,7 @@ const SummaryCardsComponent: React.FC = () => {
             title="Little Nona's"
             subtitle="1427 Via Campania, North Beach"
             badge="9.2"
-            badgeVariant="success"
+            badgeVariant="soft"
             description="A tiny, brick-walled trattoria tucked down a side street near Washington Square Park. The windows glow warm gold at night, and the smell of slow-simmered tomato sauce drifts out onto the sidewalk."
             metadata={[
               { icon: 'star', label: '9.2 rating' },

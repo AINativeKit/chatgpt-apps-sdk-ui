@@ -28,7 +28,8 @@ const CardsComponent = () => {
       style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+        fontFamily:
+          'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
       }}
     >
       {/* Header Section */}
@@ -51,8 +52,9 @@ const CardsComponent = () => {
             lineHeight: '1.6',
           }}
         >
-          Flexible card components for displaying content in different layouts. From image galleries to summaries and lists,
-          cards are the building blocks for structured content presentation. Each card type is optimized for specific use cases.
+          Flexible card components for displaying content in different layouts. From image galleries
+          to summaries and lists, cards are the building blocks for structured content presentation.
+          Each card type is optimized for specific use cases.
         </p>
       </section>
 
@@ -88,7 +90,8 @@ const CardsComponent = () => {
               marginBottom: '16px',
             }}
           >
-            Large background image with text overlay, title, and action button. Perfect for restaurants, products, hotels, and featured content with strong visual hierarchy.
+            Large background image with text overlay, title, and action button. Perfect for
+            restaurants, products, hotels, and featured content with strong visual hierarchy.
           </p>
 
           {/* Standard Variant */}
@@ -122,9 +125,23 @@ const CardsComponent = () => {
             }}
           >
             {[
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png', title: "Tony's Pizzeria", subtitle: 'Award-Winning', badge: 'NEW', badgeVariant: 'success' as const },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png', title: 'Golden Boy Pizza', subtitle: 'Since 1994' },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png', title: 'Pizzeria Delfina', subtitle: 'Sophisticated Italian' },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+                title: "Tony's Pizzeria",
+                subtitle: 'Award-Winning',
+                badge: 'NEW',
+                badgeVariant: 'soft' as const,
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
+                title: 'Golden Boy Pizza',
+                subtitle: 'Since 1994',
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
+                title: 'Pizzeria Delfina',
+                subtitle: 'Sophisticated Italian',
+              },
             ].map((item, i) => (
               <div key={i}>
                 <ImageCard
@@ -161,7 +178,8 @@ const CardsComponent = () => {
               marginBottom: '16px',
             }}
           >
-            Space-efficient version for carousels, horizontal scrolling lists, and discovery feeds. Perfect for browsing and quick interaction.
+            Space-efficient version for carousels, horizontal scrolling lists, and discovery feeds.
+            Perfect for browsing and quick interaction.
           </p>
           <div
             style={{
@@ -173,10 +191,26 @@ const CardsComponent = () => {
             }}
           >
             {[
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png', title: "Tony's Pizzeria", subtitle: 'Napoletana' },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png', title: 'Golden Boy Pizza', subtitle: 'By-the-Slice' },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png', title: 'Pizzeria Delfina', subtitle: 'Authentic' },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png', title: 'Pepo Pizza', subtitle: 'Sicilian' },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+                title: "Tony's Pizzeria",
+                subtitle: 'Napoletana',
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
+                title: 'Golden Boy Pizza',
+                subtitle: 'By-the-Slice',
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
+                title: 'Pizzeria Delfina',
+                subtitle: 'Authentic',
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+                title: 'Pepo Pizza',
+                subtitle: 'Sicilian',
+              },
             ].map((item, i) => (
               <div key={i}>
                 <ImageCard
@@ -213,7 +247,9 @@ const CardsComponent = () => {
               marginBottom: '16px',
             }}
           >
-            Display content summaries with flexible image layouts—from single hero images to multi-image grids. Perfect for restaurant listings, product summaries, and content previews.
+            Display content summaries with flexible image layouts—from single hero images to
+            multi-image grids. Perfect for restaurant listings, product summaries, and content
+            previews.
           </p>
 
           {/* Single Image */}
@@ -247,8 +283,24 @@ const CardsComponent = () => {
             }}
           >
             {[
-              { images: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png', title: 'Tony\'s Pizzeria', subtitle: 'Downtown Location', badge: '9.2', badgeVariant: 'default' as const, description: 'Award-winning Napoletana pizza. A family-owned favorite since 1985 with authentic Italian recipes.' },
-              { images: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png', title: 'Golden Boy Pizza', subtitle: 'Mission District', badge: '8.9', badgeVariant: 'default' as const, description: 'Famous by-the-slice pizzeria. Fresh ingredients and traditional techniques keep crowds coming.' },
+              {
+                images: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+                title: "Tony's Pizzeria",
+                subtitle: 'Downtown Location',
+                badge: '9.2',
+                badgeVariant: 'soft' as const,
+                description:
+                  'Award-winning Napoletana pizza. A family-owned favorite since 1985 with authentic Italian recipes.',
+              },
+              {
+                images: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
+                title: 'Golden Boy Pizza',
+                subtitle: 'Mission District',
+                badge: '8.9',
+                badgeVariant: 'soft' as const,
+                description:
+                  'Famous by-the-slice pizzeria. Fresh ingredients and traditional techniques keep crowds coming.',
+              },
             ].map((item, i) => (
               <div key={i}>
                 <SummaryCard
@@ -304,8 +356,9 @@ const CardsComponent = () => {
                 title: 'Menu Showcase',
                 subtitle: 'Popular Items',
                 badge: 'Featured',
-                badgeVariant: 'success' as const,
-                description: 'Explore our most-loved dishes. Hand-crafted with premium ingredients.'
+                badgeVariant: 'soft' as const,
+                description:
+                  'Explore our most-loved dishes. Hand-crafted with premium ingredients.',
               },
               {
                 images: [
@@ -313,11 +366,11 @@ const CardsComponent = () => {
                   'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
                   'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
                 ],
-                title: 'Chef\'s Selection',
-                subtitle: 'This Week\'s Specials',
+                title: "Chef's Selection",
+                subtitle: "This Week's Specials",
                 badge: 'Hot',
-                badgeVariant: 'default' as const,
-                description: 'Limited-time seasonal specials created by our head chef.'
+                badgeVariant: 'soft' as const,
+                description: 'Limited-time seasonal specials created by our head chef.',
               },
               {
                 images: [
@@ -329,8 +382,9 @@ const CardsComponent = () => {
                 title: 'Photo Gallery',
                 subtitle: 'Restaurant Collection',
                 badge: 'Gallery',
-                badgeVariant: 'default' as const,
-                description: 'Complete visual showcase with 2x2 image grid layout for rich content.'
+                badgeVariant: 'soft' as const,
+                description:
+                  'Complete visual showcase with 2x2 image grid layout for rich content.',
               },
             ].map((item, i) => (
               <div key={i}>
@@ -367,7 +421,8 @@ const CardsComponent = () => {
               marginBottom: '16px',
             }}
           >
-            Common list card configurations with optional header, top image, and action buttons. Perfect for menus, playlists, order summaries, and content collections.
+            Common list card configurations with optional header, top image, and action buttons.
+            Perfect for menus, playlists, order summaries, and content collections.
           </p>
 
           <div
@@ -383,11 +438,28 @@ const CardsComponent = () => {
               {
                 title: 'Featured Pizzas',
                 headerActionLabel: 'Edit featured pizzas',
-                topImage: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop',
+                topImage:
+                  'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop',
                 items: [
-                  { title: 'Pepperoni Pizza', subtitle: 'Classic favorite', description: 'Cupped pepperoni with mozzarella, finished with oregano and olive oil.', actionLabel: 'Add to cart' },
-                  { title: 'Margherita Pizza', subtitle: 'Traditional Italian', description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.', actionLabel: 'Add to cart' },
-                  { title: 'Veggie Supreme', subtitle: 'Garden fresh', description: 'Bell peppers, onions, mushrooms, olives, and fresh vegetables.', actionLabel: 'Add to cart' },
+                  {
+                    title: 'Pepperoni Pizza',
+                    subtitle: 'Classic favorite',
+                    description:
+                      'Cupped pepperoni with mozzarella, finished with oregano and olive oil.',
+                    actionLabel: 'Add to cart',
+                  },
+                  {
+                    title: 'Margherita Pizza',
+                    subtitle: 'Traditional Italian',
+                    description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.',
+                    actionLabel: 'Add to cart',
+                  },
+                  {
+                    title: 'Veggie Supreme',
+                    subtitle: 'Garden fresh',
+                    description: 'Bell peppers, onions, mushrooms, olives, and fresh vegetables.',
+                    actionLabel: 'Add to cart',
+                  },
                 ],
                 buttonText: 'View All',
               },
@@ -395,16 +467,40 @@ const CardsComponent = () => {
                 title: 'Order Summary',
                 headerActionLabel: 'Edit order',
                 items: [
-                  { title: 'Pepperoni Pizza', subtitle: 'Classic favorite', description: 'Cupped pepperoni with mozzarella, finished with oregano and olive oil.', actionLabel: 'Add to cart' },
-                  { title: 'Margherita Pizza', subtitle: 'Traditional Italian', description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.', actionLabel: 'Add to cart' },
+                  {
+                    title: 'Pepperoni Pizza',
+                    subtitle: 'Classic favorite',
+                    description:
+                      'Cupped pepperoni with mozzarella, finished with oregano and olive oil.',
+                    actionLabel: 'Add to cart',
+                  },
+                  {
+                    title: 'Margherita Pizza',
+                    subtitle: 'Traditional Italian',
+                    description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.',
+                    actionLabel: 'Add to cart',
+                  },
                 ],
                 buttonText: 'Place Order',
               },
               {
                 title: 'Quick Add',
                 items: [
-                  { title: 'Pepperoni Pizza', subtitle: 'Classic favorite', description: 'Cupped pepperoni with mozzarella, finished with oregano and olive oil.', onItemAction: () => console.log('Add'), actionLabel: 'Add' },
-                  { title: 'Margherita Pizza', subtitle: 'Traditional Italian', description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.', onItemAction: () => console.log('Add'), actionLabel: 'Add' },
+                  {
+                    title: 'Pepperoni Pizza',
+                    subtitle: 'Classic favorite',
+                    description:
+                      'Cupped pepperoni with mozzarella, finished with oregano and olive oil.',
+                    onItemAction: () => console.log('Add'),
+                    actionLabel: 'Add',
+                  },
+                  {
+                    title: 'Margherita Pizza',
+                    subtitle: 'Traditional Italian',
+                    description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.',
+                    onItemAction: () => console.log('Add'),
+                    actionLabel: 'Add',
+                  },
                 ],
               },
             ].map((config, i) => (
@@ -443,7 +539,9 @@ const CardsComponent = () => {
               marginBottom: '16px',
             }}
           >
-            Premium featured content with 4:3 aspect ratio images, ratings, feature highlights, and strong visual prominence. Perfect for discovery browsing, restaurant recommendations, and spotlights. Uses compact size variant for denser layout.
+            Premium featured content with 4:3 aspect ratio images, ratings, feature highlights, and
+            strong visual prominence. Perfect for discovery browsing, restaurant recommendations,
+            and spotlights. Uses compact size variant for denser layout.
           </p>
 
           <div
@@ -460,12 +558,12 @@ const CardsComponent = () => {
             {[
               {
                 image: featuredImagePrimary,
-                title: 'Tony\'s Pizzeria',
+                title: "Tony's Pizzeria",
                 subtitle: 'Downtown SF',
                 badge: '4.9',
                 badgeIcon: 'star',
                 features: ['Napoletana', 'Wood-fired'],
-                description: 'Family-owned since 1985. Award-winning authentic recipes.'
+                description: 'Family-owned since 1985. Award-winning authentic recipes.',
               },
               {
                 image: featuredImageSecondary,
@@ -474,7 +572,7 @@ const CardsComponent = () => {
                 badge: '4.7',
                 badgeIcon: 'star',
                 features: ['$$$', 'Focaccia', 'Fresh daily'],
-                description: 'Famous by-the-slice since 1994. Legendary in the city.'
+                description: 'Famous by-the-slice since 1994. Legendary in the city.',
               },
               {
                 image: featuredImageTertiary,
@@ -483,7 +581,7 @@ const CardsComponent = () => {
                 badge: '🔥 Trending',
                 badgeIcon: undefined,
                 features: [],
-                description: 'What the community is ordering most right now.'
+                description: 'What the community is ordering most right now.',
               },
             ].map((item, i) => (
               <SummaryCard
@@ -494,7 +592,7 @@ const CardsComponent = () => {
                 badge={item.badge}
                 size="compact"
                 imageAspectRatio="4/3"
-                metadata={item.features.map(f => ({ label: f, separator: '•' }))}
+                metadata={item.features.map((f) => ({ label: f, separator: '•' }))}
                 description={item.description}
                 buttonText={i === 2 ? 'Discover' : 'Order now'}
                 onButtonClick={() => console.log(`Action for ${item.title}`)}
@@ -530,25 +628,45 @@ const CardsComponent = () => {
               title: '📸 ImageCard',
               description: 'Visual-first content with image, title, and metadata.',
               bestFor: 'Product listings, galleries, restaurant/hotel finder, image-heavy content',
-              features: ['Large image display', 'Title + subtitle', 'Flexible actions', 'Selection state'],
+              features: [
+                'Large image display',
+                'Title + subtitle',
+                'Flexible actions',
+                'Selection state',
+              ],
             },
             {
               title: '📊 SummaryCard',
               description: 'Compact data summary with metrics and status.',
               bestFor: 'Dashboard metrics, project status, achievement summaries, KPI display',
-              features: ['Optional images', 'Title + subtitle', 'Badge + description', 'Button support'],
+              features: [
+                'Optional images',
+                'Title + subtitle',
+                'Badge + description',
+                'Button support',
+              ],
             },
             {
               title: '📋 ListCard',
               description: 'Structured data in list format with metadata.',
               bestFor: 'To-do lists, steps, collections, structured data, action items',
-              features: ['Top image', 'List items with metadata', 'Header + button', 'Flexible layout'],
+              features: [
+                'Top image',
+                'List items with metadata',
+                'Header + button',
+                'Flexible layout',
+              ],
             },
             {
               title: '⭐ SummaryCard Compact',
               description: 'Dense layout with compact typography (replaces DiscoveryCard).',
               bestFor: 'Featured products, spotlight content, recommendations, carousels',
-              features: ['4:3 aspect ratio', 'Compact typography', 'Badge support', 'Metadata separators'],
+              features: [
+                '4:3 aspect ratio',
+                'Compact typography',
+                'Badge support',
+                'Metadata separators',
+              ],
             },
           ].map((card, index) => (
             <div
@@ -599,11 +717,19 @@ const CardsComponent = () => {
                 }}
               >
                 <strong style={{ color: 'var(--ai-color-text-primary)' }}>Best for:</strong>
-                <p style={{ margin: '4px 0 0 0', color: 'var(--ai-color-text-secondary)' }}>{card.bestFor}</p>
+                <p style={{ margin: '4px 0 0 0', color: 'var(--ai-color-text-secondary)' }}>
+                  {card.bestFor}
+                </p>
               </div>
               <div style={{ fontSize: '12px' }}>
                 <strong style={{ color: 'var(--ai-color-text-primary)' }}>Features:</strong>
-                <ul style={{ margin: '4px 0 0 0', paddingLeft: '20px', color: 'var(--ai-color-text-secondary)' }}>
+                <ul
+                  style={{
+                    margin: '4px 0 0 0',
+                    paddingLeft: '20px',
+                    color: 'var(--ai-color-text-secondary)',
+                  }}
+                >
                   {card.features.map((feature, i) => (
                     <li key={i} style={{ fontSize: '11px' }}>
                       {feature}
@@ -758,14 +884,39 @@ const CardsComponent = () => {
           }}
         >
           {[
-            { title: '🍕 Restaurant Finder', description: 'ImageCard grid for browsing restaurants with ratings and cuisines' },
-            { title: '📱 Product Catalog', description: 'Mix of ImageCard and SummaryCard (compact) for featured and regular items' },
-            { title: '✈️ Travel Guide', description: 'ImageCard for attractions + ListCard for itineraries and guides' },
-            { title: '📊 Dashboard', description: 'SummaryCard for KPIs and metrics with real-time updates' },
-            { title: '📚 Learning Platform', description: 'ListCard for course steps + SummaryCard (compact) for featured courses' },
-            { title: '🏥 Service Locator', description: 'ImageCard for locations + SummaryCard for hours/ratings' },
-            { title: '🛍️ E-commerce', description: 'SummaryCard (compact) for sale items + ImageCard for regular products' },
-            { title: '✅ Task Manager', description: 'ListCard for to-do items with metadata and progress tracking' },
+            {
+              title: '🍕 Restaurant Finder',
+              description: 'ImageCard grid for browsing restaurants with ratings and cuisines',
+            },
+            {
+              title: '📱 Product Catalog',
+              description:
+                'Mix of ImageCard and SummaryCard (compact) for featured and regular items',
+            },
+            {
+              title: '✈️ Travel Guide',
+              description: 'ImageCard for attractions + ListCard for itineraries and guides',
+            },
+            {
+              title: '📊 Dashboard',
+              description: 'SummaryCard for KPIs and metrics with real-time updates',
+            },
+            {
+              title: '📚 Learning Platform',
+              description: 'ListCard for course steps + SummaryCard (compact) for featured courses',
+            },
+            {
+              title: '🏥 Service Locator',
+              description: 'ImageCard for locations + SummaryCard for hours/ratings',
+            },
+            {
+              title: '🛍️ E-commerce',
+              description: 'SummaryCard (compact) for sale items + ImageCard for regular products',
+            },
+            {
+              title: '✅ Task Manager',
+              description: 'ListCard for to-do items with metadata and progress tracking',
+            },
           ].map((useCase, index) => (
             <div
               key={index}
@@ -823,7 +974,7 @@ const CardsComponent = () => {
               wordBreak: 'break-word',
             }}
           >
-{`// ImageCard - Visual-first content
+            {`// ImageCard - Visual-first content
 <ImageCard
   image="url-or-object"
   title="Product Name"
@@ -881,14 +1032,29 @@ const CardsComponent = () => {
           }}
         >
           {[
-            { title: 'Multiple Variants', description: '3 specialized card types with compact size variant' },
-            { title: 'Responsive Design', description: 'Adapts seamlessly to mobile, tablet, and desktop' },
-            { title: 'Selection State', description: 'Built-in selected state for interactive applications' },
-            { title: 'Flexible Content', description: 'Support for images, text, metadata, actions, and lists' },
+            {
+              title: 'Multiple Variants',
+              description: '3 specialized card types with compact size variant',
+            },
+            {
+              title: 'Responsive Design',
+              description: 'Adapts seamlessly to mobile, tablet, and desktop',
+            },
+            {
+              title: 'Selection State',
+              description: 'Built-in selected state for interactive applications',
+            },
+            {
+              title: 'Flexible Content',
+              description: 'Support for images, text, metadata, actions, and lists',
+            },
             { title: 'Accessibility', description: 'Full WCAG compliance with semantic HTML' },
             { title: 'Customizable', description: 'Styled with CSS variables for easy theming' },
             { title: 'Performance', description: 'Optimized rendering and lazy loading support' },
-            { title: 'Developer-Friendly', description: 'Simple props-based API with TypeScript support' },
+            {
+              title: 'Developer-Friendly',
+              description: 'Simple props-based API with TypeScript support',
+            },
           ].map((feature, index) => (
             <div
               key={index}

@@ -118,9 +118,9 @@ const MapPlaceCardShowcase: React.FC = () => {
             With Badges & Chips
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '600px' }}>
-            <MapPlaceCard {...SAMPLE_LOCATIONS[0]} badge="New" badgeVariant="success" />
-            <MapPlaceCard {...SAMPLE_LOCATIONS[1]} badge="Popular" badgeVariant="filled" />
-            <MapPlaceCard {...SAMPLE_LOCATIONS[2]} badge={5} badgeVariant="default" />
+            <MapPlaceCard {...SAMPLE_LOCATIONS[0]} badge="New" badgeVariant="soft" />
+            <MapPlaceCard {...SAMPLE_LOCATIONS[1]} badge="Popular" badgeVariant="solid" />
+            <MapPlaceCard {...SAMPLE_LOCATIONS[2]} badge={5} badgeVariant="soft" />
           </div>
         </div>
       </section>
@@ -224,7 +224,7 @@ const MapPlaceCardShowcase: React.FC = () => {
                 selected={selectedId === `real-${index}`}
                 onClick={() => setSelectedId(`real-${index}`)}
                 badge={index === 0 ? 'Closest' : undefined}
-                badgeVariant={index === 0 ? 'success' : undefined}
+                badgeVariant={index === 0 ? 'soft' : undefined}
               />
             ))}
           </div>

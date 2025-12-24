@@ -25,12 +25,18 @@ function serializeReactElement(element: React.ReactElement): string {
       .filter(([key]) => key !== 'dangerouslySetInnerHTML')
       .map(([key, value]) => {
         // Convert React prop names to HTML attributes
-        const attrName = key === 'className' ? 'class' :
-                        key === 'strokeWidth' ? 'stroke-width' :
-                        key === 'fillOpacity' ? 'fill-opacity' :
-                        key === 'strokeLinecap' ? 'stroke-linecap' :
-                        key === 'strokeLinejoin' ? 'stroke-linejoin' :
-                        key;
+        const attrName =
+          key === 'className'
+            ? 'class'
+            : key === 'strokeWidth'
+              ? 'stroke-width'
+              : key === 'fillOpacity'
+                ? 'fill-opacity'
+                : key === 'strokeLinecap'
+                  ? 'stroke-linecap'
+                  : key === 'strokeLinejoin'
+                    ? 'stroke-linejoin'
+                    : key;
         return `${attrName}="${value}"`;
       })
       .join(' ');
@@ -53,7 +59,11 @@ function serializeReactElement(element: React.ReactElement): string {
 
   // For non-SVG elements, create a temp div and use outerHTML
   const div = document.createElement('div');
-  const ReactDOM = (window as typeof globalThis & { ReactDOM?: { createRoot?: (el: HTMLElement) => { render: (el: React.ReactElement) => void } } }).ReactDOM;
+  const ReactDOM = (
+    window as typeof globalThis & {
+      ReactDOM?: { createRoot?: (el: HTMLElement) => { render: (el: React.ReactElement) => void } };
+    }
+  ).ReactDOM;
   const root = ReactDOM?.createRoot?.(div);
   if (root) {
     root.render(element);
@@ -79,12 +89,18 @@ function serializeSVGChild(element: React.ReactElement): string {
     .filter(([key]) => key !== 'dangerouslySetInnerHTML')
     .map(([key, value]) => {
       // Convert React prop names to HTML attributes
-      const attrName = key === 'className' ? 'class' :
-                      key === 'strokeWidth' ? 'stroke-width' :
-                      key === 'fillOpacity' ? 'fill-opacity' :
-                      key === 'strokeLinecap' ? 'stroke-linecap' :
-                      key === 'strokeLinejoin' ? 'stroke-linejoin' :
-                      key;
+      const attrName =
+        key === 'className'
+          ? 'class'
+          : key === 'strokeWidth'
+            ? 'stroke-width'
+            : key === 'fillOpacity'
+              ? 'fill-opacity'
+              : key === 'strokeLinecap'
+                ? 'stroke-linecap'
+                : key === 'strokeLinejoin'
+                  ? 'stroke-linejoin'
+                  : key;
       return `${attrName}="${value}"`;
     })
     .join(' ');

@@ -81,7 +81,9 @@ const CompactMapDoc: FC = () => {
   const [dotSelectedId, setDotSelectedId] = useState<string | undefined>(undefined);
   const [hybridSelectedId, setHybridSelectedId] = useState<string | undefined>(undefined);
   const [withPopupSelectedId, setWithPopupSelectedId] = useState<string | undefined>(undefined);
-  const [withoutPopupSelectedId, setWithoutPopupSelectedId] = useState<string | undefined>(undefined);
+  const [withoutPopupSelectedId, setWithoutPopupSelectedId] = useState<string | undefined>(
+    undefined
+  );
   const locations = useMemo(() => sampleLocations, []);
 
   return (
@@ -319,7 +321,8 @@ const CompactMapDoc: FC = () => {
         <header>
           <h2 style={{ marginBottom: '8px' }}>Marker Variants</h2>
           <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
-            Choose between traditional pin markers or minimal dot markers based on your design needs.
+            Choose between traditional pin markers or minimal dot markers based on your design
+            needs.
           </p>
         </header>
 
@@ -402,8 +405,8 @@ const CompactMapDoc: FC = () => {
             destination marking and sparse layouts.
           </p>
           <p style={{ margin: '0 0 12px 0' }}>
-            <strong>Dot markers:</strong> Minimal circular dots (16×16px) — ideal for dense clusters,
-            modern minimalist UIs, or data visualization contexts.
+            <strong>Dot markers:</strong> Minimal circular dots (16×16px) — ideal for dense
+            clusters, modern minimalist UIs, or data visualization contexts.
           </p>
           <p style={{ margin: 0 }}>
             <strong>Hybrid markers:</strong> Combines both — dots for unselected (reduce clutter),
@@ -599,8 +602,8 @@ const CompactMapDoc: FC = () => {
             fontSize: '13px',
           }}
         >
-          <strong>Usage:</strong> Set `showPopup={'{false}'}` when handling selection via external UI
-          (Inspector panels, sidebars, modals). Keeps the map cleaner and avoids duplicate
+          <strong>Usage:</strong> Set `showPopup={'{false}'}` when handling selection via external
+          UI (Inspector panels, sidebars, modals). Keeps the map cleaner and avoids duplicate
           information.
         </div>
       </section>

@@ -336,7 +336,7 @@ export type SummaryCardOverlayProps = OverlayProps;
  *   ]}
  *   title="Little Nona's"
  *   badge="9.2"
- *   badgeVariant="filled"
+ *   badgeVariant="solid"
  * />
  * ```
  */

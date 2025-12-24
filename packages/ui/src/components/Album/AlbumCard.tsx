@@ -173,14 +173,14 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
  *   onSelect={(album) => console.log('Selected:', album)}
  *   loading={isLoading}
  *   badge="New"
- *   badgeVariant="filled"
+ *   badgeVariant="solid"
  * />
  *
  * // With longer badge (automatically uses Chip component)
  * <AlbumCard
  *   album={{...}}
  *   badge="Featured"
- *   badgeVariant="neutral"
+ *   badgeVariant="soft"
  * />
  * ```
  */

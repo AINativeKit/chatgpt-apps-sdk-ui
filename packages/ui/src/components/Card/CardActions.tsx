@@ -51,7 +51,8 @@ export const CardActions = React.forwardRef<HTMLDivElement, CardActionsProps>((p
 CardActions.displayName = 'Card.Actions';
 
 // Convenience component for button actions
-export type CardActionButtonProps = ButtonProps;
+// Make color optional since we provide a default
+export type CardActionButtonProps = Omit<ButtonProps, 'color'> & { color?: ButtonProps['color'] };
 
 /**
  * Card.ActionButton - Pre-configured button for card actions
@@ -68,7 +69,9 @@ export type CardActionButtonProps = ButtonProps;
  */
 export const CardActionButton = React.forwardRef<HTMLButtonElement, CardActionButtonProps>(
   (props, ref) => {
-    return <Button ref={ref} {...props} />;
+    // Default to 'primary' color if not specified for convenience
+    const { color = 'primary', ...rest } = props;
+    return <Button ref={ref} color={color} {...rest} />;
   }
 );
 

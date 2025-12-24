@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta } from '@storybook/react';
 import { List, ListItem } from './List';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { PropsTable } from '../../tokens/PropsTable';
 
 const meta: Meta<typeof List> = {
@@ -198,7 +198,11 @@ const ListsComponent: React.FC = () => {
               subtitle: 'A ranking of the best pizzerias in the world',
               thumbnail:
                 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=80&h=80&fit=crop',
-              action: <Button variant="primary">Save List</Button>,
+              action: (
+                <Button color="primary" variant="solid">
+                  Save List
+                </Button>
+              ),
             }}
             items={pizzaPlaces}
             renderItem={(place, index) => (
@@ -212,10 +216,13 @@ const ListsComponent: React.FC = () => {
                 metadata={place.city}
                 action={
                   <Button
-                    iconOnly="plus-circle-add"
+                    uniform
+                    color="secondary"
                     aria-label={`Add ${place.name}`}
                     variant="ghost"
-                  />
+                  >
+                    +
+                  </Button>
                 }
                 onActionClick={() => console.log('Add', place.name)}
               />
@@ -238,7 +245,7 @@ const ListsComponent: React.FC = () => {
     title: 'National Best Pizza List',
     subtitle: 'A ranking of the best pizzerias in the world',
     thumbnail: pizzaIcon,
-    action: <Button variant="primary">Save List</Button>,
+    action: <Button color="primary" variant="solid">Save List</Button>,
   }}
   items={pizzaPlaces}
   renderItem={(place, index) => (
@@ -286,10 +293,13 @@ const ListsComponent: React.FC = () => {
                 title={task.title}
                 action={
                   <Button
-                    iconOnly={task.completed ? 'check-circle-filled' : 'empty-circle'}
+                    uniform
+                    color="secondary"
                     aria-label={task.completed ? 'Mark incomplete' : 'Mark complete'}
                     variant="ghost"
-                  />
+                  >
+                    {task.completed ? '✓' : '○'}
+                  </Button>
                 }
                 onActionClick={() => console.log('Toggle task', task.id)}
               />
@@ -329,7 +339,11 @@ const ListsComponent: React.FC = () => {
             header={{
               title: 'Team Members',
               subtitle: '3 active members',
-              action: <Button variant="primary">Invite</Button>,
+              action: (
+                <Button color="primary" variant="solid">
+                  Invite
+                </Button>
+              ),
             }}
             items={sampleContacts}
             renderItem={(contact) => (
@@ -358,7 +372,7 @@ const ListsComponent: React.FC = () => {
   header={{
     title: 'Team Members',
     subtitle: '3 active members',
-    action: <Button variant="primary">Invite</Button>,
+    action: <Button color="primary" variant="solid">Invite</Button>,
   }}
   items={contacts}
   renderItem={(contact) => (
@@ -709,7 +723,9 @@ const ListsComponent: React.FC = () => {
                 <div style={{ color: 'var(--ai-color-text-secondary)', marginBottom: '16px' }}>
                   Create your first task to get started
                 </div>
-                <Button variant="primary">Create Task</Button>
+                <Button color="primary" variant="solid">
+                  Create Task
+                </Button>
               </div>
             }
             items={[]}
@@ -734,7 +750,7 @@ const ListsComponent: React.FC = () => {
       <div style={{ fontSize: '18px', fontWeight: 600 }}>
         No tasks yet
       </div>
-      <Button variant="primary">Create Task</Button>
+      <Button color="primary" variant="solid">Create Task</Button>
     </div>
   }
   items={[]}
@@ -755,10 +771,10 @@ const ListsComponent: React.FC = () => {
         </header>
 
         <div style={{ marginBottom: '16px', display: 'flex', gap: '8px' }}>
-          <Button variant="secondary" onClick={handleLoadingDemo}>
+          <Button color="secondary" variant="outline" onClick={handleLoadingDemo}>
             Simulate Loading
           </Button>
-          <Button variant="secondary" onClick={handleErrorDemo}>
+          <Button color="secondary" variant="outline" onClick={handleErrorDemo}>
             Simulate Error
           </Button>
         </div>

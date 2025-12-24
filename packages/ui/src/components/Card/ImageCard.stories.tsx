@@ -300,7 +300,7 @@ const ImageCardsComponent: React.FC = () => {
                 fontSize: '12px',
               }}
             >
-              badgeVariant="filled"
+              badgeVariant="solid"
             </code>{' '}
             or{' '}
             <code
@@ -312,7 +312,7 @@ const ImageCardsComponent: React.FC = () => {
                 fontSize: '12px',
               }}
             >
-              badgeVariant="neutral"
+              badgeVariant="soft"
             </code>
           </p>
         </header>
@@ -341,7 +341,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Badge - Top Right"
               subtitle="Default position with filled variant"
               badge="New"
-              badgeVariant="filled"
+              badgeVariant="solid"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -351,7 +351,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Badge - Top Left"
               subtitle="Filled variant, left position"
               badge="Sale"
-              badgeVariant="filled"
+              badgeVariant="solid"
               badgePosition="top-left"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
@@ -362,7 +362,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Numeric Badge"
               subtitle="Great for counts"
               badge={5}
-              badgeVariant="filled"
+              badgeVariant="solid"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -404,7 +404,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Featured"
               subtitle="Chip with neutral variant"
               badge="Featured"
-              badgeVariant="neutral"
+              badgeVariant="soft"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -414,7 +414,7 @@ const ImageCardsComponent: React.FC = () => {
               title="On Sale"
               subtitle="Chip with filled variant"
               badge="On Sale"
-              badgeVariant="filled"
+              badgeVariant="solid"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -424,7 +424,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Popular"
               subtitle="Longer text as chip"
               badge="Popular"
-              badgeVariant="filled"
+              badgeVariant="solid"
               badgePosition="top-left"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
@@ -435,7 +435,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Top Rated"
               subtitle="Chip positioned left"
               badge="Top Rated"
-              badgeVariant="neutral"
+              badgeVariant="soft"
               badgePosition="top-left"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
@@ -478,7 +478,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Success Badge"
               subtitle="Transparent - lower contrast"
               badge="✓"
-              badgeVariant="success"
+              badgeVariant="soft"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -488,7 +488,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Warning Badge"
               subtitle="Transparent - lower contrast"
               badge="!"
-              badgeVariant="warning"
+              badgeVariant="soft"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -498,7 +498,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Error Badge"
               subtitle="Transparent - lower contrast"
               badge="×"
-              badgeVariant="error"
+              badgeVariant="soft"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -508,7 +508,7 @@ const ImageCardsComponent: React.FC = () => {
               title="Default Badge"
               subtitle="Transparent - lower contrast"
               badge="Info"
-              badgeVariant="default"
+              badgeVariant="soft"
               actionIcon="plus-circle-add"
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -975,7 +975,7 @@ function Component() {
                     fontSize: '12px',
                   }}
                 >
-                  badgeVariant="filled"
+                  badgeVariant="solid"
                 </code>{' '}
                 for maximum contrast on images
               </li>
@@ -990,7 +990,7 @@ function Component() {
                     fontSize: '12px',
                   }}
                 >
-                  badgeVariant="neutral"
+                  badgeVariant="soft"
                 </code>{' '}
                 for subtle status indicators
               </li>

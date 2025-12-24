@@ -154,10 +154,10 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
   // Development warning for empty albums
   React.useEffect(() => {
     if (process.env.NODE_ENV === 'development' && !hasPhotos) {
-      console.warn(
-        '[AlbumViewer] Album has no photos. Consider checking before rendering.',
-        { albumId: album.id, albumTitle: album.title }
-      );
+      console.warn('[AlbumViewer] Album has no photos. Consider checking before rendering.', {
+        albumId: album.id,
+        albumTitle: album.title,
+      });
     }
   }, [hasPhotos, album.id, album.title]);
 
@@ -247,9 +247,7 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
                 <div className={styles.photoWrapper}>
                   <img
                     src={photo.url}
-                    alt={
-                      photo.alt || photo.title || `${album.title} - Photo ${index + 1}`
-                    }
+                    alt={photo.alt || photo.title || `${album.title} - Photo ${index + 1}`}
                     className={styles.photo}
                   />
                 </div>

@@ -133,8 +133,8 @@ export const TileProviders: FC = () => {
         >
           The Map component supports 18+ tile provider styles powered by OpenStreetMap data. Choose
           from CARTO basemaps, OSM variants, specialized maps, and more. Simply pass the{' '}
-          <code>tileProvider</code> prop to any Map component. Examples below show free providers that
-          work without API keys.
+          <code>tileProvider</code> prop to any Map component. Examples below show free providers
+          that work without API keys.
         </p>
 
         <div
@@ -153,10 +153,10 @@ export const TileProviders: FC = () => {
       </section>
 
       {/* CARTO Basemaps */}
-      <section style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}>
-        <h2 style={{ marginBottom: '8px', fontSize: '28px', fontWeight: 600 }}>
-          CARTO Basemaps
-        </h2>
+      <section
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+      >
+        <h2 style={{ marginBottom: '8px', fontSize: '28px', fontWeight: 600 }}>CARTO Basemaps</h2>
         <p
           style={{
             margin: '0 0 32px',
@@ -228,9 +228,10 @@ export const TileProviders: FC = () => {
         </div>
       </section>
 
-
       {/* OpenStreetMap Styles */}
-      <section style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}>
+      <section
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+      >
         <h2 style={{ marginBottom: '8px', fontSize: '28px', fontWeight: 600 }}>
           OpenStreetMap Styles
         </h2>
@@ -286,7 +287,9 @@ export const TileProviders: FC = () => {
       </section>
 
       {/* Specialized Maps */}
-      <section style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}>
+      <section
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+      >
         <h2 style={{ marginBottom: '8px', fontSize: '28px', fontWeight: 600 }}>Specialized Maps</h2>
         <p
           style={{
@@ -360,7 +363,9 @@ export const TileProviders: FC = () => {
       </section>
 
       {/* Additional Features Section */}
-      <section style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}>
+      <section
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+      >
         <h2 style={{ marginBottom: '16px', fontSize: '28px', fontWeight: 600 }}>
           Premium Providers & Custom Configuration
         </h2>
@@ -405,7 +410,8 @@ export const TileProviders: FC = () => {
                   Sign up at Stadia Maps
                 </a>
                 <br />
-                <code>stamen-toner</code>, <code>stamen-terrain</code>, <code>stamen-watercolor</code>
+                <code>stamen-toner</code>, <code>stamen-terrain</code>,{' '}
+                <code>stamen-watercolor</code>
               </li>
               <li>
                 <strong>Geoapify</strong> -{' '}

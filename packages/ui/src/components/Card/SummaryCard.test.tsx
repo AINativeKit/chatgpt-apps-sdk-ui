@@ -172,10 +172,10 @@ describe('SummaryCard', () => {
   });
 
   it('renders badge with different variants', () => {
-    const { rerender } = render(<SummaryCard badge="5" badgeVariant="filled" />);
+    const { rerender } = render(<SummaryCard badge="5" badgeVariant="solid" />);
     expect(screen.getByText('5')).toBeInTheDocument();
 
-    rerender(<SummaryCard badge="99+" badgeVariant="error" />);
+    rerender(<SummaryCard badge="99+" badgeVariant="soft" />);
     expect(screen.getByText('99+')).toBeInTheDocument();
   });
 
