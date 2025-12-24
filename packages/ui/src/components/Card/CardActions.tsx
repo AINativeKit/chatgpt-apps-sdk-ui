@@ -1,8 +1,7 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
 import { cn } from '../../utils/cn';
-import { Button } from '../Button';
-import type { ButtonProps } from '../Button';
+import { Button, type ButtonProps } from '@openai/apps-sdk-ui/components/Button';
 import styles from './CardParts.module.css';
 
 export type CardActionsAlign = 'start' | 'center' | 'end' | 'stretch';

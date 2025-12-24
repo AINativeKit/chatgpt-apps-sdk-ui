@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { type CSSProperties } from 'react';
 import { cn } from '../../utils/cn';
 import { Card, type CardProps } from './Card';
-import { Badge, type BadgeVariant } from '../Badge/Badge';
-import { Chip, type ChipVariant } from '../Chip/Chip';
-import { Button } from '../Button/Button';
-import { Icon } from '../Icon';
-import type { IconName } from '../../tokens/icons';
-import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Overlay, type OverlayProps } from '../Overlay';
 import styles from './SummaryCard.module.css';
+
+/**
+ * Simple inline skeleton placeholder for loading states
+ */
+const Skeleton = ({
+  width,
+  height,
+  borderRadius,
+  style,
+}: {
+  width?: string | number;
+  height?: string | number;
+  borderRadius?: number;
+  style?: CSSProperties;
+}) => (
+  <div
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
+      borderRadius: borderRadius ?? 'var(--radius-sm, 4px)',
+      animation: 'pulse 1.5s ease-in-out infinite',
+      ...style,
+    }}
+  />
+);
+
+/** Badge variant type for compatibility */
+export type BadgeVariant = BadgeProps['variant'];
 
 export interface SummaryCardImage {
   src: string;
@@ -26,24 +51,19 @@ export interface SummaryCardImage {
  *
  * @example
  * ```tsx
- * // Using library icons
- * const metadata: SummaryCardMetadata[] = [
- *   { icon: 'clock', label: '10 min read' },
- *   { icon: 'calendar-today', label: 'Oct 30, 2025' }
- * ];
+ * import { Clock, Calendar } from '@openai/apps-sdk-ui/components/Icon';
  *
- * // Using custom icons (React elements)
  * const metadata: SummaryCardMetadata[] = [
- *   { icon: <BedIcon size={16} />, label: '5 bedrooms' },
- *   { icon: <svg>...</svg>, label: 'Custom' }
+ *   { icon: <Clock />, label: '10 min read' },
+ *   { icon: <Calendar />, label: 'Oct 30, 2025' }
  * ];
  * ```
  */
 export interface SummaryCardMetadata {
   /**
-   * Icon to display - can be a library icon name (IconName union) or custom React element
+   * Icon to display - pass a React element (e.g., icon component from apps-sdk-ui)
    */
-  icon?: IconName | React.ReactElement;
+  icon?: React.ReactNode;
   /**
    * Label text to display next to the icon
    */
@@ -374,10 +394,6 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
   const hasDescription = !!description;
   const hasButton = !!buttonText;
 
-  // Determine if badge text is long (use Chip for long text, Badge for short)
-  const badgeText = String(badge ?? '');
-  const isLongBadge = badgeText.length > 4; // More than 4 characters, use Chip
-
   // Phase 1: State logic
   const isEmpty = !loading && !error && !hasImages && !title && !description && !hasButton;
   const defaultLoadingCount = hasImages && !isSingleImage ? 3 : 1;
@@ -393,22 +409,17 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     ? Math.max(88, Math.min(buttonText.length * 8 + 48, 200))
     : 140;
 
-  // Helper to render badge/chip based on text length
+  // Helper to render badge
   const renderBadge = () => {
     if (badge === undefined) return null;
 
-    if (isLongBadge) {
-      // Map BadgeVariant to ChipVariant
-      const chipVariant: ChipVariant = badgeVariant === 'default' ? 'neutral' : badgeVariant;
-      return (
-        <Chip variant={chipVariant} size="sm" className={styles.badge}>
-          {badge}
-        </Chip>
-      );
-    }
-
+    const badgeText = String(badge);
     return (
-      <Badge variant={badgeVariant} className={styles.badge}>
+      <Badge
+        variant={badgeVariant}
+        size={badgeText.length > 4 ? 'md' : 'sm'}
+        className={styles.badge}
+      >
         {badge}
       </Badge>
     );
@@ -639,10 +650,17 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
       {error && !loading && (
         <div className={styles.errorContainer}>
           <Alert
-            layout="card"
+            color="danger"
+            variant="soft"
             title={errorTitle}
-            message={errorMessage}
-            onAction={onErrorRetry}
+            description={errorMessage}
+            actions={
+              onErrorRetry ? (
+                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                  Retry
+                </Button>
+              ) : undefined
+            }
             data-testid="summary-card-error"
           />
         </div>
@@ -732,12 +750,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
                   {metadata.map((item, index) => (
                     <React.Fragment key={index}>
                       <div className={styles.metadataItem}>
-                        {item.icon &&
-                          (typeof item.icon === 'string' ? (
-                            <Icon name={item.icon as IconName} size="sm" tone="secondary" />
-                          ) : (
-                            <span className={styles.customIcon}>{item.icon}</span>
-                          ))}
+                        {item.icon && <span className={styles.customIcon}>{item.icon}</span>}
                         <span>{item.label}</span>
                       </div>
                       {item.separator && index < metadata.length - 1 && (
@@ -764,9 +777,11 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
           {hasButton && (
             <div className={styles.buttonSection} data-full-width={isButtonFullWidth}>
               <Button
-                variant="primary"
+                color="primary"
+                variant="solid"
                 onClick={onButtonClick}
                 disabled={buttonDisabled}
+                block={isButtonFullWidth}
                 className={styles.button}
               >
                 {buttonText}

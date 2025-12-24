@@ -14,8 +14,35 @@ import { CardMeta } from './CardMeta';
 import { CardChipGroup } from './CardChipGroup';
 import { CardBadge } from './CardBadge';
 import { CardChip } from './CardChip';
-import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+
+/**
+ * Simple inline skeleton placeholder for loading states
+ */
+const Skeleton = ({
+  width,
+  height,
+  style,
+  className,
+}: {
+  width?: string | number;
+  height?: string | number;
+  style?: CSSProperties;
+  className?: string;
+}) => (
+  <div
+    className={className}
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
+      borderRadius: 'var(--radius-sm, 4px)',
+      animation: 'pulse 1.5s ease-in-out infinite',
+      ...style,
+    }}
+  />
+);
 
 export type CardBorder = 'light' | 'default' | 'heavy';
 
@@ -136,14 +163,26 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const defaultSkeleton = (
     <>
       <Skeleton height={200} style={{ marginBottom: 12 }} />
-      <Skeleton variant="text" width="60%" style={{ marginBottom: 8 }} />
-      <Skeleton variant="text" width="80%" />
+      <Skeleton height={16} width="60%" style={{ marginBottom: 8 }} />
+      <Skeleton height={16} width="80%" />
     </>
   );
 
   // Default error layout if error and no custom error content provided
   const defaultError = (
-    <Alert layout="card" title={errorTitle} message={errorMessage} onAction={onErrorRetry} />
+    <Alert
+      color="danger"
+      variant="soft"
+      title={errorTitle ?? 'Something went wrong'}
+      description={errorMessage}
+      actions={
+        onErrorRetry ? (
+          <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+            Retry
+          </Button>
+        ) : undefined
+      }
+    />
   );
 
   // Determine what to render

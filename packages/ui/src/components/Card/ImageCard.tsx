@@ -1,13 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, type CSSProperties } from 'react';
 import { cn } from '../../utils/cn';
 import { Card, type CardProps } from './Card';
-import { Button } from '../Button';
-import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
-import { Badge, type BadgeProps } from '../Badge';
-import { Chip, type ChipProps } from '../Chip';
-import type { IconName } from '../../tokens/icons';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import styles from './ImageCard.module.css';
+
+/**
+ * Simple inline skeleton placeholder for loading states
+ */
+const Skeleton = ({
+  width,
+  height,
+  style,
+  className,
+  animation = true,
+}: {
+  width?: string | number;
+  height?: string | number;
+  style?: CSSProperties;
+  className?: string;
+  animation?: boolean;
+}) => (
+  <div
+    className={className}
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
+      borderRadius: 'var(--radius-sm, 4px)',
+      animation: animation ? 'pulse 1.5s ease-in-out infinite' : undefined,
+      ...style,
+    }}
+  />
+);
 
 export interface ImageCardProps extends Omit<CardProps, 'children'> {
   /**
@@ -32,9 +58,10 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
   subtitle?: string;
 
   /**
-   * Action button icon (optional - only renders if provided)
+   * Action button icon (optional - only renders if provided).
+   * Pass a React element, e.g., `<PlusCircle />` from apps-sdk-ui.
    */
-  actionIcon?: IconName;
+  actionIcon?: React.ReactNode;
 
   /**
    * Accessibility label for action button
@@ -106,10 +133,10 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
   badgePosition?: 'top-left' | 'top-right';
 
   /**
-   * Badge/Chip variant (inherits from Badge/Chip components)
-   * @default 'default'
+   * Badge variant (inherits from Badge component)
+   * @default 'soft'
    */
-  badgeVariant?: BadgeProps['variant'] | ChipProps['variant'];
+  badgeVariant?: BadgeProps['variant'];
 
   /**
    * Number of lines for title (1-3)
@@ -156,25 +183,19 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
  *
  * @example
  * ```tsx
- * // Full featured with short badge
+ * import { PlusCircle } from '@openai/apps-sdk-ui/components/Icon';
+ *
+ * // Full featured with badge
  * <ImageCard
  *   image="https://example.com/pizza.jpg"
  *   title="Margherita Pizza"
  *   subtitle="Classic Italian"
- *   actionIcon="plus-circle-add"
+ *   actionIcon={<PlusCircle />}
  *   onAction={() => console.log('Added')}
  *   actionLabel="Add to cart"
  *   badge="New"
- *   badgeVariant="filled"
+ *   badgeVariant="solid"
  *   interactive
- * />
- *
- * // With longer badge text (automatically uses Chip)
- * <ImageCard
- *   image="https://example.com/pizza.jpg"
- *   title="Margherita Pizza"
- *   badge="Featured"
- *   badgeVariant="neutral"
  * />
  *
  * // With loading state
@@ -213,7 +234,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     onErrorRetry,
     badge,
     badgePosition = 'top-right',
-    badgeVariant = 'default',
+    badgeVariant = 'soft',
     titleLines = 1,
     subtitleLines = 1,
     onImageLoad,
@@ -317,10 +338,17 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
       {hasError && !loading && (
         <div className={styles.errorContainer}>
           <Alert
-            layout="card"
+            color="danger"
+            variant="soft"
             title={errorTitle}
-            message={errorMessage}
-            onAction={onErrorRetry}
+            description={errorMessage}
+            actions={
+              onErrorRetry ? (
+                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                  Retry
+                </Button>
+              ) : undefined
+            }
             data-testid="image-card-error"
           />
         </div>
@@ -332,7 +360,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
           {/* Gradient Overlay for text readability */}
           {(hasContent || hasAction) && <div className={styles.gradientOverlay} />}
 
-          {/* Badge/Chip - Uses Chip for longer text, Badge for short content */}
+          {/* Badge */}
           {hasBadge && (
             <div
               className={cn(
@@ -340,13 +368,9 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
                 badgePosition === 'top-left' ? styles.badgeTopLeft : styles.badgeTopRight
               )}
             >
-              {String(badge).length > 4 ? (
-                <Chip variant={badgeVariant as ChipProps['variant']} size="sm">
-                  {badge}
-                </Chip>
-              ) : (
-                <Badge variant={badgeVariant as BadgeProps['variant']}>{badge}</Badge>
-              )}
+              <Badge variant={badgeVariant} size={String(badge).length > 4 ? 'md' : 'sm'}>
+                {badge}
+              </Badge>
             </div>
           )}
 
@@ -367,12 +391,16 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
           {/* Action Button */}
           {hasAction && actionLabel && (
             <Button
-              variant="tertiary"
-              iconOnly={actionIcon}
+              color="secondary"
+              variant="ghost"
+              uniform
+              size="sm"
               aria-label={`${actionLabel}${title ? ` for ${title}` : ''}`}
               onClick={onAction}
               className={styles.actionButton}
-            />
+            >
+              {actionIcon}
+            </Button>
           )}
         </>
       )}

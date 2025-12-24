@@ -1,7 +1,20 @@
-import React from 'react';
-import { Chip, type ChipProps } from '../Chip';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 
-export interface CardChipProps extends ChipProps {
+/**
+ * CardChipProps - Badge-based chip for card usage
+ *
+ * Note: In v1, CardChip uses apps-sdk-ui Badge component.
+ * Chip-specific features (onRemove, onClick) are no longer supported.
+ * Use Badge's color and variant props instead of the old variant prop.
+ *
+ * Migration:
+ * - variant="default" → color="primary" variant="soft"
+ * - variant="success" → color="success"
+ * - variant="warning" → color="warning"
+ * - variant="error" → color="danger"
+ * - variant="neutral" → color="secondary"
+ */
+export interface CardChipProps extends BadgeProps {
   /**
    * Optional test ID for testing purposes
    */
@@ -9,16 +22,16 @@ export interface CardChipProps extends ChipProps {
 }
 
 /**
- * Card.Chip - Wrapper around the Chip primitive optimized for card usage
+ * Card.Chip - Badge-based component for card labels and tags
  *
- * Use Chip for text labels, tags, and categories (vs Badge for counts/dots).
+ * Use Chip for text labels, tags, and categories within cards.
  *
  * @example
  * ```tsx
  * <Card.Body>
  *   <div style={{ display: 'flex', gap: '8px' }}>
- *     <Card.Chip variant="neutral" size="sm">Design</Card.Chip>
- *     <Card.Chip variant="neutral" size="sm">Systems</Card.Chip>
+ *     <Card.Chip color="secondary" size="sm">Design</Card.Chip>
+ *     <Card.Chip color="secondary" size="sm">Systems</Card.Chip>
  *   </div>
  * </Card.Body>
  * ```
@@ -27,14 +40,13 @@ export interface CardChipProps extends ChipProps {
  * ```tsx
  * <Card.Header>
  *   <Card.Title>Product Name</Card.Title>
- *   <Card.Chip variant="success" size="sm">New</Card.Chip>
+ *   <Card.Chip color="success" size="sm">New</Card.Chip>
  * </Card.Header>
  * ```
  */
-export const CardChip = React.forwardRef<HTMLSpanElement | HTMLButtonElement, CardChipProps>(
-  (props, ref) => {
-    return <Chip ref={ref} {...props} />;
-  }
-);
+export const CardChip = (props: CardChipProps) => {
+  const { 'data-testid': testId, ...rest } = props;
+  return <Badge data-testid={testId} {...rest} />;
+};
 
 CardChip.displayName = 'Card.Chip';

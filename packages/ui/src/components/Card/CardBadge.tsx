@@ -1,5 +1,4 @@
-import React from 'react';
-import { Badge, type BadgeProps } from '../Badge';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 
 export interface CardBadgeProps extends BadgeProps {
   /**
@@ -15,12 +14,12 @@ export interface CardBadgeProps extends BadgeProps {
  * ```tsx
  * <Card.Header>
  *   <Card.Title>Product Name</Card.Title>
- *   <Card.Badge variant="success">New</Card.Badge>
+ *   <Card.Badge color="success" variant="soft">New</Card.Badge>
  * </Card.Header>
  * ```
  */
-export const CardBadge = React.forwardRef<HTMLSpanElement, CardBadgeProps>((props, ref) => {
-  return <Badge ref={ref} {...props} />;
-});
+export const CardBadge = (props: CardBadgeProps) => {
+  return <Badge {...props} />;
+};
 
 CardBadge.displayName = 'Card.Badge';

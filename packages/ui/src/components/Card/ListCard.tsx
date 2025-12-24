@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { type CSSProperties } from 'react';
 import { Card, type CardProps } from './Card';
-import { Button } from '../Button';
-import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
-import type { IconName } from '../../tokens/icons';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EditPencil, Plus } from '@openai/apps-sdk-ui/components/Icon';
 import styles from './ListCard.module.css';
+
+/**
+ * Simple inline skeleton placeholder for loading states
+ */
+const Skeleton = ({
+  width,
+  height,
+  variant,
+  style,
+  className,
+}: {
+  width?: string | number;
+  height?: string | number;
+  variant?: 'rectangular' | 'circular';
+  style?: CSSProperties;
+  className?: string;
+}) => (
+  <div
+    className={className}
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
+      borderRadius: variant === 'circular' ? '50%' : 'var(--radius-sm, 4px)',
+      animation: 'pulse 1.5s ease-in-out infinite',
+      ...style,
+    }}
+  />
+);
 
 export interface ListCardImage {
   src: string;
@@ -142,9 +170,9 @@ export interface ListCardProps extends Omit<CardProps, 'children'> {
   emptyMessage?: string;
 
   /**
-   * Empty state icon
+   * Empty state icon (React element, e.g., icon component from apps-sdk-ui)
    */
-  emptyIcon?: IconName;
+  emptyIcon?: React.ReactNode;
 
   // Phase 2: Performance & Accessibility (P1)
   /**
@@ -276,10 +304,17 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
         {error && !loading && (
           <div className={styles.errorContainer}>
             <Alert
-              layout="card"
+              color="danger"
+              variant="soft"
               title={errorTitle}
-              message={errorMessage}
-              onAction={onErrorRetry}
+              description={errorMessage}
+              actions={
+                onErrorRetry ? (
+                  <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                    Retry
+                  </Button>
+                ) : undefined
+              }
               data-testid="list-card-error"
             />
           </div>
@@ -294,12 +329,16 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                 {headerTitle && <h3 className={styles.headerTitle}>{headerTitle}</h3>}
                 {onHeaderAction && (
                   <Button
+                    color="secondary"
                     variant="ghost"
-                    iconOnly="edit-pencil"
+                    uniform
+                    size="sm"
                     onClick={onHeaderAction}
                     aria-label={headerActionLabel || 'Edit'}
                     className={styles.headerActionButton}
-                  />
+                  >
+                    <EditPencil />
+                  </Button>
                 )}
               </div>
             )}
@@ -307,7 +346,7 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
             <div className={styles.emptyState}>
               {emptyIcon && (
                 <div className={styles.emptyIcon} aria-hidden="true">
-                  {/* Icon would be rendered here if we had icon component */}
+                  {emptyIcon}
                 </div>
               )}
               <h4 className={styles.emptyTitle}>{emptyTitle}</h4>
@@ -339,12 +378,16 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                 {headerTitle && <h3 className={styles.headerTitle}>{headerTitle}</h3>}
                 {onHeaderAction && (
                   <Button
+                    color="secondary"
                     variant="ghost"
-                    iconOnly="edit-pencil"
+                    uniform
+                    size="sm"
                     onClick={onHeaderAction}
                     aria-label={headerActionLabel || 'Edit'}
                     className={styles.headerActionButton}
-                  />
+                  >
+                    <EditPencil />
+                  </Button>
                 )}
               </div>
             )}
@@ -380,12 +423,16 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                         </div>
                         {item.onItemAction && (
                           <Button
-                            variant="tertiary"
-                            iconOnly="plus-add-md"
+                            color="secondary"
+                            variant="ghost"
+                            uniform
+                            size="sm"
                             onClick={item.onItemAction}
                             aria-label={item.actionLabel || 'Add'}
                             className={styles.itemActionButton}
-                          />
+                          >
+                            <Plus />
+                          </Button>
                         )}
                       </div>
                       {item.description && (
@@ -403,10 +450,11 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
             {hasButton && (
               <div className={styles.buttonContainer}>
                 <Button
+                  color="primary"
+                  variant="solid"
                   onClick={onButtonClick}
                   disabled={buttonDisabled}
-                  variant="primary"
-                  style={{ width: '100%' }}
+                  block
                 >
                   {buttonText}
                 </Button>
