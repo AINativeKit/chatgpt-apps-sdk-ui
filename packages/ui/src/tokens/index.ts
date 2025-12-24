@@ -2,17 +2,13 @@
  * Design Tokens - AI Native Kit
  * Centralized export of all design tokens
  *
+ * Note: Icons are provided by @openai/apps-sdk-ui (755 icons).
+ * Import icons from '@openai/apps-sdk-ui/components/Icon'.
+ *
  * @packageDocumentation
  */
 
-/**
- * Design Tokens Export
- * Provides type-safe access to design tokens with autocomplete support
- */
-
-// Export icons and utilities
-export * from './icons';
-export * from './icon-utils';
+// Export utility classes
 export * from './utility-classes';
 
 // Export types
@@ -47,7 +43,6 @@ import { spacing } from './spacing';
 import { radius, defaultRadius } from './radius';
 import { elevation, defaultElevation } from './elevation';
 import { opacity } from './opacity';
-import { iconMetadata, iconNames, icons } from './icons';
 
 /**
  * All design tokens combined into a single object
@@ -72,7 +67,4 @@ export const tokens = {
   elevation,
   defaultElevation,
   opacity,
-  icons,
-  iconMetadata,
-  iconNames,
 } as const;

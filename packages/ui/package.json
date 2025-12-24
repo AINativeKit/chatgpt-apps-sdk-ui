@@ -17,11 +17,6 @@
       "import": "./dist/tokens/index.js",
       "require": "./dist/tokens/index.cjs"
     },
-    "./icons": {
-      "types": "./dist/icons/index.d.ts",
-      "import": "./dist/icons/index.js",
-      "require": "./dist/icons/index.cjs"
-    },
     "./styles": {
       "import": "./dist/style.css"
     }
@@ -59,19 +54,16 @@
   },
   "homepage": "https://github.com/AINativeKit/chatgpt-apps-sdk-ui#readme",
   "scripts": {
-    "build": "node scripts/generate-icon-data.cjs && tsc --emitDeclarationOnly --outDir dist && vite build",
+    "build": "tsc --emitDeclarationOnly --outDir dist && vite build",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "lint:deps": "eslint src --ext ts,tsx",
-    "storybook": "node scripts/generate-icon-data.cjs && storybook dev -p 6006",
-    "build-storybook": "node scripts/generate-icon-data.cjs && storybook build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "storybook:test": "test-storybook",
-    "normalize-icons": "node scripts/normalize-icons.cjs",
-    "generate:icons": "node scripts/generate-icon-components.cjs",
-    "generate:icon-data": "node scripts/generate-icon-data.cjs",
     "generate:schemas": "tsx scripts/generate-schemas.ts",
     "generate:docs": "tsx scripts/generate-docs.ts"
   },

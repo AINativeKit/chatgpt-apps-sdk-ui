@@ -1,24 +1,28 @@
-// Components - All components in one place (industry standard)
+/**
+ * @ainativekit/ui Components
+ *
+ * Extension components for ChatGPT Apps SDK.
+ * Primitives (Button, Badge, Alert, Icon, etc.) are provided by @openai/apps-sdk-ui.
+ */
 
-// Primitives (basic building blocks)
-export { Badge } from './Badge';
-export type { BadgeProps, BadgeVariant, BadgeSize } from './Badge';
+// =============================================================================
+// Re-export apps-sdk-ui primitives for convenience
+// Users can import from @ainativekit/ui or @openai/apps-sdk-ui directly
+// =============================================================================
+export { Button, ButtonLink } from '@openai/apps-sdk-ui/components/Button';
+export type { ButtonProps } from '@openai/apps-sdk-ui/components/Button';
 
-export { Button } from './Button';
-export type { ButtonProps, ButtonVariant } from './Button';
+export { Badge } from '@openai/apps-sdk-ui/components/Badge';
+export type { BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 
-export { Chip } from './Chip';
-export type { ChipProps, ChipSize, ChipVariant } from './Chip';
+export { Alert } from '@openai/apps-sdk-ui/components/Alert';
+export type { AlertProps } from '@openai/apps-sdk-ui/components/Alert';
 
-export { Alert } from './Alert';
-export type { AlertProps, AlertVariant, AlertLayout } from './Alert';
+// =============================================================================
+// Extension Components - Our value-add beyond apps-sdk-ui
+// =============================================================================
 
-export { Icon } from './Icon';
-export type { IconProps } from './Icon';
-
-export { Skeleton } from './Skeleton';
-export type { SkeletonProps, SkeletonVariant } from './Skeleton';
-
+// Primitives (extensions)
 export { Features } from './Feature';
 export type { FeaturesProps, FeatureItem } from './Feature';
 
