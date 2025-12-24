@@ -37,7 +37,7 @@ export interface CarouselProps {
 
   /**
    * Show edge gradient overlays.
-   * @default true
+   * @default false
    */
   showEdgeGradients?: boolean;
 
@@ -156,7 +156,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   align = 'center',
   loop = false,
   showNavigation = true,
-  showEdgeGradients = true,
+  showEdgeGradients = false,
   gap = 'var(32px)',
   onSlideChange,
   className,

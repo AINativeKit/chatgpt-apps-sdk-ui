@@ -561,7 +561,6 @@ const IntroductionPage = () => {
             onAlbumSelect={setSelectedAlbum}
             align="center"
             showNavigation
-            showEdgeGradients
             flushStart
           />
         </div>

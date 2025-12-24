@@ -236,7 +236,7 @@ const AlbumSystemComponent: React.FC = () => {
             onAlbumSelect={(album) => console.log('Selected:', album.title)}
             align="center"
             showNavigation={true}
-            showEdgeGradients={true}
+            showEdgeGradients={false}
           />
         </div>
 
@@ -272,7 +272,7 @@ const AlbumSystemComponent: React.FC = () => {
             albums={sampleAlbums}
             onAlbumSelect={(album) => console.log('Selected:', album.title)}
             showNavigation={false}
-            showEdgeGradients={true}
+            showEdgeGradients={false}
           />
         </div>
       </section>
@@ -383,7 +383,7 @@ const AlbumSystemComponent: React.FC = () => {
           onAlbumSelect={(album) => console.log('Opening album:', album?.title)}
           align="center"
           showNavigation={true}
-          showEdgeGradients={true}
+          showEdgeGradients={false}
         />
       </section>
 

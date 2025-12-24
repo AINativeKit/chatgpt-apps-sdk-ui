@@ -135,7 +135,7 @@ const SummaryCardCarouselDemo: React.FC = () => {
         </span>
       </div>
 
-      <Carousel align="start" flushStart showNavigation showEdgeGradients>
+      <Carousel align="start" flushStart showNavigation>
         {restaurants.map((restaurant) => (
           <div key={restaurant.id} style={{ width: '280px', flexShrink: 0 }}>
             <SummaryCard
@@ -539,7 +539,7 @@ const CarouselsComponent: React.FC = () => {
             >
               Remove edge gradients for a cleaner, simpler look
             </p>
-            <Carousel showEdgeGradients={false}>
+            <Carousel>
               {sampleImages.map((image, index) => (
                 <div key={index} style={{ width: '240px', flexShrink: 0 }}>
                   <ImageCard
@@ -565,7 +565,7 @@ const CarouselsComponent: React.FC = () => {
             >
               Combine options for a completely minimal carousel
             </p>
-            <Carousel showNavigation={false} showEdgeGradients={false}>
+            <Carousel showNavigation={false}>
               {sampleImages.map((image, index) => (
                 <div key={index} style={{ width: '240px', flexShrink: 0 }}>
                   <ImageCard
