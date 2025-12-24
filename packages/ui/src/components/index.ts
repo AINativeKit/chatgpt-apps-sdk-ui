@@ -23,6 +23,9 @@ export type { AlertProps } from '@openai/apps-sdk-ui/components/Alert';
 // =============================================================================
 
 // Primitives (extensions)
+export { Skeleton } from './Skeleton';
+export type { SkeletonProps } from './Skeleton';
+
 export { Features } from './Feature';
 export type { FeaturesProps, FeatureItem } from './Feature';
 

@@ -16,33 +16,7 @@ import { CardBadge } from './CardBadge';
 import { CardChip } from './CardChip';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
-
-/**
- * Simple inline skeleton placeholder for loading states
- */
-const Skeleton = ({
-  width,
-  height,
-  style,
-  className,
-}: {
-  width?: string | number;
-  height?: string | number;
-  style?: CSSProperties;
-  className?: string;
-}) => (
-  <div
-    className={className}
-    style={{
-      width: typeof width === 'number' ? `${width}px` : width,
-      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
-      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
-      borderRadius: 'var(--radius-sm, 4px)',
-      animation: 'pulse 1.5s ease-in-out infinite',
-      ...style,
-    }}
-  />
-);
+import { Skeleton } from '../Skeleton';
 
 export type CardBorder = 'light' | 'default' | 'heavy';
 

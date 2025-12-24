@@ -1,38 +1,12 @@
-import React, { type CSSProperties } from 'react';
+import React from 'react';
 import type { ComponentPropsWithoutRef, SyntheticEvent } from 'react';
 import { cn } from '../../utils/cn';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+import { Skeleton } from '../Skeleton';
 import type { Album } from './types';
 import styles from './AlbumCard.module.css';
-
-/**
- * Simple inline skeleton placeholder for loading states
- */
-const Skeleton = ({
-  width,
-  height,
-  className,
-  style,
-}: {
-  width?: string | number;
-  height?: string | number;
-  className?: string;
-  style?: CSSProperties;
-}) => (
-  <div
-    className={className}
-    style={{
-      width: typeof width === 'number' ? `${width}px` : width,
-      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
-      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
-      borderRadius: 'var(--radius-sm, 4px)',
-      animation: 'pulse 1.5s ease-in-out infinite',
-      ...style,
-    }}
-  />
-);
 
 export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>, 'onSelect'> {
   /**

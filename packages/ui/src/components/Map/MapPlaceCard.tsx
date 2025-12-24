@@ -1,37 +1,11 @@
-import React, { type CSSProperties, type SyntheticEvent } from 'react';
+import React, { type SyntheticEvent } from 'react';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { Features } from '../Feature';
 import { cn } from '../../utils/cn';
+import { Skeleton } from '../Skeleton';
 import type { Feature } from './types';
 import styles from './MapPlaceCard.module.css';
-
-/**
- * Simple inline skeleton placeholder for loading states
- */
-const Skeleton = ({
-  width,
-  height,
-  className,
-  style,
-}: {
-  width?: string | number;
-  height?: string | number;
-  className?: string;
-  style?: CSSProperties;
-}) => (
-  <div
-    className={className}
-    style={{
-      width: typeof width === 'number' ? `${width}px` : width,
-      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
-      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
-      borderRadius: 'var(--radius-sm, 4px)',
-      animation: 'pulse 1.5s ease-in-out infinite',
-      ...style,
-    }}
-  />
-);
 
 export type MapPlaceCardVariant = 'carousel' | 'list';
 

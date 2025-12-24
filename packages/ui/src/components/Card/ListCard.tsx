@@ -1,38 +1,10 @@
-import React, { type CSSProperties } from 'react';
+import React from 'react';
 import { Card, type CardProps } from './Card';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { EditPencil, Plus } from '@openai/apps-sdk-ui/components/Icon';
+import { Skeleton } from '../Skeleton';
 import styles from './ListCard.module.css';
-
-/**
- * Simple inline skeleton placeholder for loading states
- */
-const Skeleton = ({
-  width,
-  height,
-  variant,
-  style,
-  className,
-}: {
-  width?: string | number;
-  height?: string | number;
-  variant?: 'rectangular' | 'circular';
-  style?: CSSProperties;
-  className?: string;
-}) => (
-  <div
-    className={className}
-    style={{
-      width: typeof width === 'number' ? `${width}px` : width,
-      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
-      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
-      borderRadius: variant === 'circular' ? '50%' : 'var(--radius-sm, 4px)',
-      animation: 'pulse 1.5s ease-in-out infinite',
-      ...style,
-    }}
-  />
-);
 
 export interface ListCardImage {
   src: string;
@@ -284,7 +256,7 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                 <div key={index}>
                   <div className={styles.listItem}>
                     <div className={styles.itemHeader}>
-                      <Skeleton variant="circular" width={44} height={44} />
+                      <Skeleton width={44} height={44} borderRadius="50%" />
                       <div className={styles.itemTextContent}>
                         <Skeleton width="70%" height={16} />
                         <Skeleton width="50%" height={14} />

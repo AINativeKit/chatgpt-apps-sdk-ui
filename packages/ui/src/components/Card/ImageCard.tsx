@@ -1,39 +1,11 @@
-import React, { useState, type CSSProperties } from 'react';
+import React, { useState } from 'react';
 import { cn } from '../../utils/cn';
 import { Card, type CardProps } from './Card';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+import { Skeleton } from '../Skeleton';
 import styles from './ImageCard.module.css';
-
-/**
- * Simple inline skeleton placeholder for loading states
- */
-const Skeleton = ({
-  width,
-  height,
-  style,
-  className,
-  animation = true,
-}: {
-  width?: string | number;
-  height?: string | number;
-  style?: CSSProperties;
-  className?: string;
-  animation?: boolean;
-}) => (
-  <div
-    className={className}
-    style={{
-      width: typeof width === 'number' ? `${width}px` : width,
-      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
-      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
-      borderRadius: 'var(--radius-sm, 4px)',
-      animation: animation ? 'pulse 1.5s ease-in-out infinite' : undefined,
-      ...style,
-    }}
-  />
-);
 
 export interface ImageCardProps extends Omit<CardProps, 'children'> {
   /**
@@ -328,7 +300,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
           or when naturally loading without errors (and loading prop is not explicitly set) */}
       {((loading && !error) || (!loading && isLoading && !hasError)) && (
         <div className={styles.loadingContainer} role="status" aria-live="polite">
-          <Skeleton width="100%" height="100%" animation />
+          <Skeleton width="100%" height="100%" />
           <span className={styles.visuallyHidden}>Loading image: {title || 'content'}</span>
         </div>
       )}

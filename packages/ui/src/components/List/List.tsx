@@ -1,35 +1,10 @@
-import React, { type CSSProperties } from 'react';
+import React from 'react';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '../../utils/cn';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { Skeleton } from '../Skeleton';
 import styles from './List.module.css';
-
-/**
- * Simple inline skeleton placeholder for loading states
- */
-const Skeleton = ({
-  width,
-  height,
-  animation = true,
-  style,
-}: {
-  width?: string | number;
-  height?: string | number;
-  animation?: boolean;
-  style?: CSSProperties;
-}) => (
-  <div
-    style={{
-      width: typeof width === 'number' ? `${width}px` : width,
-      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
-      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
-      borderRadius: 'var(--radius-sm, 4px)',
-      animation: animation ? 'pulse 1.5s ease-in-out infinite' : undefined,
-      ...style,
-    }}
-  />
-);
 
 export interface ListHeaderProps {
   /**
@@ -195,23 +170,18 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
       <div key={i} className={styles.listItemWrapper} style={{ pointerEvents: 'none' }}>
         <div className={styles.listItem}>
           <div className={styles.itemMedia}>
-            <Skeleton
-              width={40}
-              height={40}
-              animation
-              style={{ borderRadius: 'var(--radius-md)' }}
-            />
+            <Skeleton width={40} height={40} borderRadius="var(--radius-md)" />
           </div>
           <div className={styles.itemBody}>
             <div className={styles.itemHeader}>
-              <Skeleton width="60%" height={16} animation />
+              <Skeleton width="60%" height={16} />
             </div>
             <div className={styles.itemSubtitleRow} style={{ marginTop: 'var(8px)' }}>
-              <Skeleton width="40%" height={14} animation />
+              <Skeleton width="40%" height={14} />
             </div>
           </div>
           <div className={styles.itemTrailing}>
-            <Skeleton width={60} height={14} animation />
+            <Skeleton width={60} height={14} />
           </div>
         </div>
       </div>

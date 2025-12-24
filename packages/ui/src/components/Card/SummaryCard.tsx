@@ -1,37 +1,12 @@
-import React, { type CSSProperties } from 'react';
+import React from 'react';
 import { cn } from '../../utils/cn';
 import { Card, type CardProps } from './Card';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Overlay, type OverlayProps } from '../Overlay';
+import { Skeleton } from '../Skeleton';
 import styles from './SummaryCard.module.css';
-
-/**
- * Simple inline skeleton placeholder for loading states
- */
-const Skeleton = ({
-  width,
-  height,
-  borderRadius,
-  style,
-}: {
-  width?: string | number;
-  height?: string | number;
-  borderRadius?: number;
-  style?: CSSProperties;
-}) => (
-  <div
-    style={{
-      width: typeof width === 'number' ? `${width}px` : width,
-      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
-      backgroundColor: 'var(--color-background-primary-soft, rgba(0,0,0,0.1))',
-      borderRadius: borderRadius ?? 'var(--radius-sm, 4px)',
-      animation: 'pulse 1.5s ease-in-out infinite',
-      ...style,
-    }}
-  />
-);
 
 /** Badge variant type for compatibility */
 export type BadgeVariant = BadgeProps['variant'];
