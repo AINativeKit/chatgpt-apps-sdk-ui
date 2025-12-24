@@ -64,7 +64,7 @@ const ListCardsComponent: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -79,7 +79,7 @@ const ListCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Basic Layouts</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Common list card configurations with various features
           </p>
         </header>
@@ -126,7 +126,7 @@ const ListCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>States System</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Loading, error, and empty states for complete UX coverage
           </p>
         </header>
@@ -146,7 +146,7 @@ const ListCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Loading State
@@ -161,7 +161,7 @@ const ListCardsComponent: React.FC = () => {
               style={{
                 marginTop: '8px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Skeleton UI with customizable item count
@@ -175,7 +175,7 @@ const ListCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Error State
@@ -195,7 +195,7 @@ const ListCardsComponent: React.FC = () => {
               style={{
                 marginTop: '8px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Error with retry functionality
@@ -209,7 +209,7 @@ const ListCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Empty State
@@ -227,7 +227,7 @@ const ListCardsComponent: React.FC = () => {
               style={{
                 marginTop: '8px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Custom empty state messaging
@@ -240,7 +240,7 @@ const ListCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Item Variations</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Different item configurations and content layouts
           </p>
         </header>
@@ -295,7 +295,7 @@ const ListCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Performance Features</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Native lazy loading and image callbacks for optimal performance
           </p>
         </header>
@@ -328,7 +328,7 @@ const ListCardsComponent: React.FC = () => {
           style={{
             marginTop: '16px',
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontStyle: 'italic',
           }}
         >
@@ -340,7 +340,7 @@ const ListCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Accessibility</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             WCAG 2.1 AA compliant with required action labels and ARIA attributes
           </p>
         </header>
@@ -371,7 +371,7 @@ const ListCardsComponent: React.FC = () => {
           style={{
             marginTop: '16px',
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontStyle: 'italic',
           }}
         >
@@ -384,7 +384,7 @@ const ListCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Usage</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Code examples for common ListCard patterns
           </p>
         </header>
@@ -504,16 +504,16 @@ function Component() {
           <div
             style={{
               padding: '16px',
-              backgroundColor: 'var(--ai-color-surface-secondary)',
+              backgroundColor: 'var(--color-surface-secondary)',
               borderRadius: '8px',
             }}
           >
-            <strong style={{ color: 'var(--ai-color-success)' }}>✓ Best Practices:</strong>
+            <strong style={{ color: 'var(--green-500)' }}>✓ Best Practices:</strong>
             <ul
               style={{
                 margin: '8px 0 0 0',
                 paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>
@@ -531,16 +531,16 @@ function Component() {
           <div
             style={{
               padding: '16px',
-              backgroundColor: 'var(--ai-color-surface-secondary)',
+              backgroundColor: 'var(--color-surface-secondary)',
               borderRadius: '8px',
             }}
           >
-            <strong style={{ color: 'var(--ai-color-error)' }}>✗ Avoid:</strong>
+            <strong style={{ color: 'var(--red-500)' }}>✗ Avoid:</strong>
             <ul
               style={{
                 margin: '8px 0 0 0',
                 paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>Showing empty component without loading/error states</li>
@@ -557,7 +557,7 @@ function Component() {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Complete prop reference for ListCard
           </p>
         </header>

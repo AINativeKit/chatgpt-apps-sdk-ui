@@ -17,8 +17,8 @@ describe('Card', () => {
     );
 
     const card = screen.getByTestId('card');
-    expect(card.style.getPropertyValue('--card-shadow-value')).toBe('var(--ai-elevation-3-shadow)');
-    expect(card.style.getPropertyValue('--card-border-color')).toBe('var(--ai-color-border-light)');
+    expect(card.style.getPropertyValue('--card-shadow-value')).toBe('var(--elevation-3-shadow)');
+    expect(card.style.getPropertyValue('--card-border-color')).toBe('var(--color-border-subtle)');
   });
 
   it('uses next elevation on hover when interactive', () => {
@@ -30,7 +30,7 @@ describe('Card', () => {
 
     const card = screen.getByTestId('interactive-card');
     expect(card.style.getPropertyValue('--card-hover-shadow-value')).toBe(
-      'var(--ai-elevation-3-shadow)'
+      'var(--elevation-3-shadow)'
     );
   });
 

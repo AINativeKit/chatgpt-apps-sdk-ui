@@ -149,8 +149,8 @@ const containerStyle: CSSProperties = {
   maxWidth: `${DOC_LAYOUT_WIDTH}px`,
   borderRadius: '16px',
   overflow: 'hidden',
-  border: '1px solid var(--ai-color-border-subtle)',
-  boxShadow: 'var(--ai-elevation-2-shadow)',
+  border: '1px solid var(--color-border-subtle)',
+  boxShadow: 'var(--elevation-2-shadow)',
 };
 
 const meta: Meta<typeof FullscreenMap> = {
@@ -175,7 +175,7 @@ const FullscreenMapDoc: FC = () => {
           style={{
             margin: 0,
             maxWidth: '760px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: 1.6,
           }}
@@ -189,7 +189,7 @@ const FullscreenMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>Primary Layout</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Desktop layout with sidebar navigation and inspector panel. Mobile view collapses to a
             bottom carousel automatically.
           </p>
@@ -212,7 +212,7 @@ const FullscreenMapDoc: FC = () => {
         }}
       >
         <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
             Loading
           </h3>
           <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
@@ -221,7 +221,7 @@ const FullscreenMapDoc: FC = () => {
         </article>
 
         <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
             Error
           </h3>
           <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
@@ -236,7 +236,7 @@ const FullscreenMapDoc: FC = () => {
         </article>
 
         <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
             Empty
           </h3>
           <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
@@ -248,11 +248,11 @@ const FullscreenMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>Interaction Considerations</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Tips for keeping the fullscreen experience smooth across desktop and mobile contexts.
           </p>
         </header>
-        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--ai-color-text-secondary)' }}>
+        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--color-text-secondary)' }}>
           <li>Maintain shared selection state so compact and fullscreen maps stay in sync.</li>
           <li>
             Provide `onErrorRetry` callbacks when remote data is involved to keep recovery within
@@ -279,7 +279,7 @@ const FullscreenMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>FullscreenMap Props</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Extends `MapView` with layout, loading, and content configuration for the fullscreen
             shell.
           </p>

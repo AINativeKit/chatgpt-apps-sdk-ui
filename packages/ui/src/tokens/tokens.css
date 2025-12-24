@@ -1,14 +1,12 @@
 /**
- * Design Token CSS Custom Properties
+ * Component-specific CSS Custom Properties
  * @ainativekit/ui - Extension components for apps-sdk-ui
  *
- * This file provides a compatibility layer that maps legacy --ai-* tokens
- * to apps-sdk-ui tokens. Components should migrate to use apps-sdk-ui
- * tokens directly (--color-*, --radius-*, etc.).
+ * This file provides component-specific tokens for @ainativekit/ui components.
+ * These extend the base apps-sdk-ui design system.
  *
- * apps-sdk-ui provides comprehensive tokens including:
- * - Primitive colors: --gray-*, --blue-*, --green-*, --red-*, etc.
- * - Semantic colors: --color-text-*, --color-background-*, --color-border-*
+ * Base design tokens are provided by apps-sdk-ui:
+ * - Colors: --color-*, --gray-*, --blue-*, etc.
  * - Typography: --font-*, --control-font-size-*
  * - Spacing: --spacing (4px base unit, use with calc)
  * - Radius: --radius-* (2xs through 4xl, full)
@@ -20,260 +18,39 @@
   :root,
   :where([data-theme]) {
     /* =============================================
-       Color Compatibility Layer
-       Maps --ai-color-* to apps-sdk-ui semantic tokens
+       Card component tokens
     ============================================= */
-
-    /* Background colors */
-    --ai-color-bg-primary: var(--color-surface);
-    --ai-color-bg-secondary: var(--color-surface-secondary);
-    --ai-color-bg-tertiary: var(--color-surface-tertiary);
-
-    /* Text colors */
-    --ai-color-text-primary: var(--color-text);
-    --ai-color-text-secondary: var(--color-text-secondary);
-    --ai-color-text-tertiary: var(--color-text-tertiary);
-    --ai-color-text-inverted: var(--color-text-inverse);
-
-    /* Icon colors (same as text) */
-    --ai-color-icon-primary: var(--color-text);
-    --ai-color-icon-secondary: var(--color-text-secondary);
-    --ai-color-icon-tertiary: var(--color-text-tertiary);
-    --ai-color-icon-inverted: var(--color-text-inverse);
-
-    /* Accent colors (primitive) */
-    --ai-color-accent-blue: var(--blue-400);
-    --ai-color-accent-red: var(--red-500);
-    --ai-color-accent-orange: var(--orange-500);
-    --ai-color-accent-green: var(--green-500);
-
-    /* Brand colors (semantic) */
-    --ai-color-brand-primary: var(--color-background-info-solid);
-    --ai-color-brand-primary-hover: var(--color-background-info-solid-hover);
-    --ai-color-brand-primary-active: var(--color-background-info-solid-active);
-    --ai-color-brand-on-primary: var(--color-text-info-solid);
-
-    --ai-color-brand-success: var(--color-background-success-solid);
-    --ai-color-brand-success-hover: var(--color-background-success-solid-hover);
-    --ai-color-brand-success-active: var(--color-background-success-solid-active);
-    --ai-color-brand-on-success: var(--color-text-success-solid);
-
-    --ai-color-brand-warning: var(--color-background-warning-solid);
-    --ai-color-brand-warning-hover: var(--color-background-warning-solid-hover);
-    --ai-color-brand-warning-active: var(--color-background-warning-solid-active);
-    --ai-color-brand-on-warning: var(--color-text-warning-solid);
-
-    --ai-color-brand-error: var(--color-background-danger-solid);
-    --ai-color-brand-error-hover: var(--color-background-danger-solid-hover);
-    --ai-color-brand-error-active: var(--color-background-danger-solid-active);
-    --ai-color-brand-on-error: var(--color-text-danger-solid);
-
-    /* Border colors */
-    --ai-color-border-light: var(--color-border-subtle);
-    --ai-color-border-default: var(--color-border);
-    --ai-color-border-heavy: var(--color-border-strong);
-
-    /* Interactive states */
-    --ai-state-hover-background: var(--color-background-primary-ghost-hover);
-    --ai-state-hover-opacity: 0.9;
-    --ai-state-active-opacity: 1;
-    --ai-state-active-scale: 0.98;
-    --ai-state-disabled-opacity: 0.4;
-    --ai-state-focus-outline: var(--color-ring);
-    --ai-state-focus-offset: 2px;
-
-    /* =============================================
-       Typography Compatibility Layer
-       Maps --ai-font-* to apps-sdk-ui typography tokens
-    ============================================= */
-
-    --ai-font-family: var(--font-sans);
-
-    /* Font weights */
-    --ai-font-weight-light: 300;
-    --ai-font-weight-normal: var(--font-weight-normal);
-    --ai-font-weight-medium: var(--font-weight-medium);
-    --ai-font-weight-semibold: var(--font-weight-semibold);
-    --ai-font-weight-bold: var(--font-weight-bold);
-
-    /* Heading 1 (maps to heading-xl) */
-    --ai-font-size-h1: var(--font-heading-xl-size);
-    --ai-line-height-h1: var(--font-heading-xl-line-height);
-    --ai-font-weight-h1: var(--font-heading-xl-weight);
-    --ai-letter-spacing-h1: var(--font-heading-xl-tracking);
-
-    /* Heading 2 (maps to heading-lg) */
-    --ai-font-size-h2: var(--font-heading-lg-size);
-    --ai-line-height-h2: var(--font-heading-lg-line-height);
-    --ai-font-weight-h2: var(--font-heading-lg-weight);
-    --ai-letter-spacing-h2: var(--font-heading-lg-tracking);
-
-    /* Heading 3 (maps to heading-sm) */
-    --ai-font-size-h3: var(--font-heading-sm-size);
-    --ai-line-height-h3: var(--font-heading-sm-line-height);
-    --ai-font-weight-h3: var(--font-heading-sm-weight);
-    --ai-letter-spacing-h3: var(--font-heading-sm-tracking);
-
-    /* Body (maps to text-md) */
-    --ai-font-size-body: var(--font-text-md-size);
-    --ai-line-height-body: var(--font-text-md-line-height);
-    --ai-font-weight-body: var(--font-text-md-weight);
-    --ai-letter-spacing-body: var(--font-text-md-tracking);
-
-    /* Body emphasized */
-    --ai-font-size-body-emph: var(--font-text-md-size);
-    --ai-line-height-body-emph: var(--font-text-md-line-height);
-    --ai-font-weight-body-emph: var(--font-weight-semibold);
-    --ai-letter-spacing-body-emph: var(--font-text-md-tracking);
-
-    /* Body light */
-    --ai-font-size-body-light: var(--font-text-md-size);
-    --ai-line-height-body-light: var(--font-text-md-line-height);
-    --ai-font-weight-body-light: 300;
-    --ai-letter-spacing-body-light: var(--font-text-md-tracking);
-
-    /* Body small (maps to text-sm) */
-    --ai-font-size-body-small: var(--font-text-sm-size);
-    --ai-line-height-body-small: var(--font-text-sm-line-height);
-    --ai-font-weight-body-small: var(--font-text-sm-weight);
-    --ai-letter-spacing-body-small: var(--font-text-sm-tracking);
-
-    /* Body small emphasized */
-    --ai-font-size-body-small-emph: var(--font-text-sm-size);
-    --ai-line-height-body-small-emph: var(--font-text-sm-line-height);
-    --ai-font-weight-body-small-emph: var(--font-weight-semibold);
-    --ai-letter-spacing-body-small-emph: var(--font-text-sm-tracking);
-
-    /* Body small light */
-    --ai-font-size-body-small-light: var(--font-text-sm-size);
-    --ai-line-height-body-small-light: var(--font-text-sm-line-height);
-    --ai-font-weight-body-small-light: 300;
-    --ai-letter-spacing-body-small-light: var(--font-text-sm-tracking);
-
-    /* Caption (maps to text-xs) */
-    --ai-font-size-caption: var(--font-text-xs-size);
-    --ai-line-height-caption: var(--font-text-xs-line-height);
-    --ai-font-weight-caption: var(--font-text-xs-weight);
-    --ai-letter-spacing-caption: var(--font-text-xs-tracking);
-
-    /* Caption emphasized */
-    --ai-font-size-caption-emph: var(--font-text-xs-size);
-    --ai-line-height-caption-emph: var(--font-text-xs-line-height);
-    --ai-font-weight-caption-emph: var(--font-weight-semibold);
-    --ai-letter-spacing-caption-emph: var(--font-text-xs-tracking);
-
-    /* Button */
-    --ai-font-size-button: var(--control-font-size-md);
-    --ai-line-height-button: 24px;
-    --ai-font-weight-button: var(--button-font-weight);
-    --ai-letter-spacing-button: 0;
-
-    /* Badge */
-    --ai-font-size-badge: var(--badge-font-size-md);
-    --ai-line-height-badge: 18px;
-    --ai-font-weight-badge: var(--badge-font-weight-md);
-    --ai-letter-spacing-badge: 0;
-
-    /* =============================================
-       Spacing Compatibility Layer
-       apps-sdk-ui uses --spacing as 4px base unit
-       Our scale maps: 0→0, 1→2px, 2→4px, 4→8px, etc.
-    ============================================= */
-
-    --ai-spacing-0: 0px;
-    --ai-spacing-1: calc(var(--spacing) * 0.5); /* 2px */
-    --ai-spacing-2: var(--spacing); /* 4px */
-    --ai-spacing-4: calc(var(--spacing) * 2); /* 8px */
-    --ai-spacing-6: calc(var(--spacing) * 3); /* 12px */
-    --ai-spacing-8: calc(var(--spacing) * 4); /* 16px */
-    --ai-spacing-10: calc(var(--spacing) * 5); /* 20px */
-    --ai-spacing-12: calc(var(--spacing) * 6); /* 24px */
-    --ai-spacing-16: calc(var(--spacing) * 8); /* 32px */
-    --ai-spacing-20: calc(var(--spacing) * 10); /* 40px */
-    --ai-spacing-24: calc(var(--spacing) * 12); /* 48px */
-    --ai-spacing-32: calc(var(--spacing) * 16); /* 64px */
-    --ai-spacing-64: calc(var(--spacing) * 32); /* 128px */
-
-    /* =============================================
-       Radius Compatibility Layer
-       Maps --ai-radius-* to apps-sdk-ui --radius-*
-    ============================================= */
-
-    --ai-radius-none: 0px;
-    --ai-radius-sm: var(--radius-xs); /* 4px */
-    --ai-radius-md: var(--radius-md); /* 8px */
-    --ai-radius-base: var(--radius-xl); /* 12px */
-    --ai-radius-lg: var(--radius-2xl); /* 16px */
-    --ai-radius-xl: var(--radius-4xl); /* 24px */
-    --ai-radius-full: var(--radius-full); /* 9999px */
-
-    /* =============================================
-       Elevation Compatibility Layer
-       Maps --ai-elevation-* to apps-sdk-ui --shadow-*
-    ============================================= */
-
-    --ai-elevation-0-shadow: none;
-    --ai-elevation-0-overlay: transparent;
-    --ai-elevation-0: none;
-
-    --ai-elevation-1-shadow: var(--shadow-100);
-    --ai-elevation-1-overlay: transparent;
-    --ai-elevation-1: var(--shadow-100);
-
-    --ai-elevation-2-shadow: var(--shadow-200);
-    --ai-elevation-2-overlay: transparent;
-    --ai-elevation-2: var(--shadow-200);
-
-    --ai-elevation-3-shadow: var(--shadow-300);
-    --ai-elevation-3-overlay: transparent;
-    --ai-elevation-3: var(--shadow-300);
-
-    --ai-elevation-4-shadow: var(--shadow-400);
-    --ai-elevation-4-overlay: transparent;
-    --ai-elevation-4: var(--shadow-400);
-
-    --ai-elevation-5-shadow: var(--shadow-400);
-    --ai-elevation-5-overlay: transparent;
-    --ai-elevation-5: var(--shadow-400);
-
-    /* =============================================
-       Opacity (no direct mapping, keep as-is)
-    ============================================= */
-
-    --ai-opacity-full: 1;
-    --ai-opacity-subtle: 0.7;
-    --ai-opacity-muted: 0.5;
-    --ai-opacity-disabled: 0.3;
-
-    /* =============================================
-       Extension-specific tokens
-       These are unique to @ainativekit/ui components
-    ============================================= */
-
-    /* Card component tokens */
     --card-border-color: var(--color-border-strong);
     --card-shadow: var(--shadow-100);
     --card-radius: var(--radius-4xl);
     --card-padding: calc(var(--spacing) * 2);
     --card-gap: calc(var(--spacing) * 2);
 
-    /* Map component tokens */
+    /* =============================================
+       Map component tokens
+    ============================================= */
     --map-popup-background: var(--color-surface-elevated);
     --map-popup-border: var(--color-border);
     --map-popup-radius: var(--radius-4xl);
     --map-control-background: var(--color-surface);
     --map-control-border: var(--color-border-subtle);
 
-    /* Album component tokens */
+    /* =============================================
+       Album component tokens
+    ============================================= */
     --album-filmstrip-background: var(--color-surface-secondary);
     --album-thumbnail-radius: var(--radius-md);
     --album-overlay-background: rgb(0 0 0 / 80%);
 
-    /* Carousel component tokens */
+    /* =============================================
+       Carousel component tokens
+    ============================================= */
     --carousel-gap: calc(var(--spacing) * 3);
     --carousel-control-size: var(--control-size-lg);
 
-    /* List component tokens */
+    /* =============================================
+       List component tokens
+    ============================================= */
     --list-item-padding: calc(var(--spacing) * 3);
     --list-item-gap: calc(var(--spacing) * 2);
     --list-divider-color: var(--color-border-subtle);

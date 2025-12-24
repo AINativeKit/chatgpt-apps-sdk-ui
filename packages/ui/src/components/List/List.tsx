@@ -199,14 +199,14 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
               width={40}
               height={40}
               animation
-              style={{ borderRadius: 'var(--ai-radius-md)' }}
+              style={{ borderRadius: 'var(--radius-md)' }}
             />
           </div>
           <div className={styles.itemBody}>
             <div className={styles.itemHeader}>
               <Skeleton width="60%" height={16} animation />
             </div>
-            <div className={styles.itemSubtitleRow} style={{ marginTop: 'var(--ai-spacing-2)' }}>
+            <div className={styles.itemSubtitleRow} style={{ marginTop: 'var(8px)' }}>
               <Skeleton width="40%" height={14} animation />
             </div>
           </div>

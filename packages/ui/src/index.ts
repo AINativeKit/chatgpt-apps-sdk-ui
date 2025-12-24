@@ -23,7 +23,7 @@
  * Map, Album, Carousel, Card variants, etc.
  */
 
-// Import CSS tokens (compatibility layer for --ai-* tokens)
+// Import component-specific CSS tokens
 import './tokens/tokens.css';
 
 export const version = '1.0.0-alpha.1';

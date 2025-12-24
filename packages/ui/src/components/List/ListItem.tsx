@@ -189,7 +189,7 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
                 width={40}
                 height={40}
                 animation
-                style={{ borderRadius: 'var(--ai-radius-md)' }}
+                style={{ borderRadius: 'var(--radius-md)' }}
               />
             </div>
           )}
@@ -205,7 +205,7 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
               <Skeleton width="60%" height={16} animation />
             </div>
             {(subtitle || features) && (
-              <div className={styles.itemSubtitleRow} style={{ marginTop: 'var(--ai-spacing-2)' }}>
+              <div className={styles.itemSubtitleRow} style={{ marginTop: '8px' }}>
                 <Skeleton width="40%" height={14} animation />
               </div>
             )}

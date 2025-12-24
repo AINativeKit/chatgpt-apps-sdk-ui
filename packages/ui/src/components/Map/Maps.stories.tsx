@@ -163,7 +163,7 @@ const MapSystemComponent: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -178,7 +178,7 @@ const MapSystemComponent: React.FC = () => {
           <div>
             <strong>Key Features:</strong>
           </div>
-          <ul style={{ marginLeft: '24px', color: 'var(--ai-color-text-secondary)' }}>
+          <ul style={{ marginLeft: '24px', color: 'var(--color-text-secondary)' }}>
             <li>
               Three component variants for different use cases (Map, CompactMap, FullscreenMap)
             </li>
@@ -215,7 +215,7 @@ const MapSystemComponent: React.FC = () => {
                 position: 'fixed',
                 inset: 0,
                 zIndex: 1000,
-                backgroundColor: 'var(--ai-color-bg-primary)',
+                backgroundColor: 'var(--color-surface)',
                 display: 'flex',
                 flexDirection: 'column',
               }}
@@ -256,10 +256,10 @@ const MapSystemComponent: React.FC = () => {
               <div
                 style={{
                   padding: '12px',
-                  backgroundColor: 'var(--ai-color-bg-secondary)',
+                  backgroundColor: 'var(--color-surface-secondary)',
                   borderRadius: '8px',
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                 }}
               >
                 <strong>Try it:</strong> Click the expand button (↗️) in top-right corner. The map
@@ -276,7 +276,7 @@ const MapSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Component Variants</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             The Map system includes three specialized components. Explore their dedicated story
             files for detailed examples.
           </p>
@@ -294,8 +294,8 @@ const MapSystemComponent: React.FC = () => {
             style={{
               padding: '20px',
               borderRadius: '8px',
-              backgroundColor: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border-light)',
+              backgroundColor: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border-subtle)',
             }}
           >
             <h3 style={{ margin: '0 0 12px 0', fontSize: '15px', fontWeight: 600 }}>CompactMap</h3>
@@ -303,7 +303,7 @@ const MapSystemComponent: React.FC = () => {
               style={{
                 margin: '0 0 12px 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Lightweight inline map with carousel for ChatGPT Apps SDK integration.
@@ -312,7 +312,7 @@ const MapSystemComponent: React.FC = () => {
               href="?path=/story/composed-components-maps--compact-maps"
               style={{
                 fontSize: '13px',
-                color: 'var(--ai-color-accent-blue)',
+                color: 'var(--blue-400)',
                 textDecoration: 'none',
                 fontWeight: 500,
               }}
@@ -326,8 +326,8 @@ const MapSystemComponent: React.FC = () => {
             style={{
               padding: '20px',
               borderRadius: '8px',
-              backgroundColor: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border-light)',
+              backgroundColor: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border-subtle)',
             }}
           >
             <h3 style={{ margin: '0 0 12px 0', fontSize: '15px', fontWeight: 600 }}>
@@ -337,7 +337,7 @@ const MapSystemComponent: React.FC = () => {
               style={{
                 margin: '0 0 12px 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Full-featured map with sidebar, Inspector panel, and responsive layout.
@@ -346,7 +346,7 @@ const MapSystemComponent: React.FC = () => {
               href="?path=/story/composed-components-maps--fullscreen-maps"
               style={{
                 fontSize: '13px',
-                color: 'var(--ai-color-accent-blue)',
+                color: 'var(--blue-400)',
                 textDecoration: 'none',
                 fontWeight: 500,
               }}
@@ -377,7 +377,7 @@ const MapSystemComponent: React.FC = () => {
             style={{
               padding: '20px',
               borderRadius: '8px',
-              backgroundColor: 'var(--ai-color-bg-primary)',
+              backgroundColor: 'var(--color-surface)',
             }}
           >
             <h3 style={{ margin: '0 0 12px 0', fontSize: '15px', fontWeight: 600 }}>
@@ -388,7 +388,7 @@ const MapSystemComponent: React.FC = () => {
                 margin: 0,
                 paddingLeft: '20px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
               }}
             >
@@ -397,7 +397,7 @@ const MapSystemComponent: React.FC = () => {
               <li>Component manages fullscreen state</li>
               <li>Following Album pattern</li>
               <li style={{ marginTop: '8px' }}>
-                <strong style={{ color: 'var(--ai-color-text-primary)' }}>Example:</strong>{' '}
+                <strong style={{ color: 'var(--color-text)' }}>Example:</strong>{' '}
                 Chat-based map interface with inline compact view that expands to full map
               </li>
             </ul>
@@ -408,7 +408,7 @@ const MapSystemComponent: React.FC = () => {
             style={{
               padding: '20px',
               borderRadius: '8px',
-              backgroundColor: 'var(--ai-color-bg-primary)',
+              backgroundColor: 'var(--color-surface)',
             }}
           >
             <h3 style={{ margin: '0 0 12px 0', fontSize: '15px', fontWeight: 600 }}>
@@ -419,7 +419,7 @@ const MapSystemComponent: React.FC = () => {
                 margin: 0,
                 paddingLeft: '20px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
               }}
             >
@@ -428,7 +428,7 @@ const MapSystemComponent: React.FC = () => {
               <li>Embedding in dashboards</li>
               <li>Limited vertical space</li>
               <li style={{ marginTop: '8px' }}>
-                <strong style={{ color: 'var(--ai-color-text-primary)' }}>Example:</strong> Widget
+                <strong style={{ color: 'var(--color-text)' }}>Example:</strong> Widget
                 showing nearby locations on user profile
               </li>
             </ul>
@@ -439,7 +439,7 @@ const MapSystemComponent: React.FC = () => {
             style={{
               padding: '20px',
               borderRadius: '8px',
-              backgroundColor: 'var(--ai-color-bg-primary)',
+              backgroundColor: 'var(--color-surface)',
             }}
           >
             <h3 style={{ margin: '0 0 12px 0', fontSize: '15px', fontWeight: 600 }}>
@@ -450,7 +450,7 @@ const MapSystemComponent: React.FC = () => {
                 margin: 0,
                 paddingLeft: '20px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
               }}
             >
@@ -459,7 +459,7 @@ const MapSystemComponent: React.FC = () => {
               <li>Inspector panel needed</li>
               <li>Dedicated map page</li>
               <li style={{ marginTop: '8px' }}>
-                <strong style={{ color: 'var(--ai-color-text-primary)' }}>Example:</strong> Maps
+                <strong style={{ color: 'var(--color-text)' }}>Example:</strong> Maps
                 application with full UI for exploring locations
               </li>
             </ul>
@@ -478,11 +478,11 @@ const MapSystemComponent: React.FC = () => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             marginBottom: '24px',
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             lineHeight: '1.6',
           }}
         >
@@ -510,7 +510,7 @@ const MapSystemComponent: React.FC = () => {
           <pre
             style={{
               margin: 0,
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
               whiteSpace: 'pre-wrap',
               wordBreak: 'break-word',
             }}
@@ -536,7 +536,7 @@ const handleMapToggle = (fullscreen: boolean) => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
           }}
         >
@@ -548,7 +548,7 @@ const handleMapToggle = (fullscreen: boolean) => {
               margin: 0,
               paddingLeft: '20px',
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               lineHeight: '1.8',
             }}
           >
@@ -574,7 +574,7 @@ const handleMapToggle = (fullscreen: boolean) => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Map Props (Orchestrator)</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Primary component for ChatGPT Apps SDK integration. Manages fullscreen toggle.
           </p>
         </header>
@@ -625,7 +625,7 @@ const handleMapToggle = (fullscreen: boolean) => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>CompactMap Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Compact map with carousel. Used standalone or via Map orchestrator.
           </p>
         </header>
@@ -675,7 +675,7 @@ const handleMapToggle = (fullscreen: boolean) => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>FullscreenMap Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Full-featured map with sidebar and Inspector panel.
           </p>
         </header>
@@ -733,7 +733,7 @@ const handleMapToggle = (fullscreen: boolean) => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>MapView Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Core map rendering component - used by all variants internally.
           </p>
         </header>
@@ -772,11 +772,11 @@ const handleMapToggle = (fullscreen: boolean) => {
             },
             {
               name: 'markerColor',
-              description: 'Color for default markers - default: var(--ai-color-accent-blue)',
+              description: 'Color for default markers - default: var(--blue-400)',
             },
             {
               name: 'selectedMarkerColor',
-              description: 'Color for selected marker - default: var(--ai-color-accent-blue)',
+              description: 'Color for selected marker - default: var(--blue-400)',
             },
             {
               name: 'isInspectorOpen',
@@ -790,7 +790,7 @@ const handleMapToggle = (fullscreen: boolean) => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>LocationData Type</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Location object structure for all Map components
           </p>
         </header>
@@ -846,13 +846,13 @@ const handleMapToggle = (fullscreen: boolean) => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             marginBottom: '16px',
           }}
         >
           <h3 style={{ fontSize: '14px', marginBottom: '8px' }}>Component Architecture</h3>
-          <p style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
             <strong>Map</strong> (orchestrator) follows the <strong>Album pattern</strong> -
             conditionally renders either CompactMap or FullscreenMap based on fullscreen state.
             Supports both controlled and uncontrolled modes. Both child components maintain their
@@ -863,13 +863,13 @@ const handleMapToggle = (fullscreen: boolean) => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             marginBottom: '16px',
           }}
         >
           <h3 style={{ fontSize: '14px', marginBottom: '8px' }}>SSR-Safe Implementation</h3>
-          <p style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
             Map components use lazy loading and client-side mounting checks to avoid SSR issues with
             Leaflet. A loading fallback is shown during hydration and initial mount.
           </p>
@@ -878,13 +878,13 @@ const handleMapToggle = (fullscreen: boolean) => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             marginBottom: '16px',
           }}
         >
           <h3 style={{ fontSize: '14px', marginBottom: '8px' }}>Dependencies</h3>
-          <p style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
             <strong>leaflet</strong> ^1.9.4 - Base mapping library
             <br />
             <strong>react-leaflet</strong> ^4.2.1 - React components for Leaflet (compatible with
@@ -897,12 +897,12 @@ const handleMapToggle = (fullscreen: boolean) => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
           }}
         >
           <h3 style={{ fontSize: '14px', marginBottom: '8px' }}>Browser Support</h3>
-          <p style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
             All modern browsers with CSS Grid and modern ES6+ support. Leaflet handles map tile
             loading and caching automatically.
           </p>
@@ -913,7 +913,7 @@ const handleMapToggle = (fullscreen: boolean) => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Advanced Features</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Additional map features for customization and interaction control.
           </p>
         </header>
@@ -923,9 +923,9 @@ const handleMapToggle = (fullscreen: boolean) => {
           <div
             style={{
               padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '12px',
-              border: '1px solid var(--ai-color-border-default)',
+              border: '1px solid var(--color-border)',
             }}
           >
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
@@ -935,13 +935,13 @@ const handleMapToggle = (fullscreen: boolean) => {
               style={{
                 margin: '0 0 12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Use the <code>renderMarker</code> prop to customize map markers with your own React
               components. Supports global styling, per-location customization, and hybrid modes.
             </p>
-            <div style={{ fontSize: '13px', color: 'var(--ai-color-text-secondary)' }}>
+            <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>
               <strong>See:</strong> "Custom Markers" story in the sidebar for comprehensive examples
               including global markers, hybrid mode, per-location customization, performance
               optimization, and fallback patterns.
@@ -952,9 +952,9 @@ const handleMapToggle = (fullscreen: boolean) => {
           <div
             style={{
               padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '12px',
-              border: '1px solid var(--ai-color-border-default)',
+              border: '1px solid var(--color-border)',
             }}
           >
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
@@ -964,13 +964,13 @@ const handleMapToggle = (fullscreen: boolean) => {
               style={{
                 margin: '0 0 12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Use <code>showPopup={'{false}'}</code> to disable marker popup bubbles when using
               external UI like Inspector panels or sidebars for location details.
             </p>
-            <div style={{ fontSize: '13px', color: 'var(--ai-color-text-secondary)' }}>
+            <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>
               <strong>See:</strong> "CompactMap" story → "Popup Control" section for side-by-side
               comparison of maps with and without popups.
             </div>
@@ -980,15 +980,15 @@ const handleMapToggle = (fullscreen: boolean) => {
           <div
             style={{
               padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '12px',
-              border: '1px solid var(--ai-color-border-default)',
+              border: '1px solid var(--color-border)',
             }}
           >
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
               Scroll Wheel Zoom
             </h3>
-            <p style={{ margin: '0', fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+            <p style={{ margin: '0', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
               Control zoom behavior with <code>scrollWheelZoom</code> prop. Set to <code>true</code>{' '}
               for native Leaflet scroll zoom (best for fullscreen), or <code>false</code> (default)
               for custom pinch-to-zoom in embedded maps.
@@ -999,9 +999,9 @@ const handleMapToggle = (fullscreen: boolean) => {
           <div
             style={{
               padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '12px',
-              border: '1px solid var(--ai-color-border-default)',
+              border: '1px solid var(--color-border)',
             }}
           >
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
@@ -1011,7 +1011,7 @@ const handleMapToggle = (fullscreen: boolean) => {
               style={{
                 margin: '0 0 12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Set <code>autoExpandOnCarouselClick={'{true}'}</code> on the <code>Map</code>{' '}
@@ -1022,7 +1022,7 @@ const handleMapToggle = (fullscreen: boolean) => {
             <div
               style={{
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -1032,7 +1032,7 @@ const handleMapToggle = (fullscreen: boolean) => {
               style={{
                 margin: 0,
                 padding: '12px',
-                background: 'var(--ai-color-bg-tertiary)',
+                background: 'var(--color-surface-tertiary)',
                 borderRadius: '6px',
                 fontSize: '12px',
                 lineHeight: '1.5',
@@ -1050,9 +1050,9 @@ const handleMapToggle = (fullscreen: boolean) => {
           <div
             style={{
               padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '12px',
-              border: '1px solid var(--ai-color-border-default)',
+              border: '1px solid var(--color-border)',
             }}
           >
             <h3 style={{ fontSize: '16px', marginBottom: '8px', fontWeight: 600 }}>
@@ -1062,7 +1062,7 @@ const handleMapToggle = (fullscreen: boolean) => {
               style={{
                 margin: '0 0 12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Control the visibility of Leaflet attribution using the <code>hideAttribution</code>{' '}
@@ -1072,7 +1072,7 @@ const handleMapToggle = (fullscreen: boolean) => {
             <div
               style={{
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -1083,7 +1083,7 @@ const handleMapToggle = (fullscreen: boolean) => {
               style={{
                 margin: 0,
                 padding: '12px',
-                background: 'var(--ai-color-bg-tertiary)',
+                background: 'var(--color-surface-tertiary)',
                 borderRadius: '6px',
                 fontSize: '12px',
                 lineHeight: '1.5',
@@ -1110,7 +1110,7 @@ const handleMapToggle = (fullscreen: boolean) => {
       <section>
         <header style={{ marginBottom: '16px' }}>
           <h2 style={{ marginBottom: '8px' }}>Related Components</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             For detailed <strong>MapPlaceCard</strong> documentation including badges, multi-line
             text, loading/error/empty states, and image controls, see the{' '}
             <strong>MapPlaceCard</strong> story in the sidebar.

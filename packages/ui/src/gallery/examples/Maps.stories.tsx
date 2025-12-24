@@ -160,7 +160,7 @@ const MapsComponent: React.FC = () => {
           position: 'fixed',
           inset: 0,
           zIndex: 1000,
-          backgroundColor: 'var(--ai-color-bg-primary)',
+          backgroundColor: 'var(--color-surface)',
           display: 'flex',
           flexDirection: 'column',
           fontFamily:
@@ -201,7 +201,7 @@ const MapsComponent: React.FC = () => {
             fontSize: '32px',
             fontWeight: '700',
             marginBottom: '12px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           🗺️ Interactive Maps
@@ -209,7 +209,7 @@ const MapsComponent: React.FC = () => {
         <p
           style={{
             fontSize: '16px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             margin: 0,
             lineHeight: '1.6',
           }}
@@ -228,7 +228,7 @@ const MapsComponent: React.FC = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '16px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Live Demo
@@ -237,7 +237,7 @@ const MapsComponent: React.FC = () => {
         <p
           style={{
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             marginBottom: '12px',
             fontStyle: 'italic',
           }}
@@ -253,7 +253,7 @@ const MapsComponent: React.FC = () => {
             marginBottom: '24px',
             borderRadius: '12px',
             overflow: 'hidden',
-            boxShadow: 'var(--ai-elevation-2-shadow)',
+            boxShadow: 'var(--elevation-2-shadow)',
           }}
         >
           <Map
@@ -270,13 +270,13 @@ const MapsComponent: React.FC = () => {
         <div
           style={{
             padding: '16px',
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
           }}
         >
-          <strong style={{ color: 'var(--ai-color-text-primary)' }}>✨ Features:</strong>
+          <strong style={{ color: 'var(--color-text)' }}>✨ Features:</strong>
           <ul
             style={{
               margin: '8px 0 0 0',
@@ -302,7 +302,7 @@ const MapsComponent: React.FC = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Use Cases
@@ -352,7 +352,7 @@ const MapsComponent: React.FC = () => {
               style={{
                 padding: '16px',
                 borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
+                background: 'var(--color-surface)',
               }}
             >
               <h3
@@ -360,7 +360,7 @@ const MapsComponent: React.FC = () => {
                   fontSize: '14px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 {useCase.title}
@@ -368,7 +368,7 @@ const MapsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: 0,
                   lineHeight: '1.5',
                 }}
@@ -387,7 +387,7 @@ const MapsComponent: React.FC = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           ChatGPT Apps SDK Integration
@@ -396,7 +396,7 @@ const MapsComponent: React.FC = () => {
         <p
           style={{
             fontSize: '14px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             marginBottom: '16px',
             lineHeight: '1.6',
           }}
@@ -411,7 +411,7 @@ const MapsComponent: React.FC = () => {
           <pre
             style={{
               margin: 0,
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
               whiteSpace: 'pre-wrap',
               wordBreak: 'break-word',
             }}
@@ -441,13 +441,13 @@ function MyMapApp() {
         <div
           style={{
             padding: '16px',
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
           }}
         >
-          <strong style={{ color: 'var(--ai-color-text-primary)' }}>💡 Integration Tips:</strong>
+          <strong style={{ color: 'var(--color-text)' }}>💡 Integration Tips:</strong>
           <ul
             style={{
               margin: '8px 0 0 0',
@@ -490,7 +490,7 @@ function MyMapApp() {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Key Features
@@ -542,7 +542,7 @@ function MyMapApp() {
               style={{
                 padding: '16px',
                 borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
+                background: 'var(--color-surface)',
               }}
             >
               <h3
@@ -550,7 +550,7 @@ function MyMapApp() {
                   fontSize: '14px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 ✓ {feature.title}
@@ -558,7 +558,7 @@ function MyMapApp() {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: 0,
                   lineHeight: '1.5',
                 }}

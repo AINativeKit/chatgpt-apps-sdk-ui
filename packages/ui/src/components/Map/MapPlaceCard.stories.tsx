@@ -52,7 +52,7 @@ const MapPlaceCardShowcase: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -66,7 +66,7 @@ const MapPlaceCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>MapPlaceCard Variants</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Different content configurations and states
           </p>
         </header>
@@ -129,7 +129,7 @@ const MapPlaceCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Loading, error, and empty states with proper fallbacks
           </p>
         </header>
@@ -140,7 +140,7 @@ const MapPlaceCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontWeight: '600',
               }}
             >
@@ -158,7 +158,7 @@ const MapPlaceCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontWeight: '600',
               }}
             >
@@ -182,7 +182,7 @@ const MapPlaceCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontWeight: '600',
               }}
             >
@@ -202,14 +202,14 @@ const MapPlaceCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Real-World Example</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Interactive location list with selection and badges
           </p>
         </header>
 
         <div
           style={{
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             padding: '24px',
             borderRadius: '12px',
             maxWidth: '650px',
@@ -252,7 +252,7 @@ const MapPlaceCardShowcase: React.FC = () => {
               style={{
                 margin: 0,
                 paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.8',
               }}
             >
@@ -271,7 +271,7 @@ const MapPlaceCardShowcase: React.FC = () => {
               style={{
                 margin: 0,
                 paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.8',
               }}
             >
@@ -291,7 +291,7 @@ const MapPlaceCardShowcase: React.FC = () => {
               style={{
                 margin: 0,
                 paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.8',
               }}
             >
@@ -306,7 +306,7 @@ const MapPlaceCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Props Reference</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Complete API documentation for MapPlaceCard
           </p>
         </header>
@@ -321,7 +321,7 @@ const MapPlaceCardShowcase: React.FC = () => {
         >
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
-              <tr style={{ backgroundColor: 'var(--ai-color-bg-secondary)' }}>
+              <tr style={{ backgroundColor: 'var(--color-surface-secondary)' }}>
                 <th
                   style={{
                     textAlign: 'left',
@@ -484,7 +484,7 @@ const MapPlaceCardShowcase: React.FC = () => {
                     }}
                   >
                     {prop.name}
-                    {prop.required && <span style={{ color: 'var(--ai-color-error)' }}> *</span>}
+                    {prop.required && <span style={{ color: 'var(--red-500)' }}> *</span>}
                   </td>
                   <td
                     style={{
@@ -492,7 +492,7 @@ const MapPlaceCardShowcase: React.FC = () => {
                       borderBottom: index < 22 ? '1px solid rgba(121, 116, 126, 0.08)' : 'none',
                       fontFamily: 'monospace',
                       fontSize: '12px',
-                      color: 'var(--ai-color-text-secondary)',
+                      color: 'var(--color-text-secondary)',
                     }}
                   >
                     {prop.type}
@@ -503,7 +503,7 @@ const MapPlaceCardShowcase: React.FC = () => {
                       borderBottom: index < 22 ? '1px solid rgba(121, 116, 126, 0.08)' : 'none',
                       fontFamily: 'monospace',
                       fontSize: '12px',
-                      color: 'var(--ai-color-text-tertiary)',
+                      color: 'var(--color-text-tertiary)',
                     }}
                   >
                     {prop.default || '-'}
@@ -513,7 +513,7 @@ const MapPlaceCardShowcase: React.FC = () => {
                       padding: '12px 16px',
                       borderBottom: index < 22 ? '1px solid rgba(121, 116, 126, 0.08)' : 'none',
                       fontSize: '14px',
-                      color: 'var(--ai-color-text-secondary)',
+                      color: 'var(--color-text-secondary)',
                     }}
                   >
                     {prop.description}

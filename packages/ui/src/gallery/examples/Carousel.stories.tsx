@@ -95,7 +95,7 @@ export const Carousel: Story = {
               fontSize: '32px',
               fontWeight: '700',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             🎠 Carousel - Restaurant Showcase
@@ -103,7 +103,7 @@ export const Carousel: Story = {
           <p
             style={{
               fontSize: '16px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               margin: 0,
               lineHeight: '1.6',
             }}
@@ -120,7 +120,7 @@ export const Carousel: Story = {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Live Demo
@@ -150,14 +150,14 @@ export const Carousel: Story = {
           <div
             style={{
               padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '8px',
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
-              border: '1px solid var(--ai-color-border)',
+              color: 'var(--color-text-secondary)',
+              border: '1px solid var(--color-border)',
             }}
           >
-            <strong style={{ color: 'var(--ai-color-text-primary)' }}>✨ Features:</strong>
+            <strong style={{ color: 'var(--color-text)' }}>✨ Features:</strong>
             <ul
               style={{
                 margin: '8px 0 0 0',
@@ -181,7 +181,7 @@ export const Carousel: Story = {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Data Structure
@@ -190,7 +190,7 @@ export const Carousel: Story = {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
               lineHeight: '1.6',
             }}
@@ -203,7 +203,7 @@ export const Carousel: Story = {
             <pre
               style={{
                 margin: 0,
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
                 whiteSpace: 'pre-wrap',
                 wordBreak: 'break-word',
               }}
@@ -244,19 +244,19 @@ const items: SummaryCardItem[] = [
 
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <p style={{ margin: '0 0 12px 0' }}>
-              <strong style={{ color: 'var(--ai-color-text-primary)' }}>💡 Pro Tip:</strong> Use the{' '}
+              <strong style={{ color: 'var(--color-text)' }}>💡 Pro Tip:</strong> Use the{' '}
               <code
                 style={{
-                  background: 'var(--ai-color-bg-primary)',
+                  background: 'var(--color-surface)',
                   padding: '2px 6px',
                   borderRadius: '4px',
                   fontFamily: 'monospace',
@@ -278,7 +278,7 @@ const items: SummaryCardItem[] = [
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Quick Start
@@ -288,7 +288,7 @@ const items: SummaryCardItem[] = [
             <pre
               style={{
                 margin: 0,
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
                 whiteSpace: 'pre-wrap',
                 wordBreak: 'break-word',
               }}
@@ -360,7 +360,7 @@ function MyCarousel() {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Component Props
@@ -372,7 +372,7 @@ function MyCarousel() {
                 fontSize: '16px',
                 fontWeight: '600',
                 marginBottom: '16px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Carousel Component
@@ -403,7 +403,7 @@ function MyCarousel() {
                 fontSize: '16px',
                 fontWeight: '600',
                 marginBottom: '16px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               SummaryCard Component (Card Content)
@@ -469,7 +469,7 @@ function MyCarousel() {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Use Cases
@@ -507,8 +507,8 @@ function MyCarousel() {
               <div
                 key={useCase.title}
                 style={{
-                  background: 'var(--ai-color-bg-secondary)',
-                  border: '1px solid var(--ai-color-border)',
+                  background: 'var(--color-surface-secondary)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '8px',
                   padding: '16px',
                 }}
@@ -519,7 +519,7 @@ function MyCarousel() {
                     margin: '0 0 8px 0',
                     fontSize: '14px',
                     fontWeight: '600',
-                    color: 'var(--ai-color-text-primary)',
+                    color: 'var(--color-text)',
                   }}
                 >
                   {useCase.title}
@@ -528,7 +528,7 @@ function MyCarousel() {
                   style={{
                     margin: 0,
                     fontSize: '13px',
-                    color: 'var(--ai-color-text-secondary)',
+                    color: 'var(--color-text-secondary)',
                     lineHeight: '1.5',
                   }}
                 >
@@ -546,7 +546,7 @@ function MyCarousel() {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Related Components
@@ -554,13 +554,13 @@ function MyCarousel() {
 
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
               fontSize: '14px',
               lineHeight: '1.6',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <p style={{ margin: '0 0 12px 0' }}>

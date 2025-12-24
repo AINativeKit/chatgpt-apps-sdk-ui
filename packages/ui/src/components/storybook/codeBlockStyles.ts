@@ -10,7 +10,7 @@ export const codeBlockStyles = {
    * Larger padding and rounded corners for prominence
    */
   primary: {
-    background: 'var(--ai-color-bg-secondary)',
+    background: 'var(--color-surface-secondary)',
     padding: '16px',
     borderRadius: '8px',
     fontFamily: 'monospace',
@@ -24,7 +24,7 @@ export const codeBlockStyles = {
    * Smaller padding for less prominent examples
    */
   inline: {
-    background: 'var(--ai-color-bg-secondary)',
+    background: 'var(--color-surface-secondary)',
     padding: '12px',
     borderRadius: '6px',
     fontFamily: 'monospace',
@@ -37,7 +37,7 @@ export const codeBlockStyles = {
    * Consistent with inline but with scroll handling
    */
   terminal: {
-    background: 'var(--ai-color-bg-secondary)',
+    background: 'var(--color-surface-secondary)',
     padding: '12px',
     borderRadius: '6px',
     fontFamily: 'monospace',

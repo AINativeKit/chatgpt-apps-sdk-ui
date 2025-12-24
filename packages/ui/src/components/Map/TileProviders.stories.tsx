@@ -54,7 +54,7 @@ const CodeBlock: FC<{ code: string; title?: string }> = ({ code, title }) => (
         style={{
           fontSize: '14px',
           fontWeight: 600,
-          color: 'var(--ai-color-text-primary)',
+          color: 'var(--color-text)',
         }}
       >
         {title}
@@ -64,13 +64,13 @@ const CodeBlock: FC<{ code: string; title?: string }> = ({ code, title }) => (
       style={{
         margin: 0,
         padding: '16px',
-        background: 'var(--ai-color-bg-secondary)',
+        background: 'var(--color-surface-secondary)',
         borderRadius: '8px',
         overflow: 'auto',
         fontSize: '13px',
         lineHeight: '1.6',
         fontFamily: 'Monaco, Menlo, "Ubuntu Mono", Consolas, monospace',
-        border: '1px solid var(--ai-color-border-default)',
+        border: '1px solid var(--color-border)',
       }}
     >
       <code>{code}</code>
@@ -87,7 +87,7 @@ const ExampleSection: FC<{
   <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
     <header>
       <h2 style={{ marginBottom: '8px', fontSize: '24px', fontWeight: 600 }}>{title}</h2>
-      <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)', lineHeight: 1.6 }}>
+      <p style={{ margin: 0, color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
         {description}
       </p>
     </header>
@@ -126,7 +126,7 @@ export const TileProviders: FC = () => {
           style={{
             margin: 0,
             maxWidth: '720px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: 1.6,
           }}
@@ -140,11 +140,11 @@ export const TileProviders: FC = () => {
         <div
           style={{
             marginTop: '16px',
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '12px',
             padding: '16px',
             maxWidth: CHATGPT_APP_WIDTH,
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '14px',
           }}
         >
@@ -154,13 +154,13 @@ export const TileProviders: FC = () => {
 
       {/* CARTO Basemaps */}
       <section
-        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--color-border)' }}
       >
         <h2 style={{ marginBottom: '8px', fontSize: '28px', fontWeight: 600 }}>CARTO Basemaps</h2>
         <p
           style={{
             margin: '0 0 32px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             lineHeight: 1.6,
           }}
         >
@@ -230,7 +230,7 @@ export const TileProviders: FC = () => {
 
       {/* OpenStreetMap Styles */}
       <section
-        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--color-border)' }}
       >
         <h2 style={{ marginBottom: '8px', fontSize: '28px', fontWeight: 600 }}>
           OpenStreetMap Styles
@@ -238,7 +238,7 @@ export const TileProviders: FC = () => {
         <p
           style={{
             margin: '0 0 32px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             lineHeight: 1.6,
           }}
         >
@@ -288,13 +288,13 @@ export const TileProviders: FC = () => {
 
       {/* Specialized Maps */}
       <section
-        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--color-border)' }}
       >
         <h2 style={{ marginBottom: '8px', fontSize: '28px', fontWeight: 600 }}>Specialized Maps</h2>
         <p
           style={{
             margin: '0 0 32px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             lineHeight: 1.6,
           }}
         >
@@ -364,7 +364,7 @@ export const TileProviders: FC = () => {
 
       {/* Additional Features Section */}
       <section
-        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--color-border)' }}
       >
         <h2 style={{ marginBottom: '16px', fontSize: '28px', fontWeight: 600 }}>
           Premium Providers & Custom Configuration
@@ -374,7 +374,7 @@ export const TileProviders: FC = () => {
           <div
             style={{
               padding: '20px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '12px',
             }}
           >
@@ -384,7 +384,7 @@ export const TileProviders: FC = () => {
             <p
               style={{
                 margin: '0 0 16px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: 1.6,
               }}
             >
@@ -395,7 +395,7 @@ export const TileProviders: FC = () => {
               style={{
                 margin: '0 0 16px',
                 paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: 1.8,
               }}
             >
@@ -405,7 +405,7 @@ export const TileProviders: FC = () => {
                   href="https://client.stadiamaps.com/signup/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'var(--ai-color-brand-primary)' }}
+                  style={{ color: 'var(--blue-400)' }}
                 >
                   Sign up at Stadia Maps
                 </a>
@@ -419,7 +419,7 @@ export const TileProviders: FC = () => {
                   href="https://www.geoapify.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'var(--ai-color-brand-primary)' }}
+                  style={{ color: 'var(--blue-400)' }}
                 >
                   Sign up at Geoapify
                 </a>
@@ -432,7 +432,7 @@ export const TileProviders: FC = () => {
                   href="https://www.thunderforest.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'var(--ai-color-brand-primary)' }}
+                  style={{ color: 'var(--blue-400)' }}
                 >
                   Sign up at Thunderforest
                 </a>
@@ -467,7 +467,7 @@ export const TileProviders: FC = () => {
           <div
             style={{
               padding: '20px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '12px',
             }}
           >
@@ -477,7 +477,7 @@ export const TileProviders: FC = () => {
             <p
               style={{
                 margin: '0 0 16px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: 1.6,
               }}
             >
@@ -500,7 +500,7 @@ export const TileProviders: FC = () => {
           <div
             style={{
               padding: '20px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '12px',
             }}
           >
@@ -510,7 +510,7 @@ export const TileProviders: FC = () => {
             <p
               style={{
                 margin: 0,
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: 1.6,
               }}
             >

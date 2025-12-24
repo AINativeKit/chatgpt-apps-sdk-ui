@@ -5,6 +5,7 @@ import { ImageCard } from '../Card/ImageCard';
 import { SummaryCard } from '../Card/SummaryCard';
 import { ListCard } from '../Card/ListCard';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { InfoCircle } from '@openai/apps-sdk-ui/components/Icon';
 import { PropsTable } from '../../tokens/PropsTable';
 
 const meta: Meta<typeof Carousel> = {
@@ -96,17 +97,17 @@ const SummaryCardCarouselDemo: React.FC = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <div
         style={{
-          background: 'var(--ai-color-bg-secondary)',
+          background: 'var(--color-surface-secondary)',
           padding: '12px',
           borderRadius: '8px',
           fontSize: '12px',
-          color: 'var(--ai-color-text-secondary)',
+          color: 'var(--color-text-secondary)',
         }}
       >
         💡 <strong>Recommended Pattern:</strong> Pass SummaryCards with{' '}
         <code
           style={{
-            background: 'var(--ai-color-bg-primary)',
+            background: 'var(--color-surface)',
             padding: '2px 6px',
             borderRadius: '3px',
             fontSize: '11px',
@@ -129,7 +130,7 @@ const SummaryCardCarouselDemo: React.FC = () => {
         >
           {autoToggle ? '⏹️ Stop Auto-Toggle' : '🔄 Auto-Toggle (3s)'}
         </Button>
-        <span style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+        <span style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
           Current: <strong>{isLoading ? 'Loading' : 'Loaded'}</strong>
         </span>
       </div>
@@ -163,7 +164,7 @@ const SummaryCardCarouselDemo: React.FC = () => {
         style={{
           marginTop: '8px',
           fontSize: '12px',
-          color: 'var(--ai-color-text-secondary)',
+          color: 'var(--color-text-secondary)',
           lineHeight: '1.5',
         }}
       >
@@ -180,7 +181,7 @@ const SummaryCardCarouselDemo: React.FC = () => {
         <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
         <div
           style={{
-            backgroundColor: 'var(--ai-color-bg-tertiary)',
+            backgroundColor: 'var(--color-surface-tertiary)',
             padding: '16px',
             borderRadius: '8px',
             fontFamily: 'monospace',
@@ -230,7 +231,7 @@ const CarouselsComponent: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -244,7 +245,7 @@ const CarouselsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Basic Carousels</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Simple carousels with different card types
           </p>
         </header>
@@ -259,7 +260,7 @@ const CarouselsComponent: React.FC = () => {
                   image={image}
                   title={`Destination ${index + 1}`}
                   subtitle="Beautiful scenery"
-                  actionIcon="info-circle"
+                  actionIcon={<InfoCircle />}
                   actionLabel="View details"
                   onAction={() => console.log(`View details for slide ${index + 1}`)}
                   size="compact"
@@ -271,7 +272,7 @@ const CarouselsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -343,7 +344,7 @@ const CarouselsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -393,7 +394,7 @@ const CarouselsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Alignment Options</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Control how slides align within the viewport: start, center, or end
           </p>
         </header>
@@ -405,7 +406,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -426,7 +427,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -447,7 +448,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -468,7 +469,7 @@ const CarouselsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Navigation & Controls</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Customize navigation buttons, edge gradients, and looping behavior
           </p>
         </header>
@@ -480,7 +481,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -506,7 +507,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -532,7 +533,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -558,7 +559,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -584,7 +585,7 @@ const CarouselsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Spacing & Layout</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Control gaps, padding, and flush start alignment
           </p>
         </header>
@@ -596,7 +597,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -617,13 +618,13 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
               Increase spacing with custom gap value
             </p>
-            <Carousel gap="var(--ai-spacing-16)">
+            <Carousel gap="64px">
               {sampleImages.map((image, index) => (
                 <div key={index} style={{ width: '240px', flexShrink: 0 }}>
                   <ImageCard image={image} title={`Wide ${index + 1}`} size="compact" />
@@ -638,7 +639,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -659,7 +660,7 @@ const CarouselsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -680,7 +681,7 @@ const CarouselsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Interactive Features</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Track slide changes and integrate with your app state
           </p>
         </header>
@@ -691,7 +692,7 @@ const CarouselsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '12px',
             }}
           >
@@ -713,7 +714,7 @@ const CarouselsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -739,7 +740,7 @@ Current: {currentSlide + 1} of {total}`}</code>
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Loading, Error & Empty States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Built-in states for loading, errors, and empty content
           </p>
         </header>
@@ -751,7 +752,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -769,7 +770,7 @@ Current: {currentSlide + 1} of {total}`}</code>
               <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
               <div
                 style={{
-                  backgroundColor: 'var(--ai-color-bg-tertiary)',
+                  backgroundColor: 'var(--color-surface-tertiary)',
                   padding: '16px',
                   borderRadius: '8px',
                   fontFamily: 'monospace',
@@ -808,7 +809,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -824,7 +825,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -835,7 +836,7 @@ Current: {currentSlide + 1} of {total}`}</code>
               <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
               <div
                 style={{
-                  backgroundColor: 'var(--ai-color-bg-tertiary)',
+                  backgroundColor: 'var(--color-surface-tertiary)',
                   padding: '16px',
                   borderRadius: '8px',
                   fontFamily: 'monospace',
@@ -857,7 +858,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -873,7 +874,7 @@ Current: {currentSlide + 1} of {total}`}</code>
               <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
               <div
                 style={{
-                  backgroundColor: 'var(--ai-color-bg-tertiary)',
+                  backgroundColor: 'var(--color-surface-tertiary)',
                   padding: '16px',
                   borderRadius: '8px',
                   fontFamily: 'monospace',
@@ -899,7 +900,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -915,7 +916,7 @@ Current: {currentSlide + 1} of {total}`}</code>
               <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
               <div
                 style={{
-                  backgroundColor: 'var(--ai-color-bg-tertiary)',
+                  backgroundColor: 'var(--color-surface-tertiary)',
                   padding: '16px',
                   borderRadius: '8px',
                   fontFamily: 'monospace',
@@ -939,7 +940,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -950,15 +951,15 @@ Current: {currentSlide + 1} of {total}`}</code>
                 <div style={{ textAlign: 'center', padding: '32px' }}>
                   <div style={{ fontSize: '48px', marginBottom: '16px' }}>🎨</div>
                   <h3 style={{ marginBottom: '8px' }}>No items yet</h3>
-                  <p style={{ color: 'var(--ai-color-text-secondary)', marginBottom: '16px' }}>
+                  <p style={{ color: 'var(--color-text-secondary)', marginBottom: '16px' }}>
                     Start by adding your first item
                   </p>
                   <button
                     style={{
                       padding: '8px 16px',
                       borderRadius: '6px',
-                      border: '1px solid var(--ai-color-border-light)',
-                      backgroundColor: 'var(--ai-color-bg-primary)',
+                      border: '1px solid var(--color-border-subtle)',
+                      backgroundColor: 'var(--color-surface)',
                       cursor: 'pointer',
                     }}
                     onClick={() => console.log('Add item clicked')}
@@ -974,7 +975,7 @@ Current: {currentSlide + 1} of {total}`}</code>
               <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
               <div
                 style={{
-                  backgroundColor: 'var(--ai-color-bg-tertiary)',
+                  backgroundColor: 'var(--color-surface-tertiary)',
                   padding: '16px',
                   borderRadius: '8px',
                   fontFamily: 'monospace',
@@ -1002,7 +1003,7 @@ Current: {currentSlide + 1} of {total}`}</code>
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Edge Cases</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Handle single slides and empty states gracefully
           </p>
         </header>
@@ -1014,7 +1015,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -1037,7 +1038,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -1060,7 +1061,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <p
               style={{
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginBottom: '12px',
               }}
             >
@@ -1072,10 +1073,10 @@ Current: {currentSlide + 1} of {total}`}</code>
               style={{
                 maxWidth: '768px',
                 margin: '0 auto',
-                border: '2px solid var(--ai-color-border-light)',
+                border: '2px solid var(--color-border-subtle)',
                 borderRadius: '8px',
                 padding: '16px',
-                backgroundColor: 'var(--ai-color-bg-secondary)',
+                backgroundColor: 'var(--color-surface-secondary)',
               }}
             >
               <div
@@ -1083,7 +1084,7 @@ Current: {currentSlide + 1} of {total}`}</code>
                   marginBottom: '12px',
                   fontSize: '14px',
                   fontWeight: 600,
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                 }}
               >
                 Container: max-width: 768px
@@ -1105,7 +1106,7 @@ Current: {currentSlide + 1} of {total}`}</code>
               style={{
                 marginTop: '12px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontStyle: 'italic',
               }}
             >
@@ -1125,7 +1126,7 @@ Current: {currentSlide + 1} of {total}`}</code>
           <h3 style={{ fontSize: '16px', marginBottom: '12px' }}>Import</h3>
           <div
             style={{
-              backgroundColor: 'var(--ai-color-bg-tertiary)',
+              backgroundColor: 'var(--color-surface-tertiary)',
               padding: '16px',
               borderRadius: '8px',
               fontFamily: 'monospace',
@@ -1145,7 +1146,7 @@ Current: {currentSlide + 1} of {total}`}</code>
           <h3 style={{ fontSize: '16px', marginBottom: '12px' }}>Basic Usage</h3>
           <div
             style={{
-              backgroundColor: 'var(--ai-color-bg-tertiary)',
+              backgroundColor: 'var(--color-surface-tertiary)',
               padding: '16px',
               borderRadius: '8px',
               fontFamily: 'monospace',
@@ -1164,7 +1165,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             style={{
               marginTop: '12px',
               padding: '12px',
-              backgroundColor: 'var(--ai-color-bg-secondary)',
+              backgroundColor: 'var(--color-surface-secondary)',
               borderRadius: '6px',
               fontSize: '14px',
             }}
@@ -1172,7 +1173,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <strong>⚠️ Important:</strong> Each slide must have an explicit width and{' '}
             <code
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '2px 6px',
                 borderRadius: '4px',
               }}
@@ -1188,7 +1189,7 @@ Current: {currentSlide + 1} of {total}`}</code>
           <h3 style={{ fontSize: '16px', marginBottom: '12px' }}>Loading State Best Practice</h3>
           <div
             style={{
-              backgroundColor: 'var(--ai-color-bg-tertiary)',
+              backgroundColor: 'var(--color-surface-tertiary)',
               padding: '16px',
               borderRadius: '8px',
               fontFamily: 'monospace',
@@ -1221,7 +1222,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             style={{
               marginTop: '12px',
               padding: '12px',
-              backgroundColor: 'var(--ai-color-success-bg)',
+              backgroundColor: 'var(--green-100)',
               borderRadius: '6px',
               fontSize: '14px',
             }}
@@ -1239,7 +1240,7 @@ Current: {currentSlide + 1} of {total}`}</code>
           <div
             style={{
               padding: '16px',
-              backgroundColor: 'var(--ai-color-bg-secondary)',
+              backgroundColor: 'var(--color-surface-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1273,7 +1274,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <div
               style={{
                 padding: '16px',
-                backgroundColor: 'var(--ai-color-bg-secondary)',
+                backgroundColor: 'var(--color-surface-secondary)',
                 borderRadius: '8px',
               }}
             >
@@ -1281,7 +1282,7 @@ Current: {currentSlide + 1} of {total}`}</code>
                 style={{
                   fontWeight: 600,
                   marginBottom: '8px',
-                  color: 'var(--ai-color-accent-green)',
+                  color: 'var(--green-500)',
                 }}
               >
                 ✅ Do:
@@ -1299,7 +1300,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             <div
               style={{
                 padding: '16px',
-                backgroundColor: 'var(--ai-color-bg-secondary)',
+                backgroundColor: 'var(--color-surface-secondary)',
                 borderRadius: '8px',
               }}
             >
@@ -1307,7 +1308,7 @@ Current: {currentSlide + 1} of {total}`}</code>
                 style={{
                   fontWeight: 600,
                   marginBottom: '8px',
-                  color: 'var(--ai-color-text-error)',
+                  color: 'var(--red-500)',
                 }}
               >
                 ❌ Don't:
@@ -1329,7 +1330,7 @@ Current: {currentSlide + 1} of {total}`}</code>
           <div
             style={{
               padding: '16px',
-              backgroundColor: 'var(--ai-color-bg-secondary)',
+              backgroundColor: 'var(--color-surface-secondary)',
               borderRadius: '8px',
               fontSize: '14px',
               lineHeight: '1.6',
@@ -1351,7 +1352,7 @@ Current: {currentSlide + 1} of {total}`}</code>
           <div
             style={{
               padding: '16px',
-              backgroundColor: 'var(--ai-color-bg-secondary)',
+              backgroundColor: 'var(--color-surface-secondary)',
               borderRadius: '8px',
               fontSize: '14px',
               lineHeight: '1.6',
@@ -1400,7 +1401,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             },
             {
               name: 'gap',
-              description: "Gap between slides (CSS value). Default: 'var(--ai-spacing-8)' (8px)",
+              description: "Gap between slides (CSS value). Default: '32px' (8px)",
             },
             {
               name: 'flushStart',
@@ -1410,7 +1411,7 @@ Current: {currentSlide + 1} of {total}`}</code>
             {
               name: 'viewportPadding',
               description:
-                "Custom viewport padding (top and bottom). Default: 'var(--ai-spacing-10)' (10px)",
+                "Custom viewport padding (top and bottom). Default: '40px' (10px)",
             },
             {
               name: 'onSlideChange',

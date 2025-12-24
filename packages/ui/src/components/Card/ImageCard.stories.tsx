@@ -3,6 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ImageCard } from './ImageCard';
 import { PropsTable } from '../../tokens/PropsTable';
 import { codeBlockStyles } from '../storybook/codeBlockStyles';
+import {
+  PlusCircleAdd,
+  UserHeart,
+  Share,
+  InfoCircle,
+} from '@openai/apps-sdk-ui/components/Icon';
 
 const meta: Meta<typeof ImageCard> = {
   title: 'Composed Components/Cards/Image Cards',
@@ -36,7 +42,7 @@ const ImageCardsComponent: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -51,7 +57,7 @@ const ImageCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Image Positions</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Control image focal point with top, center, or bottom positioning
           </p>
         </header>
@@ -69,7 +75,7 @@ const ImageCardsComponent: React.FC = () => {
             imagePosition="center"
             title="Center Position"
             subtitle="Default focal point"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -78,7 +84,7 @@ const ImageCardsComponent: React.FC = () => {
             imagePosition="top"
             title="Top Position"
             subtitle="Focuses on top"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -87,7 +93,7 @@ const ImageCardsComponent: React.FC = () => {
             imagePosition="bottom"
             title="Bottom Position"
             subtitle="Focuses on bottom"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -98,7 +104,7 @@ const ImageCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Content Variations</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Flexible content options from image-only to full text overlay with actions
           </p>
         </header>
@@ -119,7 +125,7 @@ const ImageCardsComponent: React.FC = () => {
           />
           <ImageCard
             image={SAMPLE_IMAGES.salad}
-            actionIcon="user-heart"
+            actionIcon={<UserHeart />}
             actionLabel="Add to favorites"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -127,7 +133,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.pizza}
             title="Margherita Pizza"
             subtitle="Classic Italian"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add to cart"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -135,7 +141,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.dessert}
             title="Compact Layout"
             subtitle="240×240 footprint"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add to cart"
             size="compact"
             style={{ maxWidth: `${COMPACT_CARD_WIDTH}px` }}
@@ -147,7 +153,7 @@ const ImageCardsComponent: React.FC = () => {
             }}
             title="With Alt Text"
             subtitle="Better accessibility"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add to cart"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -158,7 +164,7 @@ const ImageCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Loading States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Built-in skeleton loading for better perceived performance
           </p>
         </header>
@@ -175,7 +181,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.pizza}
             title="Loading Card"
             subtitle="Classic Italian"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add to cart"
             loading={true}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -187,7 +193,7 @@ const ImageCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Error States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Graceful error handling with optional retry functionality
           </p>
         </header>
@@ -204,7 +210,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.pizza}
             title="Default Error"
             subtitle="Classic Italian"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add to cart"
             error={true}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -213,7 +219,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.pizza}
             title="With Retry"
             subtitle="Custom error message"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add to cart"
             error={true}
             errorTitle="Failed to load"
@@ -228,7 +234,7 @@ const ImageCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Interactive Examples</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Cards with hover effects and clickable areas
           </p>
         </header>
@@ -245,7 +251,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.pizza}
             title="Interactive Card"
             subtitle="Hover to see effect"
-            actionIcon="plus-circle-add"
+            actionIcon={<PlusCircleAdd />}
             actionLabel="Add to cart"
             interactive
             onClick={() => console.log('Card clicked')}
@@ -255,7 +261,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.pasta}
             title="Different Actions"
             subtitle="Various action icons"
-            actionIcon="user-heart"
+            actionIcon={<UserHeart />}
             actionLabel="Add to favorites"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -263,7 +269,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.salad}
             title="Share Action"
             subtitle="Share with friends"
-            actionIcon="share"
+            actionIcon={<Share />}
             actionLabel="Share"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -271,7 +277,7 @@ const ImageCardsComponent: React.FC = () => {
             image={SAMPLE_IMAGES.dessert}
             title="Info Action"
             subtitle="Learn more"
-            actionIcon="info-circle"
+            actionIcon={<InfoCircle />}
             actionLabel="More information"
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -282,7 +288,7 @@ const ImageCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Badge & Chip Support</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Add status indicators to cards. The component automatically chooses the best
             presentation:
             <br />• <strong>Short content (4 chars or less)</strong>: "New", "5", "✓" → Uses Badge
@@ -293,7 +299,7 @@ const ImageCardsComponent: React.FC = () => {
             For best visibility on images, use{' '}
             <code
               style={{
-                background: 'var(--ai-color-bg-tertiary)',
+                background: 'var(--color-surface-tertiary)',
                 padding: '2px 6px',
                 borderRadius: '4px',
                 fontFamily: 'monospace',
@@ -305,7 +311,7 @@ const ImageCardsComponent: React.FC = () => {
             or{' '}
             <code
               style={{
-                background: 'var(--ai-color-bg-tertiary)',
+                background: 'var(--color-surface-tertiary)',
                 padding: '2px 6px',
                 borderRadius: '4px',
                 fontFamily: 'monospace',
@@ -323,7 +329,7 @@ const ImageCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: 600,
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Short Content - Badge (4 chars or less)
@@ -342,7 +348,7 @@ const ImageCardsComponent: React.FC = () => {
               subtitle="Default position with filled variant"
               badge="New"
               badgeVariant="solid"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -353,7 +359,7 @@ const ImageCardsComponent: React.FC = () => {
               badge="Sale"
               badgeVariant="solid"
               badgePosition="top-left"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -363,7 +369,7 @@ const ImageCardsComponent: React.FC = () => {
               subtitle="Great for counts"
               badge={5}
               badgeVariant="solid"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -376,14 +382,14 @@ const ImageCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: 600,
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Longer Content - Chip (more than 4 chars)
           </h3>
           <p
             style={{
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               fontSize: '12px',
               marginBottom: '16px',
             }}
@@ -405,7 +411,7 @@ const ImageCardsComponent: React.FC = () => {
               subtitle="Chip with neutral variant"
               badge="Featured"
               badgeVariant="soft"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -415,7 +421,7 @@ const ImageCardsComponent: React.FC = () => {
               subtitle="Chip with filled variant"
               badge="On Sale"
               badgeVariant="solid"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -426,7 +432,7 @@ const ImageCardsComponent: React.FC = () => {
               badge="Popular"
               badgeVariant="solid"
               badgePosition="top-left"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -437,7 +443,7 @@ const ImageCardsComponent: React.FC = () => {
               badge="Top Rated"
               badgeVariant="soft"
               badgePosition="top-left"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -450,14 +456,14 @@ const ImageCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: 600,
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Other Badge Variants (Not Recommended for Images)
           </h3>
           <p
             style={{
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               fontSize: '12px',
               marginBottom: '16px',
             }}
@@ -479,7 +485,7 @@ const ImageCardsComponent: React.FC = () => {
               subtitle="Transparent - lower contrast"
               badge="✓"
               badgeVariant="soft"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -489,7 +495,7 @@ const ImageCardsComponent: React.FC = () => {
               subtitle="Transparent - lower contrast"
               badge="!"
               badgeVariant="soft"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -499,7 +505,7 @@ const ImageCardsComponent: React.FC = () => {
               subtitle="Transparent - lower contrast"
               badge="×"
               badgeVariant="soft"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -509,7 +515,7 @@ const ImageCardsComponent: React.FC = () => {
               subtitle="Transparent - lower contrast"
               badge="Info"
               badgeVariant="soft"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -521,7 +527,7 @@ const ImageCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Real-World Examples</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Practical use cases like restaurant menus and product galleries
           </p>
         </header>
@@ -542,7 +548,7 @@ const ImageCardsComponent: React.FC = () => {
               image={SAMPLE_IMAGES.pizza}
               title="Margherita Pizza"
               subtitle="Tomato, mozzarella, basil"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               interactive
               onClick={() => console.log('Added pizza')}
@@ -552,7 +558,7 @@ const ImageCardsComponent: React.FC = () => {
               image={SAMPLE_IMAGES.pasta}
               title="Spaghetti Carbonara"
               subtitle="Eggs, bacon, parmesan"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               interactive
               onClick={() => console.log('Added pasta')}
@@ -562,7 +568,7 @@ const ImageCardsComponent: React.FC = () => {
               image={SAMPLE_IMAGES.salad}
               title="Caesar Salad"
               subtitle="Romaine, croutons, dressing"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               interactive
               onClick={() => console.log('Added salad')}
@@ -572,7 +578,7 @@ const ImageCardsComponent: React.FC = () => {
               image={SAMPLE_IMAGES.dessert}
               title="Tiramisu"
               subtitle="Coffee-flavored dessert"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               interactive
               onClick={() => console.log('Added dessert')}
@@ -597,7 +603,7 @@ const ImageCardsComponent: React.FC = () => {
               image={SAMPLE_IMAGES.pizza}
               title="Elevation 0"
               subtitle="Flat, no shadow"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add"
               elevationLevel={0}
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -606,7 +612,7 @@ const ImageCardsComponent: React.FC = () => {
               image={SAMPLE_IMAGES.pizza}
               title="Elevation 1"
               subtitle="Default shadow"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add"
               elevationLevel={1}
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -615,7 +621,7 @@ const ImageCardsComponent: React.FC = () => {
               image={SAMPLE_IMAGES.pizza}
               title="Elevation 3"
               subtitle="Higher elevation"
-              actionIcon="plus-circle-add"
+              actionIcon={<PlusCircleAdd />}
               actionLabel="Add"
               elevationLevel={3}
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -637,7 +643,7 @@ const ImageCardsComponent: React.FC = () => {
               image={SAMPLE_IMAGES.dessert}
               title="16:9 Wide Card"
               subtitle="Custom aspect ratio"
-              actionIcon="info-circle"
+              actionIcon={<InfoCircle />}
               actionLabel="Learn more"
               minHeight={200}
               aspectRatio="16 / 9"
@@ -651,7 +657,7 @@ const ImageCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Usage</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Code examples for common ImageCard patterns
           </p>
         </header>
@@ -677,7 +683,7 @@ function Component() {
   image="/image.jpg"
   title="Title"
   subtitle="Description text"
-  actionIcon="plus-circle-add"
+  actionIcon={<PlusCircleAdd />}
   actionLabel="Add to cart"
   onAction={() => console.log('clicked')}
 />`}</pre>
@@ -723,7 +729,7 @@ function Component() {
     alt: 'Detailed description of the image'
   }}
   title="Product Name"
-  actionIcon="plus-circle-add"
+  actionIcon={<PlusCircleAdd />}
   actionLabel="Add to cart"
 />`}</pre>
         </details>
@@ -750,7 +756,7 @@ function Component() {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Complete API reference for ImageCard component
           </p>
         </header>
@@ -926,7 +932,7 @@ function Component() {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Best Practices</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Guidelines for using ImageCard effectively
           </p>
         </header>
@@ -940,8 +946,8 @@ function Component() {
         >
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border-default)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
             }}
@@ -950,7 +956,7 @@ function Component() {
               style={{
                 display: 'block',
                 marginBottom: '8px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               ✅ Badge Best Practices
@@ -960,7 +966,7 @@ function Component() {
                 margin: 0,
                 paddingLeft: '20px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
               }}
             >
@@ -968,7 +974,7 @@ function Component() {
                 Use{' '}
                 <code
                   style={{
-                    background: 'var(--ai-color-bg-tertiary)',
+                    background: 'var(--color-surface-tertiary)',
                     padding: '2px 6px',
                     borderRadius: '4px',
                     fontFamily: 'monospace',
@@ -983,7 +989,7 @@ function Component() {
                 Use{' '}
                 <code
                   style={{
-                    background: 'var(--ai-color-bg-tertiary)',
+                    background: 'var(--color-surface-tertiary)',
                     padding: '2px 6px',
                     borderRadius: '4px',
                     fontFamily: 'monospace',
@@ -1005,8 +1011,8 @@ function Component() {
 
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border-default)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
             }}
@@ -1015,7 +1021,7 @@ function Component() {
               style={{
                 display: 'block',
                 marginBottom: '8px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               ✅ Content Guidelines
@@ -1025,7 +1031,7 @@ function Component() {
                 margin: 0,
                 paddingLeft: '20px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
               }}
             >
@@ -1039,8 +1045,8 @@ function Component() {
 
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border-default)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
             }}
@@ -1049,7 +1055,7 @@ function Component() {
               style={{
                 display: 'block',
                 marginBottom: '8px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               ✅ Image Guidelines
@@ -1059,7 +1065,7 @@ function Component() {
                 margin: 0,
                 paddingLeft: '20px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
               }}
             >
@@ -1073,8 +1079,8 @@ function Component() {
 
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border-default)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
             }}
@@ -1083,7 +1089,7 @@ function Component() {
               style={{
                 display: 'block',
                 marginBottom: '8px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               ✅ Interaction Patterns
@@ -1093,7 +1099,7 @@ function Component() {
                 margin: 0,
                 paddingLeft: '20px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
               }}
             >
@@ -1101,7 +1107,7 @@ function Component() {
                 Use{' '}
                 <code
                   style={{
-                    background: 'var(--ai-color-bg-tertiary)',
+                    background: 'var(--color-surface-tertiary)',
                     padding: '2px 6px',
                     borderRadius: '4px',
                     fontFamily: 'monospace',

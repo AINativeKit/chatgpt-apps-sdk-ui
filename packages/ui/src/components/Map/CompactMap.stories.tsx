@@ -94,7 +94,7 @@ const CompactMapDoc: FC = () => {
           style={{
             margin: 0,
             maxWidth: '720px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: 1.6,
           }}
@@ -108,7 +108,7 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>Inline Experience</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Drop straight into a ChatGPT canvas. Height defaults to the Apps SDK spec (478px) but
             can be customised per scenario.
           </p>
@@ -123,11 +123,11 @@ const CompactMapDoc: FC = () => {
 
         <div
           style={{
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '12px',
             padding: '16px',
             maxWidth: CHATGPT_APP_WIDTH,
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '14px',
           }}
         >
@@ -139,7 +139,7 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>State Management</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Built-in fallbacks keep the surface stable while data loads or fails.
           </p>
         </header>
@@ -156,7 +156,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginBottom: '12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Loading
@@ -174,7 +174,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginBottom: '12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Error
@@ -195,7 +195,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginBottom: '12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Empty
@@ -208,11 +208,11 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>Interaction Notes</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Tips to keep the compact experience smooth and accessible.
           </p>
         </header>
-        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--ai-color-text-secondary)' }}>
+        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--color-text-secondary)' }}>
           <li>Use selection state to keep map and carousel in sync (`selectedId`).</li>
           <li>
             Respect loading/error props—do not render custom overlays on top of the Leaflet surface
@@ -231,7 +231,7 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>Custom Icon Elements</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Features support custom React elements as icons alongside standard icon strings.
           </p>
         </header>
@@ -286,7 +286,7 @@ const CompactMapDoc: FC = () => {
 
         <div
           style={{
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '12px',
             padding: '16px',
             maxWidth: CHATGPT_APP_WIDTH,
@@ -301,7 +301,7 @@ const CompactMapDoc: FC = () => {
             style={{
               margin: 0,
               padding: '12px',
-              background: 'var(--ai-color-bg-primary)',
+              background: 'var(--color-surface)',
               borderRadius: '8px',
               fontSize: '12px',
               fontFamily: 'monospace',
@@ -320,7 +320,7 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>Marker Variants</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Choose between traditional pin markers or minimal dot markers based on your design
             needs.
           </p>
@@ -338,7 +338,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginBottom: '12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Pin Markers (default)
@@ -357,7 +357,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginBottom: '12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Dot Markers
@@ -376,7 +376,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginBottom: '12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Hybrid Markers (recommended)
@@ -393,7 +393,7 @@ const CompactMapDoc: FC = () => {
 
         <div
           style={{
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '12px',
             padding: '16px',
             maxWidth: CHATGPT_APP_WIDTH,
@@ -418,7 +418,7 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>Props</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Core props extend `MapView` with container and carousel configuration.
           </p>
         </header>
@@ -480,7 +480,7 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>LocationData Structure</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Shared contract across CompactMap, FullscreenMap, and MapInspector.
           </p>
         </header>
@@ -523,7 +523,7 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>Popup Control</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             Toggle popup bubbles with the `showPopup` prop. Disable when using external UI like
             sidebars or inspectors to handle marker interactions.
           </p>
@@ -541,7 +541,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginBottom: '12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               With Popups (default)
@@ -557,7 +557,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginTop: '12px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Click markers to see popup bubbles with location details
@@ -569,7 +569,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginBottom: '12px',
                 fontSize: '14px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Without Popups
@@ -585,7 +585,7 @@ const CompactMapDoc: FC = () => {
               style={{
                 marginTop: '12px',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Uses carousel for marker interactions (cleaner map view)
@@ -595,7 +595,7 @@ const CompactMapDoc: FC = () => {
 
         <div
           style={{
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '12px',
             padding: '16px',
             maxWidth: CHATGPT_APP_WIDTH,
@@ -611,12 +611,12 @@ const CompactMapDoc: FC = () => {
       <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <header>
           <h2 style={{ marginBottom: '8px' }}>When to Escalate</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
             CompactMap offers quick exploration. Escalate to fullscreen when deeper context is
             required.
           </p>
         </header>
-        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--ai-color-text-secondary)' }}>
+        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--color-text-secondary)' }}>
           <li>
             If users need side-by-side Inspector and carousel details, escalate to `FullscreenMap`.
           </li>

@@ -5,7 +5,6 @@ import { Card } from './Card';
 import { Features } from '../Feature/Features';
 import { PropsTable } from '../../tokens/PropsTable';
 import { codeBlockStyles } from '../storybook/codeBlockStyles';
-import { cssVar } from '../../tokens/token-helpers';
 
 const meta: Meta<typeof Card> = {
   title: 'Composed Components/Cards/Cards',
@@ -20,16 +19,16 @@ export default meta;
 // Main unified Card showcase component
 const CardsComponent: React.FC = () => {
   return (
-    <div style={{ padding: cssVar.spacing(12) }}>
-      <h1 style={{ marginBottom: cssVar.spacing(16), alignItems: 'start' }}>Card System</h1>
+    <div style={{ padding: '48px' }}>
+      <h1 style={{ marginBottom: '64px', alignItems: 'start' }}>Card System</h1>
 
       {/* Introduction */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <p
           style={{
-            marginBottom: cssVar.spacing(12),
-            color: 'var(--ai-color-text-secondary)',
-            fontSize: 'var(--ai-font-size-body-large)',
+            marginBottom: '48px',
+            color: 'var(--color-text-secondary)',
+            fontSize: 'var(--font-text-lg-size)',
             lineHeight: '1.6',
           }}
         >
@@ -39,10 +38,10 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Basic Cards */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Basic Cards</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Simple cards with direct children - perfect for basic content
           </p>
         </header>
@@ -59,7 +58,7 @@ const CardsComponent: React.FC = () => {
           <Card elevationLevel={1}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <span style={{ fontWeight: 600 }}>Default Card</span>
-              <span style={{ color: 'var(--ai-color-text-secondary)', fontSize: '14px' }}>
+              <span style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>
                 Simple card with elevation level 1
               </span>
             </div>
@@ -68,7 +67,7 @@ const CardsComponent: React.FC = () => {
           <Card elevationLevel={1} interactive>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <span style={{ fontWeight: 600 }}>Interactive Card</span>
-              <span style={{ color: 'var(--ai-color-text-secondary)', fontSize: '14px' }}>
+              <span style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>
                 Hover to see elevation increase
               </span>
             </div>
@@ -77,7 +76,7 @@ const CardsComponent: React.FC = () => {
           <Card elevationLevel={2}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <span style={{ fontWeight: 600 }}>Higher Elevation</span>
-              <span style={{ color: 'var(--ai-color-text-secondary)', fontSize: '14px' }}>
+              <span style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>
                 Elevation level 2 for more depth
               </span>
             </div>
@@ -104,14 +103,14 @@ const CardsComponent: React.FC = () => {
                 border="default"
                 style={{
                   minHeight: '120px',
-                  padding: 'var(--ai-spacing-12)',
+                  padding: 'var(--spacing-3)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
                 }}
               >
                 <strong>Elevation {level}</strong>
-                <div style={{ color: 'var(--ai-color-text-secondary)', fontSize: '13px' }}>
+                <div style={{ color: 'var(--color-text-secondary)', fontSize: '13px' }}>
                   {level === 0 ? 'No shadow' : `Shadow level ${level}`}
                 </div>
               </Card>
@@ -121,10 +120,10 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Compound Components - Simple */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Compound Components - Simple Layouts</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Structured layouts using Card.Title, Card.Description, and semantic sections
           </p>
         </header>
@@ -161,10 +160,10 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Card.Image with Aspect Ratio */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Card.Image with Aspect Ratio</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Control image dimensions with the aspectRatio prop for consistent layouts
           </p>
         </header>
@@ -249,10 +248,10 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Loading States */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Loading States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Cards support loading states with built-in skeleton UI
           </p>
         </header>
@@ -271,7 +270,7 @@ const CardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text-primary)',
               }}
             >
               Default Loading
@@ -282,7 +281,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -296,7 +295,7 @@ const CardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text-primary)',
               }}
             >
               Custom Skeleton
@@ -319,7 +318,7 @@ const CardsComponent: React.FC = () => {
                         width: 48,
                         height: 48,
                         borderRadius: '50%',
-                        backgroundColor: 'var(--ai-color-bg-tertiary)',
+                        backgroundColor: 'var(--color-bg-tertiary)',
                       }}
                     />
                     <div style={{ flex: 1 }}>
@@ -327,7 +326,7 @@ const CardsComponent: React.FC = () => {
                         style={{
                           width: '40%',
                           height: 16,
-                          backgroundColor: 'var(--ai-color-bg-tertiary)',
+                          backgroundColor: 'var(--color-bg-tertiary)',
                           borderRadius: 4,
                           marginBottom: '8px',
                         }}
@@ -336,7 +335,7 @@ const CardsComponent: React.FC = () => {
                         style={{
                           width: '60%',
                           height: 16,
-                          backgroundColor: 'var(--ai-color-bg-tertiary)',
+                          backgroundColor: 'var(--color-bg-tertiary)',
                           borderRadius: 4,
                         }}
                       />
@@ -345,7 +344,7 @@ const CardsComponent: React.FC = () => {
                   <div
                     style={{
                       height: 150,
-                      backgroundColor: 'var(--ai-color-bg-tertiary)',
+                      backgroundColor: 'var(--color-bg-tertiary)',
                       borderRadius: 8,
                       marginBottom: '12px',
                     }}
@@ -354,7 +353,7 @@ const CardsComponent: React.FC = () => {
                     style={{
                       width: '80%',
                       height: 16,
-                      backgroundColor: 'var(--ai-color-bg-tertiary)',
+                      backgroundColor: 'var(--color-bg-tertiary)',
                       borderRadius: 4,
                       marginBottom: '8px',
                     }}
@@ -363,7 +362,7 @@ const CardsComponent: React.FC = () => {
                     style={{
                       width: '90%',
                       height: 16,
-                      backgroundColor: 'var(--ai-color-bg-tertiary)',
+                      backgroundColor: 'var(--color-bg-tertiary)',
                       borderRadius: 4,
                     }}
                   />
@@ -376,7 +375,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -390,7 +389,7 @@ const CardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text-primary)',
               }}
             >
               Not Loading
@@ -401,7 +400,7 @@ const CardsComponent: React.FC = () => {
                 <Card.Description>This card shows content immediately</Card.Description>
               </Card.Header>
               <Card.Body>
-                <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+                <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
                   Regular card content displayed normally without any loading state
                 </p>
               </Card.Body>
@@ -409,7 +408,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -420,10 +419,10 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Error States */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Error States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Cards support error states with built-in error messaging and retry actions
           </p>
         </header>
@@ -442,7 +441,7 @@ const CardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text-primary)',
               }}
             >
               Default Error
@@ -453,7 +452,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -467,7 +466,7 @@ const CardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text-primary)',
               }}
             >
               Custom Error Message
@@ -484,7 +483,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -498,7 +497,7 @@ const CardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text-primary)',
               }}
             >
               With Retry Action
@@ -516,7 +515,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -530,7 +529,7 @@ const CardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text-primary)',
               }}
             >
               Custom Error Content
@@ -542,7 +541,7 @@ const CardsComponent: React.FC = () => {
                 <div style={{ padding: '48px 24px', textAlign: 'center' }}>
                   <div style={{ fontSize: '48px', marginBottom: '16px' }}>🚫</div>
                   <h3 style={{ margin: '0 0 8px 0' }}>Access Denied</h3>
-                  <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+                  <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
                     You don't have permission to view this content.
                   </p>
                 </div>
@@ -554,7 +553,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -565,10 +564,10 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Real-World Examples */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Real-World Examples</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Complete card implementations for common use cases
           </p>
         </header>
@@ -674,7 +673,7 @@ const CardsComponent: React.FC = () => {
               </div>
             </Card.Header>
             <Card.Body>
-              <div style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+              <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
                 <p style={{ margin: '0 0 8px 0' }}>📍 San Francisco, CA</p>
                 <p style={{ margin: '0 0 8px 0' }}>🏢 Design Systems at Tech Corp</p>
                 <p style={{ margin: 0 }}>🎨 Passionate about accessible design</p>
@@ -770,7 +769,7 @@ const CardsComponent: React.FC = () => {
                 <p
                   style={{
                     fontSize: '13px',
-                    color: 'var(--ai-color-text-secondary)',
+                    color: 'var(--color-text-secondary)',
                     margin: '0 0 8px 0',
                   }}
                 >
@@ -800,10 +799,10 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Advanced Examples */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Advanced Patterns</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Complex layouts with multiple chips, custom headers, and flexible compositions
           </p>
         </header>
@@ -828,7 +827,7 @@ const CardsComponent: React.FC = () => {
                     style={{
                       marginTop: '8px',
                       fontSize: '14px',
-                      color: 'var(--ai-color-text-secondary)',
+                      color: 'var(--color-text-secondary)',
                     }}
                   >
                     SKU: PROD-12345
@@ -854,7 +853,7 @@ const CardsComponent: React.FC = () => {
                   style={{
                     fontSize: '16px',
                     textDecoration: 'line-through',
-                    color: 'var(--ai-color-text-tertiary)',
+                    color: 'var(--color-text-tertiary)',
                   }}
                 >
                   $399.99
@@ -879,9 +878,9 @@ const CardsComponent: React.FC = () => {
             <Card.Image
               src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop"
               alt="Tech background"
-              style={{ borderRadius: 'var(--ai-radius-8) var(--ai-radius-8) 0 0', margin: 0 }}
+              style={{ borderRadius: 'var(--radius-md) var(--radius-md) 0 0', margin: 0 }}
             />
-            <div style={{ padding: 'var(--ai-spacing-16)' }}>
+            <div style={{ padding: 'var(--spacing-4)' }}>
               <Card.Title as="h3">Edge-to-Edge Content</Card.Title>
               <Card.Description>
                 Set padding to 0 and add it back selectively for edge-to-edge images.
@@ -921,10 +920,10 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Button Variations */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Action Button Variations</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Different button alignments and icon positions
           </p>
         </header>
@@ -986,11 +985,11 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Usage Section */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <h2 style={{ fontSize: '24px', marginBottom: '16px' }}>Usage</h2>
 
         <h3 style={{ fontSize: '18px', marginBottom: '12px' }}>Two Patterns</h3>
-        <p style={{ marginBottom: '16px', color: 'var(--ai-color-text-secondary)' }}>
+        <p style={{ marginBottom: '16px', color: 'var(--color-text-secondary)' }}>
           Card supports two usage patterns depending on your needs:
         </p>
 
@@ -1010,7 +1009,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontSize: '14px',
               }}
             >
@@ -1032,7 +1031,7 @@ const CardsComponent: React.FC = () => {
             <p
               style={{
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontSize: '14px',
               }}
             >
@@ -1074,7 +1073,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1083,7 +1082,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Container for title, chips, metadata
@@ -1092,7 +1091,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1101,7 +1100,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Main content area with spacing
@@ -1110,7 +1109,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1119,7 +1118,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Bottom section for actions
@@ -1128,7 +1127,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1137,7 +1136,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Optimized image display
@@ -1146,7 +1145,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1155,7 +1154,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Semantic heading (default h2)
@@ -1164,7 +1163,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1173,7 +1172,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Text content with styling
@@ -1182,7 +1181,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1191,7 +1190,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Metadata with tertiary styling. Works great with Features component for consistent
@@ -1201,7 +1200,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1210,7 +1209,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Button group with alignment
@@ -1219,7 +1218,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1228,7 +1227,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Pre-styled action button
@@ -1237,7 +1236,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1246,7 +1245,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Container for grouping chips with automatic spacing and wrapping
@@ -1255,7 +1254,7 @@ const CardsComponent: React.FC = () => {
           <div
             style={{
               padding: '12px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-bg-secondary)',
               borderRadius: '8px',
             }}
           >
@@ -1264,7 +1263,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: '4px 0 0 0',
                 fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Chip for tags and status (use inside Card.ChipGroup)
@@ -1287,7 +1286,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '8px',
-                color: 'var(--ai-color-accent-green)',
+                color: 'var(--color-accent-green)',
               }}
             >
               ✅ Good Use Cases
@@ -1296,7 +1295,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: 0,
                 paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontSize: '14px',
                 lineHeight: '1.8',
               }}
@@ -1312,7 +1311,7 @@ const CardsComponent: React.FC = () => {
           </div>
           <div>
             <h4
-              style={{ fontSize: '14px', marginBottom: '8px', color: 'var(--ai-color-accent-red)' }}
+              style={{ fontSize: '14px', marginBottom: '8px', color: 'var(--color-accent-red)' }}
             >
               ❌ Don't Use For
             </h4>
@@ -1320,7 +1319,7 @@ const CardsComponent: React.FC = () => {
               style={{
                 margin: 0,
                 paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontSize: '14px',
                 lineHeight: '1.8',
               }}
@@ -1336,7 +1335,7 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Accessibility Section */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <h2 style={{ fontSize: '24px', marginBottom: '16px' }}>Accessibility</h2>
 
         <h3 style={{ fontSize: '18px', marginBottom: '12px' }}>Best Practices</h3>
@@ -1344,7 +1343,7 @@ const CardsComponent: React.FC = () => {
           style={{
             margin: '0 0 24px 0',
             paddingLeft: '20px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '14px',
             lineHeight: '1.8',
           }}
@@ -1362,7 +1361,7 @@ const CardsComponent: React.FC = () => {
         <h3 style={{ fontSize: '18px', marginBottom: '12px', marginTop: '24px' }}>
           Interactive Cards
         </h3>
-        <p style={{ marginBottom: '12px', color: 'var(--ai-color-text-secondary)' }}>
+        <p style={{ marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
           When Card has <code>interactive</code> prop, it becomes keyboard accessible:
         </p>
         <pre style={{ ...codeBlockStyles.primary, marginBottom: '24px', alignItems: 'start' }}>
@@ -1377,7 +1376,7 @@ const CardsComponent: React.FC = () => {
       </section>
 
       {/* Props Section */}
-      <section style={{ marginBottom: cssVar.spacing(32) }}>
+      <section style={{ marginBottom: '128px' }}>
         <h2 style={{ fontSize: '24px', marginBottom: '16px' }}>Props</h2>
 
         <h3 style={{ fontSize: '18px', marginBottom: '12px' }}>Card (Base Component)</h3>
@@ -1407,7 +1406,7 @@ const CardsComponent: React.FC = () => {
             {
               name: 'padding',
               description:
-                'Card padding. CSS value string or number (in px). Default: "var(--ai-spacing-16)"',
+                'Card padding. CSS value string or number (in px). Default: "var(--spacing-4)"',
             },
             {
               name: 'onClick',
@@ -1439,14 +1438,14 @@ const CardsComponent: React.FC = () => {
         <p
           style={{
             marginBottom: '12px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '14px',
           }}
         >
           Inherits all Button props. See{' '}
           <a
             href="?path=/story/primitive-components-buttons--buttons"
-            style={{ color: 'var(--ai-color-accent-blue)', textDecoration: 'none' }}
+            style={{ color: 'var(--color-accent-blue)', textDecoration: 'none' }}
           >
             Button component
           </a>{' '}
@@ -1488,12 +1487,12 @@ const CardsComponent: React.FC = () => {
         <h3 style={{ fontSize: '18px', marginBottom: '12px', marginTop: '32px' }}>
           Other Compound Components
         </h3>
-        <p style={{ color: 'var(--ai-color-text-secondary)', fontSize: '14px' }}>
+        <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>
           Card.Header, Card.Body, Card.Footer, Card.Description, Card.Meta, Card.ChipGroup accept
           standard HTML props for their respective elements. Card.Chip inherits all{' '}
           <a
             href="?path=/story/primitive-components-chips--chips"
-            style={{ color: 'var(--ai-color-accent-blue)', textDecoration: 'none' }}
+            style={{ color: 'var(--color-accent-blue)', textDecoration: 'none' }}
           >
             Chip props
           </a>

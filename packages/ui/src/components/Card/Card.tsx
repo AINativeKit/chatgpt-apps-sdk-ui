@@ -69,7 +69,7 @@ export interface CardProps extends Omit<ComponentPropsWithoutRef<'div'>, 'color'
   interactive?: boolean;
   /**
    * Padding for the card. Can be a CSS value string or number (in px).
-   * @default 'var(--ai-spacing-12)'
+   * @default '48px'
    */
   padding?: string | number;
   /**
@@ -113,9 +113,9 @@ export interface CardProps extends Omit<ComponentPropsWithoutRef<'div'>, 'color'
 }
 
 const BORDER_TOKENS: Record<CardBorder, string> = {
-  light: 'var(--ai-color-border-light)',
-  default: 'var(--ai-color-border-default)',
-  heavy: 'var(--ai-color-border-heavy)',
+  light: 'var(--color-border-subtle)',
+  default: 'var(--color-border)',
+  heavy: 'var(--color-border-strong)',
 };
 
 const clampElevation = (level: number): ElevationLevel => {
@@ -128,7 +128,7 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     border = 'heavy',
     hoverElevationLevel,
     interactive = false,
-    padding = 'var(--ai-spacing-8)',
+    padding = 'var(32px)',
     loading = false,
     skeleton,
     error = false,
@@ -144,9 +144,9 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   } = props;
 
   const hoverLevel = hoverElevationLevel ?? clampElevation(elevationLevel + (interactive ? 1 : 0));
-  const elevationShadowVar = `var(--ai-elevation-${elevationLevel}-shadow)`;
-  const hoverShadowVar = `var(--ai-elevation-${hoverLevel}-shadow)`;
-  const elevationOverlayVar = `var(--ai-elevation-${elevationLevel}-overlay)`;
+  const elevationShadowVar = `var(--elevation-${elevationLevel}-shadow)`;
+  const hoverShadowVar = `var(--elevation-${hoverLevel}-shadow)`;
+  const elevationOverlayVar = `var(--elevation-${elevationLevel}-overlay)`;
 
   const baseStyle: CSSProperties = {
     '--card-border-color': BORDER_TOKENS[border],

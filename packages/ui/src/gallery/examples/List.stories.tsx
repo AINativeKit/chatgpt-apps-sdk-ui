@@ -109,7 +109,7 @@ const PizzaListComponent: React.FC = () => {
             fontSize: '32px',
             fontWeight: '700',
             marginBottom: '12px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           🍕 National Best Pizza List
@@ -117,7 +117,7 @@ const PizzaListComponent: React.FC = () => {
         <p
           style={{
             fontSize: '16px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             margin: 0,
             maxWidth: '600px',
           }}
@@ -130,7 +130,7 @@ const PizzaListComponent: React.FC = () => {
       {/* Live Demo */}
       <section style={{ marginBottom: '64px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '24px' }}>Live Demo</h2>
-        <p style={{ color: 'var(--ai-color-text-secondary)', marginBottom: '16px' }}>
+        <p style={{ color: 'var(--color-text-secondary)', marginBottom: '16px' }}>
           Click any pizzeria to add to your favorites ({selectedPlaces.length} selected)
         </p>
 
@@ -181,9 +181,9 @@ const PizzaListComponent: React.FC = () => {
           <div
             style={{
               padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '8px',
-              border: '1px solid var(--ai-color-border-default)',
+              border: '1px solid var(--color-border)',
             }}
           >
             <strong>Your Favorites ({selectedPlaces.length})</strong>
@@ -202,7 +202,7 @@ const PizzaListComponent: React.FC = () => {
         <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '24px' }}>
           Data Structure
         </h2>
-        <p style={{ color: 'var(--ai-color-text-secondary)', marginBottom: '16px' }}>
+        <p style={{ color: 'var(--color-text-secondary)', marginBottom: '16px' }}>
           Use this structure for displaying ranked lists with ratings and metadata:
         </p>
 
@@ -210,7 +210,7 @@ const PizzaListComponent: React.FC = () => {
           <pre
             style={{
               margin: 0,
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
               whiteSpace: 'pre-wrap',
               wordBreak: 'break-word',
             }}
@@ -265,14 +265,14 @@ type FeatureItem = string | { icon?: IconName; label: string };
             </h3>
             <pre
               style={{
-                background: 'var(--ai-color-bg-tertiary)',
-                color: 'var(--ai-color-text-primary)',
+                background: 'var(--color-surface-tertiary)',
+                color: 'var(--color-text)',
                 padding: '16px',
                 borderRadius: '6px',
                 overflow: 'auto',
                 fontSize: '12px',
                 lineHeight: '1.5',
-                border: '1px solid var(--ai-color-border-light)',
+                border: '1px solid var(--color-border-subtle)',
                 margin: 0,
               }}
             >
@@ -296,14 +296,14 @@ type FeatureItem = string | { icon?: IconName; label: string };
             </h3>
             <pre
               style={{
-                background: 'var(--ai-color-bg-tertiary)',
-                color: 'var(--ai-color-text-primary)',
+                background: 'var(--color-surface-tertiary)',
+                color: 'var(--color-text)',
                 padding: '16px',
                 borderRadius: '6px',
                 overflow: 'auto',
                 fontSize: '12px',
                 lineHeight: '1.5',
-                border: '1px solid var(--ai-color-border-light)',
+                border: '1px solid var(--color-border-subtle)',
                 margin: 0,
               }}
             >
@@ -443,7 +443,7 @@ features={[
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', fontSize: '14px' }}>
           <div>
             <strong>Ranked Lists</strong>
-            <p style={{ color: 'var(--ai-color-text-secondary)', margin: '8px 0 0 0' }}>
+            <p style={{ color: 'var(--color-text-secondary)', margin: '8px 0 0 0' }}>
               Display items with rank numbers, perfect for leaderboards, best-of lists, or priority
               queues. Use the <code>rank</code> prop to show position numbers.
             </p>
@@ -451,7 +451,7 @@ features={[
 
           <div>
             <strong>Feature Attributes</strong>
-            <p style={{ color: 'var(--ai-color-text-secondary)', margin: '8px 0 0 0' }}>
+            <p style={{ color: 'var(--color-text-secondary)', margin: '8px 0 0 0' }}>
               Use the flexible <code>features</code> prop with the reusable Feature component to
               display properties like ratings, price ranges, cuisines, or badges with optional
               icons.
@@ -460,7 +460,7 @@ features={[
 
           <div>
             <strong>Interactive Selection</strong>
-            <p style={{ color: 'var(--ai-color-text-secondary)', margin: '8px 0 0 0' }}>
+            <p style={{ color: 'var(--color-text-secondary)', margin: '8px 0 0 0' }}>
               Make items selectable with <code>onClick</code> handlers and action buttons. Items
               become interactive automatically, showing hover states and focus indicators.
             </p>
@@ -468,7 +468,7 @@ features={[
 
           <div>
             <strong>Multi-line Content</strong>
-            <p style={{ color: 'var(--ai-color-text-secondary)', margin: '8px 0 0 0' }}>
+            <p style={{ color: 'var(--color-text-secondary)', margin: '8px 0 0 0' }}>
               Combine title, subtitle, features, and metadata to create rich, scannable list items.
               The layout automatically adapts between mobile and desktop views.
             </p>
@@ -476,7 +476,7 @@ features={[
 
           <div>
             <strong>Action Buttons</strong>
-            <p style={{ color: 'var(--ai-color-text-secondary)', margin: '8px 0 0 0' }}>
+            <p style={{ color: 'var(--color-text-secondary)', margin: '8px 0 0 0' }}>
               Add trailing action buttons (like favorite, delete, or view) with the
               <code>action</code> prop and <code>onActionClick</code> handler.
             </p>
@@ -497,7 +497,7 @@ features={[
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>Use 2-5 words for main titles to ensure proper truncation on mobile</li>
@@ -511,7 +511,7 @@ features={[
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>Mix simple text with icon-label pairs for visual interest</li>
@@ -526,7 +526,7 @@ features={[
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>Always stop propagation in action click handlers to prevent row selection</li>
@@ -541,7 +541,7 @@ features={[
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>
@@ -558,7 +558,7 @@ features={[
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>

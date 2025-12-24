@@ -294,8 +294,8 @@ const pageContainerStyle: CSSProperties = {
   margin: '0 auto',
   padding: '40px 20px',
   fontFamily:
-    'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
-  color: 'var(--ai-color-text-primary)',
+    'var(--font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+  color: 'var(--color-text)',
 };
 
 const userMessageWrapperStyle: CSSProperties = {
@@ -305,11 +305,11 @@ const userMessageWrapperStyle: CSSProperties = {
 };
 
 const userMessageBubbleStyle: CSSProperties = {
-  background: 'var(--ai-color-bg-secondary)',
+  background: 'var(--color-surface-secondary)',
   padding: '12px 16px',
   borderRadius: '18px',
   maxWidth: '80%',
-  color: 'var(--ai-color-text-primary)',
+  color: 'var(--color-text)',
   fontSize: '15px',
   lineHeight: '1.5',
   wordWrap: 'break-word',
@@ -320,7 +320,7 @@ const assistantMessageWrapperStyle: CSSProperties = {
   display: 'flex',
   justifyContent: 'flex-start',
   marginBottom: '24px',
-  color: 'var(--ai-color-text-primary)',
+  color: 'var(--color-text)',
   fontSize: '15px',
   lineHeight: '1.5',
   width: '100%',
@@ -339,7 +339,7 @@ const actionButtonsStyle: CSSProperties = {
   display: 'flex',
   gap: '12px',
   marginTop: '12px',
-  color: 'var(--ai-color-text-secondary)',
+  color: 'var(--color-text-secondary)',
 };
 
 const assistantIntroStyle: CSSProperties = { marginBottom: '16px' };
@@ -351,7 +351,7 @@ const mapContainerStyle: CSSProperties = {
   height: '478px',
   borderRadius: '8px',
   overflow: 'hidden',
-  boxShadow: 'var(--ai-elevation-2-shadow)',
+  boxShadow: 'var(--elevation-2-shadow)',
 };
 
 // Use unified code block styles (primary for main examples, terminal for CLI commands)
@@ -359,18 +359,18 @@ const codeBlockStyle = codeBlockStyles.primary;
 
 const assistantFooterStyle: CSSProperties = {
   marginTop: '16px',
-  color: 'var(--ai-color-text-secondary)',
+  color: 'var(--color-text-secondary)',
 };
 
 const fullscreenOverlayStyle: CSSProperties = {
   position: 'fixed',
   inset: 0,
   zIndex: 1000,
-  backgroundColor: 'var(--ai-color-bg-primary)',
+  backgroundColor: 'var(--color-surface)',
   display: 'flex',
   flexDirection: 'column',
   fontFamily:
-    'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+    'var(--font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
 };
 
 const fullscreenContentStyle: CSSProperties = {
@@ -392,16 +392,16 @@ const AssistantMessage = ({ children }: { children: ReactNode }) => (
 
 const ActionButtons = () => (
   <div style={actionButtonsStyle}>
-    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--ai-color-icon-secondary)' }}>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
       👍
     </span>
-    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--ai-color-icon-secondary)' }}>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
       👎
     </span>
-    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--ai-color-icon-secondary)' }}>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
       📋
     </span>
-    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--ai-color-icon-secondary)' }}>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
       ⋯
     </span>
   </div>
@@ -780,7 +780,7 @@ const IntroductionPage = () => {
             ...assistantParagraphStyle,
             marginTop: '32px',
             paddingTop: '24px',
-            borderTop: '1px solid var(--ai-color-border-light)',
+            borderTop: '1px solid var(--color-border-subtle)',
           }}
         >
           <strong>See how the same data adapts to different layouts?</strong> Pattern 1 is fast,
@@ -907,7 +907,7 @@ const IntroductionPage = () => {
             ...assistantParagraphStyle,
             marginTop: '32px',
             paddingTop: '24px',
-            borderTop: '1px solid var(--ai-color-border-light)',
+            borderTop: '1px solid var(--color-border-subtle)',
           }}
         >
           <strong>That's the power of AINativeKit UI:</strong> simplicity when you need it,
@@ -973,7 +973,7 @@ const IntroductionPage = () => {
             href="https://github.com/AINativeKit/chatgpt-apps-sdk-ui"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: 'var(--ai-color-text-primary)', textDecoration: 'underline' }}
+            style={{ color: 'var(--color-text)', textDecoration: 'underline' }}
           >
             GitHub
           </a>{' '}
@@ -982,7 +982,7 @@ const IntroductionPage = () => {
             href="https://www.npmjs.com/package/@ainativekit/ui"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: 'var(--ai-color-text-primary)', textDecoration: 'underline' }}
+            style={{ color: 'var(--color-text)', textDecoration: 'underline' }}
           >
             npm
           </a>

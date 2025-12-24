@@ -3,15 +3,15 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--ai-spacing-2);
-  color: var(--ai-color-text-secondary);
+  gap: var(--spacing);
+  color: var(--color-text-secondary);
 }
 
 /* Individual Item */
 .item {
   display: flex;
   align-items: center;
-  gap: var(--ai-spacing-1);
+  gap: calc(var(--spacing) * 0.5);
 }
 
 /* Icon in item */
@@ -23,6 +23,6 @@
 
 /* Separator */
 .separator {
-  margin: 0 var(--ai-spacing-1);
+  margin: 0 calc(var(--spacing) * 0.5);
   opacity: 0.7;
 }

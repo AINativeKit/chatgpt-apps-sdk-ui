@@ -70,7 +70,7 @@ const AlbumCardShowcase: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -85,7 +85,7 @@ const AlbumCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Basic Variations</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Standard album cards with different content
           </p>
         </header>
@@ -120,7 +120,7 @@ const AlbumCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Badge Support</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Add visual indicators with badges in different positions and variants
           </p>
         </header>
@@ -164,7 +164,7 @@ const AlbumCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Multi-line Text Support</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Configurable line clamping for longer titles and subtitles
           </p>
         </header>
@@ -202,7 +202,7 @@ const AlbumCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>States Showcase</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Loading, error, and empty states with retry functionality
           </p>
         </header>
@@ -221,7 +221,7 @@ const AlbumCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Loading
@@ -239,7 +239,7 @@ const AlbumCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Error
@@ -258,7 +258,7 @@ const AlbumCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Error with Retry ({retryCount} attempts)
@@ -282,7 +282,7 @@ const AlbumCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Empty
@@ -301,7 +301,7 @@ const AlbumCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Performance Features</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Lazy loading and image callbacks for optimal performance
           </p>
         </header>
@@ -319,7 +319,7 @@ const AlbumCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               Eager Loading (Above-the-fold)
@@ -337,7 +337,7 @@ const AlbumCardShowcase: React.FC = () => {
               style={{
                 fontSize: '14px',
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               With Image Callbacks
@@ -357,7 +357,7 @@ const AlbumCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Real-World Example</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Photo gallery with mixed features
           </p>
         </header>
@@ -398,7 +398,7 @@ const AlbumCardShowcase: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Complete API reference for AlbumCard
           </p>
         </header>

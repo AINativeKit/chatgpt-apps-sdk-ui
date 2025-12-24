@@ -158,7 +158,7 @@ const ListsComponent: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -170,7 +170,7 @@ const ListsComponent: React.FC = () => {
           <div>
             <strong>Key Features:</strong>
           </div>
-          <ul style={{ marginLeft: '24px', color: 'var(--ai-color-text-secondary)' }}>
+          <ul style={{ marginLeft: '24px', color: 'var(--color-text-secondary)' }}>
             <li>Customizable header with title, subtitle, thumbnail, and actions</li>
             <li>Rich list items with media, features, metadata, and ranks</li>
             <li>Loading, error, and empty states built-in</li>
@@ -185,7 +185,7 @@ const ListsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Complete Example</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Production-ready ranked list inspired by OpenAI's design patterns
           </p>
         </header>
@@ -232,7 +232,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -277,7 +277,7 @@ const ListsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Basic Lists</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Simple lists for common use cases
           </p>
         </header>
@@ -309,7 +309,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -360,7 +360,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -394,7 +394,7 @@ const ListsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -419,7 +419,7 @@ const ListsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Advanced Features</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Rich metadata, rankings, features, and more
           </p>
         </header>
@@ -451,7 +451,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -487,7 +487,7 @@ const ListsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -533,7 +533,7 @@ const ListsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Loading, Error & Empty States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Built-in state management for async data
           </p>
         </header>
@@ -546,7 +546,7 @@ const ListsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -570,7 +570,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -602,7 +602,7 @@ const ListsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -613,7 +613,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -637,7 +637,7 @@ const ListsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -659,7 +659,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -692,7 +692,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -720,7 +720,7 @@ const ListsComponent: React.FC = () => {
                 <div style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>
                   No tasks yet
                 </div>
-                <div style={{ color: 'var(--ai-color-text-secondary)', marginBottom: '16px' }}>
+                <div style={{ color: 'var(--color-text-secondary)', marginBottom: '16px' }}>
                   Create your first task to get started
                 </div>
                 <Button color="primary" variant="solid">
@@ -735,7 +735,7 @@ const ListsComponent: React.FC = () => {
             <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
             <div
               style={{
-                backgroundColor: 'var(--ai-color-bg-tertiary)',
+                backgroundColor: 'var(--color-surface-tertiary)',
                 padding: '16px',
                 borderRadius: '8px',
                 fontFamily: 'monospace',
@@ -765,7 +765,7 @@ const ListsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px', alignItems: 'start' }}>
           <h2 style={{ marginBottom: '8px' }}>Real-World Example</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Async data fetching with state management
           </p>
         </header>
@@ -813,7 +813,7 @@ const ListsComponent: React.FC = () => {
           <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Show code</summary>
           <div
             style={{
-              backgroundColor: 'var(--ai-color-bg-tertiary)',
+              backgroundColor: 'var(--color-surface-tertiary)',
               padding: '16px',
               borderRadius: '8px',
               fontFamily: 'monospace',
@@ -1013,7 +1013,7 @@ return (
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>
@@ -1034,7 +1034,7 @@ return (
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>
@@ -1051,7 +1051,7 @@ return (
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>Provide helpful guidance or actions in empty states</li>
@@ -1066,7 +1066,7 @@ return (
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>
@@ -1084,7 +1084,7 @@ return (
               style={{
                 marginLeft: '24px',
                 marginTop: '8px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
               }}
             >
               <li>

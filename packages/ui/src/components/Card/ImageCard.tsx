@@ -388,19 +388,20 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
             </div>
           )}
 
-          {/* Action Button */}
+          {/* Action Button - White icon on dark image overlay */}
           {hasAction && actionLabel && (
-            <Button
-              color="secondary"
-              variant="ghost"
-              uniform
-              size="sm"
-              aria-label={`${actionLabel}${title ? ` for ${title}` : ''}`}
-              onClick={onAction}
-              className={styles.actionButton}
-            >
-              {actionIcon}
-            </Button>
+            <div className={styles.actionButton}>
+              <Button
+                color="secondary"
+                variant="ghost"
+                uniform
+                size="sm"
+                aria-label={`${actionLabel}${title ? ` for ${title}` : ''}`}
+                onClick={onAction}
+              >
+                {actionIcon}
+              </Button>
+            </div>
           )}
         </>
       )}

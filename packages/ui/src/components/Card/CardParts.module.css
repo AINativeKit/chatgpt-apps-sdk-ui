@@ -2,14 +2,14 @@
 .cardHeader {
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-2); /* 4px - tight spacing for header content */
+  gap: var(--spacing); /* 4px - tight spacing for header content */
 }
 
 /* Card Body */
 .cardBody {
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-4); /* 8px - comfortable spacing for main content */
+  gap: calc(var(--spacing) * 2); /* 8px - comfortable spacing for main content */
   flex: 1;
 }
 
@@ -17,7 +17,7 @@
 .cardFooter {
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-4); /* 8px - moderate spacing for footer content */
+  gap: calc(var(--spacing) * 2); /* 8px - moderate spacing for footer content */
   margin-top: auto;
 }
 
@@ -26,7 +26,7 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--ai-radius-base); /* 12px - matches our card system */
+  border-radius: var(--radius-xl); /* 12px - matches our card system */
   object-fit: cover;
   aspect-ratio: var(--card-image-aspect-ratio); /* Applied when aspectRatio prop is provided */
 }
@@ -34,7 +34,7 @@
 /* Card Actions */
 .cardActions {
   display: flex;
-  gap: var(--ai-spacing-4); /* 8px - standard button spacing */
+  gap: calc(var(--spacing) * 2); /* 8px - standard button spacing */
   flex-wrap: wrap; /* Allow buttons to wrap on small screens */
 }
 
@@ -62,11 +62,11 @@
 /* Card Title */
 .cardTitle {
   margin: 0;
-  font-size: var(--ai-font-size-body-emph);
-  font-weight: var(--ai-font-weight-body-emph);
-  line-height: var(--ai-line-height-body-emph);
-  letter-spacing: var(--ai-letter-spacing-body-emph);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--font-text-md-line-height);
+  letter-spacing: var(--font-text-md-tracking);
+  color: var(--color-text);
 
   /* Overflow handling for long titles */
   overflow-wrap: break-word;
@@ -76,11 +76,11 @@
 /* Card Description */
 .cardDescription {
   margin: 0;
-  font-size: var(--ai-font-size-body);
-  font-weight: var(--ai-font-weight-body);
-  line-height: var(--ai-line-height-body);
-  letter-spacing: var(--ai-letter-spacing-body);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-md-size);
+  font-weight: var(--font-text-md-weight);
+  line-height: var(--font-text-md-line-height);
+  letter-spacing: var(--font-text-md-tracking);
+  color: var(--color-text-secondary);
 
   /* Overflow handling for long descriptions */
   overflow-wrap: break-word;
@@ -90,12 +90,12 @@
 /* Card Meta */
 .cardMeta {
   margin: 0;
-  font-size: var(--ai-font-size-body-sm);
-  font-weight: var(--ai-font-weight-body);
-  line-height: var(--ai-line-height-body-sm);
-  letter-spacing: var(--ai-letter-spacing-body);
-  color: var(--ai-color-text-tertiary);
-  margin-top: var(--ai-spacing-2); /* 4px - subtle spacing from content above */
+  font-size: var(--font-text-sm-size);
+  font-weight: var(--font-text-md-weight);
+  line-height: var(--font-text-sm-line-height);
+  letter-spacing: var(--font-text-md-tracking);
+  color: var(--color-text-tertiary);
+  margin-top: var(--spacing); /* 4px - subtle spacing from content above */
 }
 
 /* Card Chip Group */

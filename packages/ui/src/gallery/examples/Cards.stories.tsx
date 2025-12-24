@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ImageCard, SummaryCard, ListCard } from '../../components/Card';
 import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { PlusCircleAdd, Star } from '@openai/apps-sdk-ui/components/Icon';
 
 // Dummy component for Storybook
 const CardsExample = () => null;
@@ -39,7 +40,7 @@ const CardsComponent = () => {
             fontSize: '32px',
             fontWeight: '700',
             marginBottom: '12px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           🎨 Card Components
@@ -47,7 +48,7 @@ const CardsComponent = () => {
         <p
           style={{
             fontSize: '16px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             margin: 0,
             lineHeight: '1.6',
           }}
@@ -65,7 +66,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Live Examples
@@ -78,7 +79,7 @@ const CardsComponent = () => {
               fontSize: '16px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             📸 ImageCard - Image-First Content
@@ -86,7 +87,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -101,7 +102,7 @@ const CardsComponent = () => {
               fontWeight: '600',
               marginBottom: '12px',
               marginTop: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Standard Variant
@@ -109,7 +110,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -151,7 +152,7 @@ const CardsComponent = () => {
                   badge={item.badge}
                   badgeVariant={item.badgeVariant}
                   interactive
-                  actionIcon="plus-add-md"
+                  actionIcon={<PlusCircleAdd />}
                   actionLabel={`Add ${item.title} to cart`}
                   onAction={() => console.log(`Added ${item.title}`)}
                 />
@@ -166,7 +167,7 @@ const CardsComponent = () => {
               fontWeight: '600',
               marginBottom: '12px',
               marginTop: '32px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Compact Variant
@@ -174,7 +175,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -219,7 +220,7 @@ const CardsComponent = () => {
                   title={item.title}
                   subtitle={item.subtitle}
                   interactive
-                  actionIcon="star"
+                  actionIcon={<Star />}
                   actionLabel={`Save ${item.title}`}
                   onAction={() => console.log(`Saved ${item.title}`)}
                 />
@@ -235,7 +236,7 @@ const CardsComponent = () => {
               fontSize: '16px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             📊 SummaryCard - Flexible Image Layouts
@@ -243,7 +244,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -259,7 +260,7 @@ const CardsComponent = () => {
               fontWeight: '600',
               marginBottom: '12px',
               marginTop: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Single Hero Image
@@ -267,7 +268,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -323,7 +324,7 @@ const CardsComponent = () => {
               fontWeight: '600',
               marginBottom: '12px',
               marginTop: '32px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Multiple Images (2-4 Grid)
@@ -331,7 +332,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -409,7 +410,7 @@ const CardsComponent = () => {
               fontSize: '16px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             📋 ListCard - Item Collections
@@ -417,7 +418,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -527,7 +528,7 @@ const CardsComponent = () => {
               fontSize: '16px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             ⭐ SummaryCard Compact - Featured Recommendations
@@ -535,7 +536,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -610,7 +611,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Component Selection Guide
@@ -673,16 +674,16 @@ const CardsComponent = () => {
               key={index}
               style={{
                 padding: '20px',
-                border: '1px solid var(--ai-color-border-light)',
+                border: '1px solid var(--color-border-subtle)',
                 borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
+                background: 'var(--color-surface)',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
                 ...(selectedCard === card.title
                   ? {
-                      borderColor: 'var(--ai-color-accent-blue)',
-                      background: 'var(--ai-color-bg-secondary)',
-                      boxShadow: '0 0 0 2px var(--ai-color-accent-blue)',
+                      borderColor: 'var(--blue-400)',
+                      background: 'var(--color-surface-secondary)',
+                      boxShadow: '0 0 0 2px var(--blue-400)',
                     }
                   : {}),
               }}
@@ -693,7 +694,7 @@ const CardsComponent = () => {
                   fontSize: '15px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 {card.title}
@@ -701,7 +702,7 @@ const CardsComponent = () => {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: '0 0 12px 0',
                   fontStyle: 'italic',
                 }}
@@ -713,21 +714,21 @@ const CardsComponent = () => {
                   fontSize: '12px',
                   marginBottom: '12px',
                   paddingBottom: '12px',
-                  borderBottom: '1px solid var(--ai-color-border-light)',
+                  borderBottom: '1px solid var(--color-border-subtle)',
                 }}
               >
-                <strong style={{ color: 'var(--ai-color-text-primary)' }}>Best for:</strong>
-                <p style={{ margin: '4px 0 0 0', color: 'var(--ai-color-text-secondary)' }}>
+                <strong style={{ color: 'var(--color-text)' }}>Best for:</strong>
+                <p style={{ margin: '4px 0 0 0', color: 'var(--color-text-secondary)' }}>
                   {card.bestFor}
                 </p>
               </div>
               <div style={{ fontSize: '12px' }}>
-                <strong style={{ color: 'var(--ai-color-text-primary)' }}>Features:</strong>
+                <strong style={{ color: 'var(--color-text)' }}>Features:</strong>
                 <ul
                   style={{
                     margin: '4px 0 0 0',
                     paddingLeft: '20px',
-                    color: 'var(--ai-color-text-secondary)',
+                    color: 'var(--color-text-secondary)',
                   }}
                 >
                   {card.features.map((feature, i) => (
@@ -749,7 +750,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Best Practices for Developers
@@ -821,8 +822,8 @@ const CardsComponent = () => {
               key={index}
               style={{
                 padding: '20px',
-                borderLeft: '4px solid var(--ai-color-accent-blue)',
-                background: 'var(--ai-color-bg-secondary)',
+                borderLeft: '4px solid var(--blue-400)',
+                background: 'var(--color-surface-secondary)',
                 borderRadius: '4px',
               }}
             >
@@ -831,7 +832,7 @@ const CardsComponent = () => {
                   fontSize: '15px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 {practice.title}
@@ -839,7 +840,7 @@ const CardsComponent = () => {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: '0 0 12px 0',
                 }}
               >
@@ -850,7 +851,7 @@ const CardsComponent = () => {
                   margin: 0,
                   paddingLeft: '20px',
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   lineHeight: '1.8',
                 }}
               >
@@ -870,7 +871,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Real-World Use Cases
@@ -923,8 +924,8 @@ const CardsComponent = () => {
               style={{
                 padding: '16px',
                 borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
-                border: '1px solid var(--ai-color-border-light)',
+                background: 'var(--color-surface)',
+                border: '1px solid var(--color-border-subtle)',
               }}
             >
               <h3
@@ -932,7 +933,7 @@ const CardsComponent = () => {
                   fontSize: '14px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 {useCase.title}
@@ -940,7 +941,7 @@ const CardsComponent = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: 0,
                   lineHeight: '1.5',
                 }}
@@ -959,7 +960,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Quick Reference
@@ -969,7 +970,7 @@ const CardsComponent = () => {
           <pre
             style={{
               margin: 0,
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
               whiteSpace: 'pre-wrap',
               wordBreak: 'break-word',
             }}
@@ -1018,7 +1019,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Key Features
@@ -1061,7 +1062,7 @@ const CardsComponent = () => {
               style={{
                 padding: '16px',
                 borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
+                background: 'var(--color-surface)',
               }}
             >
               <h3
@@ -1069,7 +1070,7 @@ const CardsComponent = () => {
                   fontSize: '14px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 ✓ {feature.title}
@@ -1077,7 +1078,7 @@ const CardsComponent = () => {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: 0,
                   lineHeight: '1.5',
                 }}

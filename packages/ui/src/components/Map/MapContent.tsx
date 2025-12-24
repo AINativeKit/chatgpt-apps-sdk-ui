@@ -335,11 +335,11 @@ const DEFAULT_POPUP_ANCHOR: [number, number] = [0, -40]; /* Adjusted for custom 
 function createMarkerIcon(color: string, isSelected: boolean) {
   const innerCircle = isSelected
     ? `<circle cx="14" cy="13.5" r="4" fill="${color}" />`
-    : `<circle cx="14" cy="13.5" r="3.5" fill="var(--ai-color-border-default)" />`; /* Use token for subtle background */
+    : `<circle cx="14" cy="13.5" r="3.5" fill="var(--color-border)" />`; /* Use token for subtle background */
 
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="40" viewBox="0 0 28 40">
-      <path fill="${color}" stroke="var(--ai-color-bg-primary)" stroke-width="2" d="M14 1C7.373 1 2 6.373 2 13c0 8 12 26 12 26S26 21 26 13c0-6.627-5.373-12-12-12z" />
+      <path fill="${color}" stroke="var(--color-surface)" stroke-width="2" d="M14 1C7.373 1 2 6.373 2 13c0 8 12 26 12 26S26 21 26 13c0-6.627-5.373-12-12-12z" />
       <circle cx="14" cy="13.5" r="7" fill="#ffffff" />
       ${innerCircle}
     </svg>
@@ -369,10 +369,10 @@ function createDotMarkerIcon(color: string, isSelected: boolean): L.DivIcon {
       <circle
         cx="10" cy="10" r="8"
         fill="${color}"
-        stroke="var(--ai-color-bg-primary)"
+        stroke="var(--color-surface)"
         stroke-width="2"
       />
-      ${isSelected ? '<circle cx="10" cy="10" r="4" fill="var(--ai-color-bg-primary)" />' : ''}
+      ${isSelected ? '<circle cx="10" cy="10" r="4" fill="var(--color-surface)" />' : ''}
     </svg>
   `;
 
@@ -467,7 +467,7 @@ export const MapContent: React.FC<MapViewProps> = ({
   const markerRefs = useRef<Map<string, L.Marker>>(new Map());
 
   // Use CSS variable for brand color - no ThemeProvider dependency
-  const MARKER_COLOR = 'var(--ai-color-brand-primary)';
+  const MARKER_COLOR = 'var(--blue-400)';
 
   const defaultIcon = useMemo(
     () =>

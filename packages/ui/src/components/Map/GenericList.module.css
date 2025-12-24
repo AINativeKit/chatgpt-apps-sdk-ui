@@ -1,28 +1,28 @@
 .listSection {
-  padding: 0 var(--ai-spacing-10) var(--ai-spacing-8);
+  padding: 0 calc(var(--spacing) * 5) calc(var(--spacing) * 4);
 }
 
 .listTitle {
-  font-size: var(--ai-font-size-h3);
-  line-height: var(--ai-line-height-h3);
-  font-weight: var(--ai-font-weight-h3);
-  letter-spacing: var(--ai-letter-spacing-h3);
-  margin-bottom: var(--ai-spacing-6);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-heading-sm-size);
+  line-height: var(--font-heading-sm-line-height);
+  font-weight: var(--font-heading-sm-weight);
+  letter-spacing: var(--font-heading-sm-tracking);
+  margin-bottom: calc(var(--spacing) * 3);
+  color: var(--color-text);
 }
 
 .listItems {
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-8);
+  gap: calc(var(--spacing) * 4);
 }
 
 .item {
   display: flex;
   align-items: flex-start;
-  gap: var(--ai-spacing-6);
-  padding: var(--ai-spacing-4) 0 0;
-  border-top: 1px solid var(--ai-color-border-light);
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 2) 0 0;
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 .item:first-child {
@@ -35,12 +35,12 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: var(--ai-color-bg-secondary);
+  background-color: var(--color-surface-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--ai-color-border-light);
-  color: var(--ai-color-icon-secondary);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-secondary);
   overflow: hidden;
 }
 
@@ -56,27 +56,27 @@
 }
 
 .itemMetadata {
-  font-size: var(--ai-font-size-caption);
-  line-height: var(--ai-line-height-caption);
-  font-weight: var(--ai-font-weight-caption);
-  letter-spacing: var(--ai-letter-spacing-caption);
-  color: var(--ai-color-text-secondary);
-  margin-bottom: var(--ai-spacing-2);
+  font-size: var(--font-text-xs-size);
+  line-height: var(--font-text-xs-line-height);
+  font-weight: var(--font-text-xs-weight);
+  letter-spacing: var(--font-text-xs-tracking);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing);
 }
 
 .itemTitle {
-  font-size: var(--ai-font-size-body-small-emph);
-  line-height: var(--ai-line-height-body-small-emph);
-  font-weight: var(--ai-font-weight-body-small-emph);
-  letter-spacing: var(--ai-letter-spacing-body-small-emph);
-  color: var(--ai-color-text-primary);
-  margin-bottom: var(--ai-spacing-2);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text);
+  margin-bottom: var(--spacing);
 }
 
 .itemDescription {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text);
 }

@@ -22,37 +22,37 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: var(--ai-color-bg-primary);
-  color: var(--ai-color-text-primary);
-  padding: 0 var(--ai-spacing-4);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  padding: 0 calc(var(--spacing) * 2);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--ai-spacing-8) var(--ai-spacing-6);
+  padding: calc(var(--spacing) * 4) calc(var(--spacing) * 3);
   position: sticky;
   top: 0;
-  background-color: var(--ai-color-bg-primary);
+  background-color: var(--color-surface);
   z-index: 1;
-  font-size: var(--ai-font-size-body-small-emph);
-  line-height: var(--ai-line-height-body-small-emph);
-  font-weight: var(--ai-font-weight-body-small-emph);
-  letter-spacing: var(--ai-letter-spacing-body-small-emph);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-text-sm-tracking);
 }
 
 .resultsCount {
-  font-weight: var(--ai-font-weight-medium);
+  font-weight: var(--font-weight-medium);
 }
 
 .list {
-  padding-bottom: var(--ai-spacing-8);
+  padding-bottom: calc(var(--spacing) * 4);
 }
 
 /* Minimal wrapper for MapPlaceCard - only provides padding */
 .listItem {
-  padding: var(--ai-spacing-6);
+  padding: calc(var(--spacing) * 3);
   border-radius: 0;
 }
 
@@ -74,19 +74,19 @@
     color-mix(in srgb, currentColor 15%, transparent),
     transparent
   );
-  border-bottom: 1px solid var(--ai-color-border-heavy);
+  border-bottom: 1px solid var(--color-border-strong);
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--ai-color-text-primary) var(--ai-opacity-muted), transparent) 25%,
-    color-mix(in srgb, var(--ai-color-text-primary) var(--ai-opacity-muted), transparent) 75%,
+    color-mix(in srgb, var(--color-text) 50%, transparent) 25%,
+    color-mix(in srgb, var(--color-text) 50%, transparent) 75%,
     transparent 100%
   );
   mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--ai-color-text-primary) var(--ai-opacity-muted), transparent) 25%,
-    color-mix(in srgb, var(--ai-color-text-primary) var(--ai-opacity-muted), transparent) 75%,
+    color-mix(in srgb, var(--color-text) 50%, transparent) 25%,
+    color-mix(in srgb, var(--color-text) 50%, transparent) 75%,
     transparent 100%
   );
 }

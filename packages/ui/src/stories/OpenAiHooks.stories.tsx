@@ -182,8 +182,8 @@ const HostControlPanel: React.FC = () => {
         flexWrap: 'wrap',
         gap: '8px',
         padding: '12px',
-        background: 'var(--ai-color-bg-secondary)',
-        border: '1px solid var(--ai-color-border-default)',
+        background: 'var(--color-surface-secondary)',
+        border: '1px solid var(--color-border)',
         borderRadius: '12px',
       }}
     >
@@ -234,14 +234,14 @@ const ReactiveComponentDemo: React.FC = () => {
             <div
               style={{
                 padding: '12px',
-                backgroundColor: 'var(--ai-color-bg-secondary)',
+                backgroundColor: 'var(--color-surface-secondary)',
                 borderRadius: '8px',
               }}
             >
               <div
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '6px',
                 }}
               >
@@ -253,14 +253,14 @@ const ReactiveComponentDemo: React.FC = () => {
             <div
               style={{
                 padding: '12px',
-                backgroundColor: 'var(--ai-color-bg-secondary)',
+                backgroundColor: 'var(--color-surface-secondary)',
                 borderRadius: '8px',
               }}
             >
               <div
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '6px',
                 }}
               >
@@ -274,7 +274,7 @@ const ReactiveComponentDemo: React.FC = () => {
             style={{
               margin: '16px 0 0 0',
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Try cycling display modes to see the card width change!
@@ -329,9 +329,9 @@ const HooksDashboard: React.FC<{ initialWidgetCount: number }> = ({ initialWidge
         display: 'grid',
         gap: '16px',
         padding: '16px',
-        border: '1px solid var(--ai-color-border-default)',
+        border: '1px solid var(--color-border)',
         borderRadius: '12px',
-        background: 'var(--ai-color-bg-surface, var(--ai-color-bg-primary))',
+        background: 'var(--color-surface)',
       }}
     >
       <div>
@@ -418,7 +418,7 @@ const OpenAiHooksPlayground: React.FC<PlaygroundArgs> = (args) => {
         <p
           style={{
             margin: '0 0 8px 0',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.5',
           }}
@@ -427,7 +427,7 @@ const OpenAiHooksPlayground: React.FC<PlaygroundArgs> = (args) => {
           to react to host events, manage state, and communicate with the ChatGPT host.
         </p>
         <p
-          style={{ margin: '0 0 8px 0', color: 'var(--ai-color-text-secondary)', fontSize: '14px' }}
+          style={{ margin: '0 0 8px 0', color: 'var(--color-text-secondary)', fontSize: '14px' }}
         >
           <strong>Available hooks:</strong>
         </p>
@@ -435,7 +435,7 @@ const OpenAiHooksPlayground: React.FC<PlaygroundArgs> = (args) => {
           style={{
             margin: '0',
             paddingLeft: '20px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '14px',
           }}
         >
@@ -463,16 +463,16 @@ const OpenAiHooksPlayground: React.FC<PlaygroundArgs> = (args) => {
           style={{
             marginTop: '16px',
             padding: '12px',
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '8px',
-            border: '1px solid var(--ai-color-border-default)',
+            border: '1px solid var(--color-border)',
           }}
         >
           <p
             style={{
               margin: '0',
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               lineHeight: '1.5',
             }}
           >
@@ -482,7 +482,7 @@ const OpenAiHooksPlayground: React.FC<PlaygroundArgs> = (args) => {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: 'var(--ai-color-text-interactive, #0066cc)',
+                color: 'var(--blue-400)',
                 textDecoration: 'none',
                 fontWeight: '500',
               }}
@@ -505,14 +505,14 @@ const OpenAiHooksPlayground: React.FC<PlaygroundArgs> = (args) => {
         style={{
           marginTop: '24px',
           paddingTop: '20px',
-          borderTop: '1px solid var(--ai-color-border-default)',
+          borderTop: '1px solid var(--color-border)',
         }}
       >
         <h2 style={{ margin: '0 0 12px', fontSize: '20px', fontWeight: '600' }}>
           🎮 Interactive Playground
         </h2>
         <p
-          style={{ margin: '0 0 12px', color: 'var(--ai-color-text-secondary)', fontSize: '14px' }}
+          style={{ margin: '0 0 12px', color: 'var(--color-text-secondary)', fontSize: '14px' }}
         >
           Try adjusting the controls below or using the Storybook controls panel to simulate host
           environment changes and see how the hooks respond in real-time.

@@ -53,7 +53,7 @@ const CodeBlock: FC<{ code: string; title?: string }> = ({ code, title }) => (
         style={{
           fontSize: '14px',
           fontWeight: 600,
-          color: 'var(--ai-color-text-primary)',
+          color: 'var(--color-text)',
         }}
       >
         {title}
@@ -63,13 +63,13 @@ const CodeBlock: FC<{ code: string; title?: string }> = ({ code, title }) => (
       style={{
         margin: 0,
         padding: '16px',
-        background: 'var(--ai-color-bg-secondary)',
+        background: 'var(--color-surface-secondary)',
         borderRadius: '8px',
         overflow: 'auto',
         fontSize: '13px',
         lineHeight: '1.6',
         fontFamily: 'Monaco, Menlo, "Ubuntu Mono", Consolas, monospace',
-        border: '1px solid var(--ai-color-border-default)',
+        border: '1px solid var(--color-border)',
       }}
     >
       <code>{code}</code>
@@ -86,7 +86,7 @@ const ExampleSection: FC<{
   <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
     <header>
       <h2 style={{ marginBottom: '8px', fontSize: '24px', fontWeight: 600 }}>{title}</h2>
-      <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)', lineHeight: 1.6 }}>
+      <p style={{ margin: 0, color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
         {description}
       </p>
     </header>
@@ -360,7 +360,7 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
           style={{
             margin: 0,
             maxWidth: '720px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: 1.6,
           }}
@@ -374,11 +374,11 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
         <div
           style={{
             marginTop: '16px',
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '12px',
             padding: '16px',
             maxWidth: CHATGPT_APP_WIDTH,
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '14px',
           }}
         >
@@ -464,10 +464,10 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
       </ExampleSection>
 
       <section
-        style={{ paddingTop: '32px', borderTop: '1px solid var(--ai-color-border-default)' }}
+        style={{ paddingTop: '32px', borderTop: '1px solid var(--color-border)' }}
       >
         <h2 style={{ marginBottom: '16px' }}>RenderMarkerParams API</h2>
-        <p style={{ margin: '0 0 16px', color: 'var(--ai-color-text-secondary)', lineHeight: 1.6 }}>
+        <p style={{ margin: '0 0 16px', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
           Your renderMarker function receives these parameters to customize marker appearance:
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -502,9 +502,9 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
               key={name}
               style={{
                 padding: '12px 16px',
-                background: 'var(--ai-color-bg-secondary)',
+                background: 'var(--color-surface-secondary)',
                 borderRadius: '8px',
-                border: '1px solid var(--ai-color-border-default)',
+                border: '1px solid var(--color-border)',
               }}
             >
               <div
@@ -514,7 +514,7 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
                   style={{
                     fontSize: '14px',
                     fontWeight: 600,
-                    color: 'var(--ai-color-text-primary)',
+                    color: 'var(--color-text)',
                   }}
                 >
                   {name}
@@ -522,13 +522,13 @@ const renderMarker = useCallback((params: RenderMarkerParams) => {
                 <code
                   style={{
                     fontSize: '13px',
-                    color: 'var(--ai-color-text-tertiary)',
+                    color: 'var(--color-text-tertiary)',
                   }}
                 >
                   {type}
                 </code>
               </div>
-              <div style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+              <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
                 {desc}
               </div>
             </div>

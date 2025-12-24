@@ -3,7 +3,7 @@
   position: relative;
   display: block;
   flex-shrink: 0;
-  background: var(--ai-color-bg-primary);
+  background: var(--color-surface);
   border: none;
   padding: 0;
   cursor: pointer;
@@ -12,9 +12,9 @@
 }
 
 .albumCard:focus-visible {
-  outline: 2px solid var(--ai-color-brand-primary);
+  outline: 2px solid var(--color-background-info-solid);
   outline-offset: 2px;
-  border-radius: var(--ai-radius-lg);
+  border-radius: var(--radius-2xl);
 }
 
 /* Loading State */
@@ -37,9 +37,9 @@
   aspect-ratio: 4 / 3;
   width: 100%;
   overflow: hidden;
-  border-radius: var(--ai-radius-lg);
-  box-shadow: var(--ai-elevation-2-shadow);
-  background: var(--ai-color-bg-secondary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-200);
+  background: var(--color-surface-secondary);
 }
 
 /* Image */
@@ -52,16 +52,16 @@
 
 /* Content - Title and Subtitle Below Image */
 .content {
-  padding: var(--ai-spacing-6) var(--ai-spacing-4) 0;
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2) 0;
 }
 
 /* Title */
 .title {
-  font-size: var(--ai-font-size-body);
-  line-height: var(--ai-line-height-body);
-  font-weight: var(--ai-font-weight-body);
-  letter-spacing: var(--ai-letter-spacing-body);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-text-md-weight);
+  letter-spacing: var(--font-text-md-tracking);
+  color: var(--color-text);
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -70,12 +70,12 @@
 
 /* Subtitle - Photo Count */
 .subtitle {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  color: var(--ai-color-text-secondary);
-  margin-top: var(--ai-spacing-1);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text-secondary);
+  margin-top: calc(var(--spacing) * 0.5);
 }
 
 /* Loading State Skeletons */
@@ -86,11 +86,11 @@
 }
 
 .skeletonTitle {
-  margin-bottom: var(--ai-spacing-2);
+  margin-bottom: var(--spacing);
 }
 
 .skeletonSubtitle {
-  margin-top: var(--ai-spacing-1);
+  margin-top: calc(var(--spacing) * 0.5);
 }
 
 /* Error State Container */
@@ -100,9 +100,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--ai-spacing-8);
-  background: var(--ai-color-bg-secondary);
-  border-radius: var(--ai-radius-lg);
+  padding: calc(var(--spacing) * 4);
+  background: var(--color-surface-secondary);
+  border-radius: var(--radius-2xl);
 }
 
 /* Empty State Container */
@@ -113,34 +113,34 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--ai-spacing-8);
-  background: var(--ai-color-bg-secondary);
-  border-radius: var(--ai-radius-lg);
+  padding: calc(var(--spacing) * 4);
+  background: var(--color-surface-secondary);
+  border-radius: var(--radius-2xl);
   text-align: center;
 }
 
 .emptyTitle {
-  font-size: var(--ai-font-size-body-emph);
-  line-height: var(--ai-line-height-body-emph);
-  font-weight: var(--ai-font-weight-body-emph);
-  letter-spacing: var(--ai-letter-spacing-body-emph);
-  color: var(--ai-color-text-primary);
-  margin-bottom: var(--ai-spacing-2);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-text-md-tracking);
+  color: var(--color-text);
+  margin-bottom: var(--spacing);
 }
 
 .emptyMessage {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text-secondary);
 }
 
 /* Badge */
 .badge {
   position: absolute;
   z-index: 1;
-  margin: var(--ai-spacing-4);
+  margin: calc(var(--spacing) * 2);
 }
 
 .badgeTopLeft {
@@ -201,18 +201,18 @@
 
 /* Dark Mode */
 :global([data-theme='dark']) .albumCard {
-  background: var(--ai-color-bg-primary);
+  background: var(--color-surface);
 }
 
 :global([data-theme='dark']) .imageContainer {
-  background: var(--ai-color-bg-secondary);
-  box-shadow: var(--ai-elevation-2-shadow);
+  background: var(--color-surface-secondary);
+  box-shadow: var(--shadow-200);
 }
 
 :global([data-theme='dark']) .title {
-  color: var(--ai-color-text-primary);
+  color: var(--color-text);
 }
 
 :global([data-theme='dark']) .subtitle {
-  color: var(--ai-color-text-secondary);
+  color: var(--color-text-secondary);
 }

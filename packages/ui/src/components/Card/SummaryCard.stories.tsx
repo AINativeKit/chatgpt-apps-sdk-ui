@@ -54,7 +54,7 @@ const LoadingTransitionDemo: React.FC = () => {
         >
           {autoToggle ? 'Stop Auto-Toggle' : 'Auto-Toggle (2s)'}
         </Button>
-        <span style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+        <span style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
           Current: <strong>{isLoading ? 'Loading' : 'Loaded'}</strong>
         </span>
       </div>
@@ -71,7 +71,7 @@ const LoadingTransitionDemo: React.FC = () => {
           <p
             style={{
               fontSize: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '8px',
             }}
           >
@@ -95,7 +95,7 @@ const LoadingTransitionDemo: React.FC = () => {
           <p
             style={{
               fontSize: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '8px',
             }}
           >
@@ -123,7 +123,7 @@ const LoadingTransitionDemo: React.FC = () => {
           <p
             style={{
               fontSize: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '8px',
             }}
           >
@@ -148,7 +148,7 @@ const LoadingTransitionDemo: React.FC = () => {
           <p
             style={{
               fontSize: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '8px',
             }}
           >
@@ -204,7 +204,7 @@ const FlatLoadingTransitionDemo: React.FC = () => {
         >
           {autoToggle ? 'Stop Auto-Toggle' : 'Auto-Toggle (2s)'}
         </Button>
-        <span style={{ fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+        <span style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
           Current: <strong>{isLoading ? 'Loading' : 'Loaded'}</strong>
         </span>
       </div>
@@ -221,7 +221,7 @@ const FlatLoadingTransitionDemo: React.FC = () => {
           <p
             style={{
               fontSize: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '8px',
             }}
           >
@@ -246,7 +246,7 @@ const FlatLoadingTransitionDemo: React.FC = () => {
           <p
             style={{
               fontSize: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '8px',
             }}
           >
@@ -275,7 +275,7 @@ const FlatLoadingTransitionDemo: React.FC = () => {
           <p
             style={{
               fontSize: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '8px',
             }}
           >
@@ -314,7 +314,7 @@ const SummaryCardsComponent: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -330,7 +330,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Image Layouts</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Flexible image display: single hero image or 2-4 image grid with auto-layout
           </p>
         </header>
@@ -421,7 +421,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Content Variations</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Flexible content combinations from minimal to complete
           </p>
         </header>
@@ -533,7 +533,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Custom Icons</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Metadata icons can be library icons (string names) or custom React elements (SVGs, icon
             components)
           </p>
@@ -672,7 +672,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Badge/Chip Variants</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Different badge/chip styles for various use cases
           </p>
         </header>
@@ -728,7 +728,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Flat Variant - Edge-to-Edge Layout</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Zero-elevation, edge-to-edge layout with no padding. Perfect for seamless integration in
             grids, carousels, or when the container provides spacing. Uses variant="flat".
           </p>
@@ -788,8 +788,8 @@ const SummaryCardsComponent: React.FC = () => {
         <div
           style={{
             marginTop: '24px',
-            background: 'var(--ai-color-bg-secondary)',
-            border: '1px solid var(--ai-color-border)',
+            background: 'var(--color-surface-secondary)',
+            border: '1px solid var(--color-border)',
             borderRadius: '8px',
             padding: '16px',
           }}
@@ -799,7 +799,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '8px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Use Cases
@@ -810,7 +810,7 @@ const SummaryCardsComponent: React.FC = () => {
               paddingLeft: '20px',
               fontSize: '13px',
               lineHeight: '1.6',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <li>
@@ -834,7 +834,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Button Width Behavior</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             SummaryCard buttons have fixed, predictable widths based on the buttonFullWidth prop.
             Button width does NOT change based on container or viewport size.
           </p>
@@ -847,7 +847,7 @@ const SummaryCardsComponent: React.FC = () => {
           </h3>
           <p
             style={{
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               fontSize: '14px',
               marginBottom: '16px',
             }}
@@ -913,7 +913,7 @@ const SummaryCardsComponent: React.FC = () => {
           </div>
           <p
             style={{
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               fontSize: '12px',
               fontStyle: 'italic',
             }}
@@ -929,7 +929,7 @@ const SummaryCardsComponent: React.FC = () => {
           </h3>
           <p
             style={{
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               fontSize: '14px',
               marginBottom: '16px',
             }}
@@ -976,7 +976,7 @@ const SummaryCardsComponent: React.FC = () => {
           </div>
           <p
             style={{
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               fontSize: '12px',
               fontStyle: 'italic',
             }}
@@ -989,7 +989,7 @@ const SummaryCardsComponent: React.FC = () => {
         <div
           style={{
             padding: '24px',
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '8px',
           }}
         >
@@ -1002,7 +1002,7 @@ const SummaryCardsComponent: React.FC = () => {
             </p>
             <pre
               style={{
-                background: 'var(--ai-color-bg-primary)',
+                background: 'var(--color-surface)',
                 padding: '12px',
                 borderRadius: '4px',
                 overflow: 'auto',
@@ -1048,7 +1048,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Discovery/Browse Mode - Compact Size (NEW)</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Dense layout optimized for carousels and discovery interfaces. Use size="compact" with
             imageAspectRatio="4/3" to replicate DiscoveryCard. Perfect for restaurant listings,
             product catalogs, and content discovery.
@@ -1062,7 +1062,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Single Card Example
@@ -1089,8 +1089,8 @@ const SummaryCardsComponent: React.FC = () => {
               style={{
                 flex: 1,
                 minWidth: '300px',
-                background: 'var(--ai-color-bg-secondary)',
-                border: '1px solid var(--ai-color-border)',
+                background: 'var(--color-surface-secondary)',
+                border: '1px solid var(--color-border)',
                 borderRadius: '8px',
                 padding: '16px',
                 fontSize: '12px',
@@ -1126,7 +1126,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Multiple Cards in Grid
@@ -1195,7 +1195,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Key Features
@@ -1226,8 +1226,8 @@ const SummaryCardsComponent: React.FC = () => {
               <div
                 key={f.title}
                 style={{
-                  background: 'var(--ai-color-bg-secondary)',
-                  border: '1px solid var(--ai-color-border)',
+                  background: 'var(--color-surface-secondary)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '8px',
                   padding: '12px',
                 }}
@@ -1238,7 +1238,7 @@ const SummaryCardsComponent: React.FC = () => {
                     margin: '0 0 4px 0',
                     fontSize: '12px',
                     fontWeight: '600',
-                    color: 'var(--ai-color-text-primary)',
+                    color: 'var(--color-text)',
                   }}
                 >
                   {f.title}
@@ -1247,7 +1247,7 @@ const SummaryCardsComponent: React.FC = () => {
                   style={{
                     margin: 0,
                     fontSize: '11px',
-                    color: 'var(--ai-color-text-secondary)',
+                    color: 'var(--color-text-secondary)',
                     lineHeight: '1.4',
                   }}
                 >
@@ -1265,20 +1265,20 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Use Cases
           </h3>
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
               fontSize: '13px',
               lineHeight: '1.6',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <ul style={{ margin: 0, paddingLeft: '20px' }}>
@@ -1311,7 +1311,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Image Aspect Ratio Options
@@ -1364,7 +1364,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Layout Shift Prevention (NEW)</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Loading skeletons now match real content dimensions exactly using CSS aspect-ratio and
             dynamic description lines. Smooth fade transitions with 100ms delay prevent flash on
             fast loads.
@@ -1378,7 +1378,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             descriptionLines Prop - Skeleton Matches Content
@@ -1395,7 +1395,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1418,7 +1418,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1441,7 +1441,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1469,7 +1469,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             imageAspectRatio - Skeleton Matches Image Dimensions
@@ -1486,7 +1486,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1509,7 +1509,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1532,7 +1532,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1560,7 +1560,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Flat Variant - Edge-to-Edge with No Layout Shift
@@ -1568,7 +1568,7 @@ const SummaryCardsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -1587,7 +1587,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1612,7 +1612,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1641,7 +1641,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1672,7 +1672,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Live Loading → Loaded Transition
@@ -1680,7 +1680,7 @@ const SummaryCardsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -1697,7 +1697,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Live Flat Variant Transitions
@@ -1705,7 +1705,7 @@ const SummaryCardsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -1722,7 +1722,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Metadata Skeleton Support (NEW)
@@ -1730,7 +1730,7 @@ const SummaryCardsComponent: React.FC = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -1749,7 +1749,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1777,7 +1777,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1807,7 +1807,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginBottom: '8px',
                 }}
               >
@@ -1832,8 +1832,8 @@ const SummaryCardsComponent: React.FC = () => {
         {/* Best Practices */}
         <div
           style={{
-            background: 'var(--ai-color-bg-secondary)',
-            border: '1px solid var(--ai-color-border)',
+            background: 'var(--color-surface-secondary)',
+            border: '1px solid var(--color-border)',
             borderRadius: '8px',
             padding: '16px',
           }}
@@ -1843,7 +1843,7 @@ const SummaryCardsComponent: React.FC = () => {
               fontSize: '14px',
               fontWeight: '600',
               marginBottom: '8px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Industry Best Practices Implemented
@@ -1854,7 +1854,7 @@ const SummaryCardsComponent: React.FC = () => {
               paddingLeft: '20px',
               fontSize: '13px',
               lineHeight: '1.6',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <li>
@@ -1888,7 +1888,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Loading, error, and empty states for all scenarios
           </p>
         </header>
@@ -1908,7 +1908,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Loading - Single Image
@@ -1931,7 +1931,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Loading - Grid Images
@@ -1957,7 +1957,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Loading - No Images
@@ -1990,7 +1990,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Error State
@@ -2009,7 +2009,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Error with Retry
@@ -2033,7 +2033,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Empty State
@@ -2051,7 +2051,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Performance & Callbacks</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Native lazy loading enabled by default, with image load/error callbacks
           </p>
         </header>
@@ -2070,7 +2070,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Lazy Loading (Default)
@@ -2085,7 +2085,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2099,7 +2099,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Eager Loading
@@ -2115,7 +2115,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2129,7 +2129,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Image Callbacks
@@ -2146,7 +2146,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2160,7 +2160,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Top Overlay</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Add logos, badges, or custom content on top of images
           </p>
         </header>
@@ -2180,7 +2180,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Logo Overlay - Dark Background
@@ -2217,7 +2217,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2232,7 +2232,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Logo Overlay - Light Background
@@ -2267,7 +2267,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2282,7 +2282,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Custom Background Color
@@ -2307,7 +2307,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2322,7 +2322,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Overlay on Grid Images
@@ -2361,7 +2361,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2376,7 +2376,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Left-Aligned Content
@@ -2409,7 +2409,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2424,7 +2424,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Right-Aligned Content
@@ -2465,7 +2465,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2480,7 +2480,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Flat Variant with Overlay
@@ -2516,7 +2516,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2531,7 +2531,7 @@ const SummaryCardsComponent: React.FC = () => {
                 fontSize: '14px',
                 fontWeight: 600,
                 marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Compact Size with Overlay
@@ -2566,7 +2566,7 @@ const SummaryCardsComponent: React.FC = () => {
             <p
               style={{
                 fontSize: '12px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 marginTop: '8px',
               }}
             >
@@ -2580,7 +2580,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Overlay Border Artifact Test</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Test various solid color overlays on flat variant cards to check for border artifacts
             (especially visible in dark mode)
           </p>
@@ -2632,7 +2632,7 @@ const SummaryCardsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '11px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   marginTop: '8px',
                   fontFamily: 'monospace',
                 }}
@@ -2648,7 +2648,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Real-World Example</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Restaurant card with all features
           </p>
         </header>
@@ -2682,7 +2682,7 @@ const SummaryCardsComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Complete API reference for SummaryCard
           </p>
         </header>

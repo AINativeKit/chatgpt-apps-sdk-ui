@@ -200,7 +200,7 @@ const AlbumSystemComponent: React.FC = () => {
         <p
           style={{
             marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             fontSize: '16px',
             lineHeight: '1.6',
           }}
@@ -216,7 +216,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Album Carousel</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Horizontal carousel of album cards with different alignments and navigation options
           </p>
         </header>
@@ -226,7 +226,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Center Aligned with Navigation
@@ -245,7 +245,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Start Aligned
@@ -263,7 +263,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Without Navigation
@@ -281,7 +281,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Carousel State Management</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Loading, error, and empty states for the carousel with retry functionality
           </p>
         </header>
@@ -291,7 +291,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Loading State (4 Skeleton Cards)
@@ -310,7 +310,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Error State
@@ -330,7 +330,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Error State with Retry ({retryCount} attempts)
@@ -354,7 +354,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Empty State
@@ -373,7 +373,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Album with Viewer (Full System)</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Complete Album component with carousel and fullscreen viewer - click any album to open
           </p>
         </header>
@@ -391,7 +391,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Controlled State Example</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             External control of album selection with state management
           </p>
         </header>
@@ -400,7 +400,7 @@ const AlbumSystemComponent: React.FC = () => {
           style={{
             marginBottom: '16px',
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
           }}
         >
@@ -426,7 +426,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Album Viewer (Standalone)</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Fullscreen photo viewer with navigation and keyboard controls
           </p>
         </header>
@@ -467,12 +467,12 @@ const AlbumSystemComponent: React.FC = () => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             marginTop: '16px',
           }}
         >
-          <p style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
+          <p style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
             <strong>Viewer Features:</strong> Arrow key navigation, ESC to close, photo counter,
             responsive layouts, smooth transitions, Embla carousel for touch/swipe navigation
           </p>
@@ -483,7 +483,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Responsive Behavior</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             AlbumViewer adapts to different screen sizes with three breakpoints
           </p>
         </header>
@@ -491,7 +491,7 @@ const AlbumSystemComponent: React.FC = () => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             marginBottom: '16px',
           }}
@@ -504,7 +504,7 @@ const AlbumSystemComponent: React.FC = () => {
               margin: 0,
               paddingLeft: '20px',
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <li>No thumbnail sidebar</li>
@@ -518,7 +518,7 @@ const AlbumSystemComponent: React.FC = () => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             marginBottom: '16px',
           }}
@@ -529,7 +529,7 @@ const AlbumSystemComponent: React.FC = () => {
               margin: 0,
               paddingLeft: '20px',
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <li>Thumbnail sidebar appears (160px width)</li>
@@ -544,7 +544,7 @@ const AlbumSystemComponent: React.FC = () => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderRadius: '8px',
           }}
         >
@@ -556,7 +556,7 @@ const AlbumSystemComponent: React.FC = () => {
               margin: 0,
               paddingLeft: '20px',
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <li>All tablet features maintained</li>
@@ -568,7 +568,7 @@ const AlbumSystemComponent: React.FC = () => {
         <div
           style={{
             padding: '16px',
-            backgroundColor: 'var(--ai-color-bg-tertiary)',
+            backgroundColor: 'var(--color-surface-tertiary)',
             borderRadius: '8px',
             marginTop: '16px',
           }}
@@ -577,12 +577,12 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               margin: 0,
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               fontStyle: 'italic',
             }}
           >
             <strong>Note:</strong> All breakpoints use CSS custom properties from the design system
-            (--ai-breakpoint-tablet: 640px, --ai-breakpoint-desktop-wide: 1024px)
+            (--breakpoint-tablet: 640px, --breakpoint-desktop-wide: 1024px)
           </p>
         </div>
       </section>
@@ -591,7 +591,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>AlbumViewer Empty States</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Handling albums with no photos using default, custom, or hidden empty states
           </p>
         </header>
@@ -601,7 +601,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Default Empty State
@@ -610,7 +610,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Shows default "No photos available" message with close button
@@ -628,7 +628,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Custom Empty State Content
@@ -637,7 +637,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Provide custom UI via emptyStateContent prop
@@ -668,7 +668,7 @@ const AlbumSystemComponent: React.FC = () => {
                     📸
                   </div>
                   <h3 style={{ margin: 0, fontSize: '20px' }}>No Photos Yet</h3>
-                  <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
+                  <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
                     This album is waiting for its first photo
                   </p>
                   <Button color="primary" onClick={() => setShowEmptyCustom(false)}>
@@ -685,7 +685,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Hide When Empty
@@ -694,7 +694,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '14px',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             Returns null when album has no photos (hideWhenEmpty=true)
@@ -706,7 +706,7 @@ const AlbumSystemComponent: React.FC = () => {
             style={{
               fontSize: '12px',
               marginTop: '8px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               fontStyle: 'italic',
             }}
           >
@@ -726,7 +726,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Album Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Main Album component props (includes all AlbumCarousel props)
           </p>
         </header>
@@ -757,7 +757,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>AlbumCarousel Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Carousel-specific props including state management
           </p>
         </header>
@@ -827,7 +827,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>AlbumViewer Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             Fullscreen photo viewer props including empty state handling
           </p>
         </header>
@@ -868,7 +868,7 @@ const AlbumSystemComponent: React.FC = () => {
       <section>
         <header style={{ marginBottom: '16px' }}>
           <h2 style={{ marginBottom: '8px' }}>Related Components</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
+          <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
             For detailed <strong>AlbumCard</strong> documentation including badges, multi-line text,
             loading/error/empty states, and image controls, see the <strong>AlbumCard</strong> story
             in the sidebar.

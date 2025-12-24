@@ -4,6 +4,7 @@ import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { act } from 'react';
 import { ImageCard } from './ImageCard';
+import { PlusCircleAdd } from '@openai/apps-sdk-ui/components/Icon';
 
 describe('ImageCard', () => {
   const mockImage = 'https://example.com/image.jpg';
@@ -78,7 +79,7 @@ describe('ImageCard', () => {
   describe('Action Button', () => {
     it('renders action button when actionIcon provided', () => {
       const { container } = render(
-        <ImageCard image={mockImage} actionIcon="plus-circle-add" actionLabel="Add item" />
+        <ImageCard image={mockImage} actionIcon={<PlusCircleAdd />} actionLabel="Add item" />
       );
       fireImageLoad(container);
       const button = screen.getByRole('button', { name: /Add item/ });
@@ -98,7 +99,7 @@ describe('ImageCard', () => {
       const { container } = render(
         <ImageCard
           image={mockImage}
-          actionIcon="plus-circle-add"
+          actionIcon={<PlusCircleAdd />}
           actionLabel="Add"
           onAction={handleAction}
         />
@@ -116,7 +117,7 @@ describe('ImageCard', () => {
       render(
         <ImageCard
           image={mockImage}
-          actionIcon="plus-circle-add"
+          actionIcon={<PlusCircleAdd />}
           actionLabel="" // Empty label should trigger warning
         />
       );
@@ -135,7 +136,7 @@ describe('ImageCard', () => {
       const { container } = render(
         <ImageCard
           image={mockImage}
-          actionIcon="plus-circle-add"
+          actionIcon={<PlusCircleAdd />}
           actionLabel="" // Empty label
         />
       );
@@ -153,7 +154,7 @@ describe('ImageCard', () => {
         <ImageCard
           image={mockImage}
           title="Pizza"
-          actionIcon="plus-circle-add"
+          actionIcon={<PlusCircleAdd />}
           actionLabel="Add to favorites"
         />
       );
@@ -194,7 +195,7 @@ describe('ImageCard', () => {
 
     it('renders gradient overlay when action button exists with valid label', () => {
       const { container } = render(
-        <ImageCard image={mockImage} actionIcon="plus-circle-add" actionLabel="Add" />
+        <ImageCard image={mockImage} actionIcon={<PlusCircleAdd />} actionLabel="Add" />
       );
       fireImageLoad(container);
       const overlay = container.querySelector('[class*="gradientOverlay"]');

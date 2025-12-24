@@ -42,7 +42,7 @@ export interface CarouselProps {
 
   /**
    * Gap between slides using CSS custom property.
-   * @default 'var(--ai-spacing-8)'
+   * @default 'var(32px)'
    */
   gap?: string;
 
@@ -156,7 +156,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   loop = false,
   showNavigation = true,
   showEdgeGradients = true,
-  gap = 'var(--ai-spacing-8)',
+  gap = 'var(32px)',
   onSlideChange,
   className,
   style,
@@ -246,7 +246,7 @@ export const Carousel: React.FC<CarouselProps> = ({
                 style={{
                   width: '100%',
                   minHeight: '240px',
-                  padding: 'var(--ai-spacing-16)',
+                  padding: 'var(64px)',
                 }}
               />
             </div>
