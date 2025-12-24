@@ -1,9 +1,15 @@
 /**
- * Design Tokens - AI Native Kit
- * Centralized export of all design tokens
+ * Design Tokens - @ainativekit/ui
+ * Extension components for apps-sdk-ui
  *
- * Note: Icons are provided by @openai/apps-sdk-ui (755 icons).
- * Import icons from '@openai/apps-sdk-ui/components/Icon'.
+ * This package extends @openai/apps-sdk-ui with additional components.
+ * Token CSS variables from apps-sdk-ui are available globally when using AppsSDKUIProvider.
+ *
+ * Token Mapping:
+ * - Legacy --ai-* tokens are mapped to apps-sdk-ui tokens for compatibility
+ * - Use apps-sdk-ui tokens directly for new code: --color-*, --radius-*, --shadow-*, etc.
+ *
+ * Icons: Use @openai/apps-sdk-ui (755 icons) via Icon component.
  *
  * @packageDocumentation
  */

@@ -1,15 +1,29 @@
 import type { Decorator, Preview } from '@storybook/react';
 import React from 'react';
-import { ThemeProvider } from '../src/providers/ThemeProvider';
-import '../src/tokens/tokens.css';
+import { AppsSDKUIProvider } from '@openai/apps-sdk-ui/components/AppsSDKUIProvider';
+import './storybook.css';
 
 const reactWithUse = React as unknown as { use?: typeof React.useContext };
 if (typeof reactWithUse.use !== 'function') {
   reactWithUse.use = React.useContext;
 }
 
+/**
+ * Apply theme to document (following apps-sdk-ui pattern)
+ */
+function applyDocumentTheme(theme: 'light' | 'dark') {
+  const htmlTag = document.documentElement;
+  htmlTag.setAttribute('data-theme', theme);
+  htmlTag.style.colorScheme = theme;
+}
+
 const withTheme: Decorator = (Story, context) => {
   const theme = (context.globals.theme as 'light' | 'dark') ?? 'light';
+
+  // Apply theme to document
+  React.useLayoutEffect(() => {
+    applyDocumentTheme(theme);
+  }, [theme]);
 
   // Apply background color to Storybook canvas for dark mode
   React.useEffect(() => {
@@ -20,10 +34,14 @@ const withTheme: Decorator = (Story, context) => {
     }
   }, [theme]);
 
+  return <Story />;
+};
+
+const withAppsSDKUIContext: Decorator = (Story, { parameters }) => {
   return (
-    <ThemeProvider defaultTheme={theme} brandColors={{ primary: '#0285ff' }}>
+    <AppsSDKUIProvider linkComponent={parameters.linkComponent ?? 'a'}>
       <Story />
-    </ThemeProvider>
+    </AppsSDKUIProvider>
   );
 };
 
@@ -54,8 +72,6 @@ const preview: Preview = {
           ['Albums', 'Carousel', 'Pizza List', 'Maps', 'Cards'],
           'Design Tokens',
           ['Colors', 'Typography', 'Spacing', 'Radius', 'Elevation'],
-          'Primitive Components',
-          ['Alerts', 'Badges', 'Buttons', 'Chips', 'Features', 'Icons', 'Skeletons'],
           'Composed Components',
           ['Cards', 'Album', 'Carousel', 'List', 'Maps'],
           'Integrations',
@@ -79,7 +95,7 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [withTheme],
+  decorators: [withTheme, withAppsSDKUIContext],
 };
 
 export default preview;

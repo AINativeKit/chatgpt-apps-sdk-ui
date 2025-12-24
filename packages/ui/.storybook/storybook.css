@@ -1,0 +1,13 @@
+/**
+ * Storybook CSS Entry Point
+ * Imports apps-sdk-ui base styles and our extension tokens
+ */
+
+/* Tailwind CSS base */
+@import "tailwindcss";
+
+/* apps-sdk-ui base styles and tokens */
+@import "@openai/apps-sdk-ui/css";
+
+/* Our extension tokens (compatibility layer) */
+@import "../src/tokens/tokens.css";

@@ -2,6 +2,15 @@
  * Token Helper Utilities
  * Type-safe helpers for using design tokens in inline styles
  *
+ * These helpers provide convenient access to design tokens.
+ * For the full token system, apps-sdk-ui CSS variables are available:
+ * - Colors: var(--color-text), var(--color-background-*-solid), etc.
+ * - Spacing: calc(var(--spacing) * N) where --spacing is 4px
+ * - Radius: var(--radius-md), var(--radius-xl), etc.
+ * - Shadows: var(--shadow-100), var(--shadow-200), etc.
+ *
+ * Legacy --ai-* tokens are mapped to apps-sdk-ui tokens for compatibility.
+ *
  * @example
  * ```typescript
  * import { cssVar, spacing, colors } from '@ainativekit/ui/tokens';
