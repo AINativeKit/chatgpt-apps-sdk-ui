@@ -1,12 +1,16 @@
 /**
  * @ainativekit/ui
- * AI Native Kit - Component library for AI-powered applications
+ * Extension components for ChatGPT Apps SDK
+ * Built on @openai/apps-sdk-ui
  */
 
 // Import CSS tokens
 import './tokens/tokens.css';
 
-export const version = '0.1.0';
+export const version = '1.0.0-alpha.1';
+
+// Export shared types (following apps-sdk-ui conventions)
+export * from './types';
 
 // Export all design tokens
 export * from './tokens';
