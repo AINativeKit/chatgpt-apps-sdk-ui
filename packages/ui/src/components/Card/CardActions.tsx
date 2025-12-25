@@ -51,13 +51,17 @@ export const CardActions = React.forwardRef<HTMLDivElement, CardActionsProps>((p
 CardActions.displayName = 'Card.Actions';
 
 // Convenience component for button actions
-// Make color optional since we provide a default
-export type CardActionButtonProps = Omit<ButtonProps, 'color'> & { color?: ButtonProps['color'] };
+// Make color and size optional since we provide defaults
+export type CardActionButtonProps = Omit<ButtonProps, 'color' | 'size'> & {
+  color?: ButtonProps['color'];
+  size?: ButtonProps['size'];
+};
 
 /**
  * Card.ActionButton - Pre-configured button for card actions
  *
  * A convenience wrapper around Button with sensible defaults for card usage.
+ * Defaults to size="2xl" and color="primary".
  *
  * @example
  * ```tsx
@@ -69,9 +73,8 @@ export type CardActionButtonProps = Omit<ButtonProps, 'color'> & { color?: Butto
  */
 export const CardActionButton = React.forwardRef<HTMLButtonElement, CardActionButtonProps>(
   (props, ref) => {
-    // Default to 'primary' color if not specified for convenience
-    const { color = 'primary', ...rest } = props;
-    return <Button ref={ref} color={color} {...rest} />;
+    const { color = 'primary', size = '2xl', ...rest } = props;
+    return <Button ref={ref} color={color} size={size} {...rest} />;
   }
 );
 
