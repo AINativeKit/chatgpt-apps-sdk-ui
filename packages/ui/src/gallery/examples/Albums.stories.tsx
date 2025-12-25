@@ -249,8 +249,8 @@ const AlbumsComponent: React.FC = () => {
             selectedAlbum={selectedAlbum}
             onAlbumSelect={setSelectedAlbum}
             align="center"
-            showNavigation={true}
-            showEdgeGradients={true}
+            showNavigation
+            flushStart
           />
         </div>
 

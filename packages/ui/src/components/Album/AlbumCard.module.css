@@ -5,10 +5,13 @@
   flex-shrink: 0;
   background: var(--color-surface);
   border: none;
+  appearance: none;
+  -webkit-appearance: none;
   padding: 0;
   cursor: pointer;
   text-align: left;
   -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
 }
 
 .albumCard:focus-visible {
@@ -38,7 +41,6 @@
   width: 100%;
   overflow: hidden;
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-200);
   background: var(--color-surface-secondary);
 }
 
@@ -206,7 +208,6 @@
 
 :global([data-theme='dark']) .imageContainer {
   background: var(--color-surface-secondary);
-  box-shadow: var(--shadow-200);
 }
 
 :global([data-theme='dark']) .title {
