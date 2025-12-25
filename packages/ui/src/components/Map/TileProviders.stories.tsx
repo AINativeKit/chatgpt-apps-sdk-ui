@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import type { Meta } from '@storybook/react';
 import { CompactMap } from './CompactMap';
 import type { LocationData } from './types';
+import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
 
 const CHATGPT_APP_WIDTH = '766px';
 
@@ -15,7 +16,7 @@ const sampleLocations: LocationData[] = [
     coords: [37.8001, -122.4098],
     description: 'Award-winning Neapolitan pies in North Beach.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [{ icon: 'star', label: '4.8' }, { label: '$$$' }],
+    features: [{ icon: <StarFilled />, label: '4.8' }, { label: '$$$' }],
   },
   {
     id: 'golden-boy',
@@ -24,7 +25,7 @@ const sampleLocations: LocationData[] = [
     coords: [37.799, -122.4093],
     description: 'Focaccia-style squares, late-night favorite.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$' }],
   },
   {
     id: 'delfina',
@@ -33,7 +34,7 @@ const sampleLocations: LocationData[] = [
     coords: [37.7613, -122.4255],
     description: 'Thin-crust classics on 18th Street.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
   },
 ];
 

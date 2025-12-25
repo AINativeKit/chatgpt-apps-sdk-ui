@@ -757,6 +757,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
               <Button
                 color="primary"
                 variant="solid"
+                size={size === 'compact' ? 'lg' : '2xl'}
                 onClick={onButtonClick}
                 disabled={buttonDisabled}
                 block={isButtonFullWidth}

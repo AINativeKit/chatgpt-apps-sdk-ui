@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta } from '@storybook/react';
 import { List, ListItem } from './List';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { StarFilled, MapPin } from '@openai/apps-sdk-ui/components/Icon';
 import { PropsTable } from '../../tokens/PropsTable';
 
 const meta: Meta<typeof List> = {
@@ -210,7 +211,7 @@ const ListsComponent: React.FC = () => {
                 key={place.id}
                 rank={index + 1}
                 title={place.name}
-                features={[{ icon: 'star', label: `${place.rating}` }]}
+                features={[{ icon: <StarFilled />, label: `${place.rating}` }]}
                 media={place.thumbnail}
                 mediaAlt={place.name}
                 metadata={place.city}
@@ -502,8 +503,8 @@ const ListsComponent: React.FC = () => {
                 subtitle={place.city}
                 media={place.thumbnail}
                 features={[
-                  { icon: 'star', label: `${place.rating}` },
-                  { icon: 'map-pin', label: 'Nearby' },
+                  { icon: <StarFilled />, label: `${place.rating}` },
+                  { icon: <MapPin />, label: 'Nearby' },
                 ]}
                 metadata="$$$"
               />

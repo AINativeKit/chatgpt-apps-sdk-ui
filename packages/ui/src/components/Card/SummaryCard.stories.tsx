@@ -2,6 +2,12 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SummaryCard } from './SummaryCard';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
+import {
+  StarFilled,
+  Clock,
+  MapPin,
+  CalendarToday,
+} from '@openai/apps-sdk-ui/components/Icon';
 import { PropsTable } from '../../tokens/PropsTable';
 
 const meta: Meta<typeof SummaryCard> = {
@@ -511,8 +517,8 @@ const SummaryCardsComponent: React.FC = () => {
             title="With Metadata"
             description="Card with structured metadata items"
             metadata={[
-              { icon: 'clock', label: '10 min read' },
-              { icon: 'calendar-today', label: 'October 30, 2025' },
+              { icon: <Clock />, label: '10 min read' },
+              { icon: <CalendarToday />, label: 'October 30, 2025' },
             ]}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -520,9 +526,9 @@ const SummaryCardsComponent: React.FC = () => {
             title="With Multiple Metadata"
             description="Display multiple metadata items with icons"
             metadata={[
-              { icon: 'star', label: '9.2' },
-              { icon: 'map-pin', label: 'San Francisco' },
-              { icon: 'clock', label: 'Open now' },
+              { icon: <StarFilled />, label: '9.2' },
+              { icon: <MapPin />, label: 'San Francisco' },
+              { icon: <Clock />, label: 'Open now' },
             ]}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -631,7 +637,7 @@ const SummaryCardsComponent: React.FC = () => {
             subtitle="Library + Custom Icons"
             description="Combine library icons with custom SVG elements seamlessly"
             metadata={[
-              { icon: 'clock', label: '10 min' },
+              { icon: <Clock />, label: '10 min' },
               {
                 icon: (
                   <svg
@@ -647,7 +653,7 @@ const SummaryCardsComponent: React.FC = () => {
                 ),
                 label: 'Featured',
               },
-              { icon: 'map-pin', label: 'SF' },
+              { icon: <MapPin />, label: 'SF' },
             ]}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
           />
@@ -1764,8 +1770,8 @@ const SummaryCardsComponent: React.FC = () => {
                 description="Sample description text"
                 descriptionLines={2}
                 metadata={[
-                  { icon: 'clock', label: '10 min' },
-                  { icon: 'map-pin', label: 'Downtown' },
+                  { icon: <Clock />, label: '10 min' },
+                  { icon: <MapPin />, label: 'Downtown' },
                 ]}
                 buttonText="View"
                 loading={true}
@@ -2666,9 +2672,9 @@ const SummaryCardsComponent: React.FC = () => {
             badgeVariant="soft"
             description="A tiny, brick-walled trattoria tucked down a side street near Washington Square Park. The windows glow warm gold at night, and the smell of slow-simmered tomato sauce drifts out onto the sidewalk."
             metadata={[
-              { icon: 'star', label: '9.2 rating' },
-              { icon: 'map-pin', label: 'North Beach' },
-              { icon: 'clock', label: 'Open now' },
+              { icon: <StarFilled />, label: '9.2 rating' },
+              { icon: <MapPin />, label: 'North Beach' },
+              { icon: <Clock />, label: 'Open now' },
             ]}
             buttonText="Reserve"
             onButtonClick={() => console.log('Reserve')}

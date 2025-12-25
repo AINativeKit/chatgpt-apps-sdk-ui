@@ -3,6 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './Card';
 // Skeleton removed - using inline skeleton in components
 import { Features } from '../Feature/Features';
+import {
+  Clock,
+  CalendarToday,
+  Chat,
+  Maps,
+} from '@openai/apps-sdk-ui/components/Icon';
 import { PropsTable } from '../../tokens/PropsTable';
 import { codeBlockStyles } from '../storybook/codeBlockStyles';
 
@@ -638,10 +644,9 @@ const CardsComponent: React.FC = () => {
               <Card.Meta>
                 <Features
                   items={[
-                    { icon: 'clock', label: '10 min read' },
-                    { icon: 'calendar-today', label: 'October 30, 2025' },
+                    { icon: <Clock />, label: '10 min read' },
+                    { icon: <CalendarToday />, label: 'October 30, 2025' },
                   ]}
-                  iconSize={12}
                 />
               </Card.Meta>
             </Card.Body>
@@ -700,8 +705,7 @@ const CardsComponent: React.FC = () => {
               </Card.Description>
               <Card.Meta>
                 <Features
-                  items={[{ icon: 'chat', label: '4.8★' }, '128 reviews', '$$', 'Open now']}
-                  iconSize={12}
+                  items={[{ icon: <Chat />, label: '4.8★' }, '128 reviews', '$$', 'Open now']}
                 />
               </Card.Meta>
             </Card.Body>
@@ -737,8 +741,7 @@ const CardsComponent: React.FC = () => {
               </Card.Description>
               <Card.Meta>
                 <Features
-                  items={[{ icon: 'calendar-today', label: '6 months' }, '8 people']}
-                  iconSize={12}
+                  items={[{ icon: <CalendarToday />, label: '6 months' }, '8 people']}
                 />
               </Card.Meta>
             </Card.Body>
@@ -901,11 +904,10 @@ const CardsComponent: React.FC = () => {
               <Card.Meta>
                 <Features
                   items={[
-                    { icon: 'calendar-today', label: 'Oct 30, 2025' },
-                    { icon: 'clock', label: '2:00 PM' },
-                    { icon: 'maps', label: 'Virtual' },
+                    { icon: <CalendarToday />, label: 'Oct 30, 2025' },
+                    { icon: <Clock />, label: '2:00 PM' },
+                    { icon: <Maps />, label: 'Virtual' },
                   ]}
-                  iconSize={12}
                 />
               </Card.Meta>
             </Card.Body>

@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import type { Meta } from '@storybook/react';
 import { CompactMap } from './CompactMap';
 import type { LocationData } from './types';
+import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
 import { PropsTable } from '../../tokens/PropsTable';
 
 const CHATGPT_APP_WIDTH = '766px';
@@ -17,7 +18,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Award-winning Neapolitan pies in North Beach. A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [{ icon: 'star', label: '4.8' }, { label: '$$$' }],
+    features: [{ icon: <StarFilled />, label: '4.8' }, { label: '$$$' }],
     lists: [
       {
         title: 'Reviews',
@@ -41,7 +42,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Focaccia-style squares, late-night favorite. Classic North Beach spot known for thick, fluffy focaccia pizza by the slice.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$' }],
   },
   {
     id: 'delfina',
@@ -51,7 +52,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Thin-crust classics on 18th Street. Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
   },
   {
     id: 'flour-water',
@@ -61,7 +62,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Deep-dish and cornmeal crust favorites. Innovative pizzeria from the Flour + Water team with seasonal rotating menu.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-6.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
   },
 ];
 
@@ -274,7 +275,7 @@ const CompactMapDoc: FC = () => {
                   ),
                   label: 'Trending',
                 },
-                { icon: 'star', label: '4.9' },
+                { icon: <StarFilled />, label: '4.9' },
                 { label: '$$$' },
               ],
             },
@@ -310,7 +311,7 @@ const CompactMapDoc: FC = () => {
           >
             {`features: [
   { icon: <CustomHeartSVG />, label: 'Popular' },  // Custom React element
-  { icon: 'star', label: '4.9' },                  // Standard icon string
+  { icon: <StarFilled />, label: '4.9' },                  // Standard icon string
   { label: '$$$' }                                 // No icon
 ]`}
           </pre>

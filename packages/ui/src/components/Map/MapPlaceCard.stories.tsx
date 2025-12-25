@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MapPlaceCard } from './MapPlaceCard';
+import { StarFilled, Clock } from '@openai/apps-sdk-ui/components/Icon';
 
 const meta: Meta<typeof MapPlaceCard> = {
   title: 'Composed Components/Cards/Map Place Cards',
@@ -19,22 +20,22 @@ const SAMPLE_LOCATIONS = [
     title: 'Central Park',
     subtitle: 'New York, NY',
     features: [
-      { icon: 'star' as const, label: '4.8' },
+      { icon: <StarFilled />, label: '4.8' },
       { label: 'Free' },
-      { icon: 'clock' as const, label: 'Open 6am-1am' },
+      { icon: <Clock />, label: 'Open 6am-1am' },
     ],
   },
   {
     image: 'https://images.unsplash.com/photo-1431274172761-fca41d930114?w=200&q=80',
     title: 'Golden Gate Bridge',
     subtitle: 'San Francisco, CA',
-    features: [{ icon: 'star' as const, label: '4.9' }, { label: '$10' }, { label: '2.5 mi' }],
+    features: [{ icon: <StarFilled />, label: '4.9' }, { label: '$10' }, { label: '2.5 mi' }],
   },
   {
     image: 'https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?w=200&q=80',
     title: 'Griffith Observatory',
     subtitle: 'Los Angeles, CA',
-    features: [{ icon: 'star' as const, label: '4.7' }, { label: 'Free' }],
+    features: [{ icon: <StarFilled />, label: '4.7' }, { label: 'Free' }],
   },
 ];
 

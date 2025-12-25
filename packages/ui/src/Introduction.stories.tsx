@@ -7,6 +7,12 @@ import { Carousel as CarouselComponent } from './components/Carousel';
 import { Card, SummaryCard } from './components/Card';
 import { List, ListItem } from './components/List';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
+import {
+  StarFilled,
+  Clock,
+  MapPin,
+  CalendarToday,
+} from '@openai/apps-sdk-ui/components/Icon';
 import { Map, FullscreenMap } from './components/Map';
 import { Features } from './components/Feature/Features';
 import { codeBlockStyles } from './components/storybook/codeBlockStyles';
@@ -200,7 +206,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Award-winning Neapolitan pies in North Beach. A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [{ icon: 'star', label: '4.8' }, { label: '$$$' }],
+    features: [{ icon: <StarFilled />, label: '4.8' }, { label: '$$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Contact', variant: 'secondary' },
@@ -234,7 +240,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Focaccia-style squares, late-night favorite. Classic North Beach spot known for thick, fluffy focaccia pizza by the slice.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Call', variant: 'secondary' },
@@ -261,7 +267,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Thin-crust classics on 18th Street. Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Reservations', variant: 'secondary' },
@@ -275,7 +281,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Deep-dish and cornmeal crust favorites. Innovative pizzeria from the Flour + Water team with seasonal rotating menu.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
   },
   {
     id: 'beretta',
@@ -285,7 +291,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Wood-fired pies and burrata in North Beach. Stylish spot combining pizza excellence with a full cocktail program.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$$' }],
   },
 ];
 
@@ -514,9 +520,9 @@ const IntroductionPage = () => {
             badgeVariant="soft"
             description="A tiny, brick-walled trattoria tucked down a side street near Washington Square Park. The windows glow warm gold at night."
             metadata={[
-              { icon: 'star', label: '9.2 rating' },
-              { icon: 'map-pin', label: 'North Beach' },
-              { icon: 'clock', label: 'Open now' },
+              { icon: <StarFilled />, label: '9.2 rating' },
+              { icon: <MapPin />, label: 'North Beach' },
+              { icon: <Clock />, label: 'Open now' },
             ]}
             buttonText="Reserve"
             onButtonClick={() => {}}
@@ -530,8 +536,8 @@ const IntroductionPage = () => {
             title="Building AI-Native UIs"
             description="Build modern, accessible UI with AINativeKit. Master reusable component patterns that scale."
             metadata={[
-              { icon: 'clock', label: '10 min read' },
-              { icon: 'calendar-today', label: 'October 30, 2025' },
+              { icon: <Clock />, label: '10 min read' },
+              { icon: <CalendarToday />, label: 'October 30, 2025' },
             ]}
             buttonText="Explore"
             onButtonClick={() => {}}
@@ -630,7 +636,7 @@ const IntroductionPage = () => {
                 key={place.id}
                 rank={index + 1}
                 title={place.name}
-                features={[{ icon: 'star', label: `${place.rating}` }]}
+                features={[{ icon: <StarFilled />, label: `${place.rating}` }]}
                 media={place.thumbnail}
                 mediaAlt={place.name}
                 metadata={place.city}
@@ -766,8 +772,8 @@ const IntroductionPage = () => {
             title="Building AI-Native UIs"
             description="Build modern, accessible UI with AINativeKit. Master reusable component patterns that scale."
             metadata={[
-              { icon: 'clock', label: '10 min read' },
-              { icon: 'calendar-today', label: 'October 30, 2025' },
+              { icon: <Clock />, label: '10 min read' },
+              { icon: <CalendarToday />, label: 'October 30, 2025' },
             ]}
             buttonText="Explore Docs"
             onButtonClick={() => {}}
@@ -884,10 +890,9 @@ const IntroductionPage = () => {
               <Card.Meta>
                 <Features
                   items={[
-                    { icon: 'clock', label: '10 min read' },
-                    { icon: 'calendar-today', label: 'October 30, 2025' },
+                    { icon: <Clock />, label: '10 min read' },
+                    { icon: <CalendarToday />, label: 'October 30, 2025' },
                   ]}
-                  iconSize={12}
                 />
               </Card.Meta>
             </Card.Body>

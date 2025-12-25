@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import type { Meta } from '@storybook/react';
 import { CompactMap } from './CompactMap';
 import type { LocationData, RenderMarkerParams } from './types';
+import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
 
 const CHATGPT_APP_WIDTH = '766px';
 
@@ -14,7 +15,7 @@ const sampleLocations: LocationData[] = [
     coords: [37.8001, -122.4098],
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
     description: 'This location uses a custom red circle marker',
-    features: [{ icon: 'star', label: '4.8' }],
+    features: [{ icon: <StarFilled />, label: '4.8' }],
   },
   {
     id: '2',
@@ -23,7 +24,7 @@ const sampleLocations: LocationData[] = [
     coords: [37.799, -122.4093],
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
     description: 'This location uses a custom yellow star marker',
-    features: [{ icon: 'star', label: '4.6' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }],
   },
   {
     id: '3',
@@ -32,7 +33,7 @@ const sampleLocations: LocationData[] = [
     coords: [37.7613, -122.4255],
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
     description: 'This location uses the default built-in marker',
-    features: [{ icon: 'star', label: '4.5' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }],
   },
 ];
 
