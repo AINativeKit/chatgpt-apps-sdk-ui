@@ -548,8 +548,8 @@ describe('SummaryCard', () => {
         <SummaryCard
           title="Article"
           metadata={[
-            { icon: 'clock', label: '10 min read' },
-            { icon: 'calendar-today', label: 'October 30, 2025' },
+            { icon: <Clock />, label: '10 min read' },
+            { icon: <CalendarToday />, label: 'October 30, 2025' },
           ]}
         />
       );
@@ -585,9 +585,9 @@ describe('SummaryCard', () => {
         <SummaryCard
           title="Article"
           metadata={[
-            { icon: 'clock', label: '10 min read' },
-            { icon: 'calendar-today', label: 'October 30, 2025' },
-            { icon: 'user', label: 'John Doe' },
+            { icon: <Clock />, label: '10 min read' },
+            { icon: <CalendarToday />, label: 'October 30, 2025' },
+            { icon: <User />, label: 'John Doe' },
           ]}
         />
       );
@@ -604,8 +604,8 @@ describe('SummaryCard', () => {
           title="Building AI-Native UIs"
           description="Build modern, accessible UI with AINativeKit."
           metadata={[
-            { icon: 'clock', label: '10 min read' },
-            { icon: 'calendar-today', label: 'October 30, 2025' },
+            { icon: <Clock />, label: '10 min read' },
+            { icon: <CalendarToday />, label: 'October 30, 2025' },
           ]}
           buttonText="Explore Docs"
           onButtonClick={handleClick}

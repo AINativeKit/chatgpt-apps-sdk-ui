@@ -241,7 +241,9 @@ const ListsComponent: React.FC = () => {
                 marginTop: '12px',
               }}
             >
-              <code style={{ whiteSpace: 'pre' }}>{`<List
+              <code style={{ whiteSpace: 'pre' }}>{`import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
+
+<List
   header={{
     title: 'National Best Pizza List',
     subtitle: 'A ranking of the best pizzerias in the world',
@@ -254,7 +256,7 @@ const ListsComponent: React.FC = () => {
       key={place.id}
       rank={index + 1}
       title={place.name}
-      features={[{ icon: 'star', label: \`\${place.rating}\` }]}
+      features={[{ icon: <StarFilled />, label: \`\${place.rating}\` }]}
       media={place.thumbnail}
       mediaAlt={place.name}
       metadata={place.city}

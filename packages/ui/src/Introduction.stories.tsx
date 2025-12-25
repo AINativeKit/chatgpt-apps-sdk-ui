@@ -733,8 +733,8 @@ const IntroductionPage = () => {
           &nbsp;&nbsp;description: "Build modern, accessible UI with AINativeKit...",
           <br />
           &nbsp;&nbsp;metadata: [<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: 'clock', label: '10 min read{'}'},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: 'calendar-today', label: 'October 30, 2025{'}'}
+          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: {'<Clock />'}, label: '10 min read{'}'},<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: {'<CalendarToday />'}, label: 'October 30, 2025{'}'}
           <br />
           &nbsp;&nbsp;]
           <br />
@@ -832,9 +832,9 @@ const IntroductionPage = () => {
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'<Features items={['}
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: 'clock', label: '10 min read
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: {'<Clock />'}, label: '10 min read
           {'}'},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: 'calendar-today', label: 'Oct
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: {'<CalendarToday />'}, label: 'Oct
           30, 2025{'}'}
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{']} />'}

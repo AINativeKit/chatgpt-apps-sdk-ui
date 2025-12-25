@@ -1,7 +1,9 @@
+import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MapPlaceCard } from './MapPlaceCard';
 import type { Feature } from './types';
+import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
 
 describe('MapPlaceCard', () => {
   const defaultProps = {
@@ -22,7 +24,7 @@ describe('MapPlaceCard', () => {
     });
 
     it('renders features when provided', () => {
-      const features: Feature[] = [{ icon: 'star', label: '4.5' }, { label: '$100' }];
+      const features: Feature[] = [{ icon: <StarFilled />, label: '4.5' }, { label: '$100' }];
       render(<MapPlaceCard {...defaultProps} features={features} />);
       expect(screen.getByText('4.5')).toBeInTheDocument();
       expect(screen.getByText('$100')).toBeInTheDocument();

@@ -163,13 +163,15 @@ export interface MapPlaceCardProps {
  *
  * @example
  * ```tsx
+ * import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
+ *
  * <MapPlaceCard
  *   image="https://example.com/location.jpg"
  *   title="Central Park"
  *   subtitle="New York, NY"
  *   features={[
- *     { icon: 'star', text: '4.8' },
- *     { text: 'Free' }
+ *     { icon: <StarFilled />, label: '4.8' },
+ *     { label: 'Free' }
  *   ]}
  *   onClick={() => console.log('Selected')}
  *   loading={isLoading}

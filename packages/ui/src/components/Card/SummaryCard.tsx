@@ -125,22 +125,20 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
    * When loading={true}, the skeleton will automatically render the same number
    * of skeleton placeholders as items in the metadata array (similar to descriptionLines behavior).
    *
-   * Icons can be:
-   * - Icon name string from the icon library (e.g., 'clock', 'calendar-today')
-   * - Custom React element (e.g., <CustomIcon />, <svg>...</svg>)
+   * Icons should be React elements from @openai/apps-sdk-ui/components/Icon.
    *
    * @example
    * ```tsx
-   * // Using library icons
+   * import { Clock, CalendarToday } from '@openai/apps-sdk-ui/components/Icon';
+   *
+   * // Using apps-sdk-ui icons
    * metadata={[
-   *   { icon: 'clock', label: '10 min read' },
-   *   { icon: 'calendar-today', label: 'Oct 30, 2025' }
+   *   { icon: <Clock />, label: '10 min read' },
+   *   { icon: <CalendarToday />, label: 'Oct 30, 2025' }
    * ]}
    *
-   * // Using custom icons
+   * // Using custom SVG icons
    * metadata={[
-   *   { icon: <BedIcon size={16} />, label: '5' },
-   *   { icon: <BathIcon size={16} />, label: '2' },
    *   { icon: <svg>...</svg>, label: '625m²' }
    * ]}
    * ```
