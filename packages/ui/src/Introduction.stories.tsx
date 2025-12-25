@@ -12,6 +12,10 @@ import {
   Clock,
   MapPin,
   CalendarToday,
+  ThumbUp,
+  ThumbDown,
+  Copy,
+  DotsHorizontal,
 } from '@openai/apps-sdk-ui/components/Icon';
 import { Map, FullscreenMap } from './components/Map';
 import { Features } from './components/Feature/Features';
@@ -399,16 +403,16 @@ const AssistantMessage = ({ children }: { children: ReactNode }) => (
 const ActionButtons = () => (
   <div style={actionButtonsStyle}>
     <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
-      👍
+      <ThumbUp />
     </span>
     <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
-      👎
+      <ThumbDown />
     </span>
     <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
-      📋
+      <Copy />
     </span>
     <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
-      ⋯
+      <DotsHorizontal />
     </span>
   </div>
 );
