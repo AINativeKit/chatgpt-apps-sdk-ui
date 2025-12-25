@@ -17,7 +17,7 @@ describe('Card', () => {
     );
 
     const card = screen.getByTestId('card');
-    expect(card.style.getPropertyValue('--card-shadow-value')).toBe('var(--elevation-3-shadow)');
+    expect(card.style.getPropertyValue('--card-shadow-value')).toBe('var(--shadow-300)');
     expect(card.style.getPropertyValue('--card-border-color')).toBe('var(--color-border-subtle)');
   });
 
@@ -30,7 +30,7 @@ describe('Card', () => {
 
     const card = screen.getByTestId('interactive-card');
     expect(card.style.getPropertyValue('--card-hover-shadow-value')).toBe(
-      'var(--elevation-3-shadow)'
+      'var(--shadow-300)'
     );
   });
 

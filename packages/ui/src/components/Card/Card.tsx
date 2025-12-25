@@ -1,8 +1,14 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
 import { cn } from '../../utils/cn';
-import type { ElevationLevel } from '../../tokens/elevation';
 import styles from './Card.module.css';
+
+/**
+ * Elevation level for Card component (0-4)
+ * Maps to apps-sdk-ui shadow tokens: --shadow-100 through --shadow-400
+ */
+export type ElevationLevel = 0 | 1 | 2 | 3 | 4;
+
 import { CardHeader } from './CardHeader';
 import { CardBody } from './CardBody';
 import { CardFooter } from './CardFooter';
@@ -17,6 +23,17 @@ import { CardChip } from './CardChip';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Skeleton } from '../Skeleton';
+
+/**
+ * Maps elevation levels to apps-sdk-ui shadow tokens
+ */
+const ELEVATION_TO_SHADOW: Record<ElevationLevel, string> = {
+  0: 'none',
+  1: 'var(--shadow-100)',
+  2: 'var(--shadow-200)',
+  3: 'var(--shadow-300)',
+  4: 'var(--shadow-400)',
+};
 
 export type CardBorder = 'light' | 'default' | 'heavy';
 
@@ -93,7 +110,7 @@ const BORDER_TOKENS: Record<CardBorder, string> = {
 };
 
 const clampElevation = (level: number): ElevationLevel => {
-  return Math.max(0, Math.min(5, level)) as ElevationLevel;
+  return Math.max(0, Math.min(4, level)) as ElevationLevel;
 };
 
 const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
@@ -102,7 +119,7 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     border = 'heavy',
     hoverElevationLevel,
     interactive = false,
-    padding = 'var(32px)',
+    padding = 'calc(var(--spacing) * 4)',
     loading = false,
     skeleton,
     error = false,
@@ -118,16 +135,13 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   } = props;
 
   const hoverLevel = hoverElevationLevel ?? clampElevation(elevationLevel + (interactive ? 1 : 0));
-  const elevationShadowVar = `var(--elevation-${elevationLevel}-shadow)`;
-  const hoverShadowVar = `var(--elevation-${hoverLevel}-shadow)`;
-  const elevationOverlayVar = `var(--elevation-${elevationLevel}-overlay)`;
+  const elevationShadowVar = ELEVATION_TO_SHADOW[elevationLevel];
+  const hoverShadowVar = ELEVATION_TO_SHADOW[hoverLevel];
 
   const baseStyle: CSSProperties = {
     '--card-border-color': BORDER_TOKENS[border],
     '--card-shadow-value': elevationShadowVar,
     '--card-hover-shadow-value': hoverShadowVar,
-    '--card-overlay-light': elevationOverlayVar,
-    '--card-overlay-dark': elevationOverlayVar,
     padding: typeof padding === 'number' ? `${padding}px` : padding,
   } as React.CSSProperties;
 

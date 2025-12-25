@@ -102,7 +102,7 @@ const CardsComponent: React.FC = () => {
               alignItems: 'start',
             }}
           >
-            {([0, 1, 2, 3, 4, 5] as const).map((level) => (
+            {([0, 1, 2, 3, 4] as const).map((level) => (
               <Card
                 key={level}
                 elevationLevel={level}

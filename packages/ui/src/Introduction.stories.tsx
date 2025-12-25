@@ -361,7 +361,7 @@ const mapContainerStyle: CSSProperties = {
   height: '478px',
   borderRadius: '8px',
   overflow: 'hidden',
-  boxShadow: 'var(--elevation-2-shadow)',
+  boxShadow: 'var(--shadow-200)',
 };
 
 // Use unified code block styles (primary for main examples, terminal for CLI commands)

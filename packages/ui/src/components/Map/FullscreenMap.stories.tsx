@@ -151,7 +151,7 @@ const containerStyle: CSSProperties = {
   borderRadius: '16px',
   overflow: 'hidden',
   border: '1px solid var(--color-border-subtle)',
-  boxShadow: 'var(--elevation-2-shadow)',
+  boxShadow: 'var(--shadow-200)',
 };
 
 const meta: Meta<typeof FullscreenMap> = {

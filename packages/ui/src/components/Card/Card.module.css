@@ -5,15 +5,10 @@
   flex-direction: column;
   gap: calc(var(--spacing) * 2); /* 8px - default spacing between compound components */
   box-sizing: border-box;
-  background: color-mix(
-    in srgb,
-    var(--color-surface) 92%,
-    var(--card-overlay-light, rgba(0, 0, 0, 0))
-  );
+  background: var(--color-surface);
   border-radius: var(--radius-4xl);
   border: 0.5px solid var(--card-border-color, var(--color-border-strong));
   box-shadow: var(--card-shadow-value, var(--shadow-100));
-  padding: var(--spacing);
   overflow: hidden;
   transition:
     transform 0.2s ease,
@@ -24,11 +19,6 @@
 
 .card[data-interactive='true']:hover {
   border-color: color-mix(in srgb, var(--color-text) 25%, transparent);
-  background: color-mix(
-    in srgb,
-    var(--color-surface) 88%,
-    var(--card-overlay-light, rgba(255, 255, 255, 0.08))
-  );
   box-shadow: var(
     --card-hover-shadow-value,
     var(--card-shadow-value, var(--shadow-100))
@@ -37,21 +27,6 @@
 
 :global([data-theme='dark']) .card[data-interactive='true']:hover {
   border-color: color-mix(in srgb, var(--color-text) 24%, transparent);
-  background: color-mix(
-    in srgb,
-    var(--color-surface) 88%,
-    var(--card-overlay-dark, rgba(255, 255, 255, 0.12))
-  );
-  box-shadow: var(--shadow-200);
-}
-
-:global([data-theme='dark']) .card {
-  background: color-mix(
-    in srgb,
-    var(--color-surface) 92%,
-    var(--card-overlay-dark, rgba(255, 255, 255, 0))
-  );
-  border-color: var(--card-border-color, var(--color-border-strong));
 }
 
 .card[data-interactive='true'] {

@@ -18,4 +18,4 @@
  */
 
 // Export ElevationLevel type (used by Card component)
-export type { ElevationLevel } from './elevation';
+export type { ElevationLevel } from '../components/Card/Card';
