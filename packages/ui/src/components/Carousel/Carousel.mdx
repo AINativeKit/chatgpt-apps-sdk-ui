@@ -32,29 +32,43 @@ import { Carousel } from "@ainativekit/ui";
 
 ### Left-aligned
 
+Use `align="start"` to align slides to the left edge instead of center.
+
 <Canvas of={CarouselStories.AlignStart} />
 
 ### Infinite loop
+
+Enable continuous scrolling with `loop={true}` for seamless navigation.
 
 <Canvas of={CarouselStories.InfiniteLoop} />
 
 ### Touch-only
 
+Hide navigation buttons with `showNavigation={false}` for touch-first interfaces.
+
 <Canvas of={CarouselStories.NoNavigation} />
 
 ### With SummaryCards
+
+Example using SummaryCard components in a carousel layout.
 
 <Canvas of={CarouselStories.WithSummaryCards} />
 
 ### Loading
 
+Show skeleton placeholders while data is loading with `loading={true}`.
+
 <Canvas of={CarouselStories.Loading} />
 
 ### Error
 
+Display an error message when content fails to load with `error={true}`. Add retry functionality with `onErrorRetry`.
+
 <Canvas of={CarouselStories.Error} />
 
 ### Empty
+
+Show an empty state when there are no items. Customize with `emptyTitle` and `emptyMessage`.
 
 <Canvas of={CarouselStories.Empty} />
 

@@ -33,31 +33,45 @@ import { List, ListItem } from "@ainativekit/ui";
 
 ## Examples
 
-### With Header
+### With header
+
+Add a header section with title and optional action button.
 
 <Canvas of={ListStories.WithHeader} />
 
-### Ranked with Features
+### Ranked with features
+
+Display numbered ranking with feature chips for ratings, prices, or other metadata.
 
 <Canvas of={ListStories.RankedWithFeatures} />
 
 ### Interactive
 
+Enable selection and click handling for interactive lists.
+
 <Canvas of={ListStories.Interactive} />
 
 ### Loading
+
+Show skeleton placeholders while data is loading with `loading={true}`.
 
 <Canvas of={ListStories.Loading} />
 
 ### Error
 
+Display an error message when content fails to load with `error={true}`. Add retry functionality with `onErrorRetry`.
+
 <Canvas of={ListStories.Error} />
 
 ### Empty
 
+Show an empty state when there are no items. Customize with `emptyTitle` and `emptyMessage`.
+
 <Canvas of={ListStories.Empty} />
 
-### No Dividers
+### No dividers
+
+Remove visual dividers between items with `showDividers={false}`.
 
 <Canvas of={ListStories.NoDividers} />
 
