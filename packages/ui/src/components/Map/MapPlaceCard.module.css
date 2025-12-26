@@ -101,8 +101,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing);
+  gap: calc(var(--spacing) * 0.5);
   text-align: center;
+  width: 100%;
 }
 
 .emptyTitle {
@@ -113,8 +114,8 @@
 }
 
 .emptyMessage {
-  font-size: var(--font-text-xs-size);
-  line-height: var(--font-text-xs-line-height);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
   color: var(--color-text-tertiary);
 }
 

@@ -1,6 +1,5 @@
 import React, { type SyntheticEvent } from 'react';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
-import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { Features } from '../Feature';
 import { cn } from '../../utils/cn';
@@ -46,6 +45,11 @@ export interface MapPlaceCardProps {
    * Additional class name.
    */
   className?: string;
+
+  /**
+   * Inline styles.
+   */
+  style?: React.CSSProperties;
 
   /**
    * Visual variant for different contexts.
@@ -211,6 +215,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   selected = false,
   onClick,
   className,
+  style,
   variant = 'carousel',
   loading = false,
   error = false,
@@ -244,6 +249,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
     return (
       <div
         className={cn(styles.mapPlaceCard, styles.loadingCard, className)}
+        style={style}
         role="status"
         aria-live="polite"
         data-testid={testId}
@@ -261,7 +267,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   // Error State
   if (showError) {
     return (
-      <div className={cn(styles.mapPlaceCard, styles.errorCard, className)} data-testid={testId}>
+      <div className={cn(styles.mapPlaceCard, styles.errorCard, className)} style={style} data-testid={testId}>
         <div className={styles.errorContainer}>
           <ErrorStateDisplay
             state="error"
@@ -277,12 +283,10 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   // Empty State
   if (showEmpty) {
     return (
-      <div className={cn(styles.mapPlaceCard, styles.emptyCard, className)} data-testid={testId}>
+      <div className={cn(styles.mapPlaceCard, styles.emptyCard, className)} style={style} data-testid={testId}>
         <div className={styles.emptyContainer}>
-          <EmptyMessage fill="none">
-            <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
-            {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
-          </EmptyMessage>
+          <div className={styles.emptyTitle}>{emptyTitle}</div>
+          {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
         </div>
       </div>
     );
@@ -299,6 +303,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   return (
     <div
       className={cardClassName}
+      style={style}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       aria-pressed={onClick ? selected : undefined}
