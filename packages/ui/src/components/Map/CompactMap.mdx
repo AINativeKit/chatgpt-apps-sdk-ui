@@ -1,0 +1,75 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as CompactMapStories from './CompactMap.stories'
+
+<Meta of={CompactMapStories} />
+
+<Title>CompactMap</Title>
+<Subtitle>Lightweight map + carousel surface optimized for inline experiences with synchronized location browsing</Subtitle>
+
+## Usage
+
+```tsx
+import { CompactMap } from "@ainativekit/ui";
+```
+
+<Canvas of={CompactMapStories.Base} />
+
+## Reference
+
+<ArgTypes of={CompactMapStories.Base} />
+
+## Examples
+
+### Marker variants
+
+Choose between traditional pin markers, minimal dot markers, or hybrid mode (recommended).
+
+<Canvas of={CompactMapStories.MarkerVariants} />
+
+### Popup control
+
+Toggle popup bubbles on markers. Disable when using external UI like sidebars or inspectors.
+
+<Canvas of={CompactMapStories.PopupControl} />
+
+### Loading
+
+Show skeleton map and carousel while data is loading with `loading={true}`.
+
+<Canvas of={CompactMapStories.Loading} />
+
+### Error
+
+Display an error message when content fails to load with `error={true}`. Add retry functionality via `carouselProps.onErrorRetry`.
+
+<Canvas of={CompactMapStories.Error} />
+
+### Empty
+
+Show an empty state when there are no locations.
+
+<Canvas of={CompactMapStories.Empty} />
+
+### States overview
+
+All map states at a glance.
+
+<Canvas of={CompactMapStories.States} sourceState="none" />
+
+### With expand button
+
+Add an expand button to transition to fullscreen mode. Use `autoExpandOnCarouselClick` to also trigger expand when carousel cards are clicked.
+
+<Canvas of={CompactMapStories.WithExpandButton} />
+
+### Custom icons
+
+Features support custom React elements as icons alongside standard icon strings.
+
+<Canvas of={CompactMapStories.CustomIcons} />
+
+### Real-world example
+
+Complete example showing CompactMap in a typical use case.
+
+<Canvas of={CompactMapStories.RealWorld} />
