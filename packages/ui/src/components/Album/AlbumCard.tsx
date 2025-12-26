@@ -85,9 +85,7 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
 
   // Badge Support
   /**
-   * Badge content (text or number).
-   * - For short content (≤4 chars): Badge component is used (e.g., "New", "5", "✓")
-   * - For longer content (>4 chars): Chip component is used (e.g., "Featured", "New Album")
+   * Badge content (text or number)
    */
   badge?: string | number;
 
@@ -99,8 +97,27 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
 
   /**
    * Badge variant style
+   * @default 'soft'
    */
   badgeVariant?: BadgeProps['variant'];
+
+  /**
+   * Badge size
+   * @default 'sm'
+   */
+  badgeSize?: BadgeProps['size'];
+
+  /**
+   * Badge pill shape (fully rounded)
+   * @default false
+   */
+  badgePill?: boolean;
+
+  /**
+   * Badge color
+   * @default 'secondary'
+   */
+  badgeColor?: BadgeProps['color'];
 
   // Text Display
   /**
@@ -137,7 +154,7 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
  *
  * @example
  * ```tsx
- * // With short badge (uses Badge component)
+ * // Basic usage with badge
  * <AlbumCard
  *   album={{
  *     id: '1',
@@ -146,16 +163,17 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
  *     photos: [...]
  *   }}
  *   onSelect={(album) => console.log('Selected:', album)}
- *   loading={isLoading}
  *   badge="New"
  *   badgeVariant="solid"
+ *   badgeColor="info"
  * />
  *
- * // With longer badge (automatically uses Chip component)
+ * // With pill badge
  * <AlbumCard
  *   album={{...}}
- *   badge="Featured"
- *   badgeVariant="soft"
+ *   badge={15}
+ *   badgePill
+ *   badgeColor="secondary"
  * />
  * ```
  */
@@ -180,6 +198,9 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     badge,
     badgePosition = 'top-right',
     badgeVariant = 'soft',
+    badgeSize = 'sm',
+    badgePill = false,
+    badgeColor = 'secondary',
     titleLines = 1,
     subtitleLines = 1,
     'data-testid': testId,
@@ -299,7 +320,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
               badgePosition === 'top-left' ? styles.badgeTopLeft : styles.badgeTopRight
             )}
           >
-            <Badge variant={badgeVariant} size="sm">
+            <Badge variant={badgeVariant} size={badgeSize} pill={badgePill} color={badgeColor}>
               {badge}
             </Badge>
           </div>

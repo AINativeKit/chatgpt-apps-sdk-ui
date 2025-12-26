@@ -121,7 +121,7 @@ const AlbumCardShowcase: React.FC = () => {
         <header style={{ marginBottom: '24px' }}>
           <h2 style={{ marginBottom: '8px' }}>Badge Support</h2>
           <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Add visual indicators with badges in different positions and variants
+            Add visual indicators with badges - supports variant, size, pill, and color props
           </p>
         </header>
 
@@ -137,6 +137,7 @@ const AlbumCardShowcase: React.FC = () => {
             album={SAMPLE_ALBUMS[0]}
             badge="New"
             badgeVariant="solid"
+            badgeColor="info"
             badgePosition="top-left"
             onSelect={(album) => console.log('Selected:', album.title)}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -145,6 +146,8 @@ const AlbumCardShowcase: React.FC = () => {
             album={SAMPLE_ALBUMS[1]}
             badge={15}
             badgeVariant="solid"
+            badgeColor="info"
+            badgePill
             badgePosition="top-right"
             onSelect={(album) => console.log('Selected:', album.title)}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -152,7 +155,8 @@ const AlbumCardShowcase: React.FC = () => {
           <AlbumCard
             album={SAMPLE_ALBUMS[2]}
             badge="Featured"
-            badgeVariant="solid"
+            badgeVariant="soft"
+            badgeColor="success"
             badgePosition="top-right"
             onSelect={(album) => console.log('Selected:', album.title)}
             style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -467,7 +471,20 @@ const AlbumCardShowcase: React.FC = () => {
             },
             {
               name: 'badgeVariant',
-              description: 'Badge style variant',
+              description: 'Badge style: "solid" | "soft" | "outline" - default: "soft"',
+            },
+            {
+              name: 'badgeSize',
+              description: 'Badge size: "sm" | "md" | "lg" - default: "sm"',
+            },
+            {
+              name: 'badgePill',
+              description: 'Badge pill shape (fully rounded) - default: false',
+            },
+            {
+              name: 'badgeColor',
+              description:
+                'Badge color: "secondary" | "success" | "danger" | "warning" | "info" | "discovery" - default: "secondary"',
             },
             {
               name: 'titleLines',
