@@ -428,7 +428,6 @@ export const CustomIcons = () => {
           label: 'Trending',
         },
         { icon: <StarFilled />, label: '4.9' },
-        { label: '$$$' },
       ],
     },
   ];
