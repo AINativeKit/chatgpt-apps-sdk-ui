@@ -9,7 +9,8 @@ import { CollapseLg } from '@openai/apps-sdk-ui/components/Icon';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { getErrorState, resolveErrorStateValues } from './useErrorState';
 import { cn } from '../../utils/cn';
-import { Skeleton } from '../Skeleton';
+import { ImageSkeleton } from '../Skeleton';
+import { Maps } from '@openai/apps-sdk-ui/components/Icon';
 import type { LocationData } from './types';
 import type { MapViewProps } from './MapView';
 import styles from './FullscreenMap.module.css';
@@ -88,7 +89,7 @@ export interface FullscreenMapProps extends Omit<MapViewProps, 'selectedId' | 'o
 
 const LoadingFallback: React.FC<{ height?: string | number }> = ({ height }) => (
   <div className={styles.loadingContainer} style={{ height }}>
-    <Skeleton width="100%" height="100%" />
+    <ImageSkeleton width="100%" height="100%" icon={<Maps />} iconSize={48} borderRadius={0} />
   </div>
 );
 

@@ -1,16 +1,12 @@
-import { useMemo, useState } from 'react';
-import type { FC, CSSProperties } from 'react';
+import { useState } from 'react';
 import type { Meta } from '@storybook/react';
-import { FullscreenMap } from './FullscreenMap';
+import { FullscreenMap, type FullscreenMapProps } from './FullscreenMap';
 import type { LocationData } from './types';
 import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
-import { PropsTable } from '../../tokens/PropsTable';
 
-const DOC_LAYOUT_WIDTH = 1200;
-const PRIMARY_HEIGHT = '620px';
+const FULLSCREEN_HEIGHT = '620px';
 const SECONDARY_HEIGHT = '520px';
 
-// Import the rich location data from Maps story for consistent showcase
 const sampleLocations: LocationData[] = [
   {
     id: 'tonys-pizza',
@@ -145,194 +141,230 @@ const sampleLocations: LocationData[] = [
   },
 ];
 
-const containerStyle: CSSProperties = {
-  width: '100%',
-  maxWidth: `${DOC_LAYOUT_WIDTH}px`,
-  borderRadius: '16px',
-  overflow: 'hidden',
-  border: '1px solid var(--color-border-subtle)',
-  boxShadow: 'var(--shadow-200)',
-};
-
-const meta: Meta<typeof FullscreenMap> = {
-  title: 'Composed Components/Maps',
+const meta: Meta<FullscreenMapProps> = {
+  title: 'Composed Components/Maps/FullscreenMap',
   component: FullscreenMap,
+  tags: ['!dev'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
+  },
+  argTypes: {
+    locations: { control: false },
+    onLocationSelect: { control: false },
+    onCollapse: { control: false },
+    onErrorRetry: { control: false },
+    renderMarker: { control: false },
+    height: { table: { defaultValue: { summary: '100vh' } } },
+    loading: { table: { defaultValue: { summary: 'false' } } },
+    error: { table: { defaultValue: { summary: 'false' } } },
+    markerVariant: { table: { defaultValue: { summary: 'pin' } } },
+    showPopup: { table: { defaultValue: { summary: 'false' } } },
+    hideAttribution: { table: { defaultValue: { summary: 'false' } } },
+    scrollWheelZoom: { table: { defaultValue: { summary: 'true' } } },
   },
 };
 
 export default meta;
 
-const FullscreenMapDoc: FC = () => {
-  const locations = useMemo(() => sampleLocations, []);
+// Base story with interactive controls
+export const Base = (args: FullscreenMapProps) => {
   const [selectedId, setSelectedId] = useState<string | undefined>('tonys-pizza');
 
   return (
-    <div style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '64px' }}>
-      <section>
-        <h1 style={{ marginBottom: '16px' }}>FullscreenMap</h1>
-        <p
-          style={{
-            margin: 0,
-            maxWidth: '760px',
-            color: 'var(--color-text-secondary)',
-            fontSize: '16px',
-            lineHeight: 1.6,
-          }}
-        >
-          Immersive map experience with synchronized sidebar, inspector, and mobile carousel. Ideal
-          for ChatGPT Apps when users escalate from a compact inline map to a full exploration
-          surface.
-        </p>
-      </section>
-
-      <section style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        <header>
-          <h2 style={{ marginBottom: '8px' }}>Primary Layout</h2>
-          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
-            Desktop layout with sidebar navigation and inspector panel. Mobile view collapses to a
-            bottom carousel automatically.
-          </p>
-        </header>
-        <div style={{ ...containerStyle, height: PRIMARY_HEIGHT }}>
-          <FullscreenMap
-            locations={locations}
-            selectedId={selectedId}
-            onLocationSelect={setSelectedId}
-            height={PRIMARY_HEIGHT}
-          />
-        </div>
-      </section>
-
-      <section
-        style={{
-          display: 'grid',
-          gap: '24px',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
-        }}
-      >
-        <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-            Loading
-          </h3>
-          <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
-            <FullscreenMap locations={locations} loading height={SECONDARY_HEIGHT} />
-          </div>
-        </article>
-
-        <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-            Error
-          </h3>
-          <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
-            <FullscreenMap
-              locations={locations}
-              error
-              height={SECONDARY_HEIGHT}
-              errorTitle="Failed to load locations"
-              errorMessage="Unable to retrieve location data. Please try again."
-            />
-          </div>
-        </article>
-
-        <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-            Empty
-          </h3>
-          <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
-            <FullscreenMap locations={[]} height={SECONDARY_HEIGHT} />
-          </div>
-        </article>
-      </section>
-
-      <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <header>
-          <h2 style={{ marginBottom: '8px' }}>Interaction Considerations</h2>
-          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
-            Tips for keeping the fullscreen experience smooth across desktop and mobile contexts.
-          </p>
-        </header>
-        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--color-text-secondary)' }}>
-          <li>Maintain shared selection state so compact and fullscreen maps stay in sync.</li>
-          <li>
-            Provide `onErrorRetry` callbacks when remote data is involved to keep recovery within
-            the Apps surface.
-          </li>
-          <li>
-            Use inspector notes to summarise key attributes so users don't rely solely on the map.
-          </li>
-          <li>
-            Respect layout breakpoints—sidebar hides under 1024px with the carousel taking over.
-          </li>
-          <li>
-            Fullscreen maps use native scroll wheel zoom by default (`scrollWheelZoom=true`) for the
-            best desktop experience, while compact maps use custom pinch-to-zoom handlers.
-          </li>
-          <li>
-            Add an `images` array to LocationData for multi-photo locations—the inspector
-            automatically renders a PhotoCarousel with dots and arrows when multiple images are
-            present, falling back to a single thumbnail otherwise.
-          </li>
-        </ul>
-      </section>
-
-      <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <header>
-          <h2 style={{ marginBottom: '8px' }}>FullscreenMap Props</h2>
-          <p style={{ margin: 0, color: 'var(--color-text-secondary)' }}>
-            Extends `MapView` with layout, loading, and content configuration for the fullscreen
-            shell.
-          </p>
-        </header>
-        <PropsTable
-          hideThemeColumn
-          rows={[
-            {
-              name: 'locations',
-              description: 'Array of locations to render. Type: LocationData[] (required)',
-            },
-            {
-              name: 'defaultSelectedId',
-              description: 'Initial location id for inspector/sidebar selection.',
-            },
-            {
-              name: 'height',
-              description: 'Container height. Accepts number (px) or string. Default: "100vh".',
-            },
-            {
-              name: 'loading',
-              description: 'Render the skeleton layout (map + cards) while data loads.',
-            },
-            {
-              name: 'error',
-              description: 'Show error summary via the location carousel (mobile-first surface).',
-            },
-            {
-              name: 'errorTitle',
-              description: 'Custom error title displayed in the carousel overlay.',
-            },
-            {
-              name: 'errorMessage',
-              description: 'Supporting error copy presented in the carousel overlay.',
-            },
-            {
-              name: 'onErrorRetry',
-              description: 'Callback used to expose a retry button within the carousel.',
-            },
-            {
-              name: 'emptyTitle',
-              description: 'Headline shown when no locations provided. Default: "No locations".',
-            },
-            {
-              name: 'emptyMessage',
-              description: 'Supporting text for empty state. Default: "No locations to display".',
-            },
-          ]}
-        />
-      </section>
+    <div
+      style={{
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid var(--color-border-subtle)',
+        boxShadow: 'var(--shadow-200)',
+      }}
+    >
+      <FullscreenMap
+        {...args}
+        locations={sampleLocations}
+        selectedId={selectedId}
+        onLocationSelect={setSelectedId}
+        height={FULLSCREEN_HEIGHT}
+      />
     </div>
   );
 };
 
-export const FullscreenMaps = () => <FullscreenMapDoc />;
+Base.args = {};
+
+Base.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap
+  locations={locations}
+  selectedId={selectedId}
+  onLocationSelect={setSelectedId}
+  height="620px"
+/>`,
+    },
+  },
+};
+
+// Loading state
+export const Loading = (args: FullscreenMapProps) => (
+  <div
+    style={{
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: '1px solid var(--color-border-subtle)',
+    }}
+  >
+    <FullscreenMap {...args} />
+  </div>
+);
+
+Loading.args = {
+  locations: sampleLocations,
+  loading: true,
+  height: SECONDARY_HEIGHT,
+};
+
+Loading.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap locations={locations} loading />`,
+    },
+  },
+};
+
+// Error state
+export const Error = (args: FullscreenMapProps) => (
+  <div
+    style={{
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: '1px solid var(--color-border-subtle)',
+    }}
+  >
+    <FullscreenMap {...args} />
+  </div>
+);
+
+Error.args = {
+  locations: sampleLocations,
+  error: true,
+  height: SECONDARY_HEIGHT,
+  errorTitle: 'Failed to load locations',
+  errorMessage: 'Unable to retrieve location data. Please try again.',
+  onErrorRetry: () => console.log('Retry clicked'),
+};
+
+Error.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap
+  locations={locations}
+  error
+  errorTitle="Failed to load locations"
+  errorMessage="Unable to retrieve location data."
+  onErrorRetry={() => handleRetry()}
+/>`,
+    },
+  },
+};
+
+// Empty state
+export const Empty = (args: FullscreenMapProps) => (
+  <div
+    style={{
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: '1px solid var(--color-border-subtle)',
+    }}
+  >
+    <FullscreenMap {...args} />
+  </div>
+);
+
+Empty.args = {
+  locations: [],
+  height: SECONDARY_HEIGHT,
+};
+
+Empty.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap locations={[]} />`,
+    },
+  },
+};
+
+// States overview
+export const States = () => (
+  <div
+    style={{
+      display: 'grid',
+      gap: '24px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+    }}
+  >
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Loading
+      </div>
+      <div
+        style={{
+          borderRadius: '16px',
+          overflow: 'hidden',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <FullscreenMap locations={sampleLocations} loading height={SECONDARY_HEIGHT} />
+      </div>
+    </div>
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Error
+      </div>
+      <div
+        style={{
+          borderRadius: '16px',
+          overflow: 'hidden',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <FullscreenMap
+          locations={sampleLocations}
+          error
+          height={SECONDARY_HEIGHT}
+          errorTitle="Failed to load"
+          onErrorRetry={() => console.log('Retry')}
+        />
+      </div>
+    </div>
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Empty
+      </div>
+      <div
+        style={{
+          borderRadius: '16px',
+          overflow: 'hidden',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <FullscreenMap locations={[]} height={SECONDARY_HEIGHT} />
+      </div>
+    </div>
+  </div>
+);
+
+States.parameters = {
+  docs: {
+    source: {
+      code: `// Loading state
+<FullscreenMap locations={locations} loading />
+
+// Error state
+<FullscreenMap locations={locations} error />
+
+// Empty state
+<FullscreenMap locations={[]} />`,
+    },
+  },
+};

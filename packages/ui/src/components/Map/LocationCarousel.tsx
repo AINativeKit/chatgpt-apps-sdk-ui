@@ -93,11 +93,11 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
   const prevSelectedIdRef = useRef<string | undefined>(selectedId);
 
   // Calculate initial index only on mount (for returning from fullscreen)
-  // Empty deps intentional - only compute on mount to capture selectedId at mount time
   const initialIndex = useMemo(() => {
     if (!selectedId) return 0;
     const index = locations.findIndex((location) => location.id === selectedId);
     return index >= 0 ? index : 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Scroll to selected card when selectedId changes (skip when emblaApi just became available)
