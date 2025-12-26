@@ -1,0 +1,105 @@
+import { Canvas, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as CustomMarkerStories from './CustomMarkers.stories'
+
+<Meta of={CustomMarkerStories} />
+
+<Title>Custom Markers</Title>
+<Subtitle>Customize map markers with your own React components using the renderMarker API</Subtitle>
+
+## Usage
+
+```tsx
+import { CompactMap, FullscreenMap } from "@ainativekit/ui";
+import type { RenderMarkerParams } from "@ainativekit/ui";
+
+// Custom marker function
+const renderMarker = (params: RenderMarkerParams) => (
+  <svg width="32" height="32" viewBox="0 0 32 32">
+    <circle
+      cx="16" cy="16" r="14"
+      fill={params.color}
+      stroke="white"
+      strokeWidth={params.isSelected ? '4' : '2'}
+    />
+  </svg>
+);
+
+<CompactMap locations={locations} renderMarker={renderMarker} />
+```
+
+Following industry-standard patterns from Material-UI DataGrid (`renderCell`) and Ant Design Table (`render`), the `renderMarker` function returns any React element—the library handles all Leaflet integration automatically.
+
+**Three ways to customize:** Global `renderMarker` prop (all locations), per-location `renderMarker` (individual control), or hybrid with both (per-location overrides global).
+
+## Examples
+
+### Global custom marker
+
+Apply the same custom marker to all locations using the global `renderMarker` prop.
+
+<Canvas of={CustomMarkerStories.GlobalMarker} />
+
+### Hybrid mode support
+
+Combine `markerVariant="hybrid"` with custom `renderMarker` for different shapes based on selection state.
+
+<Canvas of={CustomMarkerStories.HybridMode} />
+
+### Per-location markers
+
+Define `renderMarker` directly on `LocationData` for location-specific markers.
+
+<Canvas of={CustomMarkerStories.PerLocationMarkers} />
+
+### Performance optimized
+
+Wrap `renderMarker` in `useCallback` with an empty dependency array for optimal performance.
+
+<Canvas of={CustomMarkerStories.PerformanceOptimized} />
+
+### Fallback pattern
+
+Return `null` to fall back to built-in markers—perfect for customizing only selected markers.
+
+<Canvas of={CustomMarkerStories.FallbackPattern} />
+
+## RenderMarkerParams API
+
+Your `renderMarker` function receives these parameters:
+
+<table>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'left'}}>Parameter</th>
+      <th style={{textAlign: 'left'}}>Type</th>
+      <th style={{textAlign: 'left'}}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>location</code></td>
+      <td><code>LocationData</code></td>
+      <td>The location data for this marker</td>
+    </tr>
+    <tr>
+      <td><code>isSelected</code></td>
+      <td><code>boolean</code></td>
+      <td>Whether this marker is currently selected</td>
+    </tr>
+    <tr>
+      <td><code>isActive</code></td>
+      <td><code>boolean</code></td>
+      <td>Whether this marker is currently hovered/active</td>
+    </tr>
+    <tr>
+      <td><code>color</code></td>
+      <td><code>string</code></td>
+      <td>Theme color automatically resolved from context</td>
+    </tr>
+    <tr>
+      <td><code>variant</code></td>
+      <td><code>'pin' | 'dot'</code></td>
+      <td>Marker variant (useful for hybrid mode support)</td>
+    </tr>
+  </tbody>
+</table>
