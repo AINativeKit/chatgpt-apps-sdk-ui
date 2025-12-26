@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { Carousel } from '../Carousel';
 import { MapPlaceCard } from './MapPlaceCard';
@@ -90,15 +90,39 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [emblaApi, setEmblaApi] = useState<EmblaCarouselType | null>(null);
+  const prevSelectedIdRef = useRef<string | undefined>(selectedId);
 
-  // Scroll to selected card when selectedId changes
+  // Calculate initial index only on mount (for returning from fullscreen)
+  // Empty deps intentional - only compute on mount to capture selectedId at mount time
+  const initialIndex = useMemo(() => {
+    if (!selectedId) return 0;
+    const index = locations.findIndex((location) => location.id === selectedId);
+    return index >= 0 ? index : 0;
+  }, []);
+
+  // Scroll to selected card when selectedId changes (skip when emblaApi just became available)
   useEffect(() => {
-    if (!selectedId) return;
+    if (!selectedId) {
+      prevSelectedIdRef.current = selectedId;
+      return;
+    }
+
+    // Only scroll if selectedId actually changed (not just emblaApi becoming available)
+    const selectedIdChanged = prevSelectedIdRef.current !== selectedId;
+    prevSelectedIdRef.current = selectedId;
+
+    if (!selectedIdChanged) {
+      return;
+    }
 
     if (emblaApi) {
       const index = locations.findIndex((location) => location.id === selectedId);
       if (index >= 0) {
-        emblaApi.scrollTo(index);
+        // Force reInit before scrolling to ensure fresh scroll position calculations
+        emblaApi.reInit();
+        requestAnimationFrame(() => {
+          emblaApi.scrollTo(index, false);
+        });
         return;
       }
     }
@@ -123,7 +147,7 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
           align="start"
           loop={false}
           showNavigation={true}
-          showEdgeGradients={false}
+          showEdgeGradients={true}
           gap="32px"
           flushStart={true}
           startInset="24px"
@@ -184,14 +208,16 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
     <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
       <Carousel
         className={styles.carousel}
-        align="start"
+        align="center"
         loop={false}
         showNavigation={true}
-        showEdgeGradients={false}
+        showEdgeGradients={true}
         gap="32px"
         flushStart={true}
         startInset="24px"
         viewportPadding="0"
+        dragFree={false}
+        startIndex={initialIndex}
         onApi={setEmblaApi}
       >
         {locations.map((location) => (

@@ -92,6 +92,12 @@ export interface CarouselProps {
    */
   dragFree?: boolean;
 
+  /**
+   * Initial slide index to start at.
+   * @default 0
+   */
+  startIndex?: number;
+
   // Phase 1: Loading State
   /**
    * Loading state - renders children with loading prop or skeleton slides
@@ -166,6 +172,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   viewportPadding,
   onApi,
   dragFree = true,
+  startIndex = 0,
   // Phase 1 props
   loading = false,
   loadingSlides = 6,
@@ -181,9 +188,10 @@ export const Carousel: React.FC<CarouselProps> = ({
   const options: EmblaOptionsType = {
     align,
     loop,
-    containScroll: loop ? 'keepSnaps' : 'trimSnaps',
-    slidesToScroll: 'auto',
+    containScroll: 'keepSnaps',
+    slidesToScroll: 1,
     dragFree,
+    startIndex,
   };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [WheelGesturesPlugin()]);
