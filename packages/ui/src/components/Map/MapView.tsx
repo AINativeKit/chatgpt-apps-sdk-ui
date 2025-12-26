@@ -139,7 +139,7 @@ export interface MapViewProps {
    * Hide Leaflet attribution control.
    * When true, hides the attribution text in bottom-right corner.
    * Note: Attribution is required by most tile providers' terms of service.
-   * @default true (for backward compatibility, will change to false in future)
+   * @default false
    */
   hideAttribution?: boolean;
 

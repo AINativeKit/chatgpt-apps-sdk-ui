@@ -448,7 +448,7 @@ export const MapContent: React.FC<MapViewProps> = ({
   isInspectorOpen,
   scrollWheelZoom = false,
   showPopup = false,
-  hideAttribution = true,
+  hideAttribution = false,
   tileProvider,
   tileApiKey,
 }) => {
