@@ -1,0 +1,126 @@
+import { Canvas, Meta, Subtitle, Title, ArgTypes } from '@storybook/blocks'
+import * as ListStories from './List.stories'
+
+<Meta of={ListStories} />
+
+<Title>List</Title>
+<Subtitle>Flexible list component for displaying data collections with rich metadata for ChatGPT Apps SDK</Subtitle>
+
+## Usage
+
+```tsx
+import { List, ListItem } from "@ainativekit/ui";
+
+<List
+  items={contacts}
+  renderItem={(contact) => (
+    <ListItem
+      key={contact.id}
+      title={contact.name}
+      subtitle={contact.email}
+      media={contact.avatar}
+    />
+  )}
+/>
+```
+
+<Canvas of={ListStories.Base} />
+
+## Reference
+
+<ArgTypes of={ListStories.Base} />
+
+## Examples
+
+### With Header
+
+<Canvas of={ListStories.WithHeader} />
+
+### Ranked with Features
+
+<Canvas of={ListStories.RankedWithFeatures} />
+
+### Interactive
+
+<Canvas of={ListStories.Interactive} />
+
+### Loading
+
+<Canvas of={ListStories.Loading} />
+
+### Error
+
+<Canvas of={ListStories.Error} />
+
+### Empty
+
+<Canvas of={ListStories.Empty} />
+
+### No Dividers
+
+<Canvas of={ListStories.NoDividers} />
+
+## ListItem Props
+
+<table>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'left'}}>Prop</th>
+      <th style={{textAlign: 'left'}}>Type</th>
+      <th style={{textAlign: 'left'}}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>title</code></td>
+      <td><code>ReactNode</code></td>
+      <td>Primary title (required)</td>
+    </tr>
+    <tr>
+      <td><code>subtitle</code></td>
+      <td><code>ReactNode</code></td>
+      <td>Supporting text</td>
+    </tr>
+    <tr>
+      <td><code>media</code></td>
+      <td><code>string | ReactNode</code></td>
+      <td>Image URL or custom element</td>
+    </tr>
+    <tr>
+      <td><code>rank</code></td>
+      <td><code>ReactNode</code></td>
+      <td>Rank/index number</td>
+    </tr>
+    <tr>
+      <td><code>features</code></td>
+      <td><code>Feature[]</code></td>
+      <td>Feature badges with icons</td>
+    </tr>
+    <tr>
+      <td><code>metadata</code></td>
+      <td><code>ReactNode</code></td>
+      <td>Trailing metadata text</td>
+    </tr>
+    <tr>
+      <td><code>action</code></td>
+      <td><code>ReactNode</code></td>
+      <td>Trailing action element</td>
+    </tr>
+    <tr>
+      <td><code>onClick</code></td>
+      <td><code>function</code></td>
+      <td>Enables interactive states</td>
+    </tr>
+    <tr>
+      <td><code>loading</code></td>
+      <td><code>boolean</code></td>
+      <td>Show skeleton state</td>
+    </tr>
+  </tbody>
+</table>
+
+## Technical Notes
+
+**Accessibility:** ARIA roles, keyboard navigation (Tab, Enter, Space), screen reader support.
+
+**Responsive:** Items adapt layout between mobile and desktop. Metadata moves inline on mobile.
