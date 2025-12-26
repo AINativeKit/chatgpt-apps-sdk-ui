@@ -1,0 +1,187 @@
+import { Canvas, Meta, Subtitle, Title, ArgTypes } from '@storybook/blocks'
+import * as MapsStories from './Maps.stories'
+
+<Meta of={MapsStories} />
+
+<Title>Map</Title>
+<Subtitle>A comprehensive map-based location system with CompactMap, FullscreenMap, and orchestrated transitions for ChatGPT Apps SDK</Subtitle>
+
+## Usage
+
+```tsx
+import { Map, CompactMap, FullscreenMap } from "@ainativekit/ui";
+import type { LocationData } from "@ainativekit/ui";
+
+const [isFullscreen, setIsFullscreen] = useState(false);
+
+<Map
+  locations={locations}
+  isFullscreen={isFullscreen}
+  onToggleFullscreen={setIsFullscreen}
+/>
+```
+
+Built on Leaflet with interactive markers, map place cards, multiple layout options, and integrated support for ChatGPT Apps SDK.
+
+**Key Features:**
+- Three component variants: Map (orchestrator), CompactMap (inline), FullscreenMap (full-featured)
+- Interactive markers with popups and custom rendering
+- Location carousel with synchronized selection
+- Inspector panel with detailed information
+- Loading, error, and empty states built-in
+- Responsive design and SSR-safe
+
+<Canvas of={MapsStories.Base} />
+
+## Reference
+
+<ArgTypes of={MapsStories.Base} />
+
+## Examples
+
+### Auto-expand on carousel click
+
+Automatically expand to fullscreen when clicking a carousel card.
+
+<Canvas of={MapsStories.AutoExpandOnClick} />
+
+### Loading
+
+<Canvas of={MapsStories.Loading} />
+
+### Error
+
+<Canvas of={MapsStories.Error} />
+
+### Empty
+
+<Canvas of={MapsStories.Empty} />
+
+## Component Selection Guide
+
+<table>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'left'}}>Component</th>
+      <th style={{textAlign: 'left'}}>Use When</th>
+      <th style={{textAlign: 'left'}}>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Map</strong></td>
+      <td>ChatGPT Apps SDK integration, need expand/collapse toggle</td>
+      <td>Chat-based map that expands to full view</td>
+    </tr>
+    <tr>
+      <td><strong>CompactMap</strong></td>
+      <td>Fixed inline experiences, no fullscreen needed</td>
+      <td>Dashboard widget showing nearby locations</td>
+    </tr>
+    <tr>
+      <td><strong>FullscreenMap</strong></td>
+      <td>Always-fullscreen, rich exploration interfaces</td>
+      <td>Dedicated map page with Inspector panel</td>
+    </tr>
+  </tbody>
+</table>
+
+## ChatGPT Apps SDK Integration
+
+The Map component works seamlessly with ChatGPT Apps SDK. Use controlled mode for iframe expansion:
+
+```tsx
+const [isMapFullscreen, setIsMapFullscreen] = useState(false);
+
+const handleMapToggle = (fullscreen: boolean) => {
+  setIsMapFullscreen(fullscreen);
+  // ChatGPT SDK will expand/collapse the iframe
+};
+
+<Map
+  locations={locations}
+  isFullscreen={isMapFullscreen}
+  onToggleFullscreen={handleMapToggle}
+/>
+```
+
+**Key Points:**
+- Use controlled mode (`isFullscreen` + `onToggleFullscreen`) for ChatGPT integration
+- CompactMap height: 478px (standard ChatGPT Apps size)
+- Automatic sync with ChatGPT's `displayMode` via `useDisplayMode()` hook
+- Clicking ChatGPT's X button automatically collapses the map
+
+## LocationData Type
+
+<table>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'left'}}>Property</th>
+      <th style={{textAlign: 'left'}}>Type</th>
+      <th style={{textAlign: 'left'}}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td><code>string</code></td>
+      <td>Unique location identifier (required)</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td><code>string</code></td>
+      <td>Location name/title (required)</td>
+    </tr>
+    <tr>
+      <td><code>coords</code></td>
+      <td><code>[number, number]</code></td>
+      <td>Geographic coordinates [lat, lng] (required)</td>
+    </tr>
+    <tr>
+      <td><code>thumbnail</code></td>
+      <td><code>string</code></td>
+      <td>Image URL for map place card (required)</td>
+    </tr>
+    <tr>
+      <td><code>subtitle</code></td>
+      <td><code>string</code></td>
+      <td>Optional subtitle shown below title</td>
+    </tr>
+    <tr>
+      <td><code>description</code></td>
+      <td><code>string</code></td>
+      <td>Optional detailed description</td>
+    </tr>
+    <tr>
+      <td><code>features</code></td>
+      <td><code>Feature[]</code></td>
+      <td>Optional array of feature chips (rating, price)</td>
+    </tr>
+    <tr>
+      <td><code>actions</code></td>
+      <td><code>Action[]</code></td>
+      <td>Optional action buttons (for Inspector panel)</td>
+    </tr>
+    <tr>
+      <td><code>lists</code></td>
+      <td><code>MapInspectorList[]</code></td>
+      <td>Optional lists (reviews, related items)</td>
+    </tr>
+    <tr>
+      <td><code>renderMarker</code></td>
+      <td><code>(params) => ReactNode</code></td>
+      <td>Optional per-location custom marker</td>
+    </tr>
+  </tbody>
+</table>
+
+## Technical Notes
+
+**Component Architecture:** Map (orchestrator) follows the Album pattern - conditionally renders CompactMap or FullscreenMap based on fullscreen state. Supports both controlled and uncontrolled modes.
+
+**SSR-Safe:** Uses lazy loading and client-side mounting checks to avoid SSR issues with Leaflet. A loading fallback is shown during hydration.
+
+**Dependencies:**
+- `leaflet` ^1.9.4 - Base mapping library
+- `react-leaflet` ^4.2.1 - React components (React 18 compatible)
+- `framer-motion` - Animation for Inspector panel

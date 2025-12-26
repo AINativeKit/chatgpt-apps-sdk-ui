@@ -147,22 +147,22 @@ export const CompactMap: React.FC<CompactMapProps> = ({
           className={cn(styles.mapView, mapClassName)}
           style={mapStyle}
         />
-
-        {/* Expand Button */}
-        {onExpand && (
-          <Button
-            color="secondary"
-            variant="ghost"
-            uniform
-            size="md"
-            onClick={onExpand}
-            aria-label="Expand map to fullscreen"
-            className={styles.expandButton}
-          >
-            <ExpandLg />
-          </Button>
-        )}
       </div>
+
+      {/* Expand Button - hidden during loading state */}
+      {onExpand && !loading && (
+        <Button
+          color="secondary"
+          variant="ghost"
+          uniform
+          size="md"
+          onClick={onExpand}
+          aria-label="Expand map to fullscreen"
+          className={styles.expandButton}
+        >
+          <ExpandLg />
+        </Button>
+      )}
 
       <LocationCarousel
         locations={locations}
