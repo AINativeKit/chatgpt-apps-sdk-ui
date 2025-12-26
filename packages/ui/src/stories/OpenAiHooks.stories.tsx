@@ -12,7 +12,7 @@ import {
   type OpenAiApi,
 } from '../hooks/openai';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
-import { Card, CardBody, CardDescription, CardTitle } from '../components/Card';
+import { Card } from '../components/Card';
 
 type PlaygroundToolOutput = { message: string };
 
@@ -219,9 +219,9 @@ const ReactiveComponentDemo: React.FC = () => {
   return (
     <div style={{ maxWidth: cardWidth, transition: 'max-width 0.3s ease' }}>
       <Card interactive elevationLevel={2}>
-        <CardBody>
-          <CardTitle>Live Hook Demonstration</CardTitle>
-          <CardDescription>This card's width changes based on display mode</CardDescription>
+        <Card.Body>
+          <Card.Title>Live Hook Demonstration</Card.Title>
+          <Card.Description>This card's width changes based on display mode</Card.Description>
 
           <div
             style={{
@@ -279,7 +279,7 @@ const ReactiveComponentDemo: React.FC = () => {
           >
             Try cycling display modes to see the card width change!
           </p>
-        </CardBody>
+        </Card.Body>
       </Card>
     </div>
   );

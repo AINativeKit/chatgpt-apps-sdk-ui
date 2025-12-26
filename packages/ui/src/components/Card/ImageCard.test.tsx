@@ -314,7 +314,7 @@ describe('ImageCard', () => {
     it('shows retry button when onErrorRetry provided', () => {
       const handleRetry = vi.fn();
       render(<ImageCard image={mockImage} error onErrorRetry={handleRetry} />);
-      const retryButton = screen.getByRole('button', { name: /Try Again/ });
+      const retryButton = screen.getByRole('button', { name: /Retry/ });
       expect(retryButton).toBeInTheDocument();
     });
   });

@@ -1,0 +1,63 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as CardStories from './Card.stories'
+
+<Meta of={CardStories} />
+
+<Title>Card</Title>
+<Subtitle>Flexible container component supporting both simple content and complex compound layouts</Subtitle>
+
+## Usage
+
+```tsx
+import { Card } from "@ainativekit/ui";
+```
+
+<Canvas of={CardStories.Base} />
+
+## Reference
+
+<ArgTypes of={CardStories.Base} />
+
+## Examples
+
+### Interactive card
+
+Cards with hover effects that increase elevation.
+
+<Canvas of={CardStories.Interactive} />
+
+### Elevation levels
+
+Control shadow depth with the `elevationLevel` prop (0-4).
+
+<Canvas of={CardStories.ElevationLevels} sourceState="none" />
+
+### Compound components
+
+Structured layouts using Card.Header, Card.Body, Card.Footer, and semantic subcomponents.
+
+<Canvas of={CardStories.CompoundComponents} />
+
+### With image
+
+Use Card.Image with aspect ratios for consistent image displays.
+
+<Canvas of={CardStories.WithImage} />
+
+### Loading
+
+Show a skeleton placeholder while data is loading with `loading={true}`.
+
+<Canvas of={CardStories.Loading} />
+
+### Error
+
+Display an error message with `error={true}`. Customize with `errorTitle`, `errorMessage`, and `onErrorRetry`.
+
+<Canvas of={CardStories.Error} />
+
+### Real-world examples
+
+Complete card implementations for common use cases.
+
+<Canvas of={CardStories.RealWorld} sourceState="none" />

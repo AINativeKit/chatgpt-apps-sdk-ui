@@ -808,15 +808,15 @@ const IntroductionPage = () => {
           <br />
           &nbsp;&nbsp;{'<Card.Header>'}
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.ChipGroup>'}
+          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.BadgeGroup>'}
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.Chip variant="neutral" size="sm">ChatGPT Apps SDK</Card.Chip>'}
+          {'<Card.Badge variant="neutral" size="sm">ChatGPT Apps SDK</Card.Badge>'}
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.Chip variant="neutral" size="sm">UI Components</Card.Chip>'}
+          {'<Card.Badge variant="neutral" size="sm">UI Components</Card.Badge>'}
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.ChipGroup>'}
+          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.BadgeGroup>'}
           <br />
           &nbsp;&nbsp;{'</Card.Header>'}
           <br />
@@ -872,14 +872,14 @@ const IntroductionPage = () => {
           {/* Documentation Card Example - shows what it looks like */}
           <Card elevationLevel={1} interactive>
             <Card.Header>
-              <Card.ChipGroup>
-                <Card.Chip variant="soft" size="sm">
+              <Card.BadgeGroup>
+                <Card.Badge variant="soft" size="sm">
                   ChatGPT Apps SDK
-                </Card.Chip>
-                <Card.Chip variant="soft" size="sm">
+                </Card.Badge>
+                <Card.Badge variant="soft" size="sm">
                   UI Components
-                </Card.Chip>
-              </Card.ChipGroup>
+                </Card.Badge>
+              </Card.BadgeGroup>
             </Card.Header>
             <Card.Image
               src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&h=200&fit=crop"

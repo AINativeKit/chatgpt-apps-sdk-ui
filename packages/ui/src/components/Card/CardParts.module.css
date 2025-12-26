@@ -98,8 +98,8 @@
   margin-top: var(--spacing); /* 4px - subtle spacing from content above */
 }
 
-/* Card Chip Group */
-.cardChipGroup {
+/* Card Badge Group */
+.cardBadgeGroup {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;

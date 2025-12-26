@@ -350,7 +350,7 @@ describe('SummaryCard', () => {
     it('shows retry button when onErrorRetry provided', () => {
       const handleRetry = vi.fn();
       render(<SummaryCard error onErrorRetry={handleRetry} />);
-      const retryButton = screen.getByRole('button', { name: /try again/i });
+      const retryButton = screen.getByRole('button', { name: /retry/i });
       expect(retryButton).toBeInTheDocument();
     });
 
@@ -359,7 +359,7 @@ describe('SummaryCard', () => {
       const handleRetry = vi.fn();
       render(<SummaryCard error onErrorRetry={handleRetry} />);
 
-      const retryButton = screen.getByRole('button', { name: /try again/i });
+      const retryButton = screen.getByRole('button', { name: /retry/i });
       await user.click(retryButton);
 
       expect(handleRetry).toHaveBeenCalledTimes(1);

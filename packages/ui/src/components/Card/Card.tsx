@@ -2,13 +2,6 @@ import React from 'react';
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
 import { cn } from '../../utils/cn';
 import styles from './Card.module.css';
-
-/**
- * Elevation level for Card component (0-4)
- * Maps to apps-sdk-ui shadow tokens: --shadow-100 through --shadow-400
- */
-export type ElevationLevel = 0 | 1 | 2 | 3 | 4;
-
 import { CardHeader } from './CardHeader';
 import { CardBody } from './CardBody';
 import { CardFooter } from './CardFooter';
@@ -17,12 +10,17 @@ import { CardActions, CardActionButton } from './CardActions';
 import { CardTitle } from './CardTitle';
 import { CardDescription } from './CardDescription';
 import { CardMeta } from './CardMeta';
-import { CardChipGroup } from './CardChipGroup';
+import { CardBadgeGroup } from './CardBadgeGroup';
 import { CardBadge } from './CardBadge';
-import { CardChip } from './CardChip';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Skeleton } from '../Skeleton';
+
+/**
+ * Elevation level for Card component (0-4)
+ * Maps to apps-sdk-ui shadow tokens: --shadow-100 through --shadow-400
+ */
+export type ElevationLevel = 0 | 1 | 2 | 3 | 4;
 
 /**
  * Maps elevation levels to apps-sdk-ui shadow tokens
@@ -212,9 +210,8 @@ const CardWithCompounds = Object.assign(CardBase, {
   Title: CardTitle,
   Description: CardDescription,
   Meta: CardMeta,
-  ChipGroup: CardChipGroup,
+  BadgeGroup: CardBadgeGroup,
   Badge: CardBadge,
-  Chip: CardChip,
 });
 
 export { CardWithCompounds as Card };
