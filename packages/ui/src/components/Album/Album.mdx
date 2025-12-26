@@ -1,0 +1,178 @@
+import { Canvas, Meta, Subtitle, Title, ArgTypes } from '@storybook/blocks'
+import * as AlbumStories from './Album.stories'
+
+<Meta of={AlbumStories} />
+
+<Title>Album</Title>
+<Subtitle>A photo album system with carousel navigation and fullscreen viewer for ChatGPT Apps SDK</Subtitle>
+
+## Usage
+
+```tsx
+import { Album } from "@ainativekit/ui";
+
+// Uncontrolled (manages its own state)
+<Album albums={albums} />
+
+// Controlled (external state)
+import type { AlbumType } from "@ainativekit/ui";
+
+const [selectedAlbum, setSelectedAlbum] = useState<AlbumType | null>(null);
+
+<Album
+  albums={albums}
+  selectedAlbum={selectedAlbum}
+  onAlbumSelect={setSelectedAlbum}
+/>
+```
+
+**Key Features:**
+- Three component variants: Album (orchestrator), AlbumCarousel (carousel only), AlbumViewer (fullscreen)
+- Keyboard navigation (arrow keys, ESC to close)
+- Touch/swipe support via Embla Carousel
+- Loading, error, and empty states built-in
+- Responsive design with thumbnail sidebar on tablet+
+
+<Canvas of={AlbumStories.Base} />
+
+## Reference
+
+<ArgTypes of={AlbumStories.Base} />
+
+## Examples
+
+### Loading
+
+<Canvas of={AlbumStories.Loading} />
+
+### Error
+
+<Canvas of={AlbumStories.Error} />
+
+### Empty
+
+<Canvas of={AlbumStories.Empty} />
+
+### Viewer Standalone
+
+<Canvas of={AlbumStories.ViewerStandalone} />
+
+### Viewer Empty State
+
+<Canvas of={AlbumStories.ViewerEmptyState} />
+
+## Component Selection Guide
+
+<table>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'left'}}>Component</th>
+      <th style={{textAlign: 'left'}}>Use When</th>
+      <th style={{textAlign: 'left'}}>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Album</strong></td>
+      <td>Need carousel + viewer integration with auto state management</td>
+      <td>Photo gallery with fullscreen viewing</td>
+    </tr>
+    <tr>
+      <td><strong>AlbumCarousel</strong></td>
+      <td>Only need carousel display, custom viewer handling</td>
+      <td>Album picker without fullscreen</td>
+    </tr>
+    <tr>
+      <td><strong>AlbumViewer</strong></td>
+      <td>Custom viewer integration, standalone photo viewer</td>
+      <td>Modal photo viewer with external trigger</td>
+    </tr>
+    <tr>
+      <td><strong>AlbumCard</strong></td>
+      <td>Single album display with cover, title, and photo count</td>
+      <td>Album thumbnail in a grid or list</td>
+    </tr>
+  </tbody>
+</table>
+
+## Data Types
+
+### AlbumType
+
+<table>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'left'}}>Property</th>
+      <th style={{textAlign: 'left'}}>Type</th>
+      <th style={{textAlign: 'left'}}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td><code>string</code></td>
+      <td>Unique album identifier (required)</td>
+    </tr>
+    <tr>
+      <td><code>title</code></td>
+      <td><code>string</code></td>
+      <td>Album title (required)</td>
+    </tr>
+    <tr>
+      <td><code>cover</code></td>
+      <td><code>string</code></td>
+      <td>Cover image URL (required)</td>
+    </tr>
+    <tr>
+      <td><code>photos</code></td>
+      <td><code>Photo[]</code></td>
+      <td>Array of photo objects (required)</td>
+    </tr>
+  </tbody>
+</table>
+
+### Photo
+
+<table>
+  <thead>
+    <tr>
+      <th style={{textAlign: 'left'}}>Property</th>
+      <th style={{textAlign: 'left'}}>Type</th>
+      <th style={{textAlign: 'left'}}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td><code>string</code></td>
+      <td>Unique photo identifier (required)</td>
+    </tr>
+    <tr>
+      <td><code>url</code></td>
+      <td><code>string</code></td>
+      <td>Photo image URL (required)</td>
+    </tr>
+    <tr>
+      <td><code>title</code></td>
+      <td><code>string</code></td>
+      <td>Optional title/caption for the photo</td>
+    </tr>
+    <tr>
+      <td><code>alt</code></td>
+      <td><code>string</code></td>
+      <td>Alt text for accessibility</td>
+    </tr>
+  </tbody>
+</table>
+
+## Technical Notes
+
+**Component Architecture:** Album (orchestrator) follows the Map pattern - conditionally renders AlbumCarousel or AlbumViewer based on selection state. Supports both controlled and uncontrolled modes.
+
+**Responsive Breakpoints:**
+- Mobile (&lt;640px): Touch navigation, no thumbnail sidebar
+- Tablet (≥640px): Thumbnail sidebar appears (160px width)
+- Desktop (≥1024px): Maximum padding for optimal viewing
+
+**Dependencies:**
+- `embla-carousel-react` - Touch/swipe carousel
