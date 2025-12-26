@@ -42,19 +42,27 @@ const meta: Meta<ListItemProps> = {
       description: 'Trailing action element',
       table: { type: { summary: 'ReactNode' } },
     },
-    onActionClick: { description: 'Callback when action element is clicked', control: false },
-    onClick: { description: 'Callback when row is clicked', control: false },
+    onActionClick: {
+      description: 'Callback when action element is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onClick: {
+      description: 'Callback when row is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
     interactive: {
       description: 'Enable hover/focus states without onClick',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     hideMetadataOnMobile: {
       description: 'Hide metadata from inline mobile row',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     loading: {
       description: 'Shows skeleton placeholder',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
   },
 };

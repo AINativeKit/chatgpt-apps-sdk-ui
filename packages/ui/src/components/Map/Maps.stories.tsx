@@ -98,22 +98,42 @@ const meta: Meta<MapProps> = {
     layout: 'padded',
   },
   argTypes: {
-    locations: { description: 'Array of location data objects', control: false },
-    onLocationSelect: { description: 'Callback when location is selected', control: false },
-    onToggleFullscreen: { description: 'Callback when fullscreen mode changes', control: false },
-    compactMapProps: { description: 'Props forwarded to CompactMap', control: false },
-    fullscreenMapProps: { description: 'Props forwarded to FullscreenMap', control: false },
+    locations: {
+      description: 'Array of location data objects',
+      control: false,
+      table: { type: { summary: 'LocationData[]' } },
+    },
+    onLocationSelect: {
+      description: 'Callback when location is selected',
+      control: false,
+      table: { type: { summary: '(id: string | undefined) => void' } },
+    },
+    onToggleFullscreen: {
+      description: 'Callback when fullscreen mode changes',
+      control: false,
+      table: { type: { summary: '(isFullscreen: boolean) => void' } },
+    },
+    compactMapProps: {
+      description: 'Props forwarded to CompactMap',
+      control: false,
+      table: { type: { summary: 'Partial<CompactMapProps>' } },
+    },
+    fullscreenMapProps: {
+      description: 'Props forwarded to FullscreenMap',
+      control: false,
+      table: { type: { summary: 'Partial<FullscreenMapProps>' } },
+    },
     autoExpandOnCarouselClick: {
       description: 'Auto-expand to fullscreen when clicking a carousel card',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     loading: {
       description: 'Shows skeleton map and carousel while loading',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
   },
 };

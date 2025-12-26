@@ -44,12 +44,36 @@ const meta: Meta<CompactMapProps> = {
     layout: 'padded',
   },
   argTypes: {
-    locations: { description: 'Array of location data objects', control: false },
-    onLocationSelect: { description: 'Callback when location is selected', control: false },
-    onLocationActive: { description: 'Callback when location is hovered', control: false },
-    onExpand: { description: 'Callback when expand button is clicked', control: false },
-    carouselProps: { description: 'Props forwarded to carousel component', control: false },
-    renderMarker: { description: 'Custom marker renderer function', control: false },
+    locations: {
+      description: 'Array of location data objects',
+      control: false,
+      table: { type: { summary: 'LocationData[]' } },
+    },
+    onLocationSelect: {
+      description: 'Callback when location is selected',
+      control: false,
+      table: { type: { summary: '(id: string | undefined) => void' } },
+    },
+    onLocationActive: {
+      description: 'Callback when location is hovered',
+      control: false,
+      table: { type: { summary: '(id: string | undefined) => void' } },
+    },
+    onExpand: {
+      description: 'Callback when expand button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    carouselProps: {
+      description: 'Props forwarded to carousel component',
+      control: false,
+      table: { type: { summary: 'Partial<LocationCarouselProps>' } },
+    },
+    renderMarker: {
+      description: 'Custom marker renderer function',
+      control: false,
+      table: { type: { summary: '(params: RenderMarkerParams) => ReactElement | null' } },
+    },
   },
 };
 

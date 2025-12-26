@@ -10,70 +10,106 @@ const meta: Meta<SummaryCardProps> = {
     layout: 'padded',
   },
   argTypes: {
-    images: { description: 'Single image URL or array of image URLs', control: false },
-    metadata: { description: 'Metadata items with icon and text', control: false },
-    topOverlay: { description: 'Content to overlay on top of images', control: false },
-    onButtonClick: { description: 'Callback when action button is clicked', control: false },
-    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
-    onImageLoad: { description: 'Callback when single image loads', control: false },
-    onImageError: { description: 'Callback when single image fails to load', control: false },
-    onImagesLoad: { description: 'Callback when carousel images load', control: false },
-    onImagesError: { description: 'Callback when carousel images fail to load', control: false },
+    images: {
+      description: 'Single image URL or array of image URLs',
+      control: false,
+      table: { type: { summary: 'string | string[]' } },
+    },
+    metadata: {
+      description: 'Metadata items with icon and text',
+      control: false,
+      table: { type: { summary: 'MetadataItem[]' } },
+    },
+    topOverlay: {
+      description: 'Content to overlay on top of images',
+      control: false,
+      table: { type: { summary: 'ReactNode' } },
+    },
+    onButtonClick: {
+      description: 'Callback when action button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onErrorRetry: {
+      description: 'Callback when retry button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onImageLoad: {
+      description: 'Callback when single image loads',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onImageError: {
+      description: 'Callback when single image fails to load',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onImagesLoad: {
+      description: 'Callback when carousel images load',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onImagesError: {
+      description: 'Callback when carousel images fail to load',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
     variant: {
       description: 'Card layout variant',
-      table: { defaultValue: { summary: 'default' } },
+      table: { type: { summary: "'default' | 'compact'" }, defaultValue: { summary: 'default' } },
     },
     size: {
       description: 'Card size variant',
-      table: { defaultValue: { summary: 'default' } },
+      table: { type: { summary: "'default' | 'compact'" }, defaultValue: { summary: 'default' } },
     },
     imageAspectRatio: {
       description: 'Image aspect ratio',
-      table: { defaultValue: { summary: 'auto' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'auto' } },
     },
     descriptionLines: {
       description: 'Max lines for description (1-3)',
-      table: { defaultValue: { summary: '2' } },
+      table: { type: { summary: '1 | 2 | 3' }, defaultValue: { summary: '2' } },
     },
     loading: {
       description: 'Shows skeleton placeholder',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     errorTitle: {
       description: 'Custom error title',
-      table: { defaultValue: { summary: 'Failed to load' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Failed to load' } },
     },
     emptyTitle: {
       description: 'Empty state title',
-      table: { defaultValue: { summary: 'No content' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No content' } },
     },
     badgeVariant: {
       description: 'Badge visual style',
-      table: { defaultValue: { summary: 'soft' } },
+      table: { type: { summary: "'solid' | 'soft'" }, defaultValue: { summary: 'soft' } },
     },
     badgeSize: {
       description: 'Badge size',
-      table: { defaultValue: { summary: 'sm' } },
+      table: { type: { summary: "'sm' | 'md' | 'lg'" }, defaultValue: { summary: 'sm' } },
     },
     badgePill: {
       description: 'Use pill-shaped badge',
-      table: { defaultValue: { summary: 'true' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
     },
     badgeColor: {
       description: 'Badge color variant',
-      table: { defaultValue: { summary: 'secondary' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'secondary' } },
     },
     imageLoading: {
       description: 'Image loading strategy',
-      table: { defaultValue: { summary: 'lazy' } },
+      table: { type: { summary: "'eager' | 'lazy'" }, defaultValue: { summary: 'lazy' } },
     },
     elevationLevel: {
       description: 'Shadow elevation level (0-3)',
-      table: { defaultValue: { summary: '1' } },
+      table: { type: { summary: '0 | 1 | 2 | 3' }, defaultValue: { summary: '1' } },
     },
   },
 };

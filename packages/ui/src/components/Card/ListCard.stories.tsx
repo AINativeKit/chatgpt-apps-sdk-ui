@@ -9,49 +9,81 @@ const meta: Meta<ListCardProps> = {
     layout: 'padded',
   },
   argTypes: {
-    topImage: { description: 'Image URL displayed at top of card', control: false },
-    items: { description: 'Array of list items to display', control: false },
-    onHeaderAction: { description: 'Callback when header action is clicked', control: false },
-    onButtonClick: { description: 'Callback when action button is clicked', control: false },
-    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
-    onTopImageLoad: { description: 'Callback when top image loads', control: false },
-    onTopImageError: { description: 'Callback when top image fails to load', control: false },
-    emptyIcon: { description: 'Custom icon for empty state', control: false },
+    topImage: {
+      description: 'Image URL displayed at top of card',
+      control: false,
+      table: { type: { summary: 'string' } },
+    },
+    items: {
+      description: 'Array of list items to display',
+      control: false,
+      table: { type: { summary: 'ListCardItem[]' } },
+    },
+    onHeaderAction: {
+      description: 'Callback when header action is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onButtonClick: {
+      description: 'Callback when action button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onErrorRetry: {
+      description: 'Callback when retry button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onTopImageLoad: {
+      description: 'Callback when top image loads',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onTopImageError: {
+      description: 'Callback when top image fails to load',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    emptyIcon: {
+      description: 'Custom icon for empty state',
+      control: false,
+      table: { type: { summary: 'ReactNode' } },
+    },
     loading: {
       description: 'Shows skeleton placeholder',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     loadingItemCount: {
       description: 'Number of skeleton items when loading',
-      table: { defaultValue: { summary: '3' } },
+      table: { type: { summary: 'number' }, defaultValue: { summary: '3' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     errorTitle: {
       description: 'Custom error title',
-      table: { defaultValue: { summary: 'Failed to load' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Failed to load' } },
     },
     emptyTitle: {
       description: 'Empty state title',
-      table: { defaultValue: { summary: 'No items' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No items' } },
     },
     buttonDisabled: {
       description: 'Disable the action button',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     topImageLoading: {
       description: 'Top image loading strategy',
-      table: { defaultValue: { summary: 'lazy' } },
+      table: { type: { summary: "'eager' | 'lazy'" }, defaultValue: { summary: 'lazy' } },
     },
     itemImagesLoading: {
       description: 'Item images loading strategy',
-      table: { defaultValue: { summary: 'lazy' } },
+      table: { type: { summary: "'eager' | 'lazy'" }, defaultValue: { summary: 'lazy' } },
     },
     elevationLevel: {
       description: 'Shadow elevation level (0-3)',
-      table: { defaultValue: { summary: '1' } },
+      table: { type: { summary: '0 | 1 | 2 | 3' }, defaultValue: { summary: '1' } },
     },
   },
 };

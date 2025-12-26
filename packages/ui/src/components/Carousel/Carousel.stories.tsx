@@ -11,70 +11,90 @@ const meta: Meta<CarouselProps> = {
     layout: 'padded',
   },
   argTypes: {
-    children: { description: 'Carousel slide elements', control: false },
-    onSlideChange: { description: 'Callback when active slide changes', control: false },
-    onApi: { description: 'Callback to receive Embla API instance', control: false },
-    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
-    emptyState: { description: 'Custom empty state component', control: false },
+    children: {
+      description: 'Carousel slide elements',
+      control: false,
+      table: { type: { summary: 'ReactNode' } },
+    },
+    onSlideChange: {
+      description: 'Callback when active slide changes',
+      control: false,
+      table: { type: { summary: '(index: number) => void' } },
+    },
+    onApi: {
+      description: 'Callback to receive Embla API instance',
+      control: false,
+      table: { type: { summary: '(api: EmblaCarouselType) => void' } },
+    },
+    onErrorRetry: {
+      description: 'Callback when retry button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    emptyState: {
+      description: 'Custom empty state component',
+      control: false,
+      table: { type: { summary: 'ReactNode' } },
+    },
     align: {
       description: 'Alignment of slides within the viewport',
-      table: { defaultValue: { summary: 'center' } },
+      table: { type: { summary: "'start' | 'center' | 'end'" }, defaultValue: { summary: 'center' } },
     },
     loop: {
       description: 'Enable infinite looping',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     showNavigation: {
       description: 'Show navigation buttons (prev/next arrows)',
-      table: { defaultValue: { summary: 'true' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
     },
     showEdgeGradients: {
       description: 'Show edge gradient overlays',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     gap: {
       description: 'Gap between slides',
-      table: { defaultValue: { summary: 'var(32px)' } },
+      table: { type: { summary: 'number | string' }, defaultValue: { summary: '32px' } },
     },
     flushStart: {
       description: 'Remove leading offset so first slide is flush with viewport start',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     startInset: {
       description: 'Custom left inset inside the carousel container',
-      table: { defaultValue: { summary: '0' } },
+      table: { type: { summary: 'number | string' }, defaultValue: { summary: '0' } },
     },
     viewportPadding: {
       description: 'Custom viewport padding (top and bottom)',
-      table: { defaultValue: { summary: '0' } },
+      table: { type: { summary: 'number | string' }, defaultValue: { summary: '0' } },
     },
     dragFree: {
       description: 'Enable drag-free scrolling without snapping',
-      table: { defaultValue: { summary: 'true' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
     },
     startIndex: {
       description: 'Initial slide index to start at',
-      table: { defaultValue: { summary: '0' } },
+      table: { type: { summary: 'number' }, defaultValue: { summary: '0' } },
     },
     loading: {
       description: 'Renders skeleton slides while loading',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     loadingSlides: {
       description: 'Number of skeleton slides when loading',
-      table: { defaultValue: { summary: '6' } },
+      table: { type: { summary: 'number' }, defaultValue: { summary: '6' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     errorTitle: {
       description: 'Custom error title',
-      table: { defaultValue: { summary: 'Failed to load items' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Failed to load items' } },
     },
     emptyTitle: {
       description: 'Empty state title when no children',
-      table: { defaultValue: { summary: 'No items' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No items' } },
     },
   },
 };

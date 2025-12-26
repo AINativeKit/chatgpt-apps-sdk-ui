@@ -10,66 +10,86 @@ const meta: Meta<MapPlaceCardProps> = {
     layout: 'padded',
   },
   argTypes: {
-    features: { description: 'Feature items with icon and label', control: false },
-    onClick: { description: 'Callback when card is clicked', control: false },
-    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
-    onImageLoad: { description: 'Callback when image loads', control: false },
-    onImageError: { description: 'Callback when image fails to load', control: false },
+    features: {
+      description: 'Feature items with icon and label',
+      control: false,
+      table: { type: { summary: 'Feature[]' } },
+    },
+    onClick: {
+      description: 'Callback when card is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onErrorRetry: {
+      description: 'Callback when retry button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onImageLoad: {
+      description: 'Callback when image loads',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onImageError: {
+      description: 'Callback when image fails to load',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
     variant: {
       description: 'Card layout variant',
-      table: { defaultValue: { summary: 'carousel' } },
+      table: { type: { summary: "'carousel' | 'list'" }, defaultValue: { summary: 'carousel' } },
     },
     selected: {
       description: 'Whether the card is selected',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     loading: {
       description: 'Shows skeleton placeholder',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     errorTitle: {
       description: 'Custom error title',
-      table: { defaultValue: { summary: 'Failed to load' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Failed to load' } },
     },
     emptyTitle: {
       description: 'Empty state title',
-      table: { defaultValue: { summary: 'No location' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No location' } },
     },
     badgeVariant: {
       description: 'Badge visual style',
-      table: { defaultValue: { summary: 'soft' } },
+      table: { type: { summary: "'solid' | 'soft'" }, defaultValue: { summary: 'soft' } },
     },
     badgeSize: {
       description: 'Badge size',
-      table: { defaultValue: { summary: 'sm' } },
+      table: { type: { summary: "'sm' | 'md' | 'lg'" }, defaultValue: { summary: 'sm' } },
     },
     badgePill: {
       description: 'Use pill-shaped badge',
-      table: { defaultValue: { summary: 'true' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
     },
     badgeColor: {
       description: 'Badge color variant',
-      table: { defaultValue: { summary: 'secondary' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'secondary' } },
     },
     badgePosition: {
       description: 'Badge position on the image',
-      table: { defaultValue: { summary: 'top-right' } },
+      table: { type: { summary: "'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'" }, defaultValue: { summary: 'top-right' } },
     },
     imageLoading: {
       description: 'Image loading strategy',
-      table: { defaultValue: { summary: 'lazy' } },
+      table: { type: { summary: "'eager' | 'lazy'" }, defaultValue: { summary: 'lazy' } },
     },
     titleLines: {
       description: 'Max lines for title (1-3)',
-      table: { defaultValue: { summary: '1' } },
+      table: { type: { summary: '1 | 2 | 3' }, defaultValue: { summary: '1' } },
     },
     subtitleLines: {
       description: 'Max lines for subtitle (1-3)',
-      table: { defaultValue: { summary: '1' } },
+      table: { type: { summary: '1 | 2 | 3' }, defaultValue: { summary: '1' } },
     },
   },
 };

@@ -12,39 +12,58 @@ const meta: Meta<ListProps<unknown>> = {
     layout: 'centered',
   },
   argTypes: {
-    // List props
-    header: { description: 'Header content above the list', control: false },
-    items: { description: 'Array of data items to render', control: false },
-    renderItem: { description: 'Function to render each item', control: false },
-    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
-    emptyState: { description: 'Custom empty state component', control: false },
+    header: {
+      description: 'Header content above the list',
+      control: false,
+      table: { type: { summary: 'ReactNode' } },
+    },
+    items: {
+      description: 'Array of data items to render',
+      control: false,
+      table: { type: { summary: 'T[]' } },
+    },
+    renderItem: {
+      description: 'Function to render each item',
+      control: false,
+      table: { type: { summary: '(item: T, index: number) => ReactNode' } },
+    },
+    onErrorRetry: {
+      description: 'Callback when retry button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    emptyState: {
+      description: 'Custom empty state component',
+      control: false,
+      table: { type: { summary: 'ReactNode' } },
+    },
     emptyMessage: {
       description: 'Empty state message text',
-      table: { defaultValue: { summary: 'No items found.' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No items found.' } },
     },
     showDividers: {
       description: 'Show dividers between items',
-      table: { defaultValue: { summary: 'true' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
     },
     loading: {
       description: 'Shows skeleton items while loading',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     loadingItems: {
       description: 'Number of skeleton items when loading',
-      table: { defaultValue: { summary: '3' } },
+      table: { type: { summary: 'number' }, defaultValue: { summary: '3' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     errorTitle: {
       description: 'Custom error title',
-      table: { defaultValue: { summary: 'Failed to load items' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Failed to load items' } },
     },
     emptyTitle: {
       description: 'Empty state title',
-      table: { defaultValue: { summary: 'No items' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No items' } },
     },
   },
   decorators: [

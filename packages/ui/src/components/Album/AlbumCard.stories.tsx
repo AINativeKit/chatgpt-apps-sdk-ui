@@ -10,65 +10,81 @@ const meta: Meta<AlbumCardProps> = {
     layout: 'padded',
   },
   argTypes: {
-    album: { description: 'Album data object with photos', control: false },
-    onSelect: { description: 'Callback when album is clicked', control: false },
-    onImageLoad: { description: 'Callback when cover image loads', control: false },
-    onImageError: { description: 'Callback when cover image fails to load', control: false },
+    album: {
+      description: 'Album data object with photos',
+      control: false,
+      table: { type: { summary: 'Album' } },
+    },
+    onSelect: {
+      description: 'Callback when album is clicked',
+      control: false,
+      table: { type: { summary: '(album: Album) => void' } },
+    },
+    onImageLoad: {
+      description: 'Callback when cover image loads',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onImageError: {
+      description: 'Callback when cover image fails to load',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
     width: {
       description: 'Card width',
-      table: { defaultValue: { summary: '272px' } },
+      table: { type: { summary: 'number | string' }, defaultValue: { summary: '272px' } },
     },
     loading: {
       description: 'Shows skeleton placeholder',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     errorTitle: {
       description: 'Custom error title',
-      table: { defaultValue: { summary: 'Album unavailable' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Album unavailable' } },
     },
     errorMessage: {
       description: 'Custom error message',
-      table: { defaultValue: { summary: 'This album could not be loaded' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'This album could not be loaded' } },
     },
     emptyTitle: {
       description: 'Empty state title',
-      table: { defaultValue: { summary: 'No album' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No album' } },
     },
     imageLoading: {
       description: 'Image loading strategy',
-      table: { defaultValue: { summary: 'lazy' } },
+      table: { type: { summary: "'eager' | 'lazy'" }, defaultValue: { summary: 'lazy' } },
     },
     badgePosition: {
       description: 'Badge position on the image',
-      table: { defaultValue: { summary: 'top-right' } },
+      table: { type: { summary: "'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'" }, defaultValue: { summary: 'top-right' } },
     },
     badgeVariant: {
       description: 'Badge visual style',
-      table: { defaultValue: { summary: 'soft' } },
+      table: { type: { summary: "'solid' | 'soft'" }, defaultValue: { summary: 'soft' } },
     },
     badgeSize: {
       description: 'Badge size',
-      table: { defaultValue: { summary: 'sm' } },
+      table: { type: { summary: "'sm' | 'md' | 'lg'" }, defaultValue: { summary: 'sm' } },
     },
     badgePill: {
       description: 'Use pill-shaped badge',
-      table: { defaultValue: { summary: 'true' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
     },
     badgeColor: {
       description: 'Badge color variant',
-      table: { defaultValue: { summary: 'secondary' } },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'secondary' } },
     },
     titleLines: {
       description: 'Max lines for title (1-3)',
-      table: { defaultValue: { summary: '1' } },
+      table: { type: { summary: '1 | 2 | 3' }, defaultValue: { summary: '1' } },
     },
     subtitleLines: {
       description: 'Max lines for subtitle (1-3)',
-      table: { defaultValue: { summary: '1' } },
+      table: { type: { summary: '1 | 2 | 3' }, defaultValue: { summary: '1' } },
     },
   },
 } satisfies Meta<typeof AlbumCard>;
