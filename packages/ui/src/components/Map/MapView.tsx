@@ -129,9 +129,9 @@ export interface MapViewProps {
 
   /**
    * Show popup bubbles when markers are clicked.
-   * When false, disables the Leaflet popup that appears on marker click.
-   * Useful when you want to handle marker selection with external UI (e.g., a sidebar).
-   * @default true
+   * When true, enables the Leaflet popup that appears on marker click.
+   * When false (default), popups are disabled for a cleaner map experience.
+   * @default false
    */
   showPopup?: boolean;
 

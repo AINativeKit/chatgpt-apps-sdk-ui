@@ -47,6 +47,46 @@ const sampleLocations: LocationData[] = [
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-6.png',
     features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
   },
+  {
+    id: 'little-star',
+    name: 'Little Star Pizza',
+    subtitle: 'Deep Dish · Western Addition',
+    coords: [37.7755, -122.4312],
+    description:
+      'Chicago-style deep dish with a cornmeal crust. Famous for their Blue Star pizza with spinach and garlic.',
+    thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-5.png',
+    features: [{ icon: <StarFilled />, label: '4.7' }, { label: '$$' }],
+  },
+  {
+    id: 'una-pizza',
+    name: 'Una Pizza Napoletana',
+    subtitle: 'Neapolitan · SoMa',
+    coords: [37.7849, -122.3994],
+    description:
+      'Minimalist Neapolitan pies with only 6 options. Anthony Mangieri brings his legendary NY pizzeria to SF.',
+    thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+    features: [{ icon: <StarFilled />, label: '4.9' }, { label: '$$$$' }],
+  },
+  {
+    id: 'square-pie',
+    name: 'Square Pie Guys',
+    subtitle: 'Detroit Style · SoMa',
+    coords: [37.7821, -122.4056],
+    description:
+      'Detroit-style squares with crispy cheese edges. Creative toppings on airy, focaccia-like crust.',
+    thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$$' }],
+  },
+  {
+    id: 'pizzetta-211',
+    name: 'Pizzetta 211',
+    subtitle: 'Thin Crust · Outer Richmond',
+    coords: [37.7833, -122.4766],
+    description:
+      'Tiny neighborhood gem with ever-changing weekly menu. Thin, crispy crusts with seasonal toppings.',
+    thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
+    features: [{ icon: <StarFilled />, label: '4.8' }, { label: '$$' }],
+  },
 ];
 
 const meta: Meta<CompactMapProps> = {
@@ -67,7 +107,7 @@ const meta: Meta<CompactMapProps> = {
     loading: { table: { defaultValue: { summary: 'false' } } },
     error: { table: { defaultValue: { summary: 'false' } } },
     markerVariant: { table: { defaultValue: { summary: 'pin' } } },
-    showPopup: { table: { defaultValue: { summary: 'true' } } },
+    showPopup: { table: { defaultValue: { summary: 'false' } } },
     autoExpandOnCarouselClick: { table: { defaultValue: { summary: 'false' } } },
   },
 };
@@ -175,8 +215,8 @@ MarkerVariants.parameters = {
 
 // Popup control
 export const PopupControl = () => {
-  const [withPopupId, setWithPopupId] = useState<string | undefined>(undefined);
   const [withoutPopupId, setWithoutPopupId] = useState<string | undefined>(undefined);
+  const [withPopupId, setWithPopupId] = useState<string | undefined>(undefined);
 
   return (
     <div
@@ -188,25 +228,24 @@ export const PopupControl = () => {
     >
       <div>
         <p style={{ marginBottom: '12px', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-          With Popups (default)
+          Without Popups (default)
+        </p>
+        <CompactMap
+          locations={sampleLocations}
+          selectedId={withoutPopupId}
+          onLocationSelect={setWithoutPopupId}
+          height={CHATGPT_APP_HEIGHT}
+        />
+      </div>
+      <div>
+        <p style={{ marginBottom: '12px', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+          With Popups
         </p>
         <CompactMap
           locations={sampleLocations}
           selectedId={withPopupId}
           onLocationSelect={setWithPopupId}
           showPopup={true}
-          height={CHATGPT_APP_HEIGHT}
-        />
-      </div>
-      <div>
-        <p style={{ marginBottom: '12px', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-          Without Popups
-        </p>
-        <CompactMap
-          locations={sampleLocations}
-          selectedId={withoutPopupId}
-          onLocationSelect={setWithoutPopupId}
-          showPopup={false}
           height={CHATGPT_APP_HEIGHT}
         />
       </div>
@@ -217,11 +256,11 @@ export const PopupControl = () => {
 PopupControl.parameters = {
   docs: {
     source: {
-      code: `{/* With popups - click markers to see details */}
-<CompactMap showPopup={true} />
+      code: `{/* Without popups (default) - cleaner map, use carousel for details */}
+<CompactMap />
 
-{/* Without popups - cleaner map, use carousel for details */}
-<CompactMap showPopup={false} />`,
+{/* With popups - click markers to see popup bubbles */}
+<CompactMap showPopup={true} />`,
     },
   },
 };
