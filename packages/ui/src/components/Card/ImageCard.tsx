@@ -92,9 +92,7 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
   onErrorRetry?: () => void;
 
   /**
-   * Badge content (text or number).
-   * - For short content (≤4 chars): Badge component is used (e.g., "New", "5", "✓")
-   * - For longer content (>4 chars): Chip component is used (e.g., "Featured", "On Sale")
+   * Badge content (text or number)
    */
   badge?: string | number;
 
@@ -105,10 +103,28 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
   badgePosition?: 'top-left' | 'top-right';
 
   /**
-   * Badge variant (inherits from Badge component)
+   * Badge variant style
    * @default 'soft'
    */
   badgeVariant?: BadgeProps['variant'];
+
+  /**
+   * Badge size
+   * @default 'sm' (auto-sizes to 'md' for longer badges)
+   */
+  badgeSize?: BadgeProps['size'];
+
+  /**
+   * Badge pill shape (fully rounded)
+   * @default false
+   */
+  badgePill?: boolean;
+
+  /**
+   * Badge color
+   * @default 'secondary'
+   */
+  badgeColor?: BadgeProps['color'];
 
   /**
    * Number of lines for title (1-3)
@@ -207,6 +223,9 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     badge,
     badgePosition = 'top-right',
     badgeVariant = 'soft',
+    badgeSize,
+    badgePill = false,
+    badgeColor = 'secondary',
     titleLines = 1,
     subtitleLines = 1,
     onImageLoad,
@@ -340,7 +359,12 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
                 badgePosition === 'top-left' ? styles.badgeTopLeft : styles.badgeTopRight
               )}
             >
-              <Badge variant={badgeVariant} size={String(badge).length > 4 ? 'md' : 'sm'}>
+              <Badge
+                variant={badgeVariant}
+                size={badgeSize ?? (String(badge).length > 4 ? 'md' : 'sm')}
+                pill={badgePill}
+                color={badgeColor}
+              >
                 {badge}
               </Badge>
             </div>

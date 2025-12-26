@@ -284,42 +284,13 @@ const ImageCardsComponent: React.FC = () => {
         </div>
       </section>
 
-      {/* Badge/Chip Support */}
+      {/* Badge Support */}
       <section style={{ marginBottom: '64px' }}>
         <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Badge & Chip Support</h2>
+          <h2 style={{ marginBottom: '8px' }}>Badge Support</h2>
           <p style={{ color: 'var(--color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Add status indicators to cards. The component automatically chooses the best
-            presentation:
-            <br />• <strong>Short content (4 chars or less)</strong>: "New", "5", "✓" → Uses Badge
-            (circular)
-            <br />• <strong>Longer content (more than 4 chars)</strong>: "Featured", "On Sale" →
-            Uses Chip (pill-shaped)
-            <br />
-            For best visibility on images, use{' '}
-            <code
-              style={{
-                background: 'var(--color-surface-tertiary)',
-                padding: '2px 6px',
-                borderRadius: '4px',
-                fontFamily: 'monospace',
-                fontSize: '12px',
-              }}
-            >
-              badgeVariant="solid"
-            </code>{' '}
-            or{' '}
-            <code
-              style={{
-                background: 'var(--color-surface-tertiary)',
-                padding: '2px 6px',
-                borderRadius: '4px',
-                fontFamily: 'monospace',
-                fontSize: '12px',
-              }}
-            >
-              badgeVariant="soft"
-            </code>
+            Add status indicators using apps-sdk-ui Badge with full customization: variant, size,
+            pill shape, and semantic colors.
           </p>
         </header>
 
@@ -332,7 +303,7 @@ const ImageCardsComponent: React.FC = () => {
               color: 'var(--color-text-secondary)',
             }}
           >
-            Short Content - Badge (4 chars or less)
+            Variants & Positions
           </h3>
           <div
             style={{
@@ -344,8 +315,8 @@ const ImageCardsComponent: React.FC = () => {
           >
             <ImageCard
               image={SAMPLE_IMAGES.pizza}
-              title="Badge - Top Right"
-              subtitle="Default position with filled variant"
+              title="Solid Variant"
+              subtitle="Top right (default position)"
               badge="New"
               badgeVariant="solid"
               actionIcon={<PlusCircleAdd />}
@@ -354,10 +325,10 @@ const ImageCardsComponent: React.FC = () => {
             />
             <ImageCard
               image={SAMPLE_IMAGES.pasta}
-              title="Badge - Top Left"
-              subtitle="Filled variant, left position"
+              title="Soft Variant"
+              subtitle="Top left position"
               badge="Sale"
-              badgeVariant="solid"
+              badgeVariant="soft"
               badgePosition="top-left"
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
@@ -365,10 +336,10 @@ const ImageCardsComponent: React.FC = () => {
             />
             <ImageCard
               image={SAMPLE_IMAGES.dessert}
-              title="Numeric Badge"
-              subtitle="Great for counts"
+              title="Outline Variant"
+              subtitle="Numeric badge"
               badge={5}
-              badgeVariant="solid"
+              badgeVariant="outline"
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -385,18 +356,8 @@ const ImageCardsComponent: React.FC = () => {
               color: 'var(--color-text-secondary)',
             }}
           >
-            Longer Content - Chip (more than 4 chars)
+            Sizes & Pill Shape
           </h3>
-          <p
-            style={{
-              color: 'var(--color-text-secondary)',
-              fontSize: '12px',
-              marginBottom: '16px',
-            }}
-          >
-            When badge text exceeds 4 characters, the component automatically renders as a Chip
-            (pill-shaped) instead of a Badge for better visual balance.
-          </p>
           <div
             style={{
               display: 'grid',
@@ -407,42 +368,33 @@ const ImageCardsComponent: React.FC = () => {
           >
             <ImageCard
               image={SAMPLE_IMAGES.pizza}
-              title="Featured"
-              subtitle="Chip with neutral variant"
-              badge="Featured"
-              badgeVariant="soft"
+              title="Small Size"
+              subtitle="Default size"
+              badge="New"
+              badgeVariant="solid"
+              badgeSize="sm"
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
             <ImageCard
               image={SAMPLE_IMAGES.pasta}
-              title="On Sale"
-              subtitle="Chip with filled variant"
-              badge="On Sale"
+              title="Medium Size"
+              subtitle="Larger badge"
+              badge="Featured"
               badgeVariant="solid"
+              badgeSize="md"
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
             <ImageCard
               image={SAMPLE_IMAGES.salad}
-              title="Popular"
-              subtitle="Longer text as chip"
-              badge="Popular"
+              title="Pill Shape"
+              subtitle="Fully rounded badge"
+              badge={12}
               badgeVariant="solid"
-              badgePosition="top-left"
-              actionIcon={<PlusCircleAdd />}
-              actionLabel="Add to cart"
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-            <ImageCard
-              image={SAMPLE_IMAGES.dessert}
-              title="Top Rated"
-              subtitle="Chip positioned left"
-              badge="Top Rated"
-              badgeVariant="soft"
-              badgePosition="top-left"
+              badgePill
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -459,18 +411,8 @@ const ImageCardsComponent: React.FC = () => {
               color: 'var(--color-text-secondary)',
             }}
           >
-            Other Badge Variants (Not Recommended for Images)
+            Semantic Colors
           </h3>
-          <p
-            style={{
-              color: 'var(--color-text-secondary)',
-              fontSize: '12px',
-              marginBottom: '16px',
-            }}
-          >
-            These variants use transparent backgrounds and may have low contrast on images. Consider
-            using filled or neutral variants instead.
-          </p>
           <div
             style={{
               display: 'grid',
@@ -481,40 +423,44 @@ const ImageCardsComponent: React.FC = () => {
           >
             <ImageCard
               image={SAMPLE_IMAGES.pizza}
-              title="Success Badge"
-              subtitle="Transparent - lower contrast"
-              badge="✓"
-              badgeVariant="soft"
+              title="Success Color"
+              subtitle="Green for positive states"
+              badge="In Stock"
+              badgeVariant="solid"
+              badgeColor="success"
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
             <ImageCard
               image={SAMPLE_IMAGES.pasta}
-              title="Warning Badge"
-              subtitle="Transparent - lower contrast"
-              badge="!"
-              badgeVariant="soft"
+              title="Warning Color"
+              subtitle="Orange for caution"
+              badge="Low Stock"
+              badgeVariant="solid"
+              badgeColor="warning"
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
             <ImageCard
               image={SAMPLE_IMAGES.salad}
-              title="Error Badge"
-              subtitle="Transparent - lower contrast"
-              badge="×"
-              badgeVariant="soft"
+              title="Info Color"
+              subtitle="Blue for information"
+              badge="Popular"
+              badgeVariant="solid"
+              badgeColor="info"
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
             <ImageCard
               image={SAMPLE_IMAGES.dessert}
-              title="Default Badge"
-              subtitle="Transparent - lower contrast"
-              badge="Info"
-              badgeVariant="soft"
+              title="Discovery Color"
+              subtitle="Purple for discovery"
+              badge="New"
+              badgeVariant="solid"
+              badgeColor="discovery"
               actionIcon={<PlusCircleAdd />}
               actionLabel="Add to cart"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
@@ -860,10 +806,28 @@ function Component() {
             },
             {
               name: 'badgeVariant',
-              type: "BadgeProps['variant']",
-              default: "'default'",
+              type: "'solid' | 'soft' | 'outline'",
+              default: "'soft'",
               description:
-                'Badge styling variant. For images, use "filled" or "neutral" for better contrast. Other variants (default, success, warning, error) use transparent backgrounds and may have low visibility on images.',
+                'Badge styling variant. Use "solid" for maximum contrast on images.',
+            },
+            {
+              name: 'badgeSize',
+              type: "'sm' | 'md' | 'lg'",
+              default: "'sm' (auto 'md' for longer text)",
+              description: 'Badge size. Auto-sizes to "md" for badges longer than 4 characters.',
+            },
+            {
+              name: 'badgePill',
+              type: 'boolean',
+              default: 'false',
+              description: 'Use pill shape (fully rounded) for the badge.',
+            },
+            {
+              name: 'badgeColor',
+              type: "'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'discovery'",
+              default: "'secondary'",
+              description: 'Semantic color for the badge.',
             },
             {
               name: 'titleLines',
@@ -986,6 +950,21 @@ function Component() {
                 for maximum contrast on images
               </li>
               <li>
+                Use semantic colors like{' '}
+                <code
+                  style={{
+                    background: 'var(--color-surface-tertiary)',
+                    padding: '2px 6px',
+                    borderRadius: '4px',
+                    fontFamily: 'monospace',
+                    fontSize: '12px',
+                  }}
+                >
+                  badgeColor="success"
+                </code>{' '}
+                for contextual meaning
+              </li>
+              <li>
                 Use{' '}
                 <code
                   style={{
@@ -996,16 +975,12 @@ function Component() {
                     fontSize: '12px',
                   }}
                 >
-                  badgeVariant="soft"
+                  badgePill
                 </code>{' '}
-                for subtle status indicators
+                for numeric counts
               </li>
-              <li>
-                Avoid transparent variants (default, success, warning, error) on images due to low
-                contrast
-              </li>
-              <li>Keep badge text short: "New", "Sale", "Featured" or single characters</li>
-              <li>Use numeric badges sparingly (e.g., counts, ratings)</li>
+              <li>Keep badge text short: "New", "Sale", "Featured"</li>
+              <li>Badge auto-sizes to "md" for text longer than 4 characters</li>
             </ul>
           </div>
 

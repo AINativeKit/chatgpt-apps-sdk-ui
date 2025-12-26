@@ -126,8 +126,27 @@ export interface MapPlaceCardProps {
 
   /**
    * Badge variant style
+   * @default 'soft'
    */
   badgeVariant?: BadgeProps['variant'];
+
+  /**
+   * Badge size
+   * @default 'sm'
+   */
+  badgeSize?: BadgeProps['size'];
+
+  /**
+   * Badge pill shape (fully rounded)
+   * @default false
+   */
+  badgePill?: boolean;
+
+  /**
+   * Badge color
+   * @default 'secondary'
+   */
+  badgeColor?: BadgeProps['color'];
 
   // Text Display
   /**
@@ -202,6 +221,9 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   badge,
   badgePosition: _badgePosition = 'top-right',
   badgeVariant = 'soft',
+  badgeSize = 'sm',
+  badgePill = false,
+  badgeColor = 'secondary',
   titleLines = 1,
   subtitleLines = 1,
   'data-testid': testId,
@@ -303,7 +325,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
         {/* Badge - positioned in the content area, away from the image */}
         {badge && (
           <div className={cn(styles.badge, typeof badge !== 'number' && styles.badgeChip)}>
-            <Badge variant={badgeVariant} size="sm">
+            <Badge variant={badgeVariant} size={badgeSize} pill={badgePill} color={badgeColor}>
               {badge}
             </Badge>
           </div>

@@ -75,10 +75,28 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
   badge?: string | number;
 
   /**
-   * Badge variant.
-   * @default 'default'
+   * Badge variant style
+   * @default 'soft'
    */
   badgeVariant?: BadgeVariant;
+
+  /**
+   * Badge size
+   * @default 'sm' (auto-sizes to 'md' for longer badges)
+   */
+  badgeSize?: BadgeProps['size'];
+
+  /**
+   * Badge pill shape (fully rounded)
+   * @default false
+   */
+  badgePill?: boolean;
+
+  /**
+   * Badge color
+   * @default 'secondary'
+   */
+  badgeColor?: BadgeProps['color'];
 
   /**
    * Card variant
@@ -321,6 +339,9 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     subtitle,
     badge,
     badgeVariant = 'soft',
+    badgeSize,
+    badgePill = false,
+    badgeColor = 'secondary',
     variant = 'default',
     size = 'default',
     imageAspectRatio = 'auto',
@@ -391,7 +412,9 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     return (
       <Badge
         variant={badgeVariant}
-        size={badgeText.length > 4 ? 'md' : 'sm'}
+        size={badgeSize ?? (badgeText.length > 4 ? 'md' : 'sm')}
+        pill={badgePill}
+        color={badgeColor}
         className={styles.badge}
       >
         {badge}

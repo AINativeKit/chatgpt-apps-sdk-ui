@@ -155,7 +155,7 @@ const AlbumCardShowcase: React.FC = () => {
           <AlbumCard
             album={SAMPLE_ALBUMS[2]}
             badge="Featured"
-            badgeVariant="soft"
+            badgeVariant="solid"
             badgeColor="success"
             badgePosition="top-right"
             onSelect={(album) => console.log('Selected:', album.title)}
