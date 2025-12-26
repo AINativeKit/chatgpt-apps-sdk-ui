@@ -1,5 +1,7 @@
 import type { Decorator, Preview } from '@storybook/react';
-import React from 'react';
+import { DocsContainer, type DocsContainerProps } from '@storybook/blocks';
+import { themes } from '@storybook/theming';
+import React, { type PropsWithChildren } from 'react';
 import { AppsSDKUIProvider } from '@openai/apps-sdk-ui/components/AppsSDKUIProvider';
 import './storybook.css';
 
@@ -20,16 +22,18 @@ function applyDocumentTheme(theme: 'light' | 'dark') {
 const withTheme: Decorator = (Story, context) => {
   const theme = (context.globals.theme as 'light' | 'dark') ?? 'light';
 
-  // Apply theme to document
+  // Apply theme to document and persist to localStorage
   React.useLayoutEffect(() => {
     applyDocumentTheme(theme);
+    // Persist theme for manager.ts to read on next reload
+    localStorage.setItem('storybook-theme', theme);
   }, [theme]);
 
-  // Apply background color to Storybook canvas for dark mode
+  // Apply background color to Storybook canvas using CSS tokens
   React.useEffect(() => {
     const docsRoot = document.querySelector('.sb-show-main') as HTMLElement;
     if (docsRoot) {
-      docsRoot.style.backgroundColor = theme === 'dark' ? '#1a1a1a' : '#ffffff';
+      docsRoot.style.backgroundColor = 'var(--color-surface)';
       docsRoot.style.transition = 'background-color 0.3s ease';
     }
   }, [theme]);
@@ -45,8 +49,47 @@ const withAppsSDKUIContext: Decorator = (Story, { parameters }) => {
   );
 };
 
+/**
+ * Custom DocsContainer that applies theme to docs pages
+ */
+const CustomDocsContainer = ({
+  children,
+  context,
+}: PropsWithChildren<DocsContainerProps>) => {
+  const themeValue = (context as DocsContainerProps['context'] & { store?: { userGlobals?: { globals?: { theme?: string } } } })
+    ?.store?.userGlobals?.globals?.theme ?? 'light';
+  const isDark = themeValue === 'dark';
+
+  React.useLayoutEffect(() => {
+    applyDocumentTheme(themeValue as 'light' | 'dark');
+  }, [themeValue]);
+
+  return (
+    <DocsContainer context={context} theme={isDark ? themes.dark : themes.light}>
+      <AppsSDKUIProvider linkComponent="a">
+        {children}
+      </AppsSDKUIProvider>
+    </DocsContainer>
+  );
+};
+
+// Get persisted theme from localStorage
+const getPersistedTheme = (): 'light' | 'dark' => {
+  if (typeof window !== 'undefined') {
+    const stored = localStorage.getItem('storybook-theme');
+    if (stored === 'dark') return 'dark';
+  }
+  return 'light';
+};
+
 const preview: Preview = {
+  initialGlobals: {
+    theme: getPersistedTheme(),
+  },
   parameters: {
+    docs: {
+      container: CustomDocsContainer,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

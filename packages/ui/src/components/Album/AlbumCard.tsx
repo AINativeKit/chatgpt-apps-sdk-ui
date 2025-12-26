@@ -218,6 +218,8 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     ...buttonProps
   } = props;
 
+  const [imageError, setImageError] = React.useState(false);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onClick?.(event);
 
@@ -225,6 +227,11 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     if (!event.defaultPrevented) {
       onSelect?.(album);
     }
+  };
+
+  const handleImageError = (event: SyntheticEvent<HTMLImageElement>) => {
+    setImageError(true);
+    onImageError?.(event);
   };
 
   const photoCount = album.photos.length;
@@ -308,14 +315,20 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     >
       {/* Album Cover Image */}
       <div className={styles.imageContainer}>
-        <img
-          src={album.cover}
-          alt={album.title}
-          className={styles.image}
-          loading={imageLoading}
-          onLoad={onImageLoad}
-          onError={onImageError}
-        />
+        {imageError ? (
+          <div className={styles.imageFallback}>
+            <ImageSkeleton width="100%" height="100%" iconSize={40} />
+          </div>
+        ) : (
+          <img
+            src={album.cover}
+            alt={album.title}
+            className={styles.image}
+            loading={imageLoading}
+            onLoad={onImageLoad}
+            onError={handleImageError}
+          />
+        )}
         {/* Badge */}
         {badge && (
           <div

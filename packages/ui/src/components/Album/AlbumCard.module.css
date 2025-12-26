@@ -20,6 +20,19 @@
   border-radius: var(--radius-2xl);
 }
 
+.albumCard:hover .imageContainer {
+  opacity: 0.9;
+}
+
+.albumCard:active .imageContainer {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.albumCard .imageContainer {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
 /* Loading State */
 .loadingCard {
   cursor: default;
@@ -50,6 +63,16 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Image Fallback */
+.imageFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-secondary);
 }
 
 /* Content - Title and Subtitle Below Image */
@@ -202,19 +225,3 @@
   border-width: 0;
 }
 
-/* Dark Mode */
-:global([data-theme='dark']) .albumCard {
-  background: var(--color-surface);
-}
-
-:global([data-theme='dark']) .imageContainer {
-  background: var(--color-surface-secondary);
-}
-
-:global([data-theme='dark']) .title {
-  color: var(--color-text);
-}
-
-:global([data-theme='dark']) .subtitle {
-  color: var(--color-text-secondary);
-}

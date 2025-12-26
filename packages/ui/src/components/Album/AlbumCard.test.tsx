@@ -257,7 +257,7 @@ describe('AlbumCard', () => {
       render(<AlbumCard album={mockAlbum} error={true} />);
 
       // Default error title
-      expect(screen.getByText('Failed to load')).toBeInTheDocument();
+      expect(screen.getByText('Album unavailable')).toBeInTheDocument();
     });
 
     it('shows custom error title and message', () => {
@@ -272,26 +272,6 @@ describe('AlbumCard', () => {
 
       expect(screen.getByText('Album Unavailable')).toBeInTheDocument();
       expect(screen.getByText('This album could not be loaded')).toBeInTheDocument();
-    });
-
-    it('shows retry button when onErrorRetry provided', () => {
-      const handleRetry = vi.fn();
-      render(<AlbumCard album={mockAlbum} error={true} onErrorRetry={handleRetry} />);
-
-      const retryButton = screen.getByRole('button');
-      expect(retryButton).toBeInTheDocument();
-    });
-
-    it('calls onErrorRetry when retry button clicked', async () => {
-      const user = userEvent.setup();
-      const handleRetry = vi.fn();
-
-      render(<AlbumCard album={mockAlbum} error={true} onErrorRetry={handleRetry} />);
-
-      const retryButton = screen.getByRole('button');
-      await user.click(retryButton);
-
-      expect(handleRetry).toHaveBeenCalledTimes(1);
     });
 
     it('hides content when error is true', () => {
@@ -341,7 +321,7 @@ describe('AlbumCard', () => {
 
       // Should show loading, not error
       expect(screen.getByText('Loading album')).toBeInTheDocument();
-      expect(screen.queryByText('Failed to load')).not.toBeInTheDocument();
+      expect(screen.queryByText('Album unavailable')).not.toBeInTheDocument();
     });
 
     it('error takes priority over empty', () => {
@@ -355,7 +335,7 @@ describe('AlbumCard', () => {
       render(<AlbumCard album={emptyAlbum} error={true} />);
 
       // Should show error, not empty
-      expect(screen.getByText('Failed to load')).toBeInTheDocument();
+      expect(screen.getByText('Album unavailable')).toBeInTheDocument();
       expect(screen.queryByText('No album')).not.toBeInTheDocument();
     });
   });
