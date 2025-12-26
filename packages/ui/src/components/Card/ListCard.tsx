@@ -96,7 +96,6 @@ export interface ListCardProps extends Omit<CardProps, 'children'> {
    */
   buttonDisabled?: boolean;
 
-  // Phase 1: Critical Improvements (P0)
   /**
    * Loading state - shows skeleton UI
    * @default false
@@ -147,7 +146,6 @@ export interface ListCardProps extends Omit<CardProps, 'children'> {
    */
   emptyIcon?: React.ReactNode;
 
-  // Phase 2: Performance & Accessibility (P1)
   /**
    * Native browser loading behavior for the top image.
    * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
@@ -425,6 +423,7 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                 <Button
                   color="primary"
                   variant="solid"
+                  size="2xl"
                   onClick={onButtonClick}
                   disabled={buttonDisabled}
                   block
