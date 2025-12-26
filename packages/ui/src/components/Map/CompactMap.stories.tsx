@@ -386,48 +386,6 @@ States.parameters = {
   },
 };
 
-// With expand button
-export const WithExpandButton = () => {
-  const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <CompactMap
-        locations={sampleLocations}
-        selectedId={selectedId}
-        onLocationSelect={setSelectedId}
-        onExpand={() => console.log('Expand to fullscreen')}
-        height={CHATGPT_APP_HEIGHT}
-      />
-      <CompactMap
-        locations={sampleLocations}
-        selectedId={selectedId}
-        onLocationSelect={setSelectedId}
-        onExpand={() => console.log('Auto-expand triggered')}
-        autoExpandOnCarouselClick
-        height={CHATGPT_APP_HEIGHT}
-      />
-    </div>
-  );
-};
-
-WithExpandButton.parameters = {
-  docs: {
-    source: {
-      code: `{/* Manual expand - click button to expand */}
-<CompactMap
-  onExpand={() => goFullscreen()}
-/>
-
-{/* Auto-expand - clicking carousel also expands */}
-<CompactMap
-  onExpand={() => goFullscreen()}
-  autoExpandOnCarouselClick
-/>`,
-    },
-  },
-};
-
 // Custom icons in features
 export const CustomIcons = () => {
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
