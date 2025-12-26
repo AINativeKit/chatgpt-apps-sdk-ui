@@ -1,7 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import type { LocationData, RenderMarkerParams } from './types';
 import type { TileProviderConfig, TileProviderPreset } from './tileProviders';
-import { Skeleton } from '../Skeleton';
+import { ImageSkeleton } from '../Skeleton';
+import { Maps } from '@openai/apps-sdk-ui/components/Icon';
 import styles from './Map.module.css';
 
 export interface MapViewProps {
@@ -202,7 +203,7 @@ const LoadingFallback: React.FC<{ className?: string; style?: React.CSSPropertie
   style,
 }) => (
   <div className={`${styles.mapContainer} ${className || ''}`} style={style}>
-    <Skeleton width="100%" height="100%" />
+    <ImageSkeleton width="100%" height="100%" icon={<Maps />} iconSize={48} borderRadius={0} />
   </div>
 );
 
