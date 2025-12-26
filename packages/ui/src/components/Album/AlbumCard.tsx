@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, SyntheticEvent } from 'react';
 import { cn } from '../../utils/cn';
-import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
@@ -41,19 +40,15 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
 
   /**
    * Custom error title
-   * @default 'Failed to load'
+   * @default 'Album unavailable'
    */
   errorTitle?: string;
 
   /**
    * Custom error message
+   * @default 'This album could not be loaded'
    */
   errorMessage?: string;
-
-  /**
-   * Retry callback for error state
-   */
-  onErrorRetry?: () => void;
 
   /**
    * Empty state title
@@ -187,9 +182,8 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     style,
     loading = false,
     error = false,
-    errorTitle = 'Failed to load',
-    errorMessage,
-    onErrorRetry,
+    errorTitle = 'Album unavailable',
+    errorMessage = 'This album could not be loaded',
     emptyTitle = 'No album',
     emptyMessage,
     imageLazy = true,
@@ -260,13 +254,6 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
             variant="soft"
             title={errorTitle}
             description={errorMessage}
-            actions={
-              onErrorRetry ? (
-                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
-                  Retry
-                </Button>
-              ) : undefined
-            }
           />
         </div>
       </div>

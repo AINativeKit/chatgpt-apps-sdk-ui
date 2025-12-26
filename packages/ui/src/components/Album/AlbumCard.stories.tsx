@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { AlbumCard } from './AlbumCard';
 import { PropsTable } from '../../tokens/PropsTable';
@@ -59,8 +59,6 @@ const CARD_WIDTH = 272;
 
 // Main unified showcase component
 const AlbumCardShowcase: React.FC = () => {
-  const [retryCount, setRetryCount] = useState(0);
-
   return (
     <div style={{ padding: '24px' }}>
       <h1 style={{ marginBottom: '32px' }}>AlbumCard System</h1>
@@ -256,30 +254,6 @@ const AlbumCardShowcase: React.FC = () => {
             />
           </div>
 
-          {/* Error with Retry */}
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                marginBottom: '12px',
-                color: 'var(--color-text-secondary)',
-              }}
-            >
-              Error with Retry ({retryCount} attempts)
-            </h3>
-            <AlbumCard
-              album={SAMPLE_ALBUMS[0]}
-              error={true}
-              errorTitle="Album Unavailable"
-              errorMessage="Unable to load this album. Please try again."
-              onErrorRetry={() => {
-                setRetryCount(retryCount + 1);
-                console.log('Retry clicked, count:', retryCount + 1);
-              }}
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-          </div>
-
           {/* Empty */}
           <div>
             <h3
@@ -431,15 +405,11 @@ const AlbumCardShowcase: React.FC = () => {
             },
             {
               name: 'errorTitle',
-              description: 'Error title text - default: "Failed to load"',
+              description: 'Error title text - default: "Album unavailable"',
             },
             {
               name: 'errorMessage',
-              description: 'Error message text',
-            },
-            {
-              name: 'onErrorRetry',
-              description: 'Retry callback for error state: () => void',
+              description: 'Error message text - default: "This album could not be loaded"',
             },
             {
               name: 'emptyTitle',
