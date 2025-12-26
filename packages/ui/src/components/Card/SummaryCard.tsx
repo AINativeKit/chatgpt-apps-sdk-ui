@@ -187,7 +187,6 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
    */
   buttonFullWidth?: boolean;
 
-  // Phase 1: Critical Improvements (P0)
   /**
    * Loading state - shows skeleton UI
    * @default false
@@ -233,7 +232,6 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
    */
   emptyMessage?: string;
 
-  // Phase 2: Performance & Accessibility (P1)
   /**
    * Native browser loading behavior for all images.
    * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
@@ -355,7 +353,6 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     onButtonClick,
     buttonDisabled = false,
     buttonFullWidth,
-    // Phase 1 props
     loading = false,
     loadingImageCount,
     error = false,
@@ -364,7 +361,6 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     onErrorRetry,
     emptyTitle = 'No content',
     emptyMessage,
-    // Phase 2 props
     imageLoading = 'lazy',
     onImageLoad,
     onImageError,
@@ -392,7 +388,6 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
   const hasDescription = !!description;
   const hasButton = !!buttonText;
 
-  // Phase 1: State logic
   const isEmpty = !loading && !error && !hasImages && !title && !description && !hasButton;
   const defaultLoadingCount = hasImages && !isSingleImage ? 3 : 1;
   const skeletonImageCount = loadingImageCount ?? defaultLoadingCount;
