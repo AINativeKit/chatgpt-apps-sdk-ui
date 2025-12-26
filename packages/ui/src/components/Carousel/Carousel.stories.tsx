@@ -1,9 +1,7 @@
-import React from 'react';
 import type { Meta } from '@storybook/react';
 import { Carousel, type CarouselProps } from './Carousel';
 import { ImageCard } from '../Card/ImageCard';
 import { SummaryCard } from '../Card/SummaryCard';
-import { ListCard } from '../Card/ListCard';
 
 const meta: Meta<CarouselProps> = {
   title: 'Composed Components/Carousels',
@@ -36,7 +34,7 @@ const sampleImages = [
 const pepperoniImage =
   'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200&auto=format&fit=crop';
 
-// Base example with ImageCards
+// Base example
 export const Base = () => {
   return (
     <Carousel>
@@ -57,7 +55,8 @@ export const Base = () => {
 Base.parameters = {
   docs: {
     description: {
-      story: 'Basic carousel with ImageCard components. Each slide needs explicit width and `flexShrink: 0`.',
+      story:
+        'Basic carousel with ImageCard components. Each slide needs explicit width and `flexShrink: 0`.',
     },
     source: {
       code: `<Carousel>
@@ -71,13 +70,13 @@ Base.parameters = {
   },
 };
 
-// Alignment options
+// Left-aligned
 export const AlignStart = () => {
   return (
-    <Carousel align="start">
+    <Carousel align="start" flushStart>
       {sampleImages.map((image, index) => (
         <div key={index} style={{ width: '240px', flexShrink: 0 }}>
-          <ImageCard image={image} title={`Start ${index + 1}`} size="compact" />
+          <ImageCard image={image} title={`Item ${index + 1}`} size="compact" />
         </div>
       ))}
     </Carousel>
@@ -87,73 +86,23 @@ export const AlignStart = () => {
 AlignStart.parameters = {
   docs: {
     description: {
-      story: 'Slides align to the left edge. Perfect for left-to-right browsing.',
+      story: 'Left-aligned with `flushStart` for edge-to-edge layouts.',
     },
     source: {
-      code: `<Carousel align="start">
+      code: `<Carousel align="start" flushStart>
   {/* slides */}
 </Carousel>`,
     },
   },
 };
 
-export const AlignCenter = () => {
-  return (
-    <Carousel align="center">
-      {sampleImages.map((image, index) => (
-        <div key={index} style={{ width: '240px', flexShrink: 0 }}>
-          <ImageCard image={image} title={`Center ${index + 1}`} size="compact" />
-        </div>
-      ))}
-    </Carousel>
-  );
-};
-
-AlignCenter.parameters = {
-  docs: {
-    description: {
-      story: 'Active slide stays centered (default). Most balanced for visual browsing.',
-    },
-    source: {
-      code: `<Carousel align="center">
-  {/* slides */}
-</Carousel>`,
-    },
-  },
-};
-
-export const AlignEnd = () => {
-  return (
-    <Carousel align="end">
-      {sampleImages.map((image, index) => (
-        <div key={index} style={{ width: '240px', flexShrink: 0 }}>
-          <ImageCard image={image} title={`End ${index + 1}`} size="compact" />
-        </div>
-      ))}
-    </Carousel>
-  );
-};
-
-AlignEnd.parameters = {
-  docs: {
-    description: {
-      story: 'Slides align to the right edge. Useful for RTL layouts.',
-    },
-    source: {
-      code: `<Carousel align="end">
-  {/* slides */}
-</Carousel>`,
-    },
-  },
-};
-
-// Navigation options
+// Infinite loop
 export const InfiniteLoop = () => {
   return (
     <Carousel loop>
       {sampleImages.map((image, index) => (
         <div key={index} style={{ width: '240px', flexShrink: 0 }}>
-          <ImageCard image={image} title={`Loop ${index + 1}`} subtitle="Infinite scroll" size="compact" />
+          <ImageCard image={image} title={`Loop ${index + 1}`} size="compact" />
         </div>
       ))}
     </Carousel>
@@ -163,7 +112,7 @@ export const InfiniteLoop = () => {
 InfiniteLoop.parameters = {
   docs: {
     description: {
-      story: 'Enable seamless infinite looping for continuous browsing.',
+      story: 'Seamless infinite looping for continuous browsing.',
     },
     source: {
       code: `<Carousel loop>
@@ -173,6 +122,7 @@ InfiniteLoop.parameters = {
   },
 };
 
+// Touch-only (no nav buttons)
 export const NoNavigation = () => {
   return (
     <Carousel showNavigation={false}>
@@ -188,7 +138,7 @@ export const NoNavigation = () => {
 NoNavigation.parameters = {
   docs: {
     description: {
-      story: 'Hide navigation buttons for touch-only or minimal interfaces.',
+      story: 'Hide navigation buttons for touch-only interfaces.',
     },
     source: {
       code: `<Carousel showNavigation={false}>
@@ -198,71 +148,20 @@ NoNavigation.parameters = {
   },
 };
 
-// Spacing options
-export const FlushStart = () => {
-  return (
-    <Carousel flushStart align="start">
-      {sampleImages.map((image, index) => (
-        <div key={index} style={{ width: '240px', flexShrink: 0 }}>
-          <ImageCard image={image} title={`Flush ${index + 1}`} size="compact" />
-        </div>
-      ))}
-    </Carousel>
-  );
-};
-
-FlushStart.parameters = {
-  docs: {
-    description: {
-      story: 'First slide aligns to viewport edge with no leading offset.',
-    },
-    source: {
-      code: `<Carousel flushStart align="start">
-  {/* slides */}
-</Carousel>`,
-    },
-  },
-};
-
-export const CustomGap = () => {
-  return (
-    <Carousel gap="64px">
-      {sampleImages.map((image, index) => (
-        <div key={index} style={{ width: '240px', flexShrink: 0 }}>
-          <ImageCard image={image} title={`Wide ${index + 1}`} size="compact" />
-        </div>
-      ))}
-    </Carousel>
-  );
-};
-
-CustomGap.parameters = {
-  docs: {
-    description: {
-      story: 'Customize spacing between slides with the `gap` prop.',
-    },
-    source: {
-      code: `<Carousel gap="64px">
-  {/* slides */}
-</Carousel>`,
-    },
-  },
-};
-
-// Card types
+// With SummaryCards
 export const WithSummaryCards = () => {
   return (
     <Carousel>
-      {[1, 2, 3, 4, 5, 6].map((index) => (
+      {[1, 2, 3, 4, 5].map((index) => (
         <div key={index} style={{ width: '356px', flexShrink: 0 }}>
           <SummaryCard
             images={[pepperoniImage, pepperoniImage, pepperoniImage]}
-            title={`Pizza ${index}`}
-            subtitle="Delicious"
-            badge="9.2"
-            description="Cupped pepperoni that curls and pools just the right amount of spicy oil."
+            title={`Restaurant ${index}`}
+            subtitle="Italian cuisine"
+            badge="4.8"
+            description="Fresh ingredients and authentic recipes from Naples."
             buttonText="Order now"
-            onButtonClick={() => console.log(`Order Pizza ${index}`)}
+            onButtonClick={() => console.log(`Order ${index}`)}
           />
         </div>
       ))}
@@ -273,52 +172,13 @@ export const WithSummaryCards = () => {
 WithSummaryCards.parameters = {
   docs: {
     description: {
-      story: 'Carousel with SummaryCard components. Recommended width: 356px.',
+      story: 'Carousel works with any card type. SummaryCards work well at 356px width.',
     },
     source: {
       code: `<Carousel>
   {items.map((item, i) => (
     <div key={i} style={{ width: '356px', flexShrink: 0 }}>
       <SummaryCard {...item} />
-    </div>
-  ))}
-</Carousel>`,
-    },
-  },
-};
-
-export const WithListCards = () => {
-  return (
-    <Carousel>
-      {['Coffee', 'Tea', 'Juice', 'Smoothie', 'Water'].map((drink, index) => (
-        <div key={index} style={{ width: '300px', flexShrink: 0 }}>
-          <ListCard
-            headerTitle={drink}
-            items={[
-              {
-                title: `Option ${index + 1}`,
-                description: `Fresh ${drink.toLowerCase()} available now`,
-              },
-            ]}
-            buttonText="View"
-            onButtonClick={() => console.log(`View ${drink}`)}
-          />
-        </div>
-      ))}
-    </Carousel>
-  );
-};
-
-WithListCards.parameters = {
-  docs: {
-    description: {
-      story: 'Carousel with ListCard components. Recommended width: 280-320px.',
-    },
-    source: {
-      code: `<Carousel>
-  {items.map((item, i) => (
-    <div key={i} style={{ width: '300px', flexShrink: 0 }}>
-      <ListCard {...item} />
     </div>
   ))}
 </Carousel>`,
@@ -342,11 +202,12 @@ export const Loading = () => {
 Loading.parameters = {
   docs: {
     description: {
-      story: 'Pass `loading` to both Carousel and cards for seamless skeleton loading.',
+      story:
+        'Pass `loading` to both Carousel and cards for seamless skeleton loading. Use `loadingSlides` for fallback skeletons when no children.',
     },
     source: {
       code: `<Carousel loading>
-  {Array.from({ length: 5 }).map((_, i) => (
+  {items.map((_, i) => (
     <div key={i} style={{ width: '240px', flexShrink: 0 }}>
       <ImageCard loading image="" title="" size="compact" />
     </div>
@@ -356,28 +217,13 @@ Loading.parameters = {
   },
 };
 
-export const LoadingFallback = () => {
-  return <Carousel loading loadingSlides={7} />;
-};
-
-LoadingFallback.parameters = {
-  docs: {
-    description: {
-      story: 'Generic skeleton slides when no children provided (fallback pattern).',
-    },
-    source: {
-      code: `<Carousel loading loadingSlides={7} />`,
-    },
-  },
-};
-
 // Error state
 export const Error = () => {
   return (
     <Carousel
       error
-      errorTitle="Failed to load destinations"
-      errorMessage="Unable to fetch items from the server"
+      errorTitle="Failed to load"
+      errorMessage="Please check your connection and try again."
       onErrorRetry={() => alert('Retry clicked')}
     />
   );
@@ -386,13 +232,13 @@ export const Error = () => {
 Error.parameters = {
   docs: {
     description: {
-      story: 'Display an error state with `error={true}`. Include retry functionality with `onErrorRetry`.',
+      story: 'Display an error state with optional retry button.',
     },
     source: {
       code: `<Carousel
   error
   errorTitle="Failed to load"
-  errorMessage="Unable to fetch items"
+  errorMessage="Please try again."
   onErrorRetry={() => refetch()}
 />`,
     },
@@ -402,7 +248,7 @@ Error.parameters = {
 // Empty state
 export const Empty = () => {
   return (
-    <Carousel emptyTitle="No destinations found" emptyMessage="Try adjusting your search filters">
+    <Carousel emptyTitle="No items found" emptyMessage="Try adjusting your search filters.">
       {[]}
     </Carousel>
   );
@@ -411,183 +257,15 @@ export const Empty = () => {
 Empty.parameters = {
   docs: {
     description: {
-      story: 'Show an empty state when no items are provided.',
+      story: 'Show an empty state when no items exist. Use `emptyState` prop for custom content.',
     },
     source: {
       code: `<Carousel
-  emptyTitle="No results found"
-  emptyMessage="Try adjusting your filters"
+  emptyTitle="No results"
+  emptyMessage="Try a different search."
 >
   {[]}
 </Carousel>`,
-    },
-  },
-};
-
-export const EmptyCustom = () => {
-  return (
-    <Carousel
-      emptyState={
-        <div style={{ textAlign: 'center', padding: '32px' }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px' }}>🎨</div>
-          <h3 style={{ marginBottom: '8px' }}>No items yet</h3>
-          <p style={{ color: 'var(--color-text-secondary)', marginBottom: '16px' }}>
-            Start by adding your first item
-          </p>
-        </div>
-      }
-    >
-      {[]}
-    </Carousel>
-  );
-};
-
-EmptyCustom.parameters = {
-  docs: {
-    description: {
-      story: 'Provide custom empty state content with the `emptyState` prop.',
-    },
-    source: {
-      code: `<Carousel
-  emptyState={
-    <div>
-      <h3>No items yet</h3>
-      <Button onClick={handleAdd}>Add Item</Button>
-    </div>
-  }
->
-  {[]}
-</Carousel>`,
-    },
-  },
-};
-
-// Edge cases
-export const SingleSlide = () => {
-  return (
-    <Carousel>
-      <div style={{ width: '345px', flexShrink: 0 }}>
-        <ImageCard image={sampleImages[0]} title="Single Slide" subtitle="No navigation needed" />
-      </div>
-    </Carousel>
-  );
-};
-
-SingleSlide.parameters = {
-  docs: {
-    description: {
-      story: 'Navigation buttons hide automatically when there\'s only one slide.',
-    },
-    source: {
-      code: `<Carousel>
-  <div style={{ width: '345px', flexShrink: 0 }}>
-    <ImageCard image={image} title="Single Slide" />
-  </div>
-</Carousel>`,
-    },
-  },
-};
-
-export const TwoSlides = () => {
-  return (
-    <Carousel>
-      {sampleImages.slice(0, 2).map((image, index) => (
-        <div key={index} style={{ width: '300px', flexShrink: 0 }}>
-          <ImageCard image={image} title={`Option ${index + 1}`} size="compact" />
-        </div>
-      ))}
-    </Carousel>
-  );
-};
-
-TwoSlides.parameters = {
-  docs: {
-    description: {
-      story: 'Minimal carousel with just two options.',
-    },
-  },
-};
-
-// Interactive slide tracking
-export const SlideTracking = () => {
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-
-  return (
-    <div>
-      <p style={{ marginBottom: '12px', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-        Current slide: <strong>{currentSlide + 1}</strong> of 7
-      </p>
-      <Carousel onSlideChange={setCurrentSlide}>
-        {sampleImages.map((image, index) => (
-          <div key={index} style={{ width: '240px', flexShrink: 0 }}>
-            <ImageCard
-              image={image}
-              title={`Slide ${index + 1}`}
-              subtitle={index === currentSlide ? 'Active' : 'Inactive'}
-              size="compact"
-            />
-          </div>
-        ))}
-      </Carousel>
-    </div>
-  );
-};
-
-SlideTracking.parameters = {
-  docs: {
-    description: {
-      story: 'Track slide changes with the `onSlideChange` callback.',
-    },
-    source: {
-      code: `const [currentSlide, setCurrentSlide] = useState(0);
-
-<Carousel onSlideChange={setCurrentSlide}>
-  {/* slides */}
-</Carousel>
-
-Current: {currentSlide + 1} of {total}`,
-    },
-  },
-};
-
-// Constrained container
-export const ConstrainedContainer = () => {
-  return (
-    <div
-      style={{
-        maxWidth: '768px',
-        margin: '0 auto',
-        border: '2px solid var(--color-border-subtle)',
-        borderRadius: '8px',
-        padding: '16px',
-        backgroundColor: 'var(--color-surface-secondary)',
-      }}
-    >
-      <div
-        style={{
-          marginBottom: '12px',
-          fontSize: '14px',
-          fontWeight: 600,
-          color: 'var(--color-text-secondary)',
-        }}
-      >
-        Container: max-width: 768px
-      </div>
-      <Carousel gap="16px" align="start">
-        {sampleImages.slice(0, 5).map((image, index) => (
-          <div key={index} style={{ width: '240px', flexShrink: 0 }}>
-            <ImageCard image={image} title={`Image ${index + 1}`} subtitle="No overflow!" size="compact" />
-          </div>
-        ))}
-      </Carousel>
-    </div>
-  );
-};
-
-ConstrainedContainer.parameters = {
-  docs: {
-    description: {
-      story: 'Carousel correctly handles width-constrained containers without page overflow.',
     },
   },
 };

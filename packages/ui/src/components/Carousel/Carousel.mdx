@@ -14,13 +14,13 @@ import { Carousel } from "@ainativekit/ui";
 <Carousel>
   {items.map((item, i) => (
     <div key={i} style={{ width: '320px', flexShrink: 0 }}>
-      <Card>{item.content}</Card>
+      <ImageCard image={item.image} title={item.title} size="compact" />
     </div>
   ))}
 </Carousel>
 ```
 
-**Important:** Each slide must have an explicit width and `flexShrink: 0` to prevent size changes during scrolling.
+**Important:** Each slide must have an explicit width and `flexShrink: 0`.
 
 <Canvas of={CarouselStories.Base} />
 
@@ -30,33 +30,25 @@ import { Carousel } from "@ainativekit/ui";
 
 ## Examples
 
-### Alignment
-
-Control how slides align within the viewport.
+### Left-aligned
 
 <Canvas of={CarouselStories.AlignStart} />
-<Canvas of={CarouselStories.AlignCenter} />
-<Canvas of={CarouselStories.AlignEnd} />
 
-### Navigation
+### Infinite loop
 
 <Canvas of={CarouselStories.InfiniteLoop} />
+
+### Touch-only
+
 <Canvas of={CarouselStories.NoNavigation} />
 
-### Spacing
-
-<Canvas of={CarouselStories.FlushStart} />
-<Canvas of={CarouselStories.CustomGap} />
-
-### Card Types
+### With SummaryCards
 
 <Canvas of={CarouselStories.WithSummaryCards} />
-<Canvas of={CarouselStories.WithListCards} />
 
 ### Loading
 
 <Canvas of={CarouselStories.Loading} />
-<Canvas of={CarouselStories.LoadingFallback} />
 
 ### Error
 
@@ -65,81 +57,18 @@ Control how slides align within the viewport.
 ### Empty
 
 <Canvas of={CarouselStories.Empty} />
-<Canvas of={CarouselStories.EmptyCustom} />
-
-### Edge Cases
-
-<Canvas of={CarouselStories.SingleSlide} />
-<Canvas of={CarouselStories.TwoSlides} />
-
-### Interactive
-
-<Canvas of={CarouselStories.SlideTracking} />
-<Canvas of={CarouselStories.ConstrainedContainer} />
 
 ## Card Width Guidelines
 
-<table>
-  <thead>
-    <tr>
-      <th style={{textAlign: 'left'}}>Card Type</th>
-      <th style={{textAlign: 'left'}}>Recommended Width</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>ImageCard (default)</td>
-      <td>345px</td>
-    </tr>
-    <tr>
-      <td>ImageCard (compact)</td>
-      <td>240px</td>
-    </tr>
-    <tr>
-      <td>SummaryCard</td>
-      <td>356px</td>
-    </tr>
-    <tr>
-      <td>ListCard</td>
-      <td>280-320px</td>
-    </tr>
-  </tbody>
-</table>
-
-## Loading State Best Practice
-
-Pass `loading` to both the Carousel and individual cards for seamless transitions:
-
-```tsx
-<Carousel loading={isLoading}>
-  {items.map((item, i) => (
-    <div key={i} style={{ width: '240px', flexShrink: 0 }}>
-      <ImageCard
-        loading={isLoading}
-        image={item.image || ''}
-        title={item.title || ''}
-        size="compact"
-      />
-    </div>
-  ))}
-</Carousel>
-```
-
-Cards maintain their exact size during the loading state, preventing layout shift.
+| Card Type | Recommended Width |
+|-----------|------------------|
+| ImageCard (default) | 345px |
+| ImageCard (compact) | 240px |
+| SummaryCard | 356px |
+| ListCard | 280-320px |
 
 ## Technical Notes
 
-**Dependencies:**
-- `embla-carousel-react` - Touch/swipe carousel
-- `embla-carousel-wheel-gestures` - Mouse wheel support
+**Dependencies:** `embla-carousel-react`, `embla-carousel-wheel-gestures`
 
-**Accessibility:**
-- Navigation buttons have proper aria-labels
-- Keyboard navigation supported (Tab to buttons, Enter to activate)
-- Swipe gestures work with touch devices
-- Edge gradients have `aria-hidden="true"`
-
-**Performance:**
-- Uses CSS transforms for smooth 60fps scrolling
-- Lazy load images inside cards for faster initial render
-- Avoid heavy computations in slide change callbacks
+**Accessibility:** Navigation buttons have aria-labels, keyboard navigation supported, touch/swipe enabled.
