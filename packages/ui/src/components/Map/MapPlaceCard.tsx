@@ -138,7 +138,7 @@ export interface MapPlaceCardProps {
 
   /**
    * Badge pill shape (fully rounded)
-   * @default false
+   * @default true
    */
   badgePill?: boolean;
 
@@ -222,7 +222,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   badgePosition: _badgePosition = 'top-right',
   badgeVariant = 'soft',
   badgeSize = 'sm',
-  badgePill = false,
+  badgePill = true,
   badgeColor = 'secondary',
   titleLines = 1,
   subtitleLines = 1,
@@ -311,6 +311,15 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
           : undefined
       }
     >
+      {/* Badge - positioned at top-right of card */}
+      {badge && (
+        <div className={styles.badge}>
+          <Badge variant={badgeVariant} size={badgeSize} pill={badgePill} color={badgeColor}>
+            {badge}
+          </Badge>
+        </div>
+      )}
+
       <div className={styles.thumbnailContainer}>
         <img
           src={image}
@@ -322,15 +331,6 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
         />
       </div>
       <div className={styles.content}>
-        {/* Badge - positioned in the content area, away from the image */}
-        {badge && (
-          <div className={cn(styles.badge, typeof badge !== 'number' && styles.badgeChip)}>
-            <Badge variant={badgeVariant} size={badgeSize} pill={badgePill} color={badgeColor}>
-              {badge}
-            </Badge>
-          </div>
-        )}
-
         <div
           className={cn(
             styles.title,

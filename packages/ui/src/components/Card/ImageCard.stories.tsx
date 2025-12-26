@@ -820,7 +820,7 @@ function Component() {
             {
               name: 'badgePill',
               type: 'boolean',
-              default: 'false',
+              default: 'true',
               description: 'Use pill shape (fully rounded) for the badge.',
             },
             {

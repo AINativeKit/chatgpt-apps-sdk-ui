@@ -88,7 +88,7 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
 
   /**
    * Badge pill shape (fully rounded)
-   * @default false
+   * @default true
    */
   badgePill?: boolean;
 
@@ -340,7 +340,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     badge,
     badgeVariant = 'soft',
     badgeSize,
-    badgePill = false,
+    badgePill = true,
     badgeColor = 'secondary',
     variant = 'default',
     size = 'default',

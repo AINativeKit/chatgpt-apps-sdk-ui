@@ -116,12 +116,12 @@ const MapPlaceCardShowcase: React.FC = () => {
 
         <div>
           <h3 style={{ fontSize: '14px', marginBottom: '16px', fontWeight: '600' }}>
-            With Badges & Chips
+            With Badges
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '600px' }}>
-            <MapPlaceCard {...SAMPLE_LOCATIONS[0]} badge="New" badgeVariant="soft" />
-            <MapPlaceCard {...SAMPLE_LOCATIONS[1]} badge="Popular" badgeVariant="solid" />
-            <MapPlaceCard {...SAMPLE_LOCATIONS[2]} badge={5} badgeVariant="soft" />
+            <MapPlaceCard {...SAMPLE_LOCATIONS[0]} badge="New" badgeColor="info" />
+            <MapPlaceCard {...SAMPLE_LOCATIONS[1]} badge="Popular" badgeColor="discovery" />
+            <MapPlaceCard {...SAMPLE_LOCATIONS[2]} badge={5} badgeColor="secondary" />
           </div>
         </div>
       </section>
@@ -225,7 +225,7 @@ const MapPlaceCardShowcase: React.FC = () => {
                 selected={selectedId === `real-${index}`}
                 onClick={() => setSelectedId(`real-${index}`)}
                 badge={index === 0 ? 'Closest' : undefined}
-                badgeVariant={index === 0 ? 'soft' : undefined}
+                badgeColor={index === 0 ? 'success' : undefined}
               />
             ))}
           </div>
@@ -276,8 +276,8 @@ const MapPlaceCardShowcase: React.FC = () => {
                 lineHeight: '1.8',
               }}
             >
-              <li>Use Chips for text labels</li>
-              <li>Use Badges for numbers</li>
+              <li>Use pill badges for labels</li>
+              <li>Use semantic colors for context</li>
               <li>Keep features concise (3-4 max)</li>
               <li>Provide retry on errors</li>
               <li>Enable lazy loading for lists</li>
@@ -446,19 +446,31 @@ const MapPlaceCardShowcase: React.FC = () => {
                 {
                   name: 'badge',
                   type: 'string | number',
-                  description: 'Badge content (numbers use Badge, text uses Chip)',
-                },
-                {
-                  name: 'badgePosition',
-                  type: "'top-left' | 'top-right'",
-                  default: "'top-right'",
-                  description:
-                    'Badge position (note: top-left not supported, always uses top-right)',
+                  description: 'Badge content',
                 },
                 {
                   name: 'badgeVariant',
-                  type: 'BadgeVariant | ChipVariant',
-                  description: 'Badge or Chip variant style',
+                  type: "'solid' | 'soft' | 'outline'",
+                  default: "'soft'",
+                  description: 'Badge variant style',
+                },
+                {
+                  name: 'badgeSize',
+                  type: "'sm' | 'md' | 'lg'",
+                  default: "'sm'",
+                  description: 'Badge size',
+                },
+                {
+                  name: 'badgePill',
+                  type: 'boolean',
+                  default: 'true',
+                  description: 'Use pill shape (fully rounded)',
+                },
+                {
+                  name: 'badgeColor',
+                  type: "'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'discovery'",
+                  default: "'secondary'",
+                  description: 'Badge color',
                 },
                 {
                   name: 'titleLines',

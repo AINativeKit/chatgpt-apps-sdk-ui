@@ -116,7 +116,7 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
 
   /**
    * Badge pill shape (fully rounded)
-   * @default false
+   * @default true
    */
   badgePill?: boolean;
 
@@ -224,7 +224,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     badgePosition = 'top-right',
     badgeVariant = 'soft',
     badgeSize,
-    badgePill = false,
+    badgePill = true,
     badgeColor = 'secondary',
     titleLines = 1,
     subtitleLines = 1,

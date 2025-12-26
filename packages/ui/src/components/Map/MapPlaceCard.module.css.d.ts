@@ -15,7 +15,6 @@ declare const styles: {
   readonly skeletonTitle: string;
   readonly skeletonSubtitle: string;
   readonly badge: string;
-  readonly badgeChip: string;
   readonly content: string;
   readonly title: string;
   readonly titleLines2: string;

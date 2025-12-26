@@ -479,7 +479,7 @@ const AlbumCardShowcase: React.FC = () => {
             },
             {
               name: 'badgePill',
-              description: 'Badge pill shape (fully rounded) - default: false',
+              description: 'Badge pill shape (fully rounded) - default: true',
             },
             {
               name: 'badgeColor',

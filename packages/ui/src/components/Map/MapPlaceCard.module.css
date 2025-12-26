@@ -151,17 +151,12 @@
   margin-bottom: 0;
 }
 
-/* Badge Positioning - Always positioned at top-right with margin */
+/* Badge - Positioned at top-right of card */
 .badge {
   position: absolute;
-  top: var(--spacing);
-  right: var(--spacing);
-  z-index: 1;
-}
-
-/* Chip needs more right spacing since it's wider than Badge */
-.badgeChip {
+  top: calc(var(--spacing) * 2);
   right: calc(var(--spacing) * 2);
+  z-index: 2;
 }
 
 /* Content */

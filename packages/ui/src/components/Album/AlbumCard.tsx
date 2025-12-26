@@ -109,7 +109,7 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
 
   /**
    * Badge pill shape (fully rounded)
-   * @default false
+   * @default true
    */
   badgePill?: boolean;
 
@@ -199,7 +199,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     badgePosition = 'top-right',
     badgeVariant = 'soft',
     badgeSize = 'sm',
-    badgePill = false,
+    badgePill = true,
     badgeColor = 'secondary',
     titleLines = 1,
     subtitleLines = 1,
