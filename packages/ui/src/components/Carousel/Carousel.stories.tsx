@@ -11,11 +11,11 @@ const meta: Meta<CarouselProps> = {
     layout: 'padded',
   },
   argTypes: {
-    children: { control: false },
-    onSlideChange: { control: false },
-    onApi: { control: false },
-    onErrorRetry: { control: false },
-    emptyState: { control: false },
+    children: { description: 'Carousel slide elements', control: false },
+    onSlideChange: { description: 'Callback when active slide changes', control: false },
+    onApi: { description: 'Callback to receive Embla API instance', control: false },
+    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
+    emptyState: { description: 'Custom empty state component', control: false },
     align: {
       description: 'Alignment of slides within the viewport',
       table: { defaultValue: { summary: 'center' } },

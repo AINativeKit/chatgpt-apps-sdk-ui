@@ -152,11 +152,29 @@ const meta: Meta<FullscreenMapProps> = {
     layout: 'padded',
   },
   argTypes: {
-    locations: { control: false },
-    onLocationSelect: { control: false },
-    onCollapse: { control: false },
-    onErrorRetry: { control: false },
-    renderMarker: { control: false },
+    locations: { description: 'Array of location data objects', control: false },
+    onLocationSelect: { description: 'Callback when location is selected', control: false },
+    onCollapse: { description: 'Callback when collapse button is clicked', control: false },
+    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
+    renderMarker: { description: 'Custom marker renderer function', control: false },
+    defaultCenter: {
+      description: 'Default map center coordinates [lat, lng]',
+      table: { defaultValue: { summary: '[37.7749, -122.4194]' } },
+    },
+    defaultZoom: {
+      description: 'Default zoom level',
+      table: { defaultValue: { summary: '12' } },
+    },
+    selectedId: {
+      description: 'ID of the currently selected location',
+    },
+    activeId: {
+      description: 'ID of the currently active/hovered location',
+    },
+    tileProvider: {
+      description: 'Tile provider preset or custom config',
+      table: { defaultValue: { summary: 'carto-voyager' } },
+    },
     height: {
       description: 'Fixed height for the fullscreen map container',
       table: { defaultValue: { summary: '100vh' } },

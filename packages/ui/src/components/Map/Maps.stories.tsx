@@ -98,11 +98,11 @@ const meta: Meta<MapProps> = {
     layout: 'padded',
   },
   argTypes: {
-    locations: { control: false },
-    onLocationSelect: { control: false },
-    onToggleFullscreen: { control: false },
-    compactMapProps: { control: false },
-    fullscreenMapProps: { control: false },
+    locations: { description: 'Array of location data objects', control: false },
+    onLocationSelect: { description: 'Callback when location is selected', control: false },
+    onToggleFullscreen: { description: 'Callback when fullscreen mode changes', control: false },
+    compactMapProps: { description: 'Props forwarded to CompactMap', control: false },
+    fullscreenMapProps: { description: 'Props forwarded to FullscreenMap', control: false },
     autoExpandOnCarouselClick: {
       description: 'Auto-expand to fullscreen when clicking a carousel card',
       table: { defaultValue: { summary: 'false' } },

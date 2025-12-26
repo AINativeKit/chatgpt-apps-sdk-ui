@@ -13,11 +13,11 @@ const meta: Meta<ListProps<unknown>> = {
   },
   argTypes: {
     // List props
-    header: { control: false },
-    items: { control: false },
-    renderItem: { control: false },
-    onErrorRetry: { control: false },
-    emptyState: { control: false },
+    header: { description: 'Header content above the list', control: false },
+    items: { description: 'Array of data items to render', control: false },
+    renderItem: { description: 'Function to render each item', control: false },
+    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
+    emptyState: { description: 'Custom empty state component', control: false },
     emptyMessage: {
       description: 'Empty state message text',
       table: { defaultValue: { summary: 'No items found.' } },

@@ -44,12 +44,12 @@ const meta: Meta<CompactMapProps> = {
     layout: 'padded',
   },
   argTypes: {
-    locations: { control: false },
-    onLocationSelect: { control: false },
-    onLocationActive: { control: false },
-    onExpand: { control: false },
-    carouselProps: { control: false },
-    renderMarker: { control: false },
+    locations: { description: 'Array of location data objects', control: false },
+    onLocationSelect: { description: 'Callback when location is selected', control: false },
+    onLocationActive: { description: 'Callback when location is hovered', control: false },
+    onExpand: { description: 'Callback when expand button is clicked', control: false },
+    carouselProps: { description: 'Props forwarded to carousel component', control: false },
+    renderMarker: { description: 'Custom marker renderer function', control: false },
   },
 };
 

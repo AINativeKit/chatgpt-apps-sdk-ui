@@ -97,15 +97,29 @@ const meta: Meta<CompactMapProps> = {
     layout: 'padded',
   },
   argTypes: {
-    locations: { control: false },
-    onLocationSelect: { control: false },
-    onLocationActive: { control: false },
-    onExpand: { control: false },
-    carouselProps: { control: false },
-    renderMarker: { control: false },
+    locations: { description: 'Array of location data objects', control: false },
+    onLocationSelect: { description: 'Callback when location is selected', control: false },
+    onLocationActive: { description: 'Callback when location is hovered', control: false },
+    onExpand: { description: 'Callback when expand button is clicked', control: false },
+    carouselProps: { description: 'Props forwarded to carousel component', control: false },
+    renderMarker: { description: 'Custom marker renderer function', control: false },
     height: {
       description: 'Fixed height for the compact map container',
       table: { defaultValue: { summary: '478px' } },
+    },
+    defaultCenter: {
+      description: 'Default map center coordinates [lat, lng]',
+      table: { defaultValue: { summary: '[37.7749, -122.4194]' } },
+    },
+    defaultZoom: {
+      description: 'Default zoom level',
+      table: { defaultValue: { summary: '12' } },
+    },
+    selectedId: {
+      description: 'ID of the currently selected location',
+    },
+    activeId: {
+      description: 'ID of the currently active/hovered location',
     },
     loading: {
       description: 'Shows skeleton UI while loading',
@@ -126,6 +140,14 @@ const meta: Meta<CompactMapProps> = {
     hideAttribution: {
       description: 'Hide Leaflet attribution control',
       table: { defaultValue: { summary: 'false' } },
+    },
+    scrollWheelZoom: {
+      description: 'Enable scroll wheel zoom on the map',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    tileProvider: {
+      description: 'Tile provider preset or custom config',
+      table: { defaultValue: { summary: 'carto-voyager' } },
     },
     autoExpandOnCarouselClick: {
       description: 'Auto-expand to fullscreen when clicking a carousel card',

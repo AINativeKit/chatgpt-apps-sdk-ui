@@ -10,11 +10,11 @@ const meta: Meta<MapPlaceCardProps> = {
     layout: 'padded',
   },
   argTypes: {
-    features: { control: false },
-    onClick: { control: false },
-    onErrorRetry: { control: false },
-    onImageLoad: { control: false },
-    onImageError: { control: false },
+    features: { description: 'Feature items with icon and label', control: false },
+    onClick: { description: 'Callback when card is clicked', control: false },
+    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
+    onImageLoad: { description: 'Callback when image loads', control: false },
+    onImageError: { description: 'Callback when image fails to load', control: false },
     variant: {
       description: 'Card layout variant',
       table: { defaultValue: { summary: 'carousel' } },

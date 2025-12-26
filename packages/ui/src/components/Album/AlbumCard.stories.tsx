@@ -10,10 +10,10 @@ const meta: Meta<AlbumCardProps> = {
     layout: 'padded',
   },
   argTypes: {
-    album: { control: false },
-    onSelect: { control: false },
-    onImageLoad: { control: false },
-    onImageError: { control: false },
+    album: { description: 'Album data object with photos', control: false },
+    onSelect: { description: 'Callback when album is clicked', control: false },
+    onImageLoad: { description: 'Callback when cover image loads', control: false },
+    onImageError: { description: 'Callback when cover image fails to load', control: false },
     width: {
       description: 'Card width',
       table: { defaultValue: { summary: '272px' } },

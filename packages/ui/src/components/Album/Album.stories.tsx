@@ -127,9 +127,9 @@ const meta: Meta<AlbumProps> = {
     layout: 'padded',
   },
   argTypes: {
-    albums: { control: false },
-    onAlbumSelect: { control: false },
-    selectedAlbum: { control: false },
+    albums: { description: 'Array of album data objects', control: false },
+    onAlbumSelect: { description: 'Callback when album is selected or closed', control: false },
+    selectedAlbum: { description: 'Currently selected album (controlled mode)', control: false },
     initialPhotoIndex: {
       description: 'Initial photo index when opening viewer',
       table: { defaultValue: { summary: '0' } },

@@ -42,8 +42,8 @@ const meta: Meta<ListItemProps> = {
       description: 'Trailing action element',
       table: { type: { summary: 'ReactNode' } },
     },
-    onActionClick: { control: false },
-    onClick: { control: false },
+    onActionClick: { description: 'Callback when action element is clicked', control: false },
+    onClick: { description: 'Callback when row is clicked', control: false },
     interactive: {
       description: 'Enable hover/focus states without onClick',
       table: { defaultValue: { summary: 'false' } },
