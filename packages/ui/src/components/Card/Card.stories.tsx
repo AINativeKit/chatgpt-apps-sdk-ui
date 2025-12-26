@@ -109,7 +109,7 @@ const CardsComponent: React.FC = () => {
                 border="default"
                 style={{
                   minHeight: '120px',
-                  padding: 'var(--spacing-3)',
+                  padding: 'calc(var(--spacing) * 3)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
@@ -883,7 +883,7 @@ const CardsComponent: React.FC = () => {
               alt="Tech background"
               style={{ borderRadius: 'var(--radius-md) var(--radius-md) 0 0', margin: 0 }}
             />
-            <div style={{ padding: 'var(--spacing-4)' }}>
+            <div style={{ padding: 'calc(var(--spacing) * 4)' }}>
               <Card.Title as="h3">Edge-to-Edge Content</Card.Title>
               <Card.Description>
                 Set padding to 0 and add it back selectively for edge-to-edge images.
@@ -1408,7 +1408,7 @@ const CardsComponent: React.FC = () => {
             {
               name: 'padding',
               description:
-                'Card padding. CSS value string or number (in px). Default: "var(--spacing-4)"',
+                'Card padding. CSS value string or number (in px). Default: "calc(var(--spacing) * 4)"',
             },
             {
               name: 'onClick',

@@ -215,7 +215,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
       >
         <span className={styles.visuallyHidden}>Loading album</span>
         <div className={styles.imageContainer}>
-          <Skeleton className={styles.skeletonImage} />
+          <Skeleton width="100%" height="100%" className={styles.skeletonImage} />
         </div>
         <div className={styles.content}>
           <Skeleton width="80%" height={16} className={styles.skeletonTitle} />

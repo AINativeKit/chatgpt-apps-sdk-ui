@@ -11,3 +11,49 @@
 
 /* Our extension tokens (compatibility layer) */
 @import "../src/tokens/tokens.css";
+
+/**
+ * Typography styles for story showcase pages
+ * Tailwind preflight resets heading styles, so we add them back
+ * using apps-sdk-ui typography tokens
+ */
+@layer base {
+  h1 {
+    font-size: var(--font-heading-xl-size);
+    line-height: var(--font-heading-xl-line-height);
+    font-weight: var(--font-heading-xl-weight);
+    letter-spacing: var(--font-heading-xl-tracking);
+    color: var(--color-text);
+  }
+
+  h2 {
+    font-size: var(--font-heading-lg-size);
+    line-height: var(--font-heading-lg-line-height);
+    font-weight: var(--font-heading-lg-weight);
+    letter-spacing: var(--font-heading-lg-tracking);
+    color: var(--color-text);
+  }
+
+  h3 {
+    font-size: var(--font-heading-md-size);
+    line-height: var(--font-heading-md-line-height);
+    font-weight: var(--font-heading-md-weight);
+    letter-spacing: var(--font-heading-md-tracking);
+    color: var(--color-text);
+  }
+
+  h4 {
+    font-size: var(--font-heading-sm-size);
+    line-height: var(--font-heading-sm-line-height);
+    font-weight: var(--font-heading-sm-weight);
+    letter-spacing: var(--font-heading-sm-tracking);
+    color: var(--color-text);
+  }
+
+  h5, h6 {
+    font-size: var(--font-text-md-size);
+    line-height: var(--font-text-md-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+  }
+}
