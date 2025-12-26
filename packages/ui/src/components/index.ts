@@ -99,5 +99,5 @@ export type {
   Feature,
   Action,
   ListItem as MapListItem,
-  GenericList,
+  MapInspectorList,
 } from './Map';

@@ -17,8 +17,6 @@ declare const styles: {
   readonly featureIcon: string;
   readonly separator: string;
   readonly actions: string;
-  readonly primaryButton: string;
-  readonly secondaryButton: string;
   readonly headline: string;
   readonly description: string;
   readonly bottomAction: string;

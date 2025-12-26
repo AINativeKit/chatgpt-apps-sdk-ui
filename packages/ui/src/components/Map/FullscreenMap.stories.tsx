@@ -14,7 +14,7 @@ const sampleLocations: LocationData[] = [
     subtitle: 'Neapolitan Pizzeria · North Beach',
     coords: [37.8001, -122.4098],
     description:
-      'Award-winning Neapolitan pies in North Beach.<br/><br/>A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients.',
+      'Award-winning Neapolitan pies in North Beach. A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients. Chef Tony Gemignani has won numerous World Pizza Cup titles and brings his expertise to every pie. The restaurant features multiple ovens for different pizza styles, from classic Margherita to innovative seasonal creations. Open late on weekends, it\'s a favorite among locals and tourists alike.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
     images: [
       'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
@@ -36,13 +36,15 @@ const sampleLocations: LocationData[] = [
             title: 'Sarah M.',
             metadata: '2 weeks ago',
             description:
-              'Great location!<br/>The service was excellent and the atmosphere was perfect.',
+              'Great location! The service was excellent and the atmosphere was perfect.',
+            image: 'https://i.pravatar.cc/150?img=5',
           },
           {
             id: 'review-2',
             title: 'John D.',
             metadata: '1 month ago',
             description: 'Highly recommend! Will definitely come back with friends.',
+            image: 'https://i.pravatar.cc/150?img=12',
           },
         ],
       },
@@ -70,6 +72,7 @@ const sampleLocations: LocationData[] = [
             title: 'Maria L.',
             metadata: '3 weeks ago',
             description: 'Late-night gem! Best focaccia pizza in the city.',
+            image: 'https://i.pravatar.cc/150?img=9',
           },
         ],
       },
@@ -81,7 +84,7 @@ const sampleLocations: LocationData[] = [
     subtitle: 'Thin-Crust Pizza · Mission District',
     coords: [37.7613, -122.4255],
     description:
-      'Thin-crust classics on 18th Street.<br/>Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
+      'Thin-crust classics on 18th Street. Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
     features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
     actions: [

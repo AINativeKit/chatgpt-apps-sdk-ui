@@ -332,15 +332,19 @@ const DEFAULT_ICON_SIZE: [number, number] = [28, 40];
 const DEFAULT_ICON_ANCHOR: [number, number] = [14, 40];
 const DEFAULT_POPUP_ANCHOR: [number, number] = [0, -40]; /* Adjusted for custom popup styling */
 
+// Hardcoded light mode colors for map markers (map tiles are always light mode)
+const LIGHT_MODE_SURFACE = '#ffffff';
+const LIGHT_MODE_BORDER = 'rgba(0, 0, 0, 0.1)';
+
 function createMarkerIcon(color: string, isSelected: boolean) {
   const innerCircle = isSelected
     ? `<circle cx="14" cy="13.5" r="4" fill="${color}" />`
-    : `<circle cx="14" cy="13.5" r="3.5" fill="var(--color-border)" />`; /* Use token for subtle background */
+    : `<circle cx="14" cy="13.5" r="3.5" fill="${LIGHT_MODE_BORDER}" />`;
 
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="40" viewBox="0 0 28 40">
-      <path fill="${color}" stroke="var(--color-surface)" stroke-width="2" d="M14 1C7.373 1 2 6.373 2 13c0 8 12 26 12 26S26 21 26 13c0-6.627-5.373-12-12-12z" />
-      <circle cx="14" cy="13.5" r="7" fill="#ffffff" />
+      <path fill="${color}" stroke="${LIGHT_MODE_SURFACE}" stroke-width="2" d="M14 1C7.373 1 2 6.373 2 13c0 8 12 26 12 26S26 21 26 13c0-6.627-5.373-12-12-12z" />
+      <circle cx="14" cy="13.5" r="7" fill="${LIGHT_MODE_SURFACE}" />
       ${innerCircle}
     </svg>
   `;
@@ -358,7 +362,7 @@ function createMarkerIcon(color: string, isSelected: boolean) {
 
 /**
  * Create dot marker icon (20x20px with 2px border)
- * Uses CSS variables for automatic dark mode support
+ * Uses hardcoded light mode colors since map tiles are always light mode
  * Total size: 20×20, Fill: 16×16, Border: 2px
  */
 function createDotMarkerIcon(color: string, isSelected: boolean): L.DivIcon {
@@ -369,10 +373,10 @@ function createDotMarkerIcon(color: string, isSelected: boolean): L.DivIcon {
       <circle
         cx="10" cy="10" r="8"
         fill="${color}"
-        stroke="var(--color-surface)"
+        stroke="${LIGHT_MODE_SURFACE}"
         stroke-width="2"
       />
-      ${isSelected ? '<circle cx="10" cy="10" r="4" fill="var(--color-surface)" />' : ''}
+      ${isSelected ? `<circle cx="10" cy="10" r="4" fill="${LIGHT_MODE_SURFACE}" />` : ''}
     </svg>
   `;
 

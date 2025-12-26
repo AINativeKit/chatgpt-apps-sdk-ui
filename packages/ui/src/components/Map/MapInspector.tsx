@@ -6,7 +6,7 @@ import { Features } from '../Feature';
 import { PhotoCarousel } from '../PhotoCarousel';
 import { ExpandableText } from '../ExpandableText';
 import { cn } from '../../utils/cn';
-import { GenericList } from './GenericList';
+import { MapInspectorList } from './MapInspectorList';
 import type { LocationData } from './types';
 import styles from './MapInspector.module.css';
 
@@ -138,18 +138,15 @@ export const MapInspector: React.FC<MapInspectorProps> = ({ location, onClose, c
               {location.actions && location.actions.length > 0 && (
                 <div className={styles.actions}>
                   {location.actions.map((action, index) => (
-                    <button
+                    <Button
                       key={index}
-                      type="button"
+                      color={action.variant === 'secondary' ? 'secondary' : 'primary'}
+                      variant={action.variant === 'secondary' ? 'outline' : 'solid'}
+                      size="xl"
                       onClick={action.onClick}
-                      className={
-                        action.variant === 'secondary'
-                          ? styles.secondaryButton
-                          : styles.primaryButton
-                      }
                     >
                       {action.label}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               )}
@@ -177,7 +174,7 @@ export const MapInspector: React.FC<MapInspectorProps> = ({ location, onClose, c
 
             {/* Generic Lists Section */}
             {location.lists &&
-              location.lists.map((list) => <GenericList key={list.title} list={list} />)}
+              location.lists.map((list) => <MapInspectorList key={list.title} list={list} />)}
           </div>
         </motion.div>
       </motion.div>

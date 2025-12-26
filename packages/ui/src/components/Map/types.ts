@@ -55,7 +55,7 @@ export interface ListItem {
   metadata?: string;
 }
 
-export interface GenericList {
+export interface MapInspectorList {
   /**
    * List title.
    */
@@ -145,7 +145,7 @@ export interface LocationData {
   /**
    * Optional generic lists (reviews, related items, etc.).
    */
-  lists?: GenericList[];
+  lists?: MapInspectorList[];
 
   /**
    * Optional custom marker renderer for this specific location.

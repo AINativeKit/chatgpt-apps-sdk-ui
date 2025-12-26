@@ -14,9 +14,18 @@
   overflow-wrap: break-word;
 }
 
+/* Clamped state using CSS line-clamp */
+.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--max-lines, 5);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Toggle Button */
 .toggleButton {
-  display: inline;
+  display: inline-block;
+  margin-top: calc(var(--spacing) * 2);
   padding: 0;
   border: none;
   background: none;
@@ -26,7 +35,6 @@
   cursor: pointer;
   text-decoration: underline;
   transition: opacity 0.2s ease;
-  white-space: nowrap;
 }
 
 .toggleButton:hover {
