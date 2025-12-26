@@ -6,7 +6,7 @@ import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Overlay, type OverlayProps } from '../Overlay';
-import { Skeleton } from '../Skeleton';
+import { Skeleton, ImageSkeleton } from '../Skeleton';
 import styles from './SummaryCard.module.css';
 
 /** Badge variant type for compatibility */
@@ -438,7 +438,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
           {/* Image Skeleton */}
           <div className={styles.imageSection}>
             <div className={styles.skeletonImageContainer} data-aspect={imageAspectRatio}>
-              <Skeleton width="100%" height="100%" borderRadius={16} />
+              <ImageSkeleton width="100%" height="100%" borderRadius={16} iconSize={40} />
             </div>
           </div>
 

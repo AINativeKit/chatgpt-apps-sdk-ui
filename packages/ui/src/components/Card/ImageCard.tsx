@@ -4,7 +4,7 @@ import { Card, type CardProps } from './Card';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
-import { Skeleton } from '../Skeleton';
+import { ImageSkeleton } from '../Skeleton';
 import styles from './ImageCard.module.css';
 
 export interface ImageCardProps extends Omit<CardProps, 'children'> {
@@ -319,7 +319,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
           or when naturally loading without errors (and loading prop is not explicitly set) */}
       {((loading && !error) || (!loading && isLoading && !hasError)) && (
         <div className={styles.loadingContainer} role="status" aria-live="polite">
-          <Skeleton width="100%" height="100%" />
+          <ImageSkeleton width="100%" height="100%" iconSize={48} />
           <span className={styles.visuallyHidden}>Loading image: {title || 'content'}</span>
         </div>
       )}

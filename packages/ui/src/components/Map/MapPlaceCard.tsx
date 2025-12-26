@@ -4,7 +4,7 @@ import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { Features } from '../Feature';
 import { cn } from '../../utils/cn';
-import { Skeleton } from '../Skeleton';
+import { Skeleton, ImageSkeleton } from '../Skeleton';
 import type { Feature } from './types';
 import styles from './MapPlaceCard.module.css';
 
@@ -245,7 +245,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
         data-testid={testId}
       >
         <span className={styles.visuallyHidden}>Loading location</span>
-        <Skeleton className={styles.skeletonThumbnail} />
+        <ImageSkeleton className={styles.skeletonThumbnail} iconSize={24} />
         <div className={styles.content}>
           <Skeleton width="80%" height={14} className={styles.skeletonTitle} />
           <Skeleton width="60%" height={12} className={styles.skeletonSubtitle} />

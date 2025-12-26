@@ -5,7 +5,7 @@ import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
-import { Skeleton } from '../Skeleton';
+import { Skeleton, ImageSkeleton } from '../Skeleton';
 import type { Album } from './types';
 import styles from './AlbumCard.module.css';
 
@@ -236,7 +236,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
       >
         <span className={styles.visuallyHidden}>Loading album</span>
         <div className={styles.imageContainer}>
-          <Skeleton width="100%" height="100%" className={styles.skeletonImage} />
+          <ImageSkeleton width="100%" height="100%" className={styles.skeletonImage} iconSize={40} />
         </div>
         <div className={styles.content}>
           <Skeleton width="80%" height={16} className={styles.skeletonTitle} />
