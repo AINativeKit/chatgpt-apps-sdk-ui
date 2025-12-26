@@ -59,11 +59,32 @@ Automatically expand to fullscreen when clicking a carousel card.
 
 ## Component Selection Guide
 
-| Component | Use When | Example |
-|-----------|----------|---------|
-| **Map** | ChatGPT Apps SDK integration, need expand/collapse toggle | Chat-based map that expands to full view |
-| **CompactMap** | Fixed inline experiences, no fullscreen needed | Dashboard widget showing nearby locations |
-| **FullscreenMap** | Always-fullscreen, rich exploration interfaces | Dedicated map page with Inspector panel |
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use When</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Map</strong></td>
+      <td>ChatGPT Apps SDK integration, need expand/collapse toggle</td>
+      <td>Chat-based map that expands to full view</td>
+    </tr>
+    <tr>
+      <td><strong>CompactMap</strong></td>
+      <td>Fixed inline experiences, no fullscreen needed</td>
+      <td>Dashboard widget showing nearby locations</td>
+    </tr>
+    <tr>
+      <td><strong>FullscreenMap</strong></td>
+      <td>Always-fullscreen, rich exploration interfaces</td>
+      <td>Dedicated map page with Inspector panel</td>
+    </tr>
+  </tbody>
+</table>
 
 ## ChatGPT Apps SDK Integration
 
@@ -92,18 +113,56 @@ const handleMapToggle = (fullscreen: boolean) => {
 
 ## LocationData Type
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `id` | `string` | Unique location identifier (required) |
-| `name` | `string` | Location name/title (required) |
-| `coords` | `[number, number]` | Geographic coordinates [lat, lng] (required) |
-| `thumbnail` | `string` | Image URL for map place card (required) |
-| `subtitle` | `string` | Optional subtitle shown below title |
-| `description` | `string` | Optional detailed description |
-| `features` | `Feature[]` | Optional array of feature chips (rating, price) |
-| `actions` | `Action[]` | Optional action buttons (for Inspector panel) |
-| `lists` | `MapInspectorList[]` | Optional lists (reviews, related items) |
-| `renderMarker` | `(params) => ReactNode` | Optional per-location custom marker |
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code><br/><span className="type-hint">string</span></td>
+      <td>Unique location identifier (required)</td>
+    </tr>
+    <tr>
+      <td><code>name</code><br/><span className="type-hint">string</span></td>
+      <td>Location name/title (required)</td>
+    </tr>
+    <tr>
+      <td><code>coords</code><br/><span className="type-hint">[number, number]</span></td>
+      <td>Geographic coordinates [lat, lng] (required)</td>
+    </tr>
+    <tr>
+      <td><code>thumbnail</code><br/><span className="type-hint">string</span></td>
+      <td>Image URL for map place card (required)</td>
+    </tr>
+    <tr>
+      <td><code>subtitle</code><br/><span className="type-hint">string</span></td>
+      <td>Optional subtitle shown below title</td>
+    </tr>
+    <tr>
+      <td><code>description</code><br/><span className="type-hint">string</span></td>
+      <td>Optional detailed description</td>
+    </tr>
+    <tr>
+      <td><code>features</code><br/><span className="type-hint">Feature[]</span></td>
+      <td>Optional array of feature chips (rating, price)</td>
+    </tr>
+    <tr>
+      <td><code>actions</code><br/><span className="type-hint">Action[]</span></td>
+      <td>Optional action buttons (for Inspector panel)</td>
+    </tr>
+    <tr>
+      <td><code>lists</code><br/><span className="type-hint">MapInspectorList[]</span></td>
+      <td>Optional lists (reviews, related items)</td>
+    </tr>
+    <tr>
+      <td><code>renderMarker</code><br/><span className="type-hint">(params) =&gt; ReactNode</span></td>
+      <td>Optional per-location custom marker</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Technical Notes
 

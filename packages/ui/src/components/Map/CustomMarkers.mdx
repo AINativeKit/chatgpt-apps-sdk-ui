@@ -1,4 +1,4 @@
-import { Canvas, Meta, Subtitle, Title } from '@storybook/blocks'
+import { Canvas, Meta, Subtitle, Title, ArgTypes } from '@storybook/blocks'
 import * as CustomMarkerStories from './CustomMarkers.stories'
 
 <Meta of={CustomMarkerStories} />
@@ -30,6 +30,10 @@ const renderMarker = (params: RenderMarkerParams) => (
 Following industry-standard patterns from Material-UI DataGrid (`renderCell`) and Ant Design Table (`render`), the `renderMarker` function returns any React element—the library handles all Leaflet integration automatically.
 
 **Three ways to customize:** Global `renderMarker` prop (all locations), per-location `renderMarker` (individual control), or hybrid with both (per-location overrides global).
+
+## Reference
+
+<ArgTypes of={CustomMarkerStories.GlobalMarker} />
 
 ## Examples
 
@@ -63,14 +67,37 @@ Return `null` to fall back to built-in markers—perfect for customizing only se
 
 <Canvas of={CustomMarkerStories.FallbackPattern} />
 
-## RenderMarkerParams API
+## RenderMarkerParams
 
 Your `renderMarker` function receives these parameters:
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `location` | `LocationData` | The location data for this marker |
-| `isSelected` | `boolean` | Whether this marker is currently selected |
-| `isActive` | `boolean` | Whether this marker is currently hovered/active |
-| `color` | `string` | Theme color automatically resolved from context |
-| `variant` | `'pin' \| 'dot'` | Marker variant (useful for hybrid mode support) |
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>location</code><br/><span className="type-hint">LocationData</span></td>
+      <td>The location data for this marker</td>
+    </tr>
+    <tr>
+      <td><code>isSelected</code><br/><span className="type-hint">boolean</span></td>
+      <td>Whether this marker is currently selected</td>
+    </tr>
+    <tr>
+      <td><code>isActive</code><br/><span className="type-hint">boolean</span></td>
+      <td>Whether this marker is currently hovered/active</td>
+    </tr>
+    <tr>
+      <td><code>color</code><br/><span className="type-hint">string</span></td>
+      <td>Theme color automatically resolved from context</td>
+    </tr>
+    <tr>
+      <td><code>variant</code><br/><span className="type-hint">'pin' | 'dot'</span></td>
+      <td>Marker variant (useful for hybrid mode support)</td>
+    </tr>
+  </tbody>
+</table>

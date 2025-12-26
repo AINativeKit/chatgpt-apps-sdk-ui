@@ -264,6 +264,15 @@ h2.sbdocs-subtitle,
   border-color: var(--gray-350);
 }
 
+/* Type hint styling (matches ArgTypes type display) */
+.sbdocs-content table:not(.docblock-argstable) .type-hint {
+  display: block;
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, consolas, "liberation mono", menlo, monospace;
+  font-size: 12px;
+}
+
 /* ArgTypes table */
 .docblock-argstable {
   margin-top: 20px !important;

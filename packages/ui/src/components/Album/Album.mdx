@@ -63,32 +63,97 @@ const [selectedAlbum, setSelectedAlbum] = useState<AlbumType | null>(null);
 
 ## Component Selection Guide
 
-| Component | Use When | Example |
-|-----------|----------|---------|
-| **Album** | Need carousel + viewer integration with auto state management | Photo gallery with fullscreen viewing |
-| **AlbumCarousel** | Only need carousel display, custom viewer handling | Album picker without fullscreen |
-| **AlbumViewer** | Custom viewer integration, standalone photo viewer | Modal photo viewer with external trigger |
-| **AlbumCard** | Single album display with cover, title, and photo count | Album thumbnail in a grid or list |
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use When</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Album</strong></td>
+      <td>Need carousel + viewer integration with auto state management</td>
+      <td>Photo gallery with fullscreen viewing</td>
+    </tr>
+    <tr>
+      <td><strong>AlbumCarousel</strong></td>
+      <td>Only need carousel display, custom viewer handling</td>
+      <td>Album picker without fullscreen</td>
+    </tr>
+    <tr>
+      <td><strong>AlbumViewer</strong></td>
+      <td>Custom viewer integration, standalone photo viewer</td>
+      <td>Modal photo viewer with external trigger</td>
+    </tr>
+    <tr>
+      <td><strong>AlbumCard</strong></td>
+      <td>Single album display with cover, title, and photo count</td>
+      <td>Album thumbnail in a grid or list</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Data Types
 
 ### AlbumType
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `id` | `string` | Unique album identifier (required) |
-| `title` | `string` | Album title (required) |
-| `cover` | `string` | Cover image URL (required) |
-| `photos` | `Photo[]` | Array of photo objects (required) |
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code><br/><span className="type-hint">string</span></td>
+      <td>Unique album identifier (required)</td>
+    </tr>
+    <tr>
+      <td><code>title</code><br/><span className="type-hint">string</span></td>
+      <td>Album title (required)</td>
+    </tr>
+    <tr>
+      <td><code>cover</code><br/><span className="type-hint">string</span></td>
+      <td>Cover image URL (required)</td>
+    </tr>
+    <tr>
+      <td><code>photos</code><br/><span className="type-hint">Photo[]</span></td>
+      <td>Array of photo objects (required)</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Photo
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `id` | `string` | Unique photo identifier (required) |
-| `url` | `string` | Photo image URL (required) |
-| `title` | `string` | Optional title/caption for the photo |
-| `alt` | `string` | Alt text for accessibility |
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code><br/><span className="type-hint">string</span></td>
+      <td>Unique photo identifier (required)</td>
+    </tr>
+    <tr>
+      <td><code>url</code><br/><span className="type-hint">string</span></td>
+      <td>Photo image URL (required)</td>
+    </tr>
+    <tr>
+      <td><code>title</code><br/><span className="type-hint">string</span></td>
+      <td>Optional title/caption for the photo</td>
+    </tr>
+    <tr>
+      <td><code>alt</code><br/><span className="type-hint">string</span></td>
+      <td>Alt text for accessibility</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Technical Notes
 
