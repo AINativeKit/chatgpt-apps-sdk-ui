@@ -67,39 +67,10 @@ Return `null` to fall back to built-in markers—perfect for customizing only se
 
 Your `renderMarker` function receives these parameters:
 
-<table>
-  <thead>
-    <tr>
-      <th style={{textAlign: 'left'}}>Parameter</th>
-      <th style={{textAlign: 'left'}}>Type</th>
-      <th style={{textAlign: 'left'}}>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>location</code></td>
-      <td><code>LocationData</code></td>
-      <td>The location data for this marker</td>
-    </tr>
-    <tr>
-      <td><code>isSelected</code></td>
-      <td><code>boolean</code></td>
-      <td>Whether this marker is currently selected</td>
-    </tr>
-    <tr>
-      <td><code>isActive</code></td>
-      <td><code>boolean</code></td>
-      <td>Whether this marker is currently hovered/active</td>
-    </tr>
-    <tr>
-      <td><code>color</code></td>
-      <td><code>string</code></td>
-      <td>Theme color automatically resolved from context</td>
-    </tr>
-    <tr>
-      <td><code>variant</code></td>
-      <td><code>'pin' | 'dot'</code></td>
-      <td>Marker variant (useful for hybrid mode support)</td>
-    </tr>
-  </tbody>
-</table>
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `location` | `LocationData` | The location data for this marker |
+| `isSelected` | `boolean` | Whether this marker is currently selected |
+| `isActive` | `boolean` | Whether this marker is currently hovered/active |
+| `color` | `string` | Theme color automatically resolved from context |
+| `variant` | `'pin' \| 'dot'` | Marker variant (useful for hybrid mode support) |
