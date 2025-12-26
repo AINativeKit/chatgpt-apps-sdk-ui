@@ -42,7 +42,7 @@ describe('ImageCard', () => {
       const { container } = render(<ImageCard image={imageObj} />);
       const img = container.querySelector('img') as HTMLImageElement;
       expect(img).toHaveAttribute('src', mockImage);
-      expect(img).toHaveAttribute('aria-label', 'Test image description');
+      expect(img).toHaveAttribute('alt', 'Test image description');
     });
   });
 
@@ -183,6 +183,18 @@ describe('ImageCard', () => {
       const img = container.querySelector('img') as HTMLElement;
       expect(img).toHaveClass('imagePositionBottom');
     });
+
+    it('applies left position when specified', () => {
+      const { container } = render(<ImageCard image={mockImage} imagePosition="left" />);
+      const img = container.querySelector('img') as HTMLElement;
+      expect(img).toHaveClass('imagePositionLeft');
+    });
+
+    it('applies right position when specified', () => {
+      const { container } = render(<ImageCard image={mockImage} imagePosition="right" />);
+      const img = container.querySelector('img') as HTMLElement;
+      expect(img).toHaveClass('imagePositionRight');
+    });
   });
 
   describe('Gradient Overlay', () => {
@@ -255,12 +267,12 @@ describe('ImageCard', () => {
       expect(ref.current).toBeInstanceOf(HTMLDivElement);
     });
 
-    it('provides proper aria-label for image element', () => {
+    it('provides proper alt text for image element', () => {
       const { container } = render(
         <ImageCard image={{ src: mockImage, alt: 'Beautiful landscape' }} />
       );
       const img = container.querySelector('img');
-      expect(img).toHaveAttribute('aria-label', 'Beautiful landscape');
+      expect(img).toHaveAttribute('alt', 'Beautiful landscape');
     });
 
     it('renders semantic HTML structure', () => {
@@ -316,6 +328,32 @@ describe('ImageCard', () => {
       render(<ImageCard image={mockImage} error onErrorRetry={handleRetry} />);
       const retryButton = screen.getByRole('button', { name: /Retry/ });
       expect(retryButton).toBeInTheDocument();
+    });
+  });
+
+  describe('Empty State', () => {
+    it('shows empty state when image is empty string', () => {
+      render(<ImageCard image="" />);
+      expect(screen.getByTestId('image-card-empty')).toBeInTheDocument();
+    });
+
+    it('shows default empty title', () => {
+      render(<ImageCard image="" />);
+      expect(screen.getByText('No image')).toBeInTheDocument();
+    });
+
+    it('shows custom empty title and message', () => {
+      render(
+        <ImageCard image="" emptyTitle="No photo" emptyMessage="Upload an image to get started" />
+      );
+      expect(screen.getByText('No photo')).toBeInTheDocument();
+      expect(screen.getByText('Upload an image to get started')).toBeInTheDocument();
+    });
+
+    it('does not render img element when image is empty', () => {
+      const { container } = render(<ImageCard image="" />);
+      const img = container.querySelector('img');
+      expect(img).not.toBeInTheDocument();
     });
   });
 

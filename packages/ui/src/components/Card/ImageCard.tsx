@@ -4,6 +4,7 @@ import { Card, type CardProps } from './Card';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { ImageSkeleton } from '../Skeleton';
 import styles from './ImageCard.module.css';
 
@@ -15,11 +16,13 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
   image: string | { src: string; alt: string };
 
   /**
-   * Vertical positioning of the background image within the card.
+   * Positioning of the background image within the card.
    * Useful when the image aspect ratio differs from the card.
+   * - Vertical: 'center', 'top', 'bottom'
+   * - Horizontal: 'left', 'right'
    * @default 'center'
    */
-  imagePosition?: 'center' | 'top' | 'bottom';
+  imagePosition?: 'center' | 'top' | 'bottom' | 'left' | 'right';
 
   /**
    * Card title displayed in the overlay. Only renders when provided.
@@ -98,6 +101,17 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
    */
   onErrorRetry?: () => void;
 
+  /**
+   * Title text shown when the image source is empty.
+   * @default 'No image'
+   */
+  emptyTitle?: string;
+
+  /**
+   * Description text shown in the empty state.
+   */
+  emptyMessage?: string;
+
   // Badge Support
   /**
    * Badge content displayed on the card. Accepts text or numbers.
@@ -116,7 +130,7 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
    * - 'solid': Filled background with high contrast (recommended for images)
    * - 'soft': Subtle tinted background
    * - 'outline': Border only with transparent background
-   * @default 'soft'
+   * @default 'solid'
    */
   badgeVariant?: BadgeProps['variant'];
 
@@ -246,9 +260,11 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     errorTitle = 'Failed to load',
     errorMessage,
     onErrorRetry,
+    emptyTitle = 'No image',
+    emptyMessage,
     badge,
     badgePosition = 'top-right',
-    badgeVariant = 'soft',
+    badgeVariant = 'solid',
     badgeSize,
     badgePill = true,
     badgeColor = 'secondary',
@@ -262,7 +278,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     ...cardProps
   } = props;
 
-  const [imageLoadState, setImageLoadState] = useState<'loading' | 'loaded' | 'error'>('loaded');
+  const [imageLoadState, setImageLoadState] = useState<'loading' | 'loaded' | 'error'>('loading');
   const [internalError, setInternalError] = useState(false);
 
   const imageSrc = typeof image === 'string' ? image : image.src;
@@ -271,9 +287,15 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
   const hasContent = !!(title || subtitle);
   const hasAction = !!actionIcon;
   const hasBadge = badge !== undefined && badge !== null && badge !== '';
+  const isEmpty = !imageSrc;
   const isLoading = loading || imageLoadState === 'loading';
   // Show error state when error prop is true, regardless of loading state
   const hasError = error || internalError || imageLoadState === 'error';
+
+  // State Priority: Loading > Error > Empty > Content
+  const showLoading = loading || (!isEmpty && !error && isLoading && !hasError);
+  const showError = !loading && error;
+  const showEmpty = !loading && !error && isEmpty;
 
   // Development mode validation
   if (process.env.NODE_ENV !== 'production') {
@@ -307,6 +329,8 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     center: styles.imagePositionCenter,
     top: styles.imagePositionTop,
     bottom: styles.imagePositionBottom,
+    left: styles.imagePositionLeft,
+    right: styles.imagePositionRight,
   }[imagePosition];
 
   const normalizedMinHeight = typeof minHeight === 'number' ? `${minHeight}px` : minHeight;
@@ -325,34 +349,42 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
       style={inlineStyle}
       {...cardProps}
     >
-      {/* Native Image Element - Always render but may be hidden */}
-      <img
-        src={imageSrc}
-        alt={imageAlt}
-        loading={imageLoading}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
-        className={cn(
-          styles.imageElement,
-          positionClass,
-          (isLoading || hasError) && styles.imageHidden
-        )}
-        aria-label={imageAlt}
-      />
+      {/* Native Image Element - Only render if there's an image source */}
+      {!isEmpty && (
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          loading={imageLoading}
+          onLoad={handleImageLoad}
+          onError={handleImageError}
+          className={cn(
+            styles.imageElement,
+            positionClass,
+            (isLoading || hasError) && styles.imageHidden
+          )}
+        />
+      )}
 
       {/* Loading State Overlay */}
-      {/* Show skeleton when loading prop is explicitly true (takes precedence over image error),
-          or when naturally loading without errors (and loading prop is not explicitly set) */}
-      {((loading && !error) || (!loading && isLoading && !hasError)) && (
+      {showLoading && (
         <div className={styles.loadingContainer} role="status" aria-live="polite">
           <ImageSkeleton width="100%" height="100%" iconSize={48} />
           <span className={styles.visuallyHidden}>Loading image: {title || 'content'}</span>
         </div>
       )}
 
+      {/* Empty State */}
+      {showEmpty && (
+        <div className={styles.emptyContainer} data-testid="image-card-empty">
+          <EmptyMessage fill="none">
+            <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+            {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+          </EmptyMessage>
+        </div>
+      )}
+
       {/* Error State Overlay */}
-      {/* Show error when there's an error and not in explicit loading state (loading prop takes precedence) */}
-      {hasError && !loading && (
+      {showError && (
         <div className={styles.errorContainer}>
           <Alert
             color="danger"
@@ -371,8 +403,8 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
         </div>
       )}
 
-      {/* Content only visible when image loaded successfully */}
-      {!isLoading && !hasError && (
+      {/* Content only visible when image loaded successfully (not loading, error, or empty) */}
+      {!isLoading && !hasError && !isEmpty && (
         <>
           {/* Gradient Overlay for text readability */}
           {(hasContent || hasAction) && <div className={styles.gradientOverlay} />}
@@ -410,7 +442,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
             </div>
           )}
 
-          {/* Action Button - White icon on dark image overlay */}
+          {/* Action Button - Circular dark background for WCAG contrast */}
           {hasAction && actionLabel && (
             <div className={styles.actionButton}>
               <Button

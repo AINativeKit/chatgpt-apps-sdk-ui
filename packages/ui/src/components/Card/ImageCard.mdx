@@ -1,0 +1,103 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as ImageCardStories from './ImageCard.stories'
+
+<Meta of={ImageCardStories} />
+
+<Title>ImageCard</Title>
+<Subtitle>Card with background image overlay for visual content like menus, galleries, and product showcases</Subtitle>
+
+## Usage
+
+```tsx
+import { ImageCard } from "@ainativekit/ui";
+```
+
+<Canvas of={ImageCardStories.Base} />
+
+## Reference
+
+<ArgTypes of={ImageCardStories.Base} />
+
+## Examples
+
+### Image positions
+
+Control image focal point with top, center, or bottom positioning.
+
+<Canvas of={ImageCardStories.ImagePositions} />
+
+### Content variations
+
+Flexible content options from image-only to full text overlay with actions.
+
+<Canvas of={ImageCardStories.ContentVariations} />
+
+### Compact size
+
+Use `size="compact"` for denser layouts with reduced padding.
+
+<Canvas of={ImageCardStories.CompactSize} />
+
+### Loading
+
+Show a skeleton placeholder while data is loading with `loading={true}`.
+
+<Canvas of={ImageCardStories.Loading} />
+
+### Error
+
+Display an error message when image fails to load with `error={true}`. Add retry functionality with `onErrorRetry`.
+
+<Canvas of={ImageCardStories.Error} />
+
+### Empty
+
+Show an empty state when there's no image. Customize with `emptyTitle` and `emptyMessage`.
+
+<Canvas of={ImageCardStories.Empty} />
+
+### Badges
+
+Add status indicators with badges. Supports `badgeVariant`, `badgeSize`, `badgePill`, `badgeColor`, and `badgePosition` props.
+
+<Canvas of={ImageCardStories.WithBadge} />
+
+Different badge positions and semantic colors:
+
+<Canvas of={ImageCardStories.BadgeVariants} sourceState="none" />
+
+### Interactive
+
+Enable hover effects with `interactive` prop and handle clicks with `onClick`.
+
+<Canvas of={ImageCardStories.Interactive} />
+
+### Multi-line text
+
+Use `titleLines` and `subtitleLines` to allow longer text to wrap (1, 2, or 3 lines).
+
+<Canvas of={ImageCardStories.MultiLineText} />
+
+### Custom sizing
+
+Use `minHeight` and `aspectRatio` for custom dimensions.
+
+<Canvas of={ImageCardStories.CustomSizing} />
+
+### Elevation levels
+
+Control shadow depth with `elevationLevel` (0-4).
+
+<Canvas of={ImageCardStories.ElevationLevels} />
+
+### Image callbacks
+
+Track image load and error events with `onImageLoad` and `onImageError` callbacks.
+
+<Canvas of={ImageCardStories.WithImageCallbacks} />
+
+### States overview
+
+All card states at a glance.
+
+<Canvas of={ImageCardStories.States} sourceState="none" />
