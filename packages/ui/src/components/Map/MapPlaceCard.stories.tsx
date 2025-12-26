@@ -428,10 +428,10 @@ const MapPlaceCardShowcase: React.FC = () => {
                 },
                 { name: 'emptyMessage', type: 'string', description: 'Empty state message' },
                 {
-                  name: 'imageLazy',
-                  type: 'boolean',
-                  default: 'true',
-                  description: 'Enable lazy loading for thumbnail',
+                  name: 'imageLoading',
+                  type: "'lazy' | 'eager'",
+                  default: "'lazy'",
+                  description: 'Native browser loading behavior for thumbnail',
                 },
                 {
                   name: 'onImageLoad',

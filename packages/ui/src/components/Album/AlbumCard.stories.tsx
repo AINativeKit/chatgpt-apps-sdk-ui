@@ -304,7 +304,7 @@ const AlbumCardShowcase: React.FC = () => {
             </h3>
             <AlbumCard
               album={SAMPLE_ALBUMS[0]}
-              imageLazy={false}
+              imageLoading="eager"
               onSelect={(album) => console.log('Selected:', album.title)}
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
@@ -420,8 +420,8 @@ const AlbumCardShowcase: React.FC = () => {
               description: 'Empty state message text',
             },
             {
-              name: 'imageLazy',
-              description: 'Enable lazy loading for cover image - default: true',
+              name: 'imageLoading',
+              description: "Image loading behavior: 'lazy' | 'eager' - default: 'lazy'",
             },
             {
               name: 'onImageLoad',

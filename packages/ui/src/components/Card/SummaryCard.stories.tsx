@@ -2095,7 +2095,7 @@ const SummaryCardsComponent: React.FC = () => {
                 marginTop: '8px',
               }}
             >
-              ✓ imageLazy=true (default)
+              ✓ imageLoading="lazy" (default)
             </p>
           </div>
 
@@ -2115,7 +2115,7 @@ const SummaryCardsComponent: React.FC = () => {
               title="Eagerly Loaded"
               subtitle="loading='eager'"
               description="Disable lazy loading for above-the-fold content"
-              imageLazy={false}
+              imageLoading="eager"
               style={{ maxWidth: `${CARD_WIDTH}px` }}
             />
             <p
@@ -2125,7 +2125,7 @@ const SummaryCardsComponent: React.FC = () => {
                 marginTop: '8px',
               }}
             >
-              ✓ imageLazy=false
+              ✓ imageLoading="eager"
             </p>
           </div>
 
@@ -2820,10 +2820,10 @@ const SummaryCardsComponent: React.FC = () => {
               description: 'Custom empty state message',
             },
             {
-              name: 'imageLazy',
-              type: 'boolean',
-              default: 'true',
-              description: 'Enable native lazy loading for images',
+              name: 'imageLoading',
+              type: "'lazy' | 'eager'",
+              default: "'lazy'",
+              description: 'Native browser loading behavior for images',
             },
             {
               name: 'onImageLoad',

@@ -310,7 +310,7 @@ const ListCardsComponent: React.FC = () => {
         >
           <ListCard
             topImage={SAMPLE_IMAGES.pizza}
-            topImageLazy={true}
+            topImageLoading="lazy"
             onTopImageLoad={() => console.log('Top image loaded')}
             headerTitle="Lazy Loaded Images"
             items={sampleItems.map((item) => ({

@@ -9,150 +9,176 @@ import styles from './ImageCard.module.css';
 
 export interface ImageCardProps extends Omit<CardProps, 'children'> {
   /**
-   * Image source URL or object with src and alt
+   * Image source. Accepts a URL string or an object with src and alt properties.
+   * When using a string, the alt text defaults to the title prop if provided.
    */
   image: string | { src: string; alt: string };
 
   /**
-   * Image positioning
+   * Vertical positioning of the background image within the card.
+   * Useful when the image aspect ratio differs from the card.
    * @default 'center'
    */
   imagePosition?: 'center' | 'top' | 'bottom';
 
   /**
-   * Card title (optional - only renders if provided)
+   * Card title displayed in the overlay. Only renders when provided.
    */
   title?: string;
 
   /**
-   * Card subtitle (optional - only renders if provided)
+   * Card subtitle displayed below the title. Only renders when provided.
    */
   subtitle?: string;
 
   /**
-   * Action button icon (optional - only renders if provided).
+   * Icon element for the action button. Only renders when provided.
    * Pass a React element, e.g., `<PlusCircle />` from apps-sdk-ui.
    */
   actionIcon?: React.ReactNode;
 
   /**
-   * Accessibility label for action button
-   * REQUIRED when actionIcon is provided for proper accessibility
+   * Accessibility label for the action button.
+   * Required when actionIcon is provided for screen reader support.
    */
   actionLabel?: string;
 
   /**
-   * Action button click handler
+   * Callback fired when the action button is clicked.
+   * The event is stopped from propagating to the card's onClick handler.
    */
   onAction?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 
   /**
-   * Size variant for the card.
+   * Size variant affecting padding and text sizes.
+   * - 'default': Standard padding and text sizes
+   * - 'compact': Reduced padding for denser layouts
    * @default 'default'
    */
   size?: 'default' | 'compact';
 
   /**
-   * Custom minimum height for the card. Accepts number (px) or CSS length.
+   * Minimum height for the card. Accepts a number (pixels) or CSS length value.
    */
   minHeight?: number | string;
 
   /**
-   * Custom aspect ratio for the card (e.g. '16 / 9').
+   * CSS aspect ratio for the card (e.g., '16 / 9', '1 / 1').
+   * When set, the card maintains this ratio regardless of content.
    */
   aspectRatio?: string;
 
-  // Phase 1: Core Improvements
+  // State Management
   /**
-   * Loading state - shows skeleton UI
+   * When true, displays a skeleton loading state with animated placeholders.
    * @default false
    */
   loading?: boolean;
 
   /**
-   * Error state - shows error message
+   * When true, displays an error alert instead of the image content.
    * @default false
    */
   error?: boolean;
 
   /**
-   * Custom error title
+   * Title text shown in the error alert.
    * @default 'Failed to load'
    */
   errorTitle?: string;
 
   /**
-   * Custom error message
+   * Description text shown in the error alert.
    */
   errorMessage?: string;
 
   /**
-   * Error retry handler - shows retry button when provided
+   * Callback for the retry button in the error state.
+   * When provided, displays a retry button in the error alert.
    */
   onErrorRetry?: () => void;
 
+  // Badge Support
   /**
-   * Badge content (text or number)
+   * Badge content displayed on the card. Accepts text or numbers.
+   * Common uses: "New", "Sale", count indicators.
    */
   badge?: string | number;
 
   /**
-   * Badge position
+   * Position of the badge on the card.
    * @default 'top-right'
    */
   badgePosition?: 'top-left' | 'top-right';
 
   /**
-   * Badge variant style
+   * Visual style variant for the badge.
+   * - 'solid': Filled background with high contrast (recommended for images)
+   * - 'soft': Subtle tinted background
+   * - 'outline': Border only with transparent background
    * @default 'soft'
    */
   badgeVariant?: BadgeProps['variant'];
 
   /**
-   * Badge size
-   * @default 'sm' (auto-sizes to 'md' for longer badges)
+   * Size of the badge. Heights: sm=18px, md=22px, lg=24px.
+   * Auto-sizes to 'md' for badges longer than 4 characters.
+   * @default 'sm'
    */
   badgeSize?: BadgeProps['size'];
 
   /**
-   * Badge pill shape (fully rounded)
+   * When true, renders the badge with fully rounded (pill) corners.
+   * Recommended for numeric badges.
    * @default true
    */
   badgePill?: boolean;
 
   /**
-   * Badge color
+   * Semantic color for the badge.
+   * - 'secondary': Neutral gray
+   * - 'success': Green for positive states
+   * - 'danger': Red for errors/warnings
+   * - 'warning': Orange for caution
+   * - 'info': Blue for informational
+   * - 'discovery': Purple for new/featured
    * @default 'secondary'
    */
   badgeColor?: BadgeProps['color'];
 
+  // Text Display
   /**
-   * Number of lines for title (1-3)
+   * Maximum number of lines for the title before truncation with ellipsis.
    * @default 1
    */
   titleLines?: 1 | 2 | 3;
 
   /**
-   * Number of lines for subtitle (1-3)
+   * Maximum number of lines for the subtitle before truncation with ellipsis.
    * @default 1
    */
   subtitleLines?: 1 | 2 | 3;
 
+  // Image Callbacks
   /**
-   * Callback when image loads successfully
+   * Callback fired when the image successfully loads.
+   * Useful for tracking load performance or triggering animations.
    */
   onImageLoad?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
 
   /**
-   * Callback when image fails to load
+   * Callback fired when the image fails to load.
+   * Useful for fallback handling or error tracking.
    */
   onImageError?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
 
   /**
-   * Enable native lazy loading
-   * @default true
+   * Native browser loading behavior for the image.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  lazy?: boolean;
+  imageLoading?: 'lazy' | 'eager';
 }
 
 /**
@@ -230,7 +256,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     subtitleLines = 1,
     onImageLoad,
     onImageError,
-    lazy = true,
+    imageLoading = 'lazy',
     className,
     style,
     ...cardProps
@@ -303,7 +329,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
       <img
         src={imageSrc}
         alt={imageAlt}
-        loading={lazy ? 'lazy' : undefined}
+        loading={imageLoading}
         onLoad={handleImageLoad}
         onError={handleImageError}
         className={cn(

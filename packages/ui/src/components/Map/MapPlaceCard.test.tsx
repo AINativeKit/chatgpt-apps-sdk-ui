@@ -135,8 +135,8 @@ describe('MapPlaceCard', () => {
       expect(img.getAttribute('loading')).toBe('lazy');
     });
 
-    it('sets loading="eager" when imageLazy=false', () => {
-      render(<MapPlaceCard {...defaultProps} imageLazy={false} />);
+    it('sets loading="eager" when imageLoading="eager"', () => {
+      render(<MapPlaceCard {...defaultProps} imageLoading="eager" />);
       const img = screen.getByAltText('Test Location') as HTMLImageElement;
       expect(img.getAttribute('loading')).toBe('eager');
     });

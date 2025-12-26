@@ -484,8 +484,8 @@ describe('SummaryCard', () => {
       });
     });
 
-    it('disables lazy loading when imageLazy is false', () => {
-      render(<SummaryCard images={{ src: 'test.jpg', alt: 'Test' }} imageLazy={false} />);
+    it('uses eager loading when imageLoading is "eager"', () => {
+      render(<SummaryCard images={{ src: 'test.jpg', alt: 'Test' }} imageLoading="eager" />);
       const img = screen.getByRole('img');
       expect(img).toHaveAttribute('loading', 'eager');
     });
@@ -504,15 +504,15 @@ describe('SummaryCard', () => {
       expect(images[1]).toHaveAttribute('loading', 'lazy');
     });
 
-    it('per-image lazy=false overrides imageLazy=true', () => {
+    it('per-image lazy=false overrides imageLoading="lazy"', () => {
       render(
-        <SummaryCard images={{ src: 'test.jpg', alt: 'Test', lazy: false }} imageLazy={true} />
+        <SummaryCard images={{ src: 'test.jpg', alt: 'Test', lazy: false }} imageLoading="lazy" />
       );
       const img = screen.getByRole('img');
       expect(img).toHaveAttribute('loading', 'eager');
     });
 
-    it('applies lazy loading to all grid images when imageLazy=true', () => {
+    it('applies lazy loading to all grid images when imageLoading="lazy"', () => {
       const { container } = render(
         <SummaryCard
           images={[
@@ -520,7 +520,7 @@ describe('SummaryCard', () => {
             { src: 'img2.jpg', alt: 'Image 2' },
             { src: 'img3.jpg', alt: 'Image 3' },
           ]}
-          imageLazy={true}
+          imageLoading="lazy"
         />
       );
       const images = container.querySelectorAll('img');

@@ -149,16 +149,20 @@ export interface ListCardProps extends Omit<CardProps, 'children'> {
 
   // Phase 2: Performance & Accessibility (P1)
   /**
-   * Top image lazy loading
-   * @default true
+   * Native browser loading behavior for the top image.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  topImageLazy?: boolean;
+  topImageLoading?: 'lazy' | 'eager';
 
   /**
-   * Item images lazy loading
-   * @default true
+   * Native browser loading behavior for item images.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  itemImagesLazy?: boolean;
+  itemImagesLoading?: 'lazy' | 'eager';
 
   /**
    * Callback when top image loads successfully
@@ -203,8 +207,8 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
     emptyTitle = 'No items',
     emptyMessage,
     emptyIcon,
-    topImageLazy = true,
-    itemImagesLazy = true,
+    topImageLoading = 'lazy',
+    itemImagesLoading = 'lazy',
     onTopImageLoad,
     onTopImageError,
     headerActionLabel,
@@ -336,7 +340,7 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                   src={topImageData.src}
                   alt={topImageData.alt}
                   className={styles.topImage}
-                  loading={topImageLazy && topImageData.lazy !== false ? 'lazy' : undefined}
+                  loading={topImageData.lazy === false ? 'eager' : topImageLoading}
                   onLoad={onTopImageLoad}
                   onError={onTopImageError}
                 />
@@ -379,9 +383,7 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                             src={itemImageData.src}
                             alt={itemImageData.alt}
                             className={styles.itemImage}
-                            loading={
-                              itemImagesLazy && itemImageData.lazy !== false ? 'lazy' : undefined
-                            }
+                            loading={itemImageData.lazy === false ? 'eager' : itemImagesLoading}
                             onLoad={item.onImageLoad}
                             onError={item.onImageError}
                           />

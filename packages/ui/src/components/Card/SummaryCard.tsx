@@ -235,10 +235,13 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
 
   // Phase 2: Performance & Accessibility (P1)
   /**
-   * Enable lazy loading for all images
-   * @default true
+   * Native browser loading behavior for all images.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * Individual images can override this with their own `loading` property.
+   * @default 'lazy'
    */
-  imageLazy?: boolean;
+  imageLoading?: 'lazy' | 'eager';
 
   /**
    * Callback when a single image loads successfully
@@ -362,7 +365,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     emptyTitle = 'No content',
     emptyMessage,
     // Phase 2 props
-    imageLazy = true,
+    imageLoading = 'lazy',
     onImageLoad,
     onImageError,
     onImagesLoad,
@@ -699,7 +702,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
                     alt={imageArray[0].alt}
                     className={styles.imageSingle}
                     data-aspect={imageAspectRatio}
-                    loading={imageArray[0].lazy !== false && imageLazy ? 'lazy' : 'eager'}
+                    loading={imageArray[0].lazy === false ? 'eager' : imageLoading}
                     onLoad={onImageLoad}
                     onError={onImageError}
                   />
@@ -713,7 +716,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
                           src={image.src}
                           alt={image.alt}
                           className={styles.imageGridItem}
-                          loading={image.lazy !== false && imageLazy ? 'lazy' : 'eager'}
+                          loading={image.lazy === false ? 'eager' : imageLoading}
                           onLoad={onImagesLoad ? (e) => onImagesLoad(index, e) : undefined}
                           onError={onImagesError ? (e) => onImagesError(index, e) : undefined}
                         />

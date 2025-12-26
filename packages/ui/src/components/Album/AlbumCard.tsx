@@ -10,125 +10,142 @@ import styles from './AlbumCard.module.css';
 
 export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>, 'onSelect'> {
   /**
-   * Album data to display
+   * Album data object containing id, title, cover image URL, and photos array.
+   * The photo count is derived from photos.length.
    */
   album: Album;
 
   /**
-   * Callback when album card is clicked
+   * Callback fired when the album card is clicked.
+   * Receives the album object as an argument.
    */
   onSelect?: (album: Album) => void;
 
   /**
-   * Width of the card
+   * Card width. Accepts any valid CSS width value.
    * @default '272px'
    */
   width?: string;
 
   // State Management
   /**
-   * Loading state - shows skeleton UI
+   * When true, displays a skeleton loading state with animated placeholders.
    * @default false
    */
   loading?: boolean;
 
   /**
-   * Error state - shows error message
+   * When true, displays an error alert instead of the album content.
    * @default false
    */
   error?: boolean;
 
   /**
-   * Custom error title
+   * Title text shown in the error alert.
    * @default 'Album unavailable'
    */
   errorTitle?: string;
 
   /**
-   * Custom error message
+   * Description text shown in the error alert.
    * @default 'This album could not be loaded'
    */
   errorMessage?: string;
 
   /**
-   * Empty state title
+   * Title text shown when the album has no content (empty cover, title, and photos).
    * @default 'No album'
    */
   emptyTitle?: string;
 
   /**
-   * Empty state message
+   * Description text shown in the empty state.
    */
   emptyMessage?: string;
 
   // Image Controls
   /**
-   * Enable lazy loading for cover image
-   * @default true
+   * Native browser loading behavior for the cover image.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  imageLazy?: boolean;
+  imageLoading?: 'lazy' | 'eager';
 
   /**
-   * Callback when cover image loads
+   * Callback fired when the cover image successfully loads.
+   * Useful for tracking image load performance or triggering animations.
    */
   onImageLoad?: (event: SyntheticEvent<HTMLImageElement>) => void;
 
   /**
-   * Callback when cover image fails to load
+   * Callback fired when the cover image fails to load.
+   * Useful for fallback handling or error tracking.
    */
   onImageError?: (event: SyntheticEvent<HTMLImageElement>) => void;
 
   // Badge Support
   /**
-   * Badge content (text or number)
+   * Badge content displayed on the card. Accepts text or numbers.
+   * Common uses: "New", "Featured", count indicators.
    */
   badge?: string | number;
 
   /**
-   * Badge position
+   * Position of the badge on the card.
    * @default 'top-right'
    */
   badgePosition?: 'top-left' | 'top-right';
 
   /**
-   * Badge variant style
+   * Visual style variant for the badge.
+   * - 'solid': Filled background with high contrast
+   * - 'soft': Subtle tinted background
+   * - 'outline': Border only with transparent background
    * @default 'soft'
    */
   badgeVariant?: BadgeProps['variant'];
 
   /**
-   * Badge size
+   * Size of the badge. Heights: sm=18px, md=22px, lg=24px.
    * @default 'sm'
    */
   badgeSize?: BadgeProps['size'];
 
   /**
-   * Badge pill shape (fully rounded)
+   * When true, renders the badge with fully rounded (pill) corners.
+   * Recommended for numeric badges.
    * @default true
    */
   badgePill?: boolean;
 
   /**
-   * Badge color
+   * Semantic color for the badge.
+   * - 'secondary': Neutral gray
+   * - 'success': Green for positive states
+   * - 'danger': Red for errors/warnings
+   * - 'warning': Orange for caution
+   * - 'info': Blue for informational
+   * - 'discovery': Purple for new/featured
    * @default 'secondary'
    */
   badgeColor?: BadgeProps['color'];
 
   // Text Display
   /**
-   * Number of lines for title (1-3)
+   * Maximum number of lines for the title before truncation with ellipsis.
    * @default 1
    */
   titleLines?: 1 | 2 | 3;
 
   /**
-   * Number of lines for subtitle (1-3)
+   * Maximum number of lines for the subtitle (photo count) before truncation.
    * @default 1
    */
   subtitleLines?: 1 | 2 | 3;
 
   /**
-   * Optional test ID for testing purposes
+   * Test ID for automated testing.
    */
   'data-testid'?: string;
 }
@@ -186,7 +203,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     errorMessage = 'This album could not be loaded',
     emptyTitle = 'No album',
     emptyMessage,
-    imageLazy = true,
+    imageLoading = 'lazy',
     onImageLoad,
     onImageError,
     badge,
@@ -295,7 +312,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
           src={album.cover}
           alt={album.title}
           className={styles.image}
-          loading={imageLazy ? 'lazy' : 'eager'}
+          loading={imageLoading}
           onLoad={onImageLoad}
           onError={onImageError}
         />

@@ -368,8 +368,8 @@ describe('AlbumCard', () => {
       expect(img.getAttribute('loading')).toBe('lazy');
     });
 
-    it('disables lazy loading when imageLazy is false', () => {
-      render(<AlbumCard album={mockAlbum} imageLazy={false} />);
+    it('uses eager loading when imageLoading is "eager"', () => {
+      render(<AlbumCard album={mockAlbum} imageLoading="eager" />);
 
       const img = screen.getByAltText('Test Album') as HTMLImageElement;
       expect(img.getAttribute('loading')).toBe('eager');

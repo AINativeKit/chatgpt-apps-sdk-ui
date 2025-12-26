@@ -97,18 +97,22 @@ export interface MapPlaceCardProps {
 
   // Image Controls
   /**
-   * Enable lazy loading for thumbnail image
-   * @default true
+   * Native browser loading behavior for the thumbnail image.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  imageLazy?: boolean;
+  imageLoading?: 'lazy' | 'eager';
 
   /**
-   * Callback when thumbnail image loads
+   * Callback fired when the thumbnail image successfully loads.
+   * Useful for tracking image load performance or triggering animations.
    */
   onImageLoad?: (event: SyntheticEvent<HTMLImageElement>) => void;
 
   /**
-   * Callback when thumbnail image fails to load
+   * Callback fired when the thumbnail image fails to load.
+   * Useful for fallback handling or error tracking.
    */
   onImageError?: (event: SyntheticEvent<HTMLImageElement>) => void;
 
@@ -215,7 +219,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   onErrorRetry,
   emptyTitle = 'No location',
   emptyMessage,
-  imageLazy = true,
+  imageLoading = 'lazy',
   onImageLoad,
   onImageError,
   badge,
@@ -325,7 +329,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
           src={image}
           alt={title}
           className={styles.thumbnail}
-          loading={imageLazy ? 'lazy' : 'eager'}
+          loading={imageLoading}
           onLoad={onImageLoad}
           onError={onImageError}
         />

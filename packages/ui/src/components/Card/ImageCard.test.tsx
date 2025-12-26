@@ -392,10 +392,10 @@ describe('ImageCard', () => {
       expect(img).toHaveAttribute('loading', 'lazy');
     });
 
-    it('disables lazy loading when lazy=false', () => {
-      const { container } = render(<ImageCard image={mockImage} lazy={false} />);
+    it('uses eager loading when imageLoading="eager"', () => {
+      const { container } = render(<ImageCard image={mockImage} imageLoading="eager" />);
       const img = container.querySelector('img');
-      expect(img).not.toHaveAttribute('loading');
+      expect(img).toHaveAttribute('loading', 'eager');
     });
   });
 });
