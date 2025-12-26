@@ -97,6 +97,32 @@ export const CompactMap: React.FC<CompactMapProps> = ({
 
   const isEmpty = !loading && !error && locations.length === 0;
 
+  // Error state - centered overlay without map
+  if (error) {
+    return (
+      <div className={cn(styles.container, className)} style={containerStyle}>
+        <div className={styles.stateOverlay}>
+          <ErrorStateDisplay state="error" title="Failed to load map" message="Please try again." />
+        </div>
+      </div>
+    );
+  }
+
+  // Empty state - centered overlay without map
+  if (isEmpty) {
+    return (
+      <div className={cn(styles.container, className)} style={containerStyle}>
+        <div className={styles.stateOverlay}>
+          <ErrorStateDisplay
+            state="empty"
+            title="No locations yet"
+            message="Add locations to see them on the map"
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={cn(styles.container, className)} style={containerStyle}>
       <div className={styles.mapLayer}>
@@ -153,23 +179,7 @@ export const CompactMap: React.FC<CompactMapProps> = ({
         loading={loading}
         error={error}
         {...carouselProps}
-        {...(isEmpty
-          ? {
-              emptyTitle: '',
-              emptyMessage: '',
-            }
-          : {})}
       />
-
-      {isEmpty && (
-        <div className={styles.emptyOverlay}>
-          <ErrorStateDisplay
-            state="empty"
-            title="No locations yet"
-            message="Add locations to see them on the map"
-          />
-        </div>
-      )}
     </div>
   );
 };

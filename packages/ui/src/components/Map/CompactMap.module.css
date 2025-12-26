@@ -17,18 +17,13 @@
   min-height: 0;
 }
 
-.emptyOverlay {
-  position: absolute;
-  inset: 0;
+.stateOverlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
   padding: calc(var(--spacing) * 10);
-}
-
-.emptyOverlay > * {
-  pointer-events: auto;
 }
 
 .expandButton {

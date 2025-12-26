@@ -368,3 +368,277 @@ States.parameters = {
     },
   },
 };
+
+// Marker variants
+export const MarkerVariants = () => {
+  const [selectedPin, setSelectedPin] = useState<string | undefined>('tonys-pizza');
+  const [selectedDot, setSelectedDot] = useState<string | undefined>('golden-boy');
+  const [selectedHybrid, setSelectedHybrid] = useState<string | undefined>('delfina');
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gap: '24px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+      }}
+    >
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          Pin markers (default)
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedPin}
+            onLocationSelect={setSelectedPin}
+            markerVariant="pin"
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          Dot markers
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedDot}
+            onLocationSelect={setSelectedDot}
+            markerVariant="dot"
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          Hybrid markers (recommended)
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedHybrid}
+            onLocationSelect={setSelectedHybrid}
+            markerVariant="hybrid"
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+MarkerVariants.parameters = {
+  docs: {
+    source: {
+      code: `// Pin markers (default)
+<FullscreenMap locations={locations} markerVariant="pin" />
+
+// Dot markers
+<FullscreenMap locations={locations} markerVariant="dot" />
+
+// Hybrid markers (recommended)
+<FullscreenMap locations={locations} markerVariant="hybrid" />`,
+    },
+  },
+};
+
+// Popup control
+export const PopupControl = () => {
+  const [selectedWithPopup, setSelectedWithPopup] = useState<string | undefined>('tonys-pizza');
+  const [selectedNoPopup, setSelectedNoPopup] = useState<string | undefined>('golden-boy');
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gap: '24px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+      }}
+    >
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          With popup (showPopup=true)
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedWithPopup}
+            onLocationSelect={setSelectedWithPopup}
+            showPopup
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          No popup (default)
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedNoPopup}
+            onLocationSelect={setSelectedNoPopup}
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+PopupControl.parameters = {
+  docs: {
+    source: {
+      code: `// With popup
+<FullscreenMap locations={locations} showPopup />
+
+// Without popup (default)
+<FullscreenMap locations={locations} />`,
+    },
+  },
+};
+
+// Custom icons
+const CustomHeartSVG = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+    <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z" />
+  </svg>
+);
+
+export const CustomIcons = () => {
+  const [selectedId, setSelectedId] = useState<string | undefined>('custom-1');
+
+  const customLocations: LocationData[] = [
+    {
+      id: 'custom-1',
+      name: 'Popular Restaurant',
+      subtitle: 'Italian · Downtown',
+      coords: [37.7749, -122.4194],
+      thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+      features: [
+        { icon: <CustomHeartSVG />, label: 'Popular' },
+        { icon: <StarFilled />, label: '4.9' },
+      ],
+    },
+    {
+      id: 'custom-2',
+      name: 'Hidden Gem',
+      subtitle: 'Japanese · Mission',
+      coords: [37.7599, -122.4148],
+      thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
+      features: [
+        { icon: <CustomHeartSVG />, label: 'Favorite' },
+        { icon: <StarFilled />, label: '4.7' },
+      ],
+    },
+  ];
+
+  return (
+    <div
+      style={{
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid var(--color-border-subtle)',
+      }}
+    >
+      <FullscreenMap
+        locations={customLocations}
+        selectedId={selectedId}
+        onLocationSelect={setSelectedId}
+        height={SECONDARY_HEIGHT}
+      />
+    </div>
+  );
+};
+
+CustomIcons.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap
+  locations={[{
+    id: 'custom',
+    name: 'Restaurant',
+    coords: [37.7749, -122.4194],
+    features: [
+      { icon: <CustomHeartSVG />, label: 'Popular' },
+      { icon: <StarFilled />, label: '4.9' },
+    ],
+  }]}
+/>`,
+    },
+  },
+};
+
+// Real-world example
+export const RealWorld = () => {
+  const [selectedId, setSelectedId] = useState<string | undefined>('tonys-pizza');
+
+  return (
+    <div
+      style={{
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid var(--color-border-subtle)',
+        boxShadow: 'var(--shadow-200)',
+      }}
+    >
+      <FullscreenMap
+        locations={sampleLocations}
+        selectedId={selectedId}
+        onLocationSelect={setSelectedId}
+        onCollapse={() => console.log('Collapse to compact view')}
+        markerVariant="hybrid"
+        height={FULLSCREEN_HEIGHT}
+      />
+    </div>
+  );
+};
+
+RealWorld.parameters = {
+  docs: {
+    source: {
+      code: `const [selectedId, setSelectedId] = useState<string>();
+
+<FullscreenMap
+  locations={locations}
+  selectedId={selectedId}
+  onLocationSelect={setSelectedId}
+  onCollapse={() => navigateToCompactView()}
+  markerVariant="hybrid"
+  height="620px"
+/>`,
+    },
+  },
+};
