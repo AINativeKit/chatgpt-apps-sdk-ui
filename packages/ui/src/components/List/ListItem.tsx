@@ -58,11 +58,13 @@ export interface ListItemProps extends Omit<ComponentPropsWithoutRef<'div'>, 'ti
 
   /**
    * Hide metadata from the inline mobile row.
+   * @default false
    */
   hideMetadataOnMobile?: boolean;
 
   /**
    * Enable hover/focus states even without an onClick handler.
+   * @default false
    */
   interactive?: boolean;
 
@@ -158,7 +160,7 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
       >
         <div className={styles.listItem}>
           {/* Media skeleton */}
-          {(media || rank !== undefined) && (
+          {media && (
             <div className={styles.itemMedia}>
               <Skeleton width={40} height={40} borderRadius="var(--radius-md)" />
             </div>
@@ -172,11 +174,11 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
           {/* Body skeleton */}
           <div className={styles.itemBody}>
             <div className={styles.itemHeader}>
-              <Skeleton width="60%" height={16} />
+              <Skeleton width={180} height={16} />
             </div>
             {(subtitle || features) && (
               <div className={styles.itemSubtitleRow} style={{ marginTop: '8px' }}>
-                <Skeleton width="40%" height={14} />
+                <Skeleton width={120} height={14} />
               </div>
             )}
           </div>

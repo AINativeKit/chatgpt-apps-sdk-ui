@@ -15,13 +15,34 @@ const meta: Meta<CardProps> = {
     layout: 'padded',
   },
   argTypes: {
-    elevationLevel: { table: { defaultValue: { summary: '1' } } },
-    border: { table: { defaultValue: { summary: 'heavy' } } },
-    interactive: { table: { defaultValue: { summary: 'false' } } },
-    loading: { table: { defaultValue: { summary: 'false' } } },
-    error: { table: { defaultValue: { summary: 'false' } } },
-    errorTitle: { table: { defaultValue: { summary: 'Something went wrong' } } },
-    errorMessage: { table: { defaultValue: { summary: 'Unable to load content' } } },
+    elevationLevel: {
+      description: 'Shadow elevation level (0-3)',
+      table: { defaultValue: { summary: '1' } },
+    },
+    border: {
+      description: 'Border style: none, light, or heavy',
+      table: { defaultValue: { summary: 'heavy' } },
+    },
+    interactive: {
+      description: 'Enable hover/focus states',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    loading: {
+      description: 'Shows skeleton placeholder',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { defaultValue: { summary: 'Something went wrong' } },
+    },
+    errorMessage: {
+      description: 'Custom error message',
+      table: { defaultValue: { summary: 'Unable to load content' } },
+    },
   },
 };
 

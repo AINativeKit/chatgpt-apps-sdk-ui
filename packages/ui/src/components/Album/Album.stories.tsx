@@ -130,6 +130,34 @@ const meta: Meta<AlbumProps> = {
     albums: { control: false },
     onAlbumSelect: { control: false },
     selectedAlbum: { control: false },
+    initialPhotoIndex: {
+      description: 'Initial photo index when opening viewer',
+      table: { defaultValue: { summary: '0' } },
+    },
+    cardWidth: {
+      description: 'Width for each album card',
+      table: { defaultValue: { summary: '272px' } },
+    },
+    loading: {
+      description: 'Shows skeleton cards while loading',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    loadingCardCount: {
+      description: 'Number of skeleton cards to show while loading',
+      table: { defaultValue: { summary: '4' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { defaultValue: { summary: 'Failed to load albums' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title when no albums',
+      table: { defaultValue: { summary: 'No albums yet' } },
+    },
   },
 };
 

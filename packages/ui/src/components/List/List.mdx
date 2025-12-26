@@ -1,5 +1,6 @@
 import { Canvas, Meta, Subtitle, Title, ArgTypes } from '@storybook/blocks'
 import * as ListStories from './List.stories'
+import * as ListItemStories from './ListItem.stories'
 
 <Meta of={ListStories} />
 
@@ -62,62 +63,7 @@ import { List, ListItem } from "@ainativekit/ui";
 
 ## ListItem Props
 
-<table>
-  <thead>
-    <tr>
-      <th style={{textAlign: 'left'}}>Prop</th>
-      <th style={{textAlign: 'left'}}>Type</th>
-      <th style={{textAlign: 'left'}}>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>title</code></td>
-      <td><code>ReactNode</code></td>
-      <td>Primary title (required)</td>
-    </tr>
-    <tr>
-      <td><code>subtitle</code></td>
-      <td><code>ReactNode</code></td>
-      <td>Supporting text</td>
-    </tr>
-    <tr>
-      <td><code>media</code></td>
-      <td><code>string | ReactNode</code></td>
-      <td>Image URL or custom element</td>
-    </tr>
-    <tr>
-      <td><code>rank</code></td>
-      <td><code>ReactNode</code></td>
-      <td>Rank/index number</td>
-    </tr>
-    <tr>
-      <td><code>features</code></td>
-      <td><code>Feature[]</code></td>
-      <td>Feature badges with icons</td>
-    </tr>
-    <tr>
-      <td><code>metadata</code></td>
-      <td><code>ReactNode</code></td>
-      <td>Trailing metadata text</td>
-    </tr>
-    <tr>
-      <td><code>action</code></td>
-      <td><code>ReactNode</code></td>
-      <td>Trailing action element</td>
-    </tr>
-    <tr>
-      <td><code>onClick</code></td>
-      <td><code>function</code></td>
-      <td>Enables interactive states</td>
-    </tr>
-    <tr>
-      <td><code>loading</code></td>
-      <td><code>boolean</code></td>
-      <td>Show skeleton state</td>
-    </tr>
-  </tbody>
-</table>
+<ArgTypes of={ListItemStories.Default} />
 
 ## Technical Notes
 

@@ -1,14 +1,51 @@
 import type { Meta } from '@storybook/react';
 import { List, ListItem, type ListProps } from './List';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
-import { StarFilled, MapPin } from '@openai/apps-sdk-ui/components/Icon';
+import { StarFilled, MapPin, PlusCircleAdd } from '@openai/apps-sdk-ui/components/Icon';
 
 const meta: Meta<ListProps<unknown>> = {
   title: 'Composed Components/Lists',
   component: List,
+  subcomponents: { ListItem },
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
+  },
+  argTypes: {
+    // List props
+    header: { control: false },
+    items: { control: false },
+    renderItem: { control: false },
+    onErrorRetry: { control: false },
+    emptyState: { control: false },
+    emptyMessage: {
+      description: 'Empty state message text',
+      table: { defaultValue: { summary: 'No items found.' } },
+    },
+    showDividers: {
+      description: 'Show dividers between items',
+      table: { defaultValue: { summary: 'true' } },
+    },
+    loading: {
+      description: 'Shows skeleton items while loading',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    loadingItems: {
+      description: 'Number of skeleton items when loading',
+      table: { defaultValue: { summary: '3' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { defaultValue: { summary: 'Failed to load items' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title',
+      table: { defaultValue: { summary: 'No items' } },
+    },
   },
   decorators: [
     (Story) => (
@@ -164,7 +201,7 @@ export const RankedWithFeatures = () => {
           ]}
           action={
             <Button uniform color="secondary" variant="ghost" aria-label={`Add ${place.name}`}>
-              +
+              <PlusCircleAdd />
             </Button>
           }
         />
@@ -192,7 +229,7 @@ RankedWithFeatures.parameters = {
         { icon: <StarFilled />, label: place.rating },
         { icon: <MapPin />, label: place.city },
       ]}
-      action={<Button uniform color="secondary" variant="ghost">+</Button>}
+      action={<Button uniform color="secondary" variant="ghost"><PlusCircleAdd /></Button>}
     />
   )}
 />`,

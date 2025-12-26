@@ -17,15 +17,42 @@ const meta: Meta<ListCardProps> = {
     onTopImageLoad: { control: false },
     onTopImageError: { control: false },
     emptyIcon: { control: false },
-    loading: { table: { defaultValue: { summary: 'false' } } },
-    loadingItemCount: { table: { defaultValue: { summary: '3' } } },
-    error: { table: { defaultValue: { summary: 'false' } } },
-    errorTitle: { table: { defaultValue: { summary: 'Failed to load' } } },
-    emptyTitle: { table: { defaultValue: { summary: 'No items' } } },
-    buttonDisabled: { table: { defaultValue: { summary: 'false' } } },
-    topImageLoading: { table: { defaultValue: { summary: 'lazy' } } },
-    itemImagesLoading: { table: { defaultValue: { summary: 'lazy' } } },
-    elevationLevel: { table: { defaultValue: { summary: '1' } } },
+    loading: {
+      description: 'Shows skeleton placeholder',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    loadingItemCount: {
+      description: 'Number of skeleton items when loading',
+      table: { defaultValue: { summary: '3' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { defaultValue: { summary: 'Failed to load' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title',
+      table: { defaultValue: { summary: 'No items' } },
+    },
+    buttonDisabled: {
+      description: 'Disable the action button',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    topImageLoading: {
+      description: 'Top image loading strategy',
+      table: { defaultValue: { summary: 'lazy' } },
+    },
+    itemImagesLoading: {
+      description: 'Item images loading strategy',
+      table: { defaultValue: { summary: 'lazy' } },
+    },
+    elevationLevel: {
+      description: 'Shadow elevation level (0-3)',
+      table: { defaultValue: { summary: '1' } },
+    },
   },
 };
 

@@ -14,20 +14,62 @@ const meta: Meta<AlbumCardProps> = {
     onSelect: { control: false },
     onImageLoad: { control: false },
     onImageError: { control: false },
-    width: { table: { defaultValue: { summary: '272px' } } },
-    loading: { table: { defaultValue: { summary: 'false' } } },
-    error: { table: { defaultValue: { summary: 'false' } } },
-    errorTitle: { table: { defaultValue: { summary: 'Album unavailable' } } },
-    errorMessage: { table: { defaultValue: { summary: 'This album could not be loaded' } } },
-    emptyTitle: { table: { defaultValue: { summary: 'No album' } } },
-    imageLoading: { table: { defaultValue: { summary: 'lazy' } } },
-    badgePosition: { table: { defaultValue: { summary: 'top-right' } } },
-    badgeVariant: { table: { defaultValue: { summary: 'soft' } } },
-    badgeSize: { table: { defaultValue: { summary: 'sm' } } },
-    badgePill: { table: { defaultValue: { summary: 'true' } } },
-    badgeColor: { table: { defaultValue: { summary: 'secondary' } } },
-    titleLines: { table: { defaultValue: { summary: '1' } } },
-    subtitleLines: { table: { defaultValue: { summary: '1' } } },
+    width: {
+      description: 'Card width',
+      table: { defaultValue: { summary: '272px' } },
+    },
+    loading: {
+      description: 'Shows skeleton placeholder',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { defaultValue: { summary: 'Album unavailable' } },
+    },
+    errorMessage: {
+      description: 'Custom error message',
+      table: { defaultValue: { summary: 'This album could not be loaded' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title',
+      table: { defaultValue: { summary: 'No album' } },
+    },
+    imageLoading: {
+      description: 'Image loading strategy',
+      table: { defaultValue: { summary: 'lazy' } },
+    },
+    badgePosition: {
+      description: 'Badge position on the image',
+      table: { defaultValue: { summary: 'top-right' } },
+    },
+    badgeVariant: {
+      description: 'Badge visual style',
+      table: { defaultValue: { summary: 'soft' } },
+    },
+    badgeSize: {
+      description: 'Badge size',
+      table: { defaultValue: { summary: 'sm' } },
+    },
+    badgePill: {
+      description: 'Use pill-shaped badge',
+      table: { defaultValue: { summary: 'true' } },
+    },
+    badgeColor: {
+      description: 'Badge color variant',
+      table: { defaultValue: { summary: 'secondary' } },
+    },
+    titleLines: {
+      description: 'Max lines for title (1-3)',
+      table: { defaultValue: { summary: '1' } },
+    },
+    subtitleLines: {
+      description: 'Max lines for subtitle (1-3)',
+      table: { defaultValue: { summary: '1' } },
+    },
   },
 } satisfies Meta<typeof AlbumCard>;
 

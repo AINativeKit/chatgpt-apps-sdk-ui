@@ -157,13 +157,34 @@ const meta: Meta<FullscreenMapProps> = {
     onCollapse: { control: false },
     onErrorRetry: { control: false },
     renderMarker: { control: false },
-    height: { table: { defaultValue: { summary: '100vh' } } },
-    loading: { table: { defaultValue: { summary: 'false' } } },
-    error: { table: { defaultValue: { summary: 'false' } } },
-    markerVariant: { table: { defaultValue: { summary: 'pin' } } },
-    showPopup: { table: { defaultValue: { summary: 'false' } } },
-    hideAttribution: { table: { defaultValue: { summary: 'false' } } },
-    scrollWheelZoom: { table: { defaultValue: { summary: 'true' } } },
+    height: {
+      description: 'Fixed height for the fullscreen map container',
+      table: { defaultValue: { summary: '100vh' } },
+    },
+    loading: {
+      description: 'Shows skeleton UI while loading',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    markerVariant: {
+      description: 'Marker style: pin, dot, or hybrid',
+      table: { defaultValue: { summary: 'pin' } },
+    },
+    showPopup: {
+      description: 'Show popup bubbles when markers are clicked',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    hideAttribution: {
+      description: 'Hide Leaflet attribution control',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    scrollWheelZoom: {
+      description: 'Enable scroll wheel zoom on the map',
+      table: { defaultValue: { summary: 'true' } },
+    },
   },
 };
 

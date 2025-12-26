@@ -63,15 +63,11 @@ export interface ListProps<T = unknown> extends Omit<ComponentPropsWithoutRef<'d
    */
   showDividers?: boolean;
 
-  // Phase 1: Loading State
   /**
-   * Loading state - renders items with loading context or skeleton items
+   * Loading state - renders items with loading context or skeleton items.
+   * When true: if items provided, they render (pass loading prop to ListItem for best UX);
+   * if no items, renders skeleton items based on loadingItems count.
    * @default false
-   *
-   * @remarks
-   * When true:
-   * - If items array has content, they will be rendered (pass items with loading prop for best UX)
-   * - If no items, renders skeleton list items based on loadingItems count
    */
   loading?: boolean;
 
@@ -81,9 +77,8 @@ export interface ListProps<T = unknown> extends Omit<ComponentPropsWithoutRef<'d
    */
   loadingItems?: number;
 
-  // Phase 1: Error State
   /**
-   * Error state - shows error message
+   * Error state - shows error message.
    * @default false
    */
   error?: boolean;
@@ -104,9 +99,8 @@ export interface ListProps<T = unknown> extends Omit<ComponentPropsWithoutRef<'d
    */
   onErrorRetry?: () => void;
 
-  // Phase 1: Enhanced Empty State
   /**
-   * Empty state title when no items provided
+   * Empty state title when no items provided.
    * @default 'No items'
    */
   emptyTitle?: string;
@@ -124,7 +118,6 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
     renderItem,
     emptyMessage = 'No items found.',
     showDividers = true,
-    // Phase 1 props
     loading = false,
     loadingItems = 3,
     error = false,
@@ -156,7 +149,6 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
     return <div className={styles.headerMedia}>{header.thumbnail}</div>;
   };
 
-  // Phase 1: Loading State - Smart loading based on items
   const renderLoading = () => {
     const itemCount = items.length;
 
@@ -175,10 +167,10 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
           </div>
           <div className={styles.itemBody}>
             <div className={styles.itemHeader}>
-              <Skeleton width="60%" height={16} />
+              <Skeleton width={180} height={16} />
             </div>
-            <div className={styles.itemSubtitleRow} style={{ marginTop: 'var(8px)' }}>
-              <Skeleton width="40%" height={14} />
+            <div className={styles.itemSubtitleRow} style={{ marginTop: '8px' }}>
+              <Skeleton width={120} height={14} />
             </div>
           </div>
           <div className={styles.itemTrailing}>
@@ -189,7 +181,6 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
     ));
   };
 
-  // Phase 1: Error State - Early return
   if (error) {
     return (
       <div ref={ref} className={cn(styles.listContainer, className)} {...rest}>
@@ -223,7 +214,6 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
     );
   }
 
-  // Phase 1: Enhanced Empty State
   const renderEmptyState = () => {
     // Custom empty state
     if (emptyState) {

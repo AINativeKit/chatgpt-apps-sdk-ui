@@ -103,6 +103,18 @@ const meta: Meta<MapProps> = {
     onToggleFullscreen: { control: false },
     compactMapProps: { control: false },
     fullscreenMapProps: { control: false },
+    autoExpandOnCarouselClick: {
+      description: 'Auto-expand to fullscreen when clicking a carousel card',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    loading: {
+      description: 'Shows skeleton map and carousel while loading',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
   },
 };
 

@@ -15,20 +15,62 @@ const meta: Meta<MapPlaceCardProps> = {
     onErrorRetry: { control: false },
     onImageLoad: { control: false },
     onImageError: { control: false },
-    variant: { table: { defaultValue: { summary: 'carousel' } } },
-    selected: { table: { defaultValue: { summary: 'false' } } },
-    loading: { table: { defaultValue: { summary: 'false' } } },
-    error: { table: { defaultValue: { summary: 'false' } } },
-    errorTitle: { table: { defaultValue: { summary: 'Failed to load' } } },
-    emptyTitle: { table: { defaultValue: { summary: 'No location' } } },
-    badgeVariant: { table: { defaultValue: { summary: 'soft' } } },
-    badgeSize: { table: { defaultValue: { summary: 'sm' } } },
-    badgePill: { table: { defaultValue: { summary: 'true' } } },
-    badgeColor: { table: { defaultValue: { summary: 'secondary' } } },
-    badgePosition: { table: { defaultValue: { summary: 'top-right' } } },
-    imageLoading: { table: { defaultValue: { summary: 'lazy' } } },
-    titleLines: { table: { defaultValue: { summary: '1' } } },
-    subtitleLines: { table: { defaultValue: { summary: '1' } } },
+    variant: {
+      description: 'Card layout variant',
+      table: { defaultValue: { summary: 'carousel' } },
+    },
+    selected: {
+      description: 'Whether the card is selected',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    loading: {
+      description: 'Shows skeleton placeholder',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { defaultValue: { summary: 'Failed to load' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title',
+      table: { defaultValue: { summary: 'No location' } },
+    },
+    badgeVariant: {
+      description: 'Badge visual style',
+      table: { defaultValue: { summary: 'soft' } },
+    },
+    badgeSize: {
+      description: 'Badge size',
+      table: { defaultValue: { summary: 'sm' } },
+    },
+    badgePill: {
+      description: 'Use pill-shaped badge',
+      table: { defaultValue: { summary: 'true' } },
+    },
+    badgeColor: {
+      description: 'Badge color variant',
+      table: { defaultValue: { summary: 'secondary' } },
+    },
+    badgePosition: {
+      description: 'Badge position on the image',
+      table: { defaultValue: { summary: 'top-right' } },
+    },
+    imageLoading: {
+      description: 'Image loading strategy',
+      table: { defaultValue: { summary: 'lazy' } },
+    },
+    titleLines: {
+      description: 'Max lines for title (1-3)',
+      table: { defaultValue: { summary: '1' } },
+    },
+    subtitleLines: {
+      description: 'Max lines for subtitle (1-3)',
+      table: { defaultValue: { summary: '1' } },
+    },
   },
 };
 

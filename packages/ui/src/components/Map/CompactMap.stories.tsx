@@ -103,13 +103,34 @@ const meta: Meta<CompactMapProps> = {
     onExpand: { control: false },
     carouselProps: { control: false },
     renderMarker: { control: false },
-    height: { table: { defaultValue: { summary: '478px' } } },
-    loading: { table: { defaultValue: { summary: 'false' } } },
-    error: { table: { defaultValue: { summary: 'false' } } },
-    markerVariant: { table: { defaultValue: { summary: 'pin' } } },
-    showPopup: { table: { defaultValue: { summary: 'false' } } },
-    hideAttribution: { table: { defaultValue: { summary: 'false' } } },
-    autoExpandOnCarouselClick: { table: { defaultValue: { summary: 'false' } } },
+    height: {
+      description: 'Fixed height for the compact map container',
+      table: { defaultValue: { summary: '478px' } },
+    },
+    loading: {
+      description: 'Shows skeleton UI while loading',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    markerVariant: {
+      description: 'Marker style: pin, dot, or hybrid',
+      table: { defaultValue: { summary: 'pin' } },
+    },
+    showPopup: {
+      description: 'Show popup bubbles when markers are clicked',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    hideAttribution: {
+      description: 'Hide Leaflet attribution control',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    autoExpandOnCarouselClick: {
+      description: 'Auto-expand to fullscreen when clicking a carousel card',
+      table: { defaultValue: { summary: 'false' } },
+    },
   },
 };
 

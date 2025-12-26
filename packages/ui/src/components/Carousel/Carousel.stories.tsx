@@ -16,6 +16,66 @@ const meta: Meta<CarouselProps> = {
     onApi: { control: false },
     onErrorRetry: { control: false },
     emptyState: { control: false },
+    align: {
+      description: 'Alignment of slides within the viewport',
+      table: { defaultValue: { summary: 'center' } },
+    },
+    loop: {
+      description: 'Enable infinite looping',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    showNavigation: {
+      description: 'Show navigation buttons (prev/next arrows)',
+      table: { defaultValue: { summary: 'true' } },
+    },
+    showEdgeGradients: {
+      description: 'Show edge gradient overlays',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    gap: {
+      description: 'Gap between slides',
+      table: { defaultValue: { summary: 'var(32px)' } },
+    },
+    flushStart: {
+      description: 'Remove leading offset so first slide is flush with viewport start',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    startInset: {
+      description: 'Custom left inset inside the carousel container',
+      table: { defaultValue: { summary: '0' } },
+    },
+    viewportPadding: {
+      description: 'Custom viewport padding (top and bottom)',
+      table: { defaultValue: { summary: '0' } },
+    },
+    dragFree: {
+      description: 'Enable drag-free scrolling without snapping',
+      table: { defaultValue: { summary: 'true' } },
+    },
+    startIndex: {
+      description: 'Initial slide index to start at',
+      table: { defaultValue: { summary: '0' } },
+    },
+    loading: {
+      description: 'Renders skeleton slides while loading',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    loadingSlides: {
+      description: 'Number of skeleton slides when loading',
+      table: { defaultValue: { summary: '6' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { defaultValue: { summary: 'Failed to load items' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title when no children',
+      table: { defaultValue: { summary: 'No items' } },
+    },
   },
 };
 
