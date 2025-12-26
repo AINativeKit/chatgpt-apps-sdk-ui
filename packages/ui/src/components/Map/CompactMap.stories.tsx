@@ -108,6 +108,7 @@ const meta: Meta<CompactMapProps> = {
     error: { table: { defaultValue: { summary: 'false' } } },
     markerVariant: { table: { defaultValue: { summary: 'pin' } } },
     showPopup: { table: { defaultValue: { summary: 'false' } } },
+    hideAttribution: { table: { defaultValue: { summary: 'false' } } },
     autoExpandOnCarouselClick: { table: { defaultValue: { summary: 'false' } } },
   },
 };
@@ -455,7 +456,6 @@ CustomIcons.parameters = {
     features: [
       { icon: <CustomHeartSVG />, label: 'Popular' },
       { icon: <StarFilled />, label: '4.9' },
-      { label: '$$$' }
     ],
   }]}
 />`,
