@@ -97,61 +97,115 @@ const meta: Meta<CompactMapProps> = {
     layout: 'padded',
   },
   argTypes: {
-    locations: { description: 'Array of location data objects', control: false },
-    onLocationSelect: { description: 'Callback when location is selected', control: false },
-    onLocationActive: { description: 'Callback when location is hovered', control: false },
-    onExpand: { description: 'Callback when expand button is clicked', control: false },
-    carouselProps: { description: 'Props forwarded to carousel component', control: false },
-    renderMarker: { description: 'Custom marker renderer function', control: false },
+    locations: {
+      description: 'Array of location data objects',
+      control: false,
+      table: { type: { summary: 'LocationData[]' } },
+    },
+    onLocationSelect: {
+      description: 'Callback when location is selected',
+      control: false,
+      table: { type: { summary: '(id: string | undefined) => void' } },
+    },
+    onLocationActive: {
+      description: 'Callback when location is hovered',
+      control: false,
+      table: { type: { summary: '(id: string | undefined) => void' } },
+    },
+    onExpand: {
+      description: 'Callback when expand button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    carouselProps: {
+      description: 'Props forwarded to carousel component',
+      control: false,
+      table: { type: { summary: 'Partial<LocationCarouselProps>' } },
+    },
+    renderMarker: {
+      description: 'Custom marker renderer function',
+      control: false,
+      table: { type: { summary: '(params: RenderMarkerParams) => ReactElement | null' } },
+    },
+    className: {
+      description: 'Class name for root container',
+      control: false,
+      table: { type: { summary: 'string' } },
+    },
+    style: {
+      description: 'Style overrides for root container',
+      control: false,
+      table: { type: { summary: 'CSSProperties' } },
+    },
+    mapClassName: {
+      description: 'Class name for internal MapView',
+      control: false,
+      table: { type: { summary: 'string' } },
+    },
+    mapStyle: {
+      description: 'Style overrides for internal MapView',
+      control: false,
+      table: { type: { summary: 'CSSProperties' } },
+    },
     height: {
       description: 'Fixed height for the compact map container',
-      table: { defaultValue: { summary: '478px' } },
+      table: { type: { summary: 'number | string' }, defaultValue: { summary: '478px' } },
     },
     defaultCenter: {
       description: 'Default map center coordinates [lat, lng]',
-      table: { defaultValue: { summary: '[37.7749, -122.4194]' } },
+      table: { type: { summary: '[number, number]' }, defaultValue: { summary: '[37.7749, -122.4194]' } },
     },
     defaultZoom: {
       description: 'Default zoom level',
-      table: { defaultValue: { summary: '12' } },
+      table: { type: { summary: 'number' }, defaultValue: { summary: '12' } },
     },
     selectedId: {
       description: 'ID of the currently selected location',
+      table: { type: { summary: 'string' } },
     },
     activeId: {
       description: 'ID of the currently active/hovered location',
+      table: { type: { summary: 'string' } },
+    },
+    isInspectorOpen: {
+      description: 'Whether the inspector panel is open',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     loading: {
       description: 'Shows skeleton UI while loading',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     markerVariant: {
       description: 'Marker style: pin, dot, or hybrid',
-      table: { defaultValue: { summary: 'pin' } },
+      table: { type: { summary: "'pin' | 'dot' | 'hybrid'" }, defaultValue: { summary: 'pin' } },
     },
     showPopup: {
       description: 'Show popup bubbles when markers are clicked',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     hideAttribution: {
       description: 'Hide Leaflet attribution control',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     scrollWheelZoom: {
       description: 'Enable scroll wheel zoom on the map',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     tileProvider: {
       description: 'Tile provider preset or custom config',
-      table: { defaultValue: { summary: 'carto-voyager' } },
+      table: { type: { summary: 'TileProviderPreset | TileProviderConfig' }, defaultValue: { summary: 'carto-voyager' } },
+    },
+    tileApiKey: {
+      description: 'API key for premium tile providers',
+      table: { type: { summary: 'string' } },
     },
     autoExpandOnCarouselClick: {
       description: 'Auto-expand to fullscreen when clicking a carousel card',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
   },
 };

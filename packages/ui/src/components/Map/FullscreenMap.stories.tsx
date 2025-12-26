@@ -152,56 +152,107 @@ const meta: Meta<FullscreenMapProps> = {
     layout: 'padded',
   },
   argTypes: {
-    locations: { description: 'Array of location data objects', control: false },
-    onLocationSelect: { description: 'Callback when location is selected', control: false },
-    onCollapse: { description: 'Callback when collapse button is clicked', control: false },
-    onErrorRetry: { description: 'Callback when retry button is clicked', control: false },
-    renderMarker: { description: 'Custom marker renderer function', control: false },
+    locations: {
+      description: 'Array of location data objects',
+      control: false,
+      table: { type: { summary: 'LocationData[]' } },
+    },
+    onLocationSelect: {
+      description: 'Callback when location is selected',
+      control: false,
+      table: { type: { summary: '(id: string | undefined) => void' } },
+    },
+    onCollapse: {
+      description: 'Callback when collapse button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onErrorRetry: {
+      description: 'Callback when retry button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    renderMarker: {
+      description: 'Custom marker renderer function',
+      control: false,
+      table: { type: { summary: '(params: RenderMarkerParams) => ReactElement | null' } },
+    },
+    className: {
+      description: 'Class name for root container',
+      control: false,
+      table: { type: { summary: 'string' } },
+    },
     defaultCenter: {
       description: 'Default map center coordinates [lat, lng]',
-      table: { defaultValue: { summary: '[37.7749, -122.4194]' } },
+      table: { type: { summary: '[number, number]' }, defaultValue: { summary: '[37.7749, -122.4194]' } },
     },
     defaultZoom: {
       description: 'Default zoom level',
-      table: { defaultValue: { summary: '12' } },
+      table: { type: { summary: 'number' }, defaultValue: { summary: '12' } },
     },
     selectedId: {
       description: 'ID of the currently selected location',
+      table: { type: { summary: 'string' } },
     },
     activeId: {
       description: 'ID of the currently active/hovered location',
+      table: { type: { summary: 'string' } },
     },
     tileProvider: {
       description: 'Tile provider preset or custom config',
-      table: { defaultValue: { summary: 'carto-voyager' } },
+      table: { type: { summary: 'TileProviderPreset | TileProviderConfig' }, defaultValue: { summary: 'carto-voyager' } },
+    },
+    tileApiKey: {
+      description: 'API key for premium tile providers',
+      table: { type: { summary: 'string' } },
     },
     height: {
       description: 'Fixed height for the fullscreen map container',
-      table: { defaultValue: { summary: '100vh' } },
+      table: { type: { summary: 'number | string' }, defaultValue: { summary: '100vh' } },
     },
     loading: {
       description: 'Shows skeleton UI while loading',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     error: {
       description: 'Shows error message when true',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Failed to load map' } },
+    },
+    errorMessage: {
+      description: 'Custom error message',
+      table: { type: { summary: 'string' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title when no locations',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No locations' } },
+    },
+    emptyMessage: {
+      description: 'Empty state message',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No locations to display' } },
     },
     markerVariant: {
       description: 'Marker style: pin, dot, or hybrid',
-      table: { defaultValue: { summary: 'pin' } },
+      table: { type: { summary: "'pin' | 'dot' | 'hybrid'" }, defaultValue: { summary: 'pin' } },
     },
     showPopup: {
       description: 'Show popup bubbles when markers are clicked',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     hideAttribution: {
       description: 'Hide Leaflet attribution control',
-      table: { defaultValue: { summary: 'false' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
     scrollWheelZoom: {
       description: 'Enable scroll wheel zoom on the map',
-      table: { defaultValue: { summary: 'true' } },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
+    },
+    isInspectorOpen: {
+      description: 'Whether the inspector panel is open',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
   },
 };
