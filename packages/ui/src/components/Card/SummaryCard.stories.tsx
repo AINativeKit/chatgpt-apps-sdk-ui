@@ -3,7 +3,7 @@ import { SummaryCard, type SummaryCardProps } from './SummaryCard';
 import { Clock, MapPin, StarFilled } from '@openai/apps-sdk-ui/components/Icon';
 
 const meta: Meta<SummaryCardProps> = {
-  title: 'Composed Components/Cards/SummaryCard',
+  title: 'Components/Cards/SummaryCard',
   component: SummaryCard,
   tags: ['!dev'],
   parameters: {

@@ -37,7 +37,7 @@ const sampleLocations: LocationData[] = [
 ];
 
 const meta: Meta<CompactMapProps> = {
-  title: 'Composed Components/Maps/Custom Markers',
+  title: 'Components/Maps/Custom Markers',
   component: CompactMap,
   tags: ['!dev'],
   parameters: {

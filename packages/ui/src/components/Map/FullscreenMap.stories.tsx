@@ -145,7 +145,7 @@ const sampleLocations: LocationData[] = [
 ];
 
 const meta: Meta<FullscreenMapProps> = {
-  title: 'Composed Components/Maps/FullscreenMap',
+  title: 'Components/Maps/FullscreenMap',
   component: FullscreenMap,
   tags: ['!dev'],
   parameters: {

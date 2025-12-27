@@ -8,7 +8,7 @@ import {
 } from '@openai/apps-sdk-ui/components/Icon';
 
 const meta: Meta<CardProps> = {
-  title: 'Composed Components/Cards/Cards',
+  title: 'Components/Cards/Cards',
   component: Card,
   tags: ['!dev'],
   parameters: {

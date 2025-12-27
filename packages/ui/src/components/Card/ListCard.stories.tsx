@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react';
 import { ListCard, type ListCardProps, type ListCardItem } from './ListCard';
 
 const meta: Meta<ListCardProps> = {
-  title: 'Composed Components/Cards/ListCard',
+  title: 'Components/Cards/ListCard',
   component: ListCard,
   tags: ['!dev'],
   parameters: {

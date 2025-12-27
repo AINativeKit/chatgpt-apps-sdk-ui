@@ -90,7 +90,7 @@ const sampleLocations: LocationData[] = [
 ];
 
 const meta: Meta<CompactMapProps> = {
-  title: 'Composed Components/Maps/CompactMap',
+  title: 'Components/Maps/CompactMap',
   component: CompactMap,
   tags: ['!dev'],
   parameters: {

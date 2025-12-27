@@ -3,7 +3,7 @@ import { AlbumCard, type AlbumCardProps } from './AlbumCard';
 import type { Album } from './types';
 
 const meta: Meta<AlbumCardProps> = {
-  title: 'Composed Components/Cards/AlbumCard',
+  title: 'Components/Cards/AlbumCard',
   component: AlbumCard,
   tags: ['!dev'],
   parameters: {

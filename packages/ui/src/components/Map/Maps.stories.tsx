@@ -91,7 +91,7 @@ const sampleLocations: LocationData[] = [
 const CHATGPT_APP_HEIGHT = '478px';
 
 const meta: Meta<MapProps> = {
-  title: 'Composed Components/Maps/Map',
+  title: 'Components/Maps/Map',
   component: Map,
   tags: ['!dev'],
   parameters: {

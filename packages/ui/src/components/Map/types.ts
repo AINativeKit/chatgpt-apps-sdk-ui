@@ -1,3 +1,5 @@
+import type { AvatarListItem } from '../AvatarList';
+
 export interface Feature {
   /**
    * Optional icon to display before label.
@@ -28,32 +30,10 @@ export interface Action {
   onClick?: () => void;
 }
 
-export interface ListItem {
-  /**
-   * Unique identifier for the list item.
-   */
-  id: string;
-
-  /**
-   * Optional image URL for display (can be avatar, icon, or any image).
-   */
-  image?: string;
-
-  /**
-   * Item title or name.
-   */
-  title: string;
-
-  /**
-   * Optional description or content.
-   */
-  description?: string;
-
-  /**
-   * Optional metadata (author, date, rating, etc.).
-   */
-  metadata?: string;
-}
+/**
+ * @deprecated Use AvatarListItem from '@ainativekit/ui' instead
+ */
+export type ListItem = AvatarListItem;
 
 export interface MapInspectorList {
   /**
@@ -64,7 +44,7 @@ export interface MapInspectorList {
   /**
    * List items.
    */
-  items: ListItem[];
+  items: AvatarListItem[];
 }
 
 // Forward declare LocationData to avoid circular reference

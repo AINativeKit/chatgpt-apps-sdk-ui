@@ -4,7 +4,7 @@ import { ImageCard } from '../Card/ImageCard';
 import { SummaryCard } from '../Card/SummaryCard';
 
 const meta: Meta<CarouselProps> = {
-  title: 'Composed Components/Carousels',
+  title: 'Components/Carousels',
   component: Carousel,
   tags: ['!dev'],
   parameters: {

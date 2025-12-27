@@ -38,6 +38,15 @@ export type { ExpandableTextProps } from './ExpandableText';
 export { PhotoCarousel } from './PhotoCarousel';
 export type { PhotoCarouselProps } from './PhotoCarousel';
 
+export { AvatarList } from './AvatarList';
+export type { AvatarListProps, AvatarListItem } from './AvatarList';
+
+export { Sidebar } from './Sidebar';
+export type { SidebarProps } from './Sidebar';
+
+export { Modal } from './Modal';
+export type { ModalProps } from './Modal';
+
 // Composed (medium complexity, general-purpose)
 export { Card, ImageCard, SummaryCard, ListCard } from './Card';
 export type {

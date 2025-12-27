@@ -21,6 +21,7 @@ declare const styles: {
   readonly description: string;
   readonly bottomAction: string;
   readonly bottomActionButton: string;
+  readonly listSection: string;
 };
 
 export default styles;

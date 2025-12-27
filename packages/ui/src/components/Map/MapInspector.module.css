@@ -219,3 +219,8 @@
 .bottomActionButton {
   width: 100%;
 }
+
+/* List section spacing */
+.listSection {
+  padding: 0 calc(var(--spacing) * 5) calc(var(--spacing) * 4);
+}

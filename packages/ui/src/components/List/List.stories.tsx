@@ -4,7 +4,7 @@ import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { StarFilled, MapPin, PlusCircleAdd } from '@openai/apps-sdk-ui/components/Icon';
 
 const meta: Meta<ListProps<unknown>> = {
-  title: 'Composed Components/Lists',
+  title: 'Components/Lists',
   component: List,
   subcomponents: { ListItem },
   tags: ['!dev'],

@@ -37,7 +37,7 @@ const sampleLocations: LocationData[] = [
 ];
 
 const meta: Meta<CompactMapProps> = {
-  title: 'Composed Components/Maps/Tile Providers',
+  title: 'Components/Maps/Tile Providers',
   component: CompactMap,
   tags: ['!dev'],
   parameters: {

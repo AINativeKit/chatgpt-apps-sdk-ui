@@ -3,7 +3,7 @@ import { MapPlaceCard, type MapPlaceCardProps } from './MapPlaceCard';
 import { StarFilled, Clock } from '@openai/apps-sdk-ui/components/Icon';
 
 const meta: Meta<MapPlaceCardProps> = {
-  title: 'Composed Components/Cards/MapPlaceCard',
+  title: 'Components/Cards/MapPlaceCard',
   component: MapPlaceCard,
   tags: ['!dev'],
   parameters: {

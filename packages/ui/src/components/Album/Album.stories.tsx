@@ -120,7 +120,7 @@ const sampleAlbums: AlbumType[] = [
 ];
 
 const meta: Meta<AlbumProps> = {
-  title: 'Composed Components/Albums',
+  title: 'Components/Albums',
   component: Album,
   tags: ['!dev'],
   parameters: {
