@@ -14,4 +14,7 @@ const theme = getPersistedTheme();
 
 addons.setConfig({
   theme: theme === 'dark' ? themes.dark : themes.light,
+  sidebar: {
+    showRoots: true,
+  },
 });

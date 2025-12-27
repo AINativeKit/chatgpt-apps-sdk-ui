@@ -108,33 +108,17 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        method: 'configure',
         order: [
-          // Overview
           'Introduction',
           'Getting Started',
-          // Gallery examples
-          'Gallery',
-          ['Albums', 'Carousel', 'Pizza List', 'Maps', 'Cards'],
-          // Design foundations
           'Design Tokens',
-          ['Colors', 'Typography', 'Spacing', 'Radius', 'Elevation'],
-          // Components by category
-          'Cards',
-          ['Card', 'SummaryCard', 'ImageCard', 'ListCard'],
-          'Lists',
-          ['List', 'ListItem', 'AvatarList'],
-          'Media',
-          ['Album', 'AlbumCard', 'Carousel', 'PhotoCarousel'],
-          'Maps',
-          ['Maps', 'CompactMap', 'FullscreenMap', 'MapPlaceCard', 'CustomMarkers', 'TileProviders'],
+          'Gallery',
+          'Components',
           'Feedback',
-          ['Modal', 'Sidebar', 'Skeleton'],
+          'Media',
           'Utilities',
-          ['ExpandableText', 'Features', 'Overlay'],
-          // Hooks at the end
-          'Hooks',
-          ['ChatGPT SDK Integration'],
+          'Internal',
+          'OpenAI Integration',
         ],
       },
     },
