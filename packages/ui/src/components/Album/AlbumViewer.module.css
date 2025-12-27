@@ -40,7 +40,7 @@
   pointer-events: none;
   z-index: 10;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     display: block;
   }
 }
@@ -75,7 +75,7 @@
   padding-top: calc(var(--spacing) * 4);
   padding-bottom: calc(var(--spacing) * 4);
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     padding-top: calc(var(--spacing) * 8);
     padding-bottom: calc(var(--spacing) * 8);
   }
@@ -97,7 +97,7 @@
   padding-left: calc(var(--spacing) * 4);
   padding-right: calc(var(--spacing) * 4);
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     padding-left: calc(var(--spacing) * 8);
     padding-right: calc(var(--spacing) * 8);
   }
@@ -146,7 +146,7 @@
     background-color 0.2s ease,
     box-shadow 0.2s ease;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     display: none;
   }
 }
@@ -180,7 +180,7 @@
   justify-content: center;
   pointer-events: none;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     left: 160px; /* Offset by sidebar width to center over photo only */
   }
 }

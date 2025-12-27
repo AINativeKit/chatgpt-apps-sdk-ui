@@ -12,7 +12,7 @@
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     border-radius: var(--radius-4xl);
     padding: 0 calc(var(--spacing) * 5) calc(var(--spacing) * 3);
   }
@@ -42,7 +42,7 @@
   box-shadow: 0 0 0 1px var(--color-border-subtle);
   overflow: hidden;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     width: 72px;
     height: 72px;
   }
@@ -74,7 +74,7 @@
   text-overflow: initial;
   white-space: normal;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     font-size: 20px;
     line-height: 28px;
     letter-spacing: -0.4px;
@@ -99,7 +99,7 @@
   justify-content: flex-end;
   padding-right: calc(var(--spacing) * 2);
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     display: flex;
   }
 }
@@ -109,7 +109,7 @@
   padding: calc(var(--spacing) * 2) 0 calc(var(--spacing) * 2);
   width: 100%;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     display: none;
   }
 }
@@ -179,7 +179,7 @@
   transition: background-color 0.15s ease;
   min-width: 0;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     padding: 0 calc(var(--spacing) * 3);
     margin: 0 calc(var(--spacing) * -1);
   }
@@ -213,7 +213,7 @@
   border-bottom: 1px solid var(--color-border-subtle);
   padding: calc(var(--spacing) * 3) 0;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     grid-template-columns: auto auto minmax(0, 1fr) auto;
     column-gap: calc(var(--spacing) * 2);
   }
@@ -244,7 +244,7 @@
   background: var(--color-surface-secondary);
   grid-column: 1;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     width: 44px;
     height: 44px;
   }
@@ -270,7 +270,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     font-size: var(--font-text-md-size);
     line-height: var(--font-text-md-line-height);
     font-weight: var(--font-text-md-weight);
@@ -287,7 +287,7 @@
   grid-column: 2;
   align-self: stretch;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     grid-column: 3;
   }
 }
@@ -301,7 +301,7 @@
   grid-column: 3;
   justify-self: end;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     grid-column: 4;
   }
 }
@@ -324,7 +324,7 @@
   color: var(--color-text-secondary);
   margin-top: var(--spacing);
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     margin-top: calc(var(--spacing) * 0.5);
   }
 }
@@ -341,7 +341,7 @@
   font-weight: var(--font-text-sm-weight);
   letter-spacing: var(--font-text-sm-tracking);
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     display: none;
   }
 }
@@ -385,7 +385,7 @@
   width: calc(var(--spacing) * 3);
   flex-shrink: 0;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     display: block;
     grid-column: 2;
     justify-self: end;
@@ -395,7 +395,7 @@
 .itemMetadataDesktop {
   display: none;
 
-  @mixin breakpoint md {
+  @mixin breakpoint sm {
     display: block;
     padding: calc(var(--spacing) * 0.5) var(--spacing);
     text-align: end;
