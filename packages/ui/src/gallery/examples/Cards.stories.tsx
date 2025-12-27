@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ImageCard, SummaryCard, ListCard } from '../../components/Card';
 import { PropsTable } from '../../tokens/PropsTable';
-import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 import { PlusCircleAdd, Star } from '@openai/apps-sdk-ui/components/Icon';
 
 // Dummy component for Storybook
@@ -1150,16 +1150,7 @@ const CardsComponent = () => {
           Quick Reference
         </h2>
 
-        <div style={codeBlockStyles.primary}>
-          <pre
-            style={{
-              margin: 0,
-              color: 'var(--color-text)',
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}
-          >
-            {`// ImageCard - Visual-first content
+        <CodeBlock language="tsx">{`// ImageCard - Visual-first content
 <ImageCard
   image="url-or-object"
   title="Product Name"
@@ -1191,9 +1182,7 @@ const CardsComponent = () => {
   size="compact"
   imageAspectRatio="4/3"
   description="Description"
-/>`}
-          </pre>
-        </div>
+/>`}</CodeBlock>
       </section>
 
       {/* Key Features */}

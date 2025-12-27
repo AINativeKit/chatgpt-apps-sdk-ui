@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Album } from '../../components/Album';
 import type { Album as AlbumType } from '../../components/Album/types';
 import { PropsTable } from '../../tokens/PropsTable';
-import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 
 // Dummy component for Storybook
 const AlbumsExample = () => null;
@@ -306,16 +306,7 @@ const AlbumsComponent: React.FC = () => {
           array of photos.
         </p>
 
-        <div style={codeBlockStyles.primary}>
-          <pre
-            style={{
-              margin: 0,
-              color: 'var(--color-text)',
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}
-          >
-            {`interface Album {
+        <CodeBlock language="typescript">{`interface Album {
   id: string;
   title: string;
   cover: string;
@@ -345,9 +336,7 @@ const albums: Album[] = [
       // ... more photos
     ],
   },
-];`}
-          </pre>
-        </div>
+];`}</CodeBlock>
 
         <div
           style={{
@@ -390,16 +379,7 @@ const albums: Album[] = [
           Quick Start
         </h2>
 
-        <div style={codeBlockStyles.primary}>
-          <pre
-            style={{
-              margin: 0,
-              color: 'var(--color-text)',
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}
-          >
-            {`import { Album } from '@ainativekit/ui';
+        <CodeBlock language="tsx">{`import { Album } from '@ainativekit/ui';
 
 // 1. Define your albums data
 const albums = [
@@ -432,9 +412,7 @@ function MyGallery() {
       showNavigation={true}
     />
   );
-}`}
-          </pre>
-        </div>
+}`}</CodeBlock>
       </section>
 
       {/* Component Props Section */}

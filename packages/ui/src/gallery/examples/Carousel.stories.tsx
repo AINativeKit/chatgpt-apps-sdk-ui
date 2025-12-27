@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Carousel as CarouselComponent } from '../../components/Carousel';
 import { SummaryCard } from '../../components/Card';
 import { PropsTable } from '../../tokens/PropsTable';
-import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 
 // Dummy component for Storybook
 const CarouselExample = () => null;
@@ -199,16 +199,7 @@ export const Carousel: Story = {
             metadata.
           </p>
 
-          <div style={codeBlockStyles.primary}>
-            <pre
-              style={{
-                margin: 0,
-                color: 'var(--color-text)',
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-              }}
-            >
-              {`type FeatureItem = string | { icon?: IconName; label: string };
+          <CodeBlock language="typescript">{`type FeatureItem = string | { icon?: IconName; label: string };
 
 interface SummaryCardItem {
   id: string;
@@ -238,9 +229,7 @@ const items: SummaryCardItem[] = [
     ],
   },
   // ... more items
-];`}
-            </pre>
-          </div>
+];`}</CodeBlock>
 
           <div
             style={{
@@ -284,16 +273,7 @@ const items: SummaryCardItem[] = [
             Quick Start
           </h2>
 
-          <div style={codeBlockStyles.primary}>
-            <pre
-              style={{
-                margin: 0,
-                color: 'var(--color-text)',
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-              }}
-            >
-              {`import { Carousel } from '@ainativekit/ui';
+          <CodeBlock language="tsx">{`import { Carousel } from '@ainativekit/ui';
 import { SummaryCard } from '@ainativekit/ui';
 
 // 1. Define your carousel items with flexible features
@@ -329,7 +309,7 @@ const items = [
 // 2. Render the carousel with SummaryCard (compact)
 function MyCarousel() {
   return (
-    <CarouselComponent>
+    <Carousel>
       {items.map((item) => (
         <SummaryCard
           key={item.id}
@@ -346,11 +326,9 @@ function MyCarousel() {
           onButtonClick={() => handleOrder(item.id)}
         />
       ))}
-    </CarouselComponent>
+    </Carousel>
   );
-}`}
-            </pre>
-          </div>
+}`}</CodeBlock>
         </section>
 
         {/* Component Props Section */}

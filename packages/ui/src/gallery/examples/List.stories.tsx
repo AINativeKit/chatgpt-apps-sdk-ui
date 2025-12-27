@@ -2,8 +2,9 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { List, ListItem } from '../../components/List';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { PlusCircleAdd, CheckCircleFilled } from '@openai/apps-sdk-ui/components/Icon';
 import { PropsTable } from '../../tokens/PropsTable';
-import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 
 // Dummy component for Storybook
 const ListExample = () => null;
@@ -169,7 +170,11 @@ const PizzaListComponent: React.FC = () => {
                       handleTogglePlace(place.id);
                     }}
                   >
-                    {selectedPlaces.includes(place.id) ? '✓' : '+'}
+                    {selectedPlaces.includes(place.id) ? (
+                      <CheckCircleFilled />
+                    ) : (
+                      <PlusCircleAdd />
+                    )}
                   </Button>
                 }
               />
@@ -206,16 +211,7 @@ const PizzaListComponent: React.FC = () => {
           Use this structure for displaying ranked lists with ratings and metadata:
         </p>
 
-        <div style={codeBlockStyles.primary}>
-          <pre
-            style={{
-              margin: 0,
-              color: 'var(--color-text)',
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}
-          >
-            {`interface PizzaPlace {
+        <CodeBlock language="tsx">{`interface PizzaPlace {
   id: string;
   name: string;
   city: string;
@@ -231,7 +227,7 @@ type FeatureItem = string | { icon?: IconName; label: string };
     title: 'National Best Pizza List',
     subtitle: 'A ranking of the best pizzerias',
     thumbnail: pizzaIcon,
-    action: <Button variant="primary">Save List</Button>,
+    action: <Button color="primary" variant="solid">Save List</Button>,
   }}
   items={pizzaPlaces}
   renderItem={(place, index) => (
@@ -249,9 +245,7 @@ type FeatureItem = string | { icon?: IconName; label: string };
       onClick={() => handleSelectPlace(place.id)}
     />
   )}
-/>`}
-          </pre>
-        </div>
+/>`}</CodeBlock>
       </section>
 
       {/* Quick Start */}
@@ -263,16 +257,7 @@ type FeatureItem = string | { icon?: IconName; label: string };
             <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '12px' }}>
               Basic Ranked List
             </h3>
-            <div style={codeBlockStyles.primary}>
-              <pre
-                style={{
-                  margin: 0,
-                  color: 'var(--color-text)',
-                  whiteSpace: 'pre-wrap',
-                  wordBreak: 'break-word',
-                }}
-              >
-                {`<List
+            <CodeBlock language="tsx">{`<List
   items={pizzaPlaces}
   renderItem={(place, index) => (
     <ListItem
@@ -282,32 +267,19 @@ type FeatureItem = string | { icon?: IconName; label: string };
       metadata={place.city}
     />
   )}
-/>`}
-              </pre>
-            </div>
+/>`}</CodeBlock>
           </div>
 
           <div>
             <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '12px' }}>
               With Feature Icons
             </h3>
-            <div style={codeBlockStyles.primary}>
-              <pre
-                style={{
-                  margin: 0,
-                  color: 'var(--color-text)',
-                  whiteSpace: 'pre-wrap',
-                  wordBreak: 'break-word',
-                }}
-              >
-                {`// Feature items can be simple strings or icon-label pairs
+            <CodeBlock language="typescript">{`// Feature items can be simple strings or icon-label pairs
 features={[
   'Wood-fired',                              // Simple string
   { icon: 'star', label: '4.8' },           // Icon with label
   { icon: 'map-pin', label: 'Downtown' },   // Multiple icons
-]}`}
-              </pre>
-            </div>
+]}`}</CodeBlock>
           </div>
         </div>
       </section>

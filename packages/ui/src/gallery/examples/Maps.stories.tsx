@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Map, FullscreenMap } from '../../components/Map';
 import type { LocationData } from '../../components/Map/types';
 import { PropsTable } from '../../tokens/PropsTable';
-import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 
 // Dummy component for Storybook
 const MapsExample = () => null;
@@ -408,16 +408,7 @@ const MapsComponent: React.FC = () => {
           changes, so clicking ChatGPT's X button will collapse the map.
         </p>
 
-        <div style={codeBlockStyles.primary}>
-          <pre
-            style={{
-              margin: 0,
-              color: 'var(--color-text)',
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}
-          >
-            {`import { useState } from 'react';
+        <CodeBlock language="tsx">{`import { useState } from 'react';
 import { Map } from '@ainativekit/ui';
 
 function MyMapApp() {
@@ -435,9 +426,7 @@ function MyMapApp() {
       defaultZoom={12}
     />
   );
-}`}
-          </pre>
-        </div>
+}`}</CodeBlock>
 
         <div
           style={{

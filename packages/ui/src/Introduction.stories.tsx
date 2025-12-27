@@ -16,10 +16,12 @@ import {
   ThumbDown,
   Copy,
   DotsHorizontal,
+  PlusCircleAdd,
+  CheckCircleFilled,
 } from '@openai/apps-sdk-ui/components/Icon';
 import { Map, FullscreenMap } from './components/Map';
 import { Features } from './components/Feature/Features';
-import { codeBlockStyles } from './components/storybook/codeBlockStyles';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 import type { LocationData } from './components/Map/types';
 
 type PizzaRestaurant = {
@@ -364,9 +366,6 @@ const mapContainerStyle: CSSProperties = {
   boxShadow: 'var(--shadow-200)',
 };
 
-// Use unified code block styles (primary for main examples, terminal for CLI commands)
-const codeBlockStyle = codeBlockStyles.primary;
-
 const assistantFooterStyle: CSSProperties = {
   marginTop: '16px',
   color: 'var(--color-text-secondary)',
@@ -667,7 +666,11 @@ const IntroductionPage = () => {
                       );
                     }}
                   >
-                    {selectedPlaces.includes(place.id) ? '✓' : '+'}
+                    {selectedPlaces.includes(place.id) ? (
+                      <CheckCircleFilled />
+                    ) : (
+                      <PlusCircleAdd />
+                    )}
                   </Button>
                 }
               />
@@ -724,41 +727,25 @@ const IntroductionPage = () => {
           Perfect when you have structured data from your backend. The SummaryCard automatically
           handles layouts, images, and actions. Here's the library docs rendered as data:
         </div>
-        <div style={codeBlockStyle}>
-          import {'{'}SummaryCard{'}'} from '@ainativekit/ui';
-          <br />
-          <br />
-          {'const articleData = {'}
-          <br />
-          &nbsp;&nbsp;title: "Building AI-Native UIs",
-          <br />
-          &nbsp;&nbsp;image: "https://images.unsplash.com/...",
-          <br />
-          &nbsp;&nbsp;description: "Build modern, accessible UI with AINativeKit...",
-          <br />
-          &nbsp;&nbsp;metadata: [<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: {'<Clock />'}, label: '10 min read{'}'},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: {'<CalendarToday />'}, label: 'October 30, 2025{'}'}
-          <br />
-          &nbsp;&nbsp;]
-          <br />
-          {'}'};<br />
-          <br />
-          {'<SummaryCard'}
-          <br />
-          &nbsp;&nbsp;images={'{articleData.image}'}
-          <br />
-          &nbsp;&nbsp;title={'{articleData.title}'}
-          <br />
-          &nbsp;&nbsp;description={'{articleData.description}'}
-          <br />
-          &nbsp;&nbsp;metadata={'{articleData.metadata}'}
-          <br />
-          &nbsp;&nbsp;buttonText="Explore Docs"
-          <br />
-          {'/>'}
-          <br />
-        </div>
+        <CodeBlock language="tsx">{`import { SummaryCard } from '@ainativekit/ui';
+
+const articleData = {
+  title: "Building AI-Native UIs",
+  image: "https://images.unsplash.com/...",
+  description: "Build modern, accessible UI with AINativeKit...",
+  metadata: [
+    { icon: <Clock />, label: '10 min read' },
+    { icon: <CalendarToday />, label: 'October 30, 2025' }
+  ]
+};
+
+<SummaryCard
+  images={articleData.image}
+  title={articleData.title}
+  description={articleData.description}
+  metadata={articleData.metadata}
+  buttonText="Explore Docs"
+/>`}</CodeBlock>
         <div
           style={{
             ...contentSectionStyle,
@@ -803,63 +790,32 @@ const IntroductionPage = () => {
           Need more control? Use compound Card components for rich customization. Same data, but
           with custom tags, advanced metadata, and full styling control:
         </div>
-        <div style={codeBlockStyle}>
-          {'<Card elevationLevel={1} interactive>'}
-          <br />
-          &nbsp;&nbsp;{'<Card.Header>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.BadgeGroup>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.Badge variant="neutral" size="sm">ChatGPT Apps SDK</Card.Badge>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.Badge variant="neutral" size="sm">UI Components</Card.Badge>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.BadgeGroup>'}
-          <br />
-          &nbsp;&nbsp;{'</Card.Header>'}
-          <br />
-          &nbsp;&nbsp;{'<Card.Image src="..." />'}
-          <br />
-          &nbsp;&nbsp;{'<Card.Body>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Title as="h3">Building AI-Native UIs</Card.Title>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Description>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Build modern, accessible UI with AINativeKit...
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.Description>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Meta>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'<Features items={['}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: {'<Clock />'}, label: '10 min read
-          {'}'},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: {'<CalendarToday />'}, label: 'Oct
-          30, 2025{'}'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{']} />'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.Meta>'}
-          <br />
-          &nbsp;&nbsp;{'</Card.Body>'}
-          <br />
-          &nbsp;&nbsp;{'<Card.Footer>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Actions align="start">'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.ActionButton color="primary" variant="solid">Explore Docs</Card.ActionButton>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.Actions>'}
-          <br />
-          &nbsp;&nbsp;{'</Card.Footer>'}
-          <br />
-          {'</Card>'}
-        </div>
+        <CodeBlock language="tsx">{`<Card elevationLevel={1} interactive>
+  <Card.Header>
+    <Card.BadgeGroup>
+      <Card.Badge variant="soft" size="sm">ChatGPT Apps SDK</Card.Badge>
+      <Card.Badge variant="soft" size="sm">UI Components</Card.Badge>
+    </Card.BadgeGroup>
+  </Card.Header>
+  <Card.Image src="..." />
+  <Card.Body>
+    <Card.Title as="h3">Building AI-Native UIs</Card.Title>
+    <Card.Description>
+      Build modern, accessible UI with AINativeKit...
+    </Card.Description>
+    <Card.Meta>
+      <Features items={[
+        { icon: <Clock />, label: '10 min read' },
+        { icon: <CalendarToday />, label: 'Oct 30, 2025' }
+      ]} />
+    </Card.Meta>
+  </Card.Body>
+  <Card.Footer>
+    <Card.Actions align="start">
+      <Card.ActionButton color="primary" variant="solid">Explore Docs</Card.ActionButton>
+    </Card.Actions>
+  </Card.Footer>
+</Card>`}</CodeBlock>
         <div
           style={{
             ...contentSectionStyle,
@@ -927,15 +883,12 @@ const IntroductionPage = () => {
         </div>
         <div style={assistantParagraphStyle}>
           <strong>1. Install:</strong>
-          <div style={codeBlockStyles.terminal}>npm install @ainativekit/ui</div>
+          <CodeBlock language="bash">{`npm install @ainativekit/ui`}</CodeBlock>
         </div>
         <div style={assistantParagraphStyle}>
           <strong>2. Import:</strong>
-          <div style={codeBlockStyles.terminal}>
-            import '@ainativekit/ui/styles';
-            <br />
-            import {'{'}SummaryCard, Card{'}'} from '@ainativekit/ui';
-          </div>
+          <CodeBlock language="tsx">{`import '@ainativekit/ui/styles';
+import { SummaryCard, Card } from '@ainativekit/ui';`}</CodeBlock>
         </div>
         <div style={assistantParagraphStyle}>
           <strong>3. Use one of the patterns above and ship! 🚀</strong>
