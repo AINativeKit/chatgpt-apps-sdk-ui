@@ -7,7 +7,7 @@ import { ExpandableText } from '../ExpandableText';
 import { Sidebar } from '../Sidebar';
 import { Modal } from '../Modal';
 import { AvatarList } from '../AvatarList';
-import { useBreakpoint } from '@/hooks/useBreakpoint';
+import { useBreakpoint } from '@openai/apps-sdk-ui/hooks/useBreakpoints';
 import type { LocationData } from './types';
 import styles from './MapInspector.module.css';
 
