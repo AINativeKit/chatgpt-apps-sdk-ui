@@ -132,9 +132,9 @@ const preview: Preview = {
           ['Modal', 'Sidebar', 'Skeleton'],
           'Utilities',
           ['ExpandableText', 'Features', 'Overlay'],
-          // Legacy/other
-          'Composed Components',
-          'Integrations',
+          // Hooks at the end
+          'Hooks',
+          ['ChatGPT SDK Integration'],
         ],
       },
     },
