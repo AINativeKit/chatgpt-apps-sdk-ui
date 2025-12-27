@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Map, FullscreenMap } from '../../components/Map';
 import type { LocationData } from '../../components/Map/types';
+import { PropsTable } from '../../tokens/PropsTable';
 import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
 
 // Dummy component for Storybook
@@ -480,6 +481,134 @@ function MyMapApp() {
               for best UX
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* Component Props Section */}
+      <section style={{ marginBottom: '64px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--color-text)',
+          }}
+        >
+          Component Props
+        </h2>
+
+        <div style={{ marginBottom: '32px' }}>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            Map Component
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'locations',
+                description: 'Array of location objects to display on the map (required)',
+              },
+              {
+                name: 'selectedId',
+                description: 'ID of currently selected location (controlled mode)',
+              },
+              {
+                name: 'onLocationSelect',
+                description: 'Callback when a location is selected: (id: string | undefined) => void',
+              },
+              {
+                name: 'defaultCenter',
+                description: 'Initial center coordinates: [latitude, longitude]',
+              },
+              {
+                name: 'defaultZoom',
+                description: 'Initial zoom level (1-18). Default: 12',
+              },
+              {
+                name: 'isFullscreen',
+                description: 'Whether the map is in fullscreen mode (controlled mode)',
+              },
+              {
+                name: 'onToggleFullscreen',
+                description: 'Callback when fullscreen is toggled: (isFullscreen: boolean) => void',
+              },
+              {
+                name: 'markerVariant',
+                description: 'Marker style: "pin" | "dot" | "hybrid". Default: "hybrid"',
+              },
+              {
+                name: 'loading',
+                description: 'Show loading state. Default: false',
+              },
+              {
+                name: 'error',
+                description: 'Error state configuration with title, message, and retry callback',
+              },
+            ]}
+          />
+        </div>
+
+        <div>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            LocationData Interface
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'id',
+                description: 'Unique identifier for the location (required)',
+              },
+              {
+                name: 'name',
+                description: 'Location name/title (required)',
+              },
+              {
+                name: 'coords',
+                description: 'Geographic coordinates: [latitude, longitude] (required)',
+              },
+              {
+                name: 'thumbnail',
+                description: 'Thumbnail image URL (required)',
+              },
+              {
+                name: 'subtitle',
+                description: 'Secondary text shown below name',
+              },
+              {
+                name: 'description',
+                description: 'Detailed description text',
+              },
+              {
+                name: 'features',
+                description: 'Array of feature items: { icon?: string; label: string }[]',
+              },
+              {
+                name: 'actions',
+                description: 'Action buttons: { label: string; variant?: "primary" | "secondary"; onClick?: () => void }[]',
+              },
+              {
+                name: 'lists',
+                description: 'Optional lists (e.g., reviews): { title: string; items: AvatarListItem[] }[]',
+              },
+            ]}
+          />
         </div>
       </section>
 

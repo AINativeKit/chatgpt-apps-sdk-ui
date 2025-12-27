@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ImageCard, SummaryCard, ListCard } from '../../components/Card';
+import { PropsTable } from '../../tokens/PropsTable';
 import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
 import { PlusCircleAdd, Star } from '@openai/apps-sdk-ui/components/Icon';
 
@@ -601,6 +602,189 @@ const CardsComponent = () => {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Component Props Section */}
+      <section style={{ marginBottom: '64px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--color-text)',
+          }}
+        >
+          Component Props
+        </h2>
+
+        <div style={{ marginBottom: '32px' }}>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            ImageCard
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'image',
+                description: 'Image URL or object with src, alt, width, height (required)',
+              },
+              {
+                name: 'title',
+                description: 'Main heading text',
+              },
+              {
+                name: 'subtitle',
+                description: 'Secondary text below title',
+              },
+              {
+                name: 'badge',
+                description: 'Badge text (e.g., "NEW", "Featured")',
+              },
+              {
+                name: 'badgeVariant',
+                description: 'Badge style: "solid" | "soft". Default: "solid"',
+              },
+              {
+                name: 'size',
+                description: 'Card size: "standard" | "compact". Default: "standard"',
+              },
+              {
+                name: 'interactive',
+                description: 'Enable hover/focus states. Default: false',
+              },
+              {
+                name: 'actionIcon',
+                description: 'Icon element for action button',
+              },
+              {
+                name: 'actionLabel',
+                description: 'Accessible label for action button',
+              },
+              {
+                name: 'onAction',
+                description: 'Callback when action button is clicked',
+              },
+            ]}
+          />
+        </div>
+
+        <div style={{ marginBottom: '32px' }}>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            SummaryCard
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'images',
+                description: 'Single URL or array of URLs (1-4 images with auto grid layout)',
+              },
+              {
+                name: 'title',
+                description: 'Main heading text',
+              },
+              {
+                name: 'subtitle',
+                description: 'Secondary text below title',
+              },
+              {
+                name: 'badge',
+                description: 'Badge text (e.g., "4.8", "Featured")',
+              },
+              {
+                name: 'badgeVariant',
+                description: 'Badge style: "solid" | "soft". Default: "soft"',
+              },
+              {
+                name: 'description',
+                description: 'Description text (clamped to 2 lines)',
+              },
+              {
+                name: 'metadata',
+                description: 'Array of metadata items: { label: string; separator?: string }[]',
+              },
+              {
+                name: 'size',
+                description: 'Card size: "standard" | "compact". Default: "standard"',
+              },
+              {
+                name: 'imageAspectRatio',
+                description: 'Image aspect ratio: "16/9" | "4/3" | "1/1". Default: "16/9"',
+              },
+              {
+                name: 'buttonText',
+                description: 'Primary button text',
+              },
+              {
+                name: 'onButtonClick',
+                description: 'Callback when button is clicked',
+              },
+            ]}
+          />
+        </div>
+
+        <div>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            ListCard
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'headerTitle',
+                description: 'Title text in the header',
+              },
+              {
+                name: 'headerActionLabel',
+                description: 'Accessible label for header action button',
+              },
+              {
+                name: 'onHeaderAction',
+                description: 'Callback when header action is clicked',
+              },
+              {
+                name: 'topImage',
+                description: 'Optional image URL above the list',
+              },
+              {
+                name: 'items',
+                description: 'Array of list items with title, subtitle, description, actionLabel, onItemAction',
+              },
+              {
+                name: 'buttonText',
+                description: 'Footer button text',
+              },
+              {
+                name: 'onButtonClick',
+                description: 'Callback when footer button is clicked',
+              },
+            ]}
+          />
         </div>
       </section>
 

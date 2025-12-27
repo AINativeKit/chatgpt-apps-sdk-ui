@@ -263,20 +263,16 @@ type FeatureItem = string | { icon?: IconName; label: string };
             <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '12px' }}>
               Basic Ranked List
             </h3>
-            <pre
-              style={{
-                background: 'var(--color-surface-tertiary)',
-                color: 'var(--color-text)',
-                padding: '16px',
-                borderRadius: '6px',
-                overflow: 'auto',
-                fontSize: '12px',
-                lineHeight: '1.5',
-                border: '1px solid var(--color-border-subtle)',
-                margin: 0,
-              }}
-            >
-              {`<List
+            <div style={codeBlockStyles.primary}>
+              <pre
+                style={{
+                  margin: 0,
+                  color: 'var(--color-text)',
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word',
+                }}
+              >
+                {`<List
   items={pizzaPlaces}
   renderItem={(place, index) => (
     <ListItem
@@ -287,33 +283,31 @@ type FeatureItem = string | { icon?: IconName; label: string };
     />
   )}
 />`}
-            </pre>
+              </pre>
+            </div>
           </div>
 
           <div>
             <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '12px' }}>
               With Feature Icons
             </h3>
-            <pre
-              style={{
-                background: 'var(--color-surface-tertiary)',
-                color: 'var(--color-text)',
-                padding: '16px',
-                borderRadius: '6px',
-                overflow: 'auto',
-                fontSize: '12px',
-                lineHeight: '1.5',
-                border: '1px solid var(--color-border-subtle)',
-                margin: 0,
-              }}
-            >
-              {`// Feature items can be simple strings or icon-label pairs
+            <div style={codeBlockStyles.primary}>
+              <pre
+                style={{
+                  margin: 0,
+                  color: 'var(--color-text)',
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word',
+                }}
+              >
+                {`// Feature items can be simple strings or icon-label pairs
 features={[
   'Wood-fired',                              // Simple string
   { icon: 'star', label: '4.8' },           // Icon with label
   { icon: 'map-pin', label: 'Downtown' },   // Multiple icons
 ]}`}
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </section>
