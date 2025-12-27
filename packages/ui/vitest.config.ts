@@ -5,10 +5,10 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: 'jsdom',
+    environment: 'happy-dom',
     globals: true,
     passWithNoTests: true,
-    setupFiles: ['./src/test-setup.ts'],
+    setupFiles: ['./happydom.ts', './src/test-setup.ts'],
     css: {
       modules: {
         classNameStrategy: 'non-scoped',

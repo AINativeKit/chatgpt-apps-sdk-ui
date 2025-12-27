@@ -74,6 +74,7 @@
     "tailwindcss": "^4.0.10"
   },
   "devDependencies": {
+    "@happy-dom/global-registrator": "^20.0.11",
     "@openai/apps-sdk-ui": "^0.2.1",
     "@storybook/addon-a11y": "^8.6.14",
     "@storybook/addon-essentials": "^8.6.14",
@@ -98,6 +99,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "happy-dom": "^20.0.11",
     "jsdom": "^25.0.0",
     "postcss": "^8.4.0",
     "react": "^18.3.1",
