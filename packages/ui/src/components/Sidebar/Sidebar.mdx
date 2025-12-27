@@ -1,0 +1,104 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as SidebarStories from './Sidebar.stories'
+
+<Meta of={SidebarStories} />
+
+<Title>Sidebar</Title>
+<Subtitle>An animated slide-in panel positioned on the left or right edge</Subtitle>
+
+## Usage
+
+```tsx
+import { Sidebar } from "@ainativekit/ui";
+
+function MyComponent() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <button onClick={() => setOpen(true)}>Open</button>
+      <Sidebar open={open} onClose={() => setOpen(false)}>
+        <YourContent />
+      </Sidebar>
+    </div>
+  );
+}
+```
+
+<Canvas of={SidebarStories.Base} />
+
+## Reference
+
+<ArgTypes of={SidebarStories.Base} />
+
+## Examples
+
+### Left position
+
+Position the sidebar on the left edge.
+
+<Canvas of={SidebarStories.LeftPosition} />
+
+### Custom width
+
+Override the default width of 356px.
+
+<Canvas of={SidebarStories.CustomWidth} />
+
+### Full height
+
+Set offsets to 0 for a full-height sidebar flush with the edges.
+
+<Canvas of={SidebarStories.FullHeight} />
+
+## Tokens
+
+Customize sidebar appearance by overriding these CSS custom properties:
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span className="type-hint">`--sidebar-width`</span></td>
+      <td>`356px`</td>
+      <td>Default width of the sidebar</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--sidebar-top`</span></td>
+      <td>`calc(var(--spacing) * 5)`</td>
+      <td>Offset from the top edge</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--sidebar-bottom`</span></td>
+      <td>`calc(var(--spacing) * 3)`</td>
+      <td>Offset from the bottom edge</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--sidebar-inset`</span></td>
+      <td>`calc(var(--spacing) * 5)`</td>
+      <td>Horizontal offset from edge</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--sidebar-radius`</span></td>
+      <td>`var(--radius-4xl)`</td>
+      <td>Border radius</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--sidebar-shadow`</span></td>
+      <td>`var(--shadow-200)`</td>
+      <td>Box shadow</td>
+    </tr>
+  </tbody>
+</table>
+
+## Notes
+
+- The sidebar uses `position: absolute`, so it should be placed inside a container with `position: relative`
+- For responsive layouts, consider using `Modal` for mobile and `Sidebar` for desktop
+- The close button is not included by default - add your own in the children content

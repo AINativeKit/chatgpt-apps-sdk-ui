@@ -54,5 +54,25 @@
     --list-item-padding: calc(var(--spacing) * 3);
     --list-item-gap: calc(var(--spacing) * 2);
     --list-divider-color: var(--color-border-subtle);
+
+    /* =============================================
+       Sidebar component tokens
+    ============================================= */
+    --sidebar-width: 356px;
+    --sidebar-top: calc(var(--spacing) * 5);
+    --sidebar-bottom: calc(var(--spacing) * 3);
+    --sidebar-inset: calc(var(--spacing) * 5);
+    --sidebar-radius: var(--radius-4xl);
+    --sidebar-shadow: var(--shadow-200);
+
+    /* =============================================
+       Modal component tokens
+    ============================================= */
+    --modal-width: 356px;
+    --modal-max-width: 90vw;
+    --modal-max-height: min(85vh, 600px);
+    --modal-radius: var(--radius-4xl);
+    --modal-shadow: var(--shadow-300);
+    --modal-backdrop: rgb(0 0 0 / 50%);
   }
 }
