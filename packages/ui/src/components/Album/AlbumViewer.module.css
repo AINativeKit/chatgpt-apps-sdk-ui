@@ -39,10 +39,8 @@
   flex-shrink: 0;
   pointer-events: none;
   z-index: 10;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .filmStripContainer {
+  @mixin breakpoint md {
     display: block;
   }
 }
@@ -76,17 +74,13 @@
   justify-content: center;
   padding-top: calc(var(--spacing) * 4);
   padding-bottom: calc(var(--spacing) * 4);
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .photoSlide {
+  @mixin breakpoint md {
     padding-top: calc(var(--spacing) * 8);
     padding-bottom: calc(var(--spacing) * 8);
   }
-}
 
-@media (min-width: 1024px) /* desktop-wide */ {
-  .photoSlide {
+  @mixin breakpoint lg {
     padding-top: calc(var(--spacing) * 12);
     padding-bottom: calc(var(--spacing) * 12);
   }
@@ -102,17 +96,13 @@
   justify-content: center;
   padding-left: calc(var(--spacing) * 4);
   padding-right: calc(var(--spacing) * 4);
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .photoWrapper {
+  @mixin breakpoint md {
     padding-left: calc(var(--spacing) * 8);
     padding-right: calc(var(--spacing) * 8);
   }
-}
 
-@media (min-width: 1024px) /* desktop-wide */ {
-  .photoWrapper {
+  @mixin breakpoint lg {
     padding-left: calc(var(--spacing) * 12);
     padding-right: calc(var(--spacing) * 12);
   }
@@ -155,6 +145,10 @@
   transition:
     background-color 0.2s ease,
     box-shadow 0.2s ease;
+
+  @mixin breakpoint md {
+    display: none;
+  }
 }
 
 .navButton:hover {
@@ -174,12 +168,6 @@
   right: calc(var(--spacing) * 2);
 }
 
-@media (min-width: 640px) /* tablet */ {
-  .navButton {
-    display: none;
-  }
-}
-
 /* Footer with Counter */
 .footer {
   position: absolute;
@@ -191,10 +179,8 @@
   display: flex;
   justify-content: center;
   pointer-events: none;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .footer {
+  @mixin breakpoint md {
     left: 160px; /* Offset by sidebar width to center over photo only */
   }
 }

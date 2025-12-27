@@ -27,11 +27,8 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
-}
 
-/* Desktop: adjust for sidebar */
-@media (min-width: 1024px) /* desktop-wide */ {
-  .mapWrapper {
+  @mixin breakpoint lg {
     left: 340px;
     right: calc(var(--spacing) * 2);
     top: calc(var(--spacing) * 2);
@@ -47,11 +44,8 @@
 
 .mobileCarousel {
   display: block;
-}
 
-/* Hide carousel on desktop */
-@media (min-width: 1024px) /* desktop-wide */ {
-  .mobileCarousel {
+  @mixin breakpoint lg {
     display: none;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { CloseBold } from '@openai/apps-sdk-ui/components/Icon';
 import { Features } from '../Feature';
@@ -7,6 +7,7 @@ import { ExpandableText } from '../ExpandableText';
 import { Sidebar } from '../Sidebar';
 import { Modal } from '../Modal';
 import { AvatarList } from '../AvatarList';
+import { useBreakpoint } from '@/hooks/useBreakpoint';
 import type { LocationData } from './types';
 import styles from './MapInspector.module.css';
 
@@ -26,36 +27,6 @@ export interface MapInspectorProps {
    */
   className?: string;
 }
-
-/**
- * Hook for responsive media query detection.
- */
-const useMediaQuery = (query: string): boolean => {
-  const [matches, setMatches] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(query).matches;
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(query);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setMatches(e.matches);
-    };
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    } else {
-      mediaQuery.addListener(handleChange);
-      return () => mediaQuery.removeListener(handleChange);
-    }
-  }, [query]);
-
-  return matches;
-};
 
 /**
  * Shared content component for MapInspector.
@@ -148,7 +119,8 @@ const MapInspectorContent: React.FC<{
 );
 
 export const MapInspector: React.FC<MapInspectorProps> = ({ location, onClose, className }) => {
-  const isMobile = useMediaQuery('(max-width: 1023px)');
+  const isDesktop = useBreakpoint('lg');
+  const isMobile = !isDesktop;
 
   if (!location) return null;
 

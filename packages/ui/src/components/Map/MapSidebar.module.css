@@ -8,11 +8,8 @@
   max-width: 75%;
   pointer-events: auto;
   display: none;
-}
 
-/* Show sidebar on desktop, hide on mobile */
-@media (min-width: 1024px) /* desktop-wide */ {
-  .sidebar {
+  @mixin breakpoint lg {
     display: block;
   }
 }

@@ -11,10 +11,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .listContainer {
+  @mixin breakpoint md {
     border-radius: var(--radius-4xl);
     padding: 0 calc(var(--spacing) * 5) calc(var(--spacing) * 3);
   }
@@ -43,6 +41,11 @@
   flex-shrink: 0;
   box-shadow: 0 0 0 1px var(--color-border-subtle);
   overflow: hidden;
+
+  @mixin breakpoint md {
+    width: 72px;
+    height: 72px;
+  }
 }
 
 .headerMediaImage {
@@ -50,13 +53,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-@media (min-width: 640px) /* tablet */ {
-  .headerMedia {
-    width: 72px;
-    height: 72px;
-  }
 }
 
 .headerText {
@@ -77,10 +73,8 @@
   overflow: visible;
   text-overflow: initial;
   white-space: normal;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .headerTitle {
+  @mixin breakpoint md {
     font-size: 20px;
     line-height: 28px;
     letter-spacing: -0.4px;
@@ -104,10 +98,8 @@
   flex: 0 0 auto;
   justify-content: flex-end;
   padding-right: calc(var(--spacing) * 2);
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .headerActionDesktop {
+  @mixin breakpoint md {
     display: flex;
   }
 }
@@ -116,17 +108,15 @@
   display: flex;
   padding: calc(var(--spacing) * 2) 0 calc(var(--spacing) * 2);
   width: 100%;
+
+  @mixin breakpoint md {
+    display: none;
+  }
 }
 
 .headerActionMobile > * {
   flex: 1 1 auto;
   width: 100%;
-}
-
-@media (min-width: 640px) /* tablet */ {
-  .headerActionMobile {
-    display: none;
-  }
 }
 
 /* ========== LIST ITEMS CONTAINER ========== */
@@ -188,10 +178,8 @@
   border-radius: var(--radius-2xl);
   transition: background-color 0.15s ease;
   min-width: 0;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .listItemWrapper {
+  @mixin breakpoint md {
     padding: 0 calc(var(--spacing) * 3);
     margin: 0 calc(var(--spacing) * -1);
   }
@@ -224,10 +212,8 @@
   min-width: 0;
   border-bottom: 1px solid var(--color-border-subtle);
   padding: calc(var(--spacing) * 3) 0;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .listItem {
+  @mixin breakpoint md {
     grid-template-columns: auto auto minmax(0, 1fr) auto;
     column-gap: calc(var(--spacing) * 2);
   }
@@ -257,10 +243,8 @@
   justify-content: center;
   background: var(--color-surface-secondary);
   grid-column: 1;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .itemMedia {
+  @mixin breakpoint md {
     width: 44px;
     height: 44px;
   }
@@ -285,10 +269,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .itemTitle {
+  @mixin breakpoint md {
     font-size: var(--font-text-md-size);
     line-height: var(--font-text-md-line-height);
     font-weight: var(--font-text-md-weight);
@@ -304,6 +286,10 @@
   gap: calc(var(--spacing) * 0.5);
   grid-column: 2;
   align-self: stretch;
+
+  @mixin breakpoint md {
+    grid-column: 3;
+  }
 }
 
 .itemTrailing {
@@ -314,6 +300,10 @@
   min-width: 0;
   grid-column: 3;
   justify-self: end;
+
+  @mixin breakpoint md {
+    grid-column: 4;
+  }
 }
 
 .itemHeader {
@@ -333,6 +323,10 @@
   width: 100%;
   color: var(--color-text-secondary);
   margin-top: var(--spacing);
+
+  @mixin breakpoint md {
+    margin-top: calc(var(--spacing) * 0.5);
+  }
 }
 
 .itemMetadataInline {
@@ -346,15 +340,9 @@
   line-height: var(--font-text-sm-line-height);
   font-weight: var(--font-text-sm-weight);
   letter-spacing: var(--font-text-sm-tracking);
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .itemMetadataInline {
+  @mixin breakpoint md {
     display: none;
-  }
-
-  .itemSubtitleRow {
-    margin-top: calc(var(--spacing) * 0.5);
   }
 }
 
@@ -396,10 +384,8 @@
   text-align: end;
   width: calc(var(--spacing) * 3);
   flex-shrink: 0;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .itemRank {
+  @mixin breakpoint md {
     display: block;
     grid-column: 2;
     justify-self: end;
@@ -408,10 +394,8 @@
 
 .itemMetadataDesktop {
   display: none;
-}
 
-@media (min-width: 640px) /* tablet */ {
-  .itemMetadataDesktop {
+  @mixin breakpoint md {
     display: block;
     padding: calc(var(--spacing) * 0.5) var(--spacing);
     text-align: end;
@@ -438,16 +422,6 @@
   transition:
     background-color 0.15s ease,
     transform 0.1s ease;
-}
-
-@media (min-width: 640px) /* tablet */ {
-  .itemBody {
-    grid-column: 3;
-  }
-
-  .itemTrailing {
-    grid-column: 4;
-  }
 }
 
 .itemAction:hover {
