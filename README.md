@@ -7,6 +7,7 @@
 [![npm version](https://img.shields.io/npm/v/@ainativekit/ui.svg)](https://www.npmjs.com/package/@ainativekit/ui)
 [![npm downloads](https://img.shields.io/npm/dm/@ainativekit/ui.svg)](https://www.npmjs.com/package/@ainativekit/ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Storybook](https://img.shields.io/badge/Storybook-%23FF4785.svg?logo=storybook&logoColor=white)](https://www.ainativekit.com)
 
 ![AINativeKit - ChatGPT Apps SDK UI demo](https://raw.githubusercontent.com/AINativeKit/chatgpt-apps-sdk-ui/main/assets/ainativekit-ui-demo.gif)
@@ -71,23 +72,61 @@
 - 🪝 **OpenAI Hooks:** `useOpenAiGlobal`, `useWidgetState`, `useMaxHeight`
 - 📦 **Tree‑Shakeable & Type‑Safe:** Import only what you need
 
+## 📐 Architecture
+
+AINativeKit UI extends [@openai/apps-sdk-ui](https://github.com/openai/apps-sdk-ui) with production-ready patterns:
+
+```
+┌─────────────────────────────────────────┐
+│           Your ChatGPT App              │
+├─────────────────────────────────────────┤
+│  @ainativekit/ui (Patterns)             │
+│  Card, Album, Carousel, List, Map       │
+├─────────────────────────────────────────┤
+│  @openai/apps-sdk-ui (Primitives)       │
+│  Button, Badge, Icon, Typography        │
+└─────────────────────────────────────────┘
+```
+
+**What's Included:**
+
+| Category | Components |
+|----------|------------|
+| **Cards** | Card, SummaryCard, ImageCard, ListCard |
+| **Lists** | List, ListItem, AvatarList |
+| **Media** | Album, Carousel, PhotoCarousel |
+| **Maps** | Map, CompactMap, FullscreenMap |
+| **Feedback** | Modal, Sidebar, Skeleton |
+| **Utilities** | ExpandableText, Features, Overlay |
+| **Hooks** | useTheme, useDisplayMode, useWidgetState |
+| **Icons** | 417 from apps-sdk-ui |
+
 ## ⚡ Quick Start
 
 ### 1) Install
 
 ```bash
-npm install @ainativekit/ui
+npm install @ainativekit/ui @openai/apps-sdk-ui
 # or
-pnpm add @ainativekit/ui
+pnpm add @ainativekit/ui @openai/apps-sdk-ui
 # or
-yarn add @ainativekit/ui
+yarn add @ainativekit/ui @openai/apps-sdk-ui
 ```
 
-### 2) Turn MCP JSON into UI
+> **Note:** `@openai/apps-sdk-ui` is a peer dependency that provides the base design system.
+
+### 2) Import styles
+
+```tsx
+// In your app's entry point
+import '@openai/apps-sdk-ui/styles';  // Base design system
+import '@ainativekit/ui/styles';       // AINativeKit components
+```
+
+### 3) Turn MCP JSON into UI
 
 ```tsx
 import { SummaryCard } from '@ainativekit/ui';
-import '@ainativekit/ui/styles';
 
 // Example MCP/tool JSON from your backend
 const restaurantData = {
@@ -120,11 +159,10 @@ export function RestaurantListing() {
 }
 ```
 
-### 3) Compose Flexible and Customizable Layouts
+### 4) Compose Flexible and Customizable Layouts
 
 ```tsx
 import { Card, Features } from '@ainativekit/ui';
-import '@ainativekit/ui/styles';
 
 export function DocumentCard() {
   return (

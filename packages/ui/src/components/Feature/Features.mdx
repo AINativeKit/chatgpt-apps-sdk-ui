@@ -1,0 +1,75 @@
+import { Canvas, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as FeaturesStories from './Features.stories'
+
+<Meta of={FeaturesStories} />
+
+<Title>Features</Title>
+<Subtitle>Display a list of features, tags, or attributes with optional icons</Subtitle>
+
+## Usage
+
+```tsx
+import { Features } from "@ainativekit/ui";
+import { StarFilled, Clock } from "@openai/apps-sdk-ui/components/Icon";
+
+// Simple strings
+<Features items={["Neapolitan", "Wood-fired", "$$$"]} />
+
+// With icons
+<Features items={[
+  { icon: <StarFilled />, label: "4.8" },
+  { icon: <Clock />, label: "Open now" }
+]} />
+```
+
+<Canvas of={FeaturesStories.Base} />
+
+## Reference
+
+<ArgTypes of={FeaturesStories.Base} />
+
+## Examples
+
+### With icons
+
+Use icons from `@openai/apps-sdk-ui` for visual emphasis.
+
+<Canvas of={FeaturesStories.WithIcons} />
+
+### Mixed content
+
+Combine icon-label objects with plain strings.
+
+<Canvas of={FeaturesStories.Mixed} />
+
+### Custom separator
+
+Change the separator character.
+
+<Canvas of={FeaturesStories.CustomSeparator} />
+
+### Price and rating
+
+Common pattern for displaying price level and rating.
+
+<Canvas of={FeaturesStories.PriceAndRating} />
+
+## Type Definition
+
+```ts
+type FeatureItem = string | { icon?: React.ReactNode; label: string };
+
+interface FeaturesProps {
+  items: FeatureItem[];
+  separator?: string;  // default: "•"
+  className?: string;
+  style?: React.CSSProperties;
+}
+```
+
+## Notes
+
+- Used internally by Card, ListItem, and Map components
+- Icons are passed as React elements (not icon names)
+- Flexible separator supports any character or string
+- Inherits text color from parent context

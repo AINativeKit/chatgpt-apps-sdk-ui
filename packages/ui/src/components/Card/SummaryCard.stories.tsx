@@ -519,7 +519,7 @@ WithOverlay.args = {
   title: "Little Nona's",
   subtitle: '1427 Via Campania',
   topOverlay: (
-    <SummaryCard.Overlay background="dark" height={40} align="center">
+    <SummaryCard.Overlay background="dark" height={40} position="top" align="center">
       <span style={{ color: 'white', fontSize: '14px', fontWeight: 600 }}>Featured Partner</span>
     </SummaryCard.Overlay>
   ),
@@ -532,7 +532,7 @@ WithOverlay.parameters = {
       code: `<SummaryCard
   images="/restaurant.jpg"
   topOverlay={
-    <SummaryCard.Overlay background="dark" height={40} align="center">
+    <SummaryCard.Overlay background="dark" height={40} position="top" align="center">
       <span style={{ color: 'white' }}>Featured Partner</span>
     </SummaryCard.Overlay>
   }

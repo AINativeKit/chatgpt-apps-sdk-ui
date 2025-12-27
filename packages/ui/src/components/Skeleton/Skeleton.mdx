@@ -1,0 +1,137 @@
+import { Canvas, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as SkeletonStories from './Skeleton.stories'
+import { Skeleton } from './Skeleton'
+import { ImageSkeleton } from './ImageSkeleton'
+
+<Meta of={SkeletonStories} />
+
+<Title>Skeleton</Title>
+<Subtitle>Loading placeholder components with shimmer animation</Subtitle>
+
+## Usage
+
+```tsx
+import { Skeleton, ImageSkeleton } from "@ainativekit/ui";
+
+// Basic skeleton
+<Skeleton width={200} height={20} />
+
+// Circular avatar
+<Skeleton width={48} height={48} borderRadius="50%" />
+
+// Image placeholder with icon
+<ImageSkeleton width="100%" height={200} />
+```
+
+<Canvas of={SkeletonStories.Base} />
+
+## Reference
+
+### Skeleton
+
+<ArgTypes of={Skeleton} />
+
+### ImageSkeleton
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>width</code></td>
+      <td><span className="type-hint">string | number</span></td>
+      <td>-</td>
+      <td>Width of the skeleton</td>
+    </tr>
+    <tr>
+      <td><code>height</code></td>
+      <td><span className="type-hint">string | number</span></td>
+      <td>-</td>
+      <td>Height of the skeleton</td>
+    </tr>
+    <tr>
+      <td><code>borderRadius</code></td>
+      <td><span className="type-hint">string | number</span></td>
+      <td>-</td>
+      <td>Border radius override</td>
+    </tr>
+    <tr>
+      <td><code>icon</code></td>
+      <td><span className="type-hint">React.ReactNode</span></td>
+      <td><code>&lt;ImageWide /&gt;</code></td>
+      <td>Custom icon to display</td>
+    </tr>
+    <tr>
+      <td><code>iconSize</code></td>
+      <td><span className="type-hint">number</span></td>
+      <td><code>32</code></td>
+      <td>Icon size in pixels</td>
+    </tr>
+  </tbody>
+</table>
+
+## Examples
+
+### Text lines
+
+Multiple skeleton lines simulating text content.
+
+<Canvas of={SkeletonStories.TextLines} />
+
+### Avatar placeholder
+
+Circular skeleton for user avatars.
+
+<Canvas of={SkeletonStories.Avatar} />
+
+### Card skeleton
+
+Complete card loading state with image and text.
+
+<Canvas of={SkeletonStories.Card} />
+
+### Image skeleton
+
+ImageSkeleton with centered placeholder icon.
+
+<Canvas of={SkeletonStories.ImageSkeletonBase} />
+
+### List item
+
+List item skeleton with thumbnail and action.
+
+<Canvas of={SkeletonStories.ListItem} />
+
+## Skeleton vs ImageSkeleton
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Skeleton</code></td>
+      <td>Text, buttons, generic shapes</td>
+    </tr>
+    <tr>
+      <td><code>ImageSkeleton</code></td>
+      <td>Image placeholders with visual indicator</td>
+    </tr>
+  </tbody>
+</table>
+
+## Notes
+
+- Uses CSS shimmer animation for loading effect
+- Includes `aria-hidden="true"` for accessibility
+- Supports both pixel values and CSS strings
+- Used internally by Card, List, and Album components

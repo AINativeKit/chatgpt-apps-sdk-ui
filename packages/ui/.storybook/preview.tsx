@@ -110,13 +110,30 @@ const preview: Preview = {
       storySort: {
         method: 'configure',
         order: [
+          // Overview
           'Introduction',
+          'Getting Started',
+          // Gallery examples
           'Gallery',
           ['Albums', 'Carousel', 'Pizza List', 'Maps', 'Cards'],
+          // Design foundations
           'Design Tokens',
           ['Colors', 'Typography', 'Spacing', 'Radius', 'Elevation'],
+          // Components by category
+          'Cards',
+          ['Card', 'SummaryCard', 'ImageCard', 'ListCard'],
+          'Lists',
+          ['List', 'ListItem', 'AvatarList'],
+          'Media',
+          ['Album', 'AlbumCard', 'Carousel', 'PhotoCarousel'],
+          'Maps',
+          ['Maps', 'CompactMap', 'FullscreenMap', 'MapPlaceCard', 'CustomMarkers', 'TileProviders'],
+          'Feedback',
+          ['Modal', 'Sidebar', 'Skeleton'],
+          'Utilities',
+          ['ExpandableText', 'Features', 'Overlay'],
+          // Legacy/other
           'Composed Components',
-          ['Cards', 'Album', 'Carousel', 'List', 'Maps'],
           'Integrations',
         ],
       },

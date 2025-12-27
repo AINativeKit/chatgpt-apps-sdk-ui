@@ -160,7 +160,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
       </div>
 
       {/* Top Overlay (branding, logo, etc.) */}
-      {topOverlay && <div className={styles.overlayContainer}>{topOverlay}</div>}
+      {topOverlay}
 
       {/* Navigation Arrows */}
       {showArrows && images.length > 1 && hasPrev && (

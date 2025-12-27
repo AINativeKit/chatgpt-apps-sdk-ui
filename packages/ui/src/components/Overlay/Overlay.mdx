@@ -1,0 +1,101 @@
+import { Canvas, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as OverlayStories from './Overlay.stories'
+
+<Meta of={OverlayStories} />
+
+<Title>Overlay</Title>
+<Subtitle>Position content on top of images or media with customizable backgrounds</Subtitle>
+
+## Usage
+
+```tsx
+import { Overlay } from "@ainativekit/ui";
+
+<div style={{ position: 'relative', overflow: 'hidden' }}>
+  <img src="photo.jpg" alt="Photo" />
+  {/* Bottom overlay (default) */}
+  <Overlay background="dark" height={56} align="center">
+    <span style={{ color: 'white' }}>Caption</span>
+  </Overlay>
+</div>
+```
+
+<Canvas of={OverlayStories.Base} />
+
+## Reference
+
+<ArgTypes of={OverlayStories.Base} />
+
+## Examples
+
+### Light background
+
+Semi-transparent light overlay for dark images.
+
+<Canvas of={OverlayStories.Light} />
+
+### Brand color
+
+Use a custom brand color as the background.
+
+<Canvas of={OverlayStories.BrandColor} />
+
+### Left aligned
+
+Align content to the left with custom padding.
+
+<Canvas of={OverlayStories.LeftAligned} />
+
+### Top position
+
+Position the overlay at the top of the container.
+
+<Canvas of={OverlayStories.TopPosition} />
+
+### With logo
+
+Transparent overlay containing a logo badge at the top.
+
+<Canvas of={OverlayStories.WithLogo} />
+
+### Gradient overlay
+
+Use CSS gradients for fade-out effects.
+
+<Canvas of={OverlayStories.GradientOverlay} />
+
+## Background Presets
+
+<table>
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dark</code></td>
+      <td><code>rgba(0, 0, 0, 0.6)</code></td>
+    </tr>
+    <tr>
+      <td><code>light</code></td>
+      <td><code>rgba(255, 255, 255, 0.8)</code></td>
+    </tr>
+    <tr>
+      <td><code>transparent</code></td>
+      <td>No background</td>
+    </tr>
+    <tr>
+      <td>Custom</td>
+      <td>Any valid CSS color or gradient</td>
+    </tr>
+  </tbody>
+</table>
+
+## Notes
+
+- Used internally by SummaryCard and PhotoCarousel components
+- Requires parent container with `position: relative`
+- Supports any CSS color value including gradients
+- Content is vertically centered by default
