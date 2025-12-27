@@ -1,0 +1,92 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as AvatarListStories from './AvatarList.stories'
+
+<Meta of={AvatarListStories} />
+
+<Title>AvatarList</Title>
+<Subtitle>A titled list with avatar and metadata for each item</Subtitle>
+
+## Usage
+
+```tsx
+import { AvatarList } from "@ainativekit/ui";
+```
+
+<Canvas of={AvatarListStories.Base} />
+
+## Reference
+
+<ArgTypes of={AvatarListStories.Base} />
+
+## Item structure
+
+Each item in the `items` array should have:
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span className="type-hint">`id`</span></td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>Unique identifier</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`title`</span></td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>Item title (also used for avatar initials)</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`image`</span></td>
+      <td>`string`</td>
+      <td>No</td>
+      <td>Avatar image URL</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`metadata`</span></td>
+      <td>`string`</td>
+      <td>No</td>
+      <td>Secondary text above title (e.g., date, role)</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`description`</span></td>
+      <td>`string`</td>
+      <td>No</td>
+      <td>Description text below title</td>
+    </tr>
+  </tbody>
+</table>
+
+## Examples
+
+### Without title
+
+Display items without a section header.
+
+<Canvas of={AvatarListStories.WithoutTitle} />
+
+### Large avatars
+
+Increase avatar size for more prominent display.
+
+<Canvas of={AvatarListStories.LargeAvatars} />
+
+### Initials fallback
+
+When no image is provided, initials are generated from the title.
+
+<Canvas of={AvatarListStories.InitialsFallback} />
+
+### Minimal items
+
+Items with just title and metadata, no description.
+
+<Canvas of={AvatarListStories.MinimalItems} />
