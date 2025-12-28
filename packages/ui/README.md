@@ -103,7 +103,7 @@ pnpm add @ainativekit/ui @openai/apps-sdk-ui
 ### 2) Import styles
 
 ```tsx
-import '@openai/apps-sdk-ui/styles';
+import '@openai/apps-sdk-ui/css';
 import '@ainativekit/ui/styles';
 ```
 

@@ -119,8 +119,8 @@ yarn add @ainativekit/ui @openai/apps-sdk-ui
 
 ```tsx
 // In your app's entry point
-import '@openai/apps-sdk-ui/styles';  // Base design system
-import '@ainativekit/ui/styles';       // AINativeKit components
+import '@openai/apps-sdk-ui/css';    // Base design system
+import '@ainativekit/ui/styles';      // AINativeKit components
 ```
 
 ### 3) Turn MCP JSON into UI

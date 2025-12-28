@@ -883,11 +883,12 @@ const articleData = {
         </div>
         <div style={assistantParagraphStyle}>
           <strong>1. Install:</strong>
-          <CodeBlock language="bash">{`npm install @ainativekit/ui`}</CodeBlock>
+          <CodeBlock language="bash">{`npm install @ainativekit/ui @openai/apps-sdk-ui`}</CodeBlock>
         </div>
         <div style={assistantParagraphStyle}>
           <strong>2. Import:</strong>
-          <CodeBlock language="tsx">{`import '@ainativekit/ui/styles';
+          <CodeBlock language="tsx">{`import '@openai/apps-sdk-ui/css';
+import '@ainativekit/ui/styles';
 import { SummaryCard, Card } from '@ainativekit/ui';`}</CodeBlock>
         </div>
         <div style={assistantParagraphStyle}>
