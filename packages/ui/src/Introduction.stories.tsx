@@ -468,16 +468,16 @@ const IntroductionPage = () => {
           <strong>What you get:</strong>
         </div>
         <div style={assistantParagraphStyle}>
-          ✓ Full TypeScript support with IntelliSense
+          ✓ Extension components: Cards, Carousel, List, Album, Map
           <br />
-          ✓ Responsive design out of the box
+          ✓ Built on @openai/apps-sdk-ui primitives
+          <br />
+          ✓ ChatGPT hooks: useTheme, useDisplayMode, useWidgetState
+          <br />
+          ✓ Full TypeScript with IntelliSense
           <br />
           ✓ Dark & light mode automatically
-          <br />
-          ✓ Built on OpenAI's official design system
-          <br />
-          ✓ 417 ready-to-use icons
-          <br />✓ WCAG 2.1 AA accessible
+          <br />✓ Responsive and accessible
         </div>
         <div style={assistantParagraphStyle}>
           <strong>Bottom line:</strong> Stop rebuilding the same components. Start shipping features
@@ -912,19 +912,18 @@ import { SummaryCard, Card } from '@ainativekit/ui';`}</CodeBlock>
           <strong>Dive deeper:</strong> Check the Storybook menu for:
           <ul style={{ margin: '8px 0', paddingLeft: '20px' }}>
             <li>
-              <strong>Gallery</strong>: Real-world examples for restaurants, products, articles, and
-              more
+              <strong>Gallery</strong>: Real-world examples for restaurants, products, articles
             </li>
             <li>
-              <strong>Cards</strong>: SummaryCard (with compact variant), ImageCard, ListCard with
-              all features
+              <strong>Components</strong>: Cards, Carousel, List, Album, Map with all features
             </li>
             <li>
-              <strong>Patterns</strong>: Carousel, List, Album, Map with complete examples
+              <strong>Design Tokens</strong>: Base tokens from apps-sdk-ui + component-specific
+              tokens
             </li>
             <li>
-              <strong>Design Tokens</strong>: Colors, typography, spacing, elevation - all
-              customizable
+              <strong>OpenAI Integration</strong>: ChatGPT hooks for theme, display mode, widget
+              state
             </li>
           </ul>
         </div>
