@@ -7,7 +7,7 @@ import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { CollapseLg, Maps } from '@openai/apps-sdk-ui/components/Icon';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { getErrorState, resolveErrorStateValues } from './useErrorState';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { ImageSkeleton } from '../Skeleton';
 import type { LocationData } from './types';
 import type { MapViewProps } from './MapView';
@@ -150,7 +150,7 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
   // Error State - centered overlay without map
   if (isError) {
     return (
-      <div className={cn(styles.container, className)} style={{ height }}>
+      <div className={clsx(styles.container, className)} style={{ height }}>
         <div className={styles.stateOverlay}>
           <ErrorStateDisplay
             state="error"
@@ -166,7 +166,7 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
   // Empty State - centered overlay without map
   if (isEmpty) {
     return (
-      <div className={cn(styles.container, className)} style={{ height }}>
+      <div className={clsx(styles.container, className)} style={{ height }}>
         <div className={styles.stateOverlay}>
           <ErrorStateDisplay
             state="empty"
@@ -180,7 +180,7 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
 
   // Normal Content
   return (
-    <div className={cn(styles.container, className)} style={{ height }}>
+    <div className={clsx(styles.container, className)} style={{ height }}>
       {/* Collapse Button */}
       {onCollapse && (
         <Button

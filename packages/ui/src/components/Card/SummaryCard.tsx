@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Card, type CardProps } from './Card';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
@@ -425,7 +425,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
       ref={ref}
       padding={variant === 'flat' ? 0 : 8}
       elevationLevel={variant === 'flat' ? 0 : cardProps.elevationLevel}
-      className={cn(styles.summaryCard, className)}
+      className={clsx(styles.summaryCard, className)}
       data-size={size}
       data-variant={variant}
       {...cardProps}

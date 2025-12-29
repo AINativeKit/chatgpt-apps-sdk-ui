@@ -1,6 +1,6 @@
 import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { XCrossed, ArrowLeftSm, ArrowRightSm } from '@openai/apps-sdk-ui/components/Icon';
@@ -172,7 +172,7 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
     // Custom empty state
     if (emptyStateContent) {
       return (
-        <div className={cn(styles.albumViewer, className)} role="dialog" aria-modal="true">
+        <div className={clsx(styles.albumViewer, className)} role="dialog" aria-modal="true">
           {emptyStateContent}
         </div>
       );
@@ -181,7 +181,7 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
     // Default empty state
     return (
       <div
-        className={cn(styles.albumViewer, styles.empty, className)}
+        className={clsx(styles.albumViewer, styles.empty, className)}
         role="dialog"
         aria-modal="true"
         aria-label={`${album.title} viewer`}
@@ -210,7 +210,7 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
 
   return (
     <div
-      className={cn(styles.albumViewer, className)}
+      className={clsx(styles.albumViewer, className)}
       role="dialog"
       aria-modal="true"
       aria-label={`${album.title} viewer`}
@@ -271,7 +271,7 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
               size="md"
               onClick={() => emblaApi?.scrollPrev()}
               aria-label="Previous photo"
-              className={cn(styles.navButton, styles.navButtonPrev)}
+              className={clsx(styles.navButton, styles.navButtonPrev)}
             >
               <ArrowLeftSm />
             </Button>
@@ -284,7 +284,7 @@ export const AlbumViewer: React.FC<AlbumViewerProps> = ({
               size="md"
               onClick={() => emblaApi?.scrollNext()}
               aria-label="Next photo"
-              className={cn(styles.navButton, styles.navButtonNext)}
+              className={clsx(styles.navButton, styles.navButtonNext)}
             >
               <ArrowRightSm />
             </Button>

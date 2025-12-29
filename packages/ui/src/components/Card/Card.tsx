@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Card.module.css';
 import { CardHeader } from './CardHeader';
 import { CardBody } from './CardBody';
@@ -184,7 +184,7 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   return (
     <div
       ref={ref}
-      className={cn(styles.card, className)}
+      className={clsx(styles.card, className)}
       style={mergedStyle}
       data-hover={interactive}
       data-interactive={interactive}

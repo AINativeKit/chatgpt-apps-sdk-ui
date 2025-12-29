@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Features } from '../Feature';
 import type { FeatureItem } from '../Feature';
 import { Skeleton } from '../Skeleton';
@@ -154,7 +154,7 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
     return (
       <div
         ref={ref}
-        className={cn(styles.listItemWrapper, className)}
+        className={clsx(styles.listItemWrapper, className)}
         style={{ pointerEvents: 'none' }}
         {...rest}
       >
@@ -197,7 +197,7 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
   return (
     <div
       ref={ref}
-      className={cn(styles.listItemWrapper, className)}
+      className={clsx(styles.listItemWrapper, className)}
       data-interactive={isInteractive}
       onClick={isInteractive ? onClick : undefined}
       onKeyDown={isInteractive ? handleKeyDown : undefined}

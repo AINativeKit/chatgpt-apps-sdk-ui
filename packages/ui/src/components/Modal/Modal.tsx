@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Modal.module.css';
 
 export interface ModalProps {
@@ -168,7 +168,7 @@ export const Modal: React.FC<ModalProps> = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ type: 'spring', bounce: 0, duration: 0.25 }}
-              className={cn(styles.backdrop, contained && styles.contained)}
+              className={clsx(styles.backdrop, contained && styles.contained)}
               onClick={handleBackdropClick}
               role="presentation"
             />
@@ -178,7 +178,7 @@ export const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ type: 'spring', bounce: 0, duration: 0.25 }}
-            className={cn(styles.modal, contained && styles.contained, className)}
+            className={clsx(styles.modal, contained && styles.contained, className)}
             onClick={handleBackdropClick}
             role="dialog"
             aria-modal="true"
@@ -188,7 +188,7 @@ export const Modal: React.FC<ModalProps> = ({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: 'spring', bounce: 0, duration: 0.3 }}
-              className={cn(styles.content, contentClassName)}
+              className={clsx(styles.content, contentClassName)}
               style={overrideStyles as React.CSSProperties}
               onClick={handleContentClick}
             >

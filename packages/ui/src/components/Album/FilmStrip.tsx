@@ -1,6 +1,6 @@
 import React from 'react';
 import type { EmblaCarouselType } from 'embla-carousel';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import type { Photo } from './types';
 import styles from './FilmStrip.module.css';
 
@@ -120,7 +120,7 @@ export const FilmStrip: React.FC<FilmStripProps> = ({
 
   return (
     <div
-      className={cn(styles.filmStrip, className)}
+      className={clsx(styles.filmStrip, className)}
       role="navigation"
       aria-label="Photo thumbnails"
     >
@@ -137,7 +137,7 @@ export const FilmStrip: React.FC<FilmStripProps> = ({
                 <button
                   type="button"
                   onClick={() => onThumbClick(index)}
-                  className={cn(styles.thumbnail, isSelected && styles.thumbnailSelected)}
+                  className={clsx(styles.thumbnail, isSelected && styles.thumbnailSelected)}
                   aria-label={photo.title || `Photo ${index + 1} of ${photos.length}`}
                   aria-current={isSelected ? 'true' : undefined}
                 >

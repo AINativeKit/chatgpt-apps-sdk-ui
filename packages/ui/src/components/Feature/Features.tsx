@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Features.module.css';
 
 export type FeatureItem = string | { icon?: React.ReactNode; label: string };
@@ -60,7 +60,7 @@ export interface FeaturesProps {
 export const Features = React.forwardRef<HTMLDivElement, FeaturesProps>(
   ({ items, separator = '•', iconSize: _iconSize = 14, className, style }, ref) => {
     return (
-      <div ref={ref} className={cn(styles.feature, className)} style={style}>
+      <div ref={ref} className={clsx(styles.feature, className)} style={style}>
         {items.map((item, idx) => {
           const isLast = idx === items.length - 1;
           const isObject = typeof item === 'object';

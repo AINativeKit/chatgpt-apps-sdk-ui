@@ -7,7 +7,7 @@ import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { ChevronLeftMd, ChevronRightMd } from '@openai/apps-sdk-ui/components/Icon';
 import { Card } from '../Card';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Carousel.module.css';
 
 export interface CarouselProps {
@@ -263,7 +263,7 @@ export const Carousel: React.FC<CarouselProps> = ({
 
     // Render static (non-scrollable) loading carousel
     return (
-      <div className={cn(styles.carouselContainer, className)} style={style}>
+      <div className={clsx(styles.carouselContainer, className)} style={style}>
         {/* Navigation Buttons (disabled during loading) */}
         {showNavigation && (
           <>
@@ -272,7 +272,7 @@ export const Carousel: React.FC<CarouselProps> = ({
               variant="ghost"
               uniform
               size="md"
-              className={cn(styles.navButton, styles.navButtonPrev)}
+              className={clsx(styles.navButton, styles.navButtonPrev)}
               disabled
               aria-label="Previous slide"
             >
@@ -283,7 +283,7 @@ export const Carousel: React.FC<CarouselProps> = ({
               variant="ghost"
               uniform
               size="md"
-              className={cn(styles.navButton, styles.navButtonNext)}
+              className={clsx(styles.navButton, styles.navButtonNext)}
               disabled
               aria-label="Next slide"
             >
@@ -295,8 +295,8 @@ export const Carousel: React.FC<CarouselProps> = ({
         {/* Edge Gradients */}
         {showEdgeGradients && (
           <>
-            <div className={cn(styles.edgeGradient, styles.edgeGradientLeft)} />
-            <div className={cn(styles.edgeGradient, styles.edgeGradientRight)} />
+            <div className={clsx(styles.edgeGradient, styles.edgeGradientLeft)} />
+            <div className={clsx(styles.edgeGradient, styles.edgeGradientRight)} />
           </>
         )}
 
@@ -311,13 +311,13 @@ export const Carousel: React.FC<CarouselProps> = ({
           }
         >
           <div
-            className={cn(styles.emblaContainer, flushStart && styles.emblaContainerFlushStart)}
+            className={clsx(styles.emblaContainer, flushStart && styles.emblaContainerFlushStart)}
             style={containerStyle}
           >
             {React.Children.map(loadingChildren, (child, index) => (
               <div
                 key={index}
-                className={cn(
+                className={clsx(
                   styles.emblaSlide,
                   flushStart && index === 0 && styles.emblaSlideFlushStart
                 )}
@@ -334,7 +334,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   // Phase 1: Error State - Early return
   if (error) {
     return (
-      <div className={cn(styles.carouselContainer, className)} style={style}>
+      <div className={clsx(styles.carouselContainer, className)} style={style}>
         <div className={styles.errorContainer}>
           <Alert
             color="danger"
@@ -361,7 +361,7 @@ export const Carousel: React.FC<CarouselProps> = ({
     // Custom empty state
     if (emptyState) {
       return (
-        <div className={cn(styles.carouselContainer, className)} style={style}>
+        <div className={clsx(styles.carouselContainer, className)} style={style}>
           <div className={styles.emptyContainer}>{emptyState}</div>
         </div>
       );
@@ -369,7 +369,7 @@ export const Carousel: React.FC<CarouselProps> = ({
 
     // Default empty state
     return (
-      <div className={cn(styles.carouselContainer, className)} style={style}>
+      <div className={clsx(styles.carouselContainer, className)} style={style}>
         <div className={styles.emptyContainer}>
           <EmptyMessage fill="none">
             <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
@@ -381,7 +381,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   }
 
   return (
-    <div className={cn(styles.carouselContainer, className)} style={style}>
+    <div className={clsx(styles.carouselContainer, className)} style={style}>
       {/* Embla Viewport */}
       <div
         className={styles.emblaViewport}
@@ -393,7 +393,7 @@ export const Carousel: React.FC<CarouselProps> = ({
         }
       >
         <div
-          className={cn(styles.emblaContainer, flushStart && styles.emblaContainerFlushStart)}
+          className={clsx(styles.emblaContainer, flushStart && styles.emblaContainerFlushStart)}
           style={containerStyle}
         >
           {React.Children.map(children, (child, index) => (

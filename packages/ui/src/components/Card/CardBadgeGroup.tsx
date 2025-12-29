@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './CardParts.module.css';
 
 export interface CardBadgeGroupProps extends ComponentPropsWithoutRef<'div'> {
@@ -17,7 +17,7 @@ export const CardBadgeGroup = React.forwardRef<HTMLDivElement, CardBadgeGroupPro
     return (
       <div
         ref={ref}
-        className={cn(styles.cardBadgeGroup, className)}
+        className={clsx(styles.cardBadgeGroup, className)}
         data-testid={testId}
         {...rest}
       >

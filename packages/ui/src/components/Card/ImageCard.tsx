@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Card, type CardProps } from './Card';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
@@ -345,7 +345,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     <Card
       ref={ref}
       padding={0}
-      className={cn(styles.imageCard, size === 'compact' && styles.imageCardCompact, className)}
+      className={clsx(styles.imageCard, size === 'compact' && styles.imageCardCompact, className)}
       style={inlineStyle}
       {...cardProps}
     >
@@ -357,7 +357,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
           loading={imageLoading}
           onLoad={handleImageLoad}
           onError={handleImageError}
-          className={cn(
+          className={clsx(
             styles.imageElement,
             positionClass,
             (isLoading || hasError) && styles.imageHidden
@@ -412,7 +412,7 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
           {/* Badge */}
           {hasBadge && (
             <div
-              className={cn(
+              className={clsx(
                 styles.badge,
                 badgePosition === 'top-left' ? styles.badgeTopLeft : styles.badgeTopRight
               )}
@@ -430,12 +430,12 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
 
           {/* Text Content Overlay */}
           {hasContent && (
-            <div className={cn(styles.content, !hasAction && styles.contentNoAction)}>
+            <div className={clsx(styles.content, !hasAction && styles.contentNoAction)}>
               {title && (
-                <h3 className={cn(styles.title, styles[`titleLines${titleLines}`])}>{title}</h3>
+                <h3 className={clsx(styles.title, styles[`titleLines${titleLines}`])}>{title}</h3>
               )}
               {subtitle && (
-                <p className={cn(styles.subtitle, styles[`subtitleLines${subtitleLines}`])}>
+                <p className={clsx(styles.subtitle, styles[`subtitleLines${subtitleLines}`])}>
                   {subtitle}
                 </p>
               )}

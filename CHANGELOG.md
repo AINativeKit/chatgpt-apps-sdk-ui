@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Breaking Changes
 
 - **Architecture Shift**: @ainativekit/ui is now an extension layer built on @openai/apps-sdk-ui
-  - Added `@openai/apps-sdk-ui@^1.0.0` as peer dependency
+  - Added `@openai/apps-sdk-ui@^0.2.0` as peer dependency
   - Must import base CSS: `import '@openai/apps-sdk-ui/css'` before `import '@ainativekit/ui/styles'`
 
 - **Removed Primitives** (use @openai/apps-sdk-ui instead):

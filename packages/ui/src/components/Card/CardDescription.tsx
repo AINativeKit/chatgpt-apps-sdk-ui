@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './CardParts.module.css';
 
 export interface CardDescriptionProps extends ComponentPropsWithoutRef<'p'> {
@@ -15,7 +15,7 @@ export const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescri
     const { className, children, 'data-testid': testId, ...rest } = props;
 
     return (
-      <p ref={ref} className={cn(styles.cardDescription, className)} data-testid={testId} {...rest}>
+      <p ref={ref} className={clsx(styles.cardDescription, className)} data-testid={testId} {...rest}>
         {children}
       </p>
     );

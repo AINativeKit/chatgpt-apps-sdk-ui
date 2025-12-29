@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AlbumCard } from './AlbumCard';
 import type { Album } from './types';
@@ -357,22 +357,26 @@ describe('AlbumCard', () => {
   });
 
   describe('Image Callbacks', () => {
-    it('calls onImageLoad when cover image loads', () => {
+    it('calls onImageLoad when cover image loads', async () => {
       const handleImageLoad = vi.fn();
       render(<AlbumCard album={mockAlbum} onImageLoad={handleImageLoad} />);
 
       const img = screen.getByAltText('Test Album') as HTMLImageElement;
-      img.dispatchEvent(new Event('load', { bubbles: true }));
+      await act(async () => {
+        img.dispatchEvent(new Event('load', { bubbles: true }));
+      });
 
       expect(handleImageLoad).toHaveBeenCalledTimes(1);
     });
 
-    it('calls onImageError when cover image fails', () => {
+    it('calls onImageError when cover image fails', async () => {
       const handleImageError = vi.fn();
       render(<AlbumCard album={mockAlbum} onImageError={handleImageError} />);
 
       const img = screen.getByAltText('Test Album') as HTMLImageElement;
-      img.dispatchEvent(new Event('error', { bubbles: true }));
+      await act(async () => {
+        img.dispatchEvent(new Event('error', { bubbles: true }));
+      });
 
       expect(handleImageError).toHaveBeenCalledTimes(1);
     });

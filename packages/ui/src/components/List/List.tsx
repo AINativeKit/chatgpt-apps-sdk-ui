@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
@@ -183,7 +183,7 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
 
   if (error) {
     return (
-      <div ref={ref} className={cn(styles.listContainer, className)} {...rest}>
+      <div ref={ref} className={clsx(styles.listContainer, className)} {...rest}>
         {header && (
           <div className={styles.listHeader}>
             <div className={styles.headerRow}>
@@ -232,7 +232,7 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
   };
 
   return (
-    <div ref={ref} className={cn(styles.listContainer, className)} {...rest}>
+    <div ref={ref} className={clsx(styles.listContainer, className)} {...rest}>
       {header && (
         <div className={styles.listHeader}>
           <div className={styles.headerRow}>

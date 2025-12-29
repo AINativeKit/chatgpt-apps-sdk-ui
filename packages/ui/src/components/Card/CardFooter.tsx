@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './CardParts.module.css';
 
 export interface CardFooterProps extends ComponentPropsWithoutRef<'div'> {
@@ -14,7 +14,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>((pro
   const { className, children, 'data-testid': testId, ...rest } = props;
 
   return (
-    <div ref={ref} className={cn(styles.cardFooter, className)} data-testid={testId} {...rest}>
+    <div ref={ref} className={clsx(styles.cardFooter, className)} data-testid={testId} {...rest}>
       {children}
     </div>
   );

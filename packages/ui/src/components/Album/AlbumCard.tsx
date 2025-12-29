@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, SyntheticEvent } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
@@ -246,7 +246,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
   if (showLoading) {
     return (
       <div
-        className={cn(styles.albumCard, styles.loadingCard, className)}
+        className={clsx(styles.albumCard, styles.loadingCard, className)}
         style={{ width, ...style }}
         role="status"
         aria-live="polite"
@@ -268,7 +268,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
   if (showError) {
     return (
       <div
-        className={cn(styles.albumCard, styles.errorCard, className)}
+        className={clsx(styles.albumCard, styles.errorCard, className)}
         style={{ width, ...style }}
         data-testid={testId}
       >
@@ -288,7 +288,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
   if (showEmpty) {
     return (
       <div
-        className={cn(styles.albumCard, styles.emptyCard, className)}
+        className={clsx(styles.albumCard, styles.emptyCard, className)}
         style={{ width, ...style }}
         data-testid={testId}
       >
@@ -307,7 +307,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     <button
       ref={ref}
       type="button"
-      className={cn(styles.albumCard, className)}
+      className={clsx(styles.albumCard, className)}
       onClick={handleClick}
       style={{ width, ...style }}
       data-testid={testId}
@@ -332,7 +332,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
         {/* Badge */}
         {badge && (
           <div
-            className={cn(
+            className={clsx(
               styles.badge,
               badgePosition === 'top-left' ? styles.badgeTopLeft : styles.badgeTopRight
             )}
@@ -347,7 +347,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
       {/* Album Info */}
       <div className={styles.content}>
         <div
-          className={cn(
+          className={clsx(
             styles.title,
             titleLines === 2 && styles.titleLines2,
             titleLines === 3 && styles.titleLines3
@@ -356,7 +356,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
           {album.title}
         </div>
         <div
-          className={cn(
+          className={clsx(
             styles.subtitle,
             subtitleLines === 2 && styles.subtitleLines2,
             subtitleLines === 3 && styles.subtitleLines3

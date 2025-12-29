@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Overlay.module.css';
 
 export interface OverlayProps {
@@ -109,7 +109,7 @@ export const Overlay = React.forwardRef<HTMLDivElement, OverlayProps>(
     return (
       <div
         ref={ref}
-        className={cn(styles.overlay, className)}
+        className={clsx(styles.overlay, className)}
         style={{
           ...positionStyles,
           background: backgroundValue,

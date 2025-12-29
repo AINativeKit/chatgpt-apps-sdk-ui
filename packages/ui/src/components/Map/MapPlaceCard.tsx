@@ -2,7 +2,7 @@ import React, { type SyntheticEvent } from 'react';
 import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { Features } from '../Feature';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Skeleton, ImageSkeleton } from '../Skeleton';
 import type { Feature } from './types';
 import styles from './MapPlaceCard.module.css';
@@ -248,7 +248,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   if (showLoading) {
     return (
       <div
-        className={cn(styles.mapPlaceCard, styles.loadingCard, className)}
+        className={clsx(styles.mapPlaceCard, styles.loadingCard, className)}
         style={style}
         role="status"
         aria-live="polite"
@@ -267,7 +267,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   // Error State
   if (showError) {
     return (
-      <div className={cn(styles.mapPlaceCard, styles.errorCard, className)} style={style} data-testid={testId}>
+      <div className={clsx(styles.mapPlaceCard, styles.errorCard, className)} style={style} data-testid={testId}>
         <div className={styles.errorContainer}>
           <ErrorStateDisplay
             state="error"
@@ -283,7 +283,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   // Empty State
   if (showEmpty) {
     return (
-      <div className={cn(styles.mapPlaceCard, styles.emptyCard, className)} style={style} data-testid={testId}>
+      <div className={clsx(styles.mapPlaceCard, styles.emptyCard, className)} style={style} data-testid={testId}>
         <div className={styles.emptyContainer}>
           <div className={styles.emptyTitle}>{emptyTitle}</div>
           {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
@@ -293,7 +293,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   }
 
   // Normal Content
-  const cardClassName = cn(
+  const cardClassName = clsx(
     styles.mapPlaceCard,
     variant === 'list' && styles.variantList,
     selected && styles.selected,
@@ -341,7 +341,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
       </div>
       <div className={styles.content}>
         <div
-          className={cn(
+          className={clsx(
             styles.title,
             titleLines === 2 && styles.titleLines2,
             titleLines === 3 && styles.titleLines3
@@ -351,7 +351,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
         </div>
         {subtitle && (
           <div
-            className={cn(
+            className={clsx(
               styles.subtitle,
               subtitleLines === 2 && styles.subtitleLines2,
               subtitleLines === 3 && styles.subtitleLines3

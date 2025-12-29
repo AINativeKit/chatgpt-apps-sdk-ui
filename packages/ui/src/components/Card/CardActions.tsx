@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Button, type ButtonProps } from '@openai/apps-sdk-ui/components/Button';
 import styles from './CardParts.module.css';
 
@@ -38,7 +38,7 @@ export const CardActions = React.forwardRef<HTMLDivElement, CardActionsProps>((p
   return (
     <div
       ref={ref}
-      className={cn(styles.cardActions, className)}
+      className={clsx(styles.cardActions, className)}
       data-align={align}
       data-testid={testId}
       {...rest}

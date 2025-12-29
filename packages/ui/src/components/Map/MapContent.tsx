@@ -6,7 +6,7 @@ import type { MapViewProps } from './MapView';
 import type { LocationData, RenderMarkerParams } from './types';
 import { TILE_PROVIDER_PRESETS, type TileProviderConfig } from './tileProviders';
 import { Features } from '../Feature/Features';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Map.module.css';
 
 /**
@@ -456,7 +456,7 @@ export const MapContent: React.FC<MapViewProps> = ({
   tileProvider,
   tileApiKey,
 }) => {
-  const containerClassName = cn(
+  const containerClassName = clsx(
     styles.mapContainer,
     !hideAttribution && 'show-attribution',
     className

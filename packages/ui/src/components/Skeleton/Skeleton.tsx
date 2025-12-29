@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import styles from './Skeleton.module.css';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 
 export interface SkeletonProps {
   /** Width of the skeleton (number for px, string for any CSS value) */
@@ -40,7 +40,7 @@ export const Skeleton = ({
   borderRadius,
 }: SkeletonProps) => (
   <div
-    className={cn(styles.skeleton, className)}
+    className={clsx(styles.skeleton, className)}
     style={{
       width: typeof width === 'number' ? `${width}px` : width,
       height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { ImageWide } from '@openai/apps-sdk-ui/components/Icon';
 import styles from './ImageSkeleton.module.css';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 
 export interface ImageSkeletonProps {
   /** Width of the skeleton (number for px, string for any CSS value) */
@@ -49,7 +49,7 @@ export const ImageSkeleton = ({
   iconSize = 32,
 }: ImageSkeletonProps) => (
   <div
-    className={cn(styles.imageSkeleton, className)}
+    className={clsx(styles.imageSkeleton, className)}
     style={{
       width: typeof width === 'number' ? `${width}px` : width,
       height: typeof height === 'number' ? `${height}px` : height,

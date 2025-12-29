@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Sidebar.module.css';
 
 export interface SidebarProps {
@@ -109,14 +109,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: slideFrom }}
           transition={{ type: 'spring', bounce: 0, duration: 0.25 }}
-          className={cn(
+          className={clsx(
             styles.sidebar,
             position === 'left' ? styles.left : styles.right,
             className
           )}
           style={overrideStyles as React.CSSProperties}
         >
-          <div className={cn(styles.content, contentClassName)}>
+          <div className={clsx(styles.content, contentClassName)}>
             {children}
           </div>
         </motion.div>

@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useMemo } from 'react';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { Carousel } from '../Carousel';
 import { MapPlaceCard } from './MapPlaceCard';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import type { LocationData } from './types';
 import styles from './LocationCarousel.module.css';
 
@@ -141,7 +141,7 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
   // Loading State
   if (loading) {
     return (
-      <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
+      <div className={clsx(styles.locationCarousel, className)} ref={carouselRef}>
         <Carousel
           className={styles.carousel}
           align="start"
@@ -166,7 +166,7 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
   // Error State
   if (error) {
     return (
-      <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
+      <div className={clsx(styles.locationCarousel, className)} ref={carouselRef}>
         <Carousel
           className={styles.carousel}
           align="start"
@@ -187,7 +187,7 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
   // Empty State
   if (locations.length === 0) {
     return (
-      <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
+      <div className={clsx(styles.locationCarousel, className)} ref={carouselRef}>
         <Carousel
           className={styles.carousel}
           align="start"
@@ -205,7 +205,7 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
 
   // Normal Content
   return (
-    <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
+    <div className={clsx(styles.locationCarousel, className)} ref={carouselRef}>
       <Carousel
         className={styles.carousel}
         align="center"

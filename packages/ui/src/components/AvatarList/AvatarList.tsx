@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar } from '@openai/apps-sdk-ui/components/Avatar';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './AvatarList.module.css';
 
 export interface AvatarListItem {
@@ -72,7 +72,7 @@ export const AvatarList: React.FC<AvatarListProps> = ({
   if (!items || items.length === 0) return null;
 
   return (
-    <div className={cn(styles.list, className)}>
+    <div className={clsx(styles.list, className)}>
       {title && <div className={styles.title}>{title}</div>}
       <div className={styles.items}>
         {items.map((item) => (

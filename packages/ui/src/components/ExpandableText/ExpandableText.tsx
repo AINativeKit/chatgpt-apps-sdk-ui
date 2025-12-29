@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './ExpandableText.module.css';
 
 export interface ExpandableTextProps {
@@ -65,10 +65,10 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
   }, [text, maxLines]);
 
   return (
-    <div className={cn(styles.expandableText, className)}>
+    <div className={clsx(styles.expandableText, className)}>
       <div
         ref={textRef}
-        className={cn(styles.text, !expanded && styles.clamped)}
+        className={clsx(styles.text, !expanded && styles.clamped)}
         style={{ '--max-lines': maxLines } as React.CSSProperties}
       >
         {text}

@@ -6,7 +6,7 @@ import type { LocationCarouselProps } from './LocationCarousel';
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { ExpandLg } from '@openai/apps-sdk-ui/components/Icon';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './CompactMap.module.css';
 
 type CarouselOverrides = Partial<
@@ -100,7 +100,7 @@ export const CompactMap: React.FC<CompactMapProps> = ({
   // Error state - centered overlay without map
   if (error) {
     return (
-      <div className={cn(styles.container, className)} style={containerStyle}>
+      <div className={clsx(styles.container, className)} style={containerStyle}>
         <div className={styles.stateOverlay}>
           <ErrorStateDisplay state="error" title="Failed to load map" message="Please try again." />
         </div>
@@ -111,7 +111,7 @@ export const CompactMap: React.FC<CompactMapProps> = ({
   // Empty state - centered overlay without map
   if (isEmpty) {
     return (
-      <div className={cn(styles.container, className)} style={containerStyle}>
+      <div className={clsx(styles.container, className)} style={containerStyle}>
         <div className={styles.stateOverlay}>
           <ErrorStateDisplay
             state="empty"
@@ -124,7 +124,7 @@ export const CompactMap: React.FC<CompactMapProps> = ({
   }
 
   return (
-    <div className={cn(styles.container, className)} style={containerStyle}>
+    <div className={clsx(styles.container, className)} style={containerStyle}>
       <div className={styles.mapLayer}>
         <MapView
           locations={locations}
@@ -144,7 +144,7 @@ export const CompactMap: React.FC<CompactMapProps> = ({
           error={error}
           tileProvider={tileProvider}
           tileApiKey={tileApiKey}
-          className={cn(styles.mapView, mapClassName)}
+          className={clsx(styles.mapView, mapClassName)}
           style={mapStyle}
         />
       </div>
