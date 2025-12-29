@@ -3,12 +3,12 @@ import { AnimatePresence } from 'framer-motion';
 import { MapSidebar } from './MapSidebar';
 import { MapInspector } from './MapInspector';
 import { LocationCarousel } from './LocationCarousel';
-import { MapView } from './MapView';
-import { Button } from '../Button';
-import { Skeleton } from '../Skeleton';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { CollapseLg, Maps } from '@openai/apps-sdk-ui/components/Icon';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
 import { getErrorState, resolveErrorStateValues } from './useErrorState';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
+import { ImageSkeleton } from '../Skeleton';
 import type { LocationData } from './types';
 import type { MapViewProps } from './MapView';
 import styles from './FullscreenMap.module.css';
@@ -87,7 +87,7 @@ export interface FullscreenMapProps extends Omit<MapViewProps, 'selectedId' | 'o
 
 const LoadingFallback: React.FC<{ height?: string | number }> = ({ height }) => (
   <div className={styles.loadingContainer} style={{ height }}>
-    <Skeleton width="100%" height="100%" />
+    <ImageSkeleton width="100%" height="100%" icon={<Maps />} iconSize={48} borderRadius={0} />
   </div>
 );
 
@@ -147,34 +147,32 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
     return <LoadingFallback height={height} />;
   }
 
-  // Error or Empty State
-  if (isError || isEmpty) {
-    const stateType = isError ? 'error' : 'empty';
-    const stateTitle = isError ? resolvedValues.errorTitle : resolvedValues.emptyTitle;
-    const stateMessage = isError ? resolvedValues.errorMessage : resolvedValues.emptyMessage;
-
+  // Error State - centered overlay without map
+  if (isError) {
     return (
-      <div className={cn(styles.container, className)} style={{ height }}>
-        <div className={styles.fallbackLayout}>
-          <MapView
-            locations={[]}
-            selectedId={undefined}
-            loading={false}
-            error={false}
-            scrollWheelZoom={scrollWheelZoom}
-            {...mapProps}
-            className={styles.fallbackMap}
+      <div className={clsx(styles.container, className)} style={{ height }}>
+        <div className={styles.stateOverlay}>
+          <ErrorStateDisplay
+            state="error"
+            title={resolvedValues.errorTitle}
+            message={resolvedValues.errorMessage}
+            onAction={resolvedValues.onErrorRetry}
           />
-          <div className={styles.fallbackOverlay}>
-            <ErrorStateDisplay
-              state={stateType}
-              title={stateTitle}
-              message={stateMessage}
-              onAction={isError ? resolvedValues.onErrorRetry : undefined}
-              containerClassName={styles.fallbackOverlay}
-              className={styles.fallbackOverlayContent}
-            />
-          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Empty State - centered overlay without map
+  if (isEmpty) {
+    return (
+      <div className={clsx(styles.container, className)} style={{ height }}>
+        <div className={styles.stateOverlay}>
+          <ErrorStateDisplay
+            state="empty"
+            title={resolvedValues.emptyTitle}
+            message={resolvedValues.emptyMessage}
+          />
         </div>
       </div>
     );
@@ -182,16 +180,20 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
 
   // Normal Content
   return (
-    <div className={cn(styles.container, className)} style={{ height }}>
+    <div className={clsx(styles.container, className)} style={{ height }}>
       {/* Collapse Button */}
       {onCollapse && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="collapse-lg"
+          uniform
+          size="md"
           onClick={onCollapse}
           aria-label="Collapse map to compact view"
           className={styles.collapseButton}
-        />
+        >
+          <CollapseLg />
+        </Button>
       )}
 
       {/* Desktop Sidebar */}

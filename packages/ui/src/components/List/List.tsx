@@ -1,8 +1,10 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
 import styles from './List.module.css';
 
 export interface ListHeaderProps {
@@ -61,15 +63,11 @@ export interface ListProps<T = unknown> extends Omit<ComponentPropsWithoutRef<'d
    */
   showDividers?: boolean;
 
-  // Phase 1: Loading State
   /**
-   * Loading state - renders items with loading context or skeleton items
+   * Loading state - renders items with loading context or skeleton items.
+   * When true: if items provided, they render (pass loading prop to ListItem for best UX);
+   * if no items, renders skeleton items based on loadingItems count.
    * @default false
-   *
-   * @remarks
-   * When true:
-   * - If items array has content, they will be rendered (pass items with loading prop for best UX)
-   * - If no items, renders skeleton list items based on loadingItems count
    */
   loading?: boolean;
 
@@ -79,9 +77,8 @@ export interface ListProps<T = unknown> extends Omit<ComponentPropsWithoutRef<'d
    */
   loadingItems?: number;
 
-  // Phase 1: Error State
   /**
-   * Error state - shows error message
+   * Error state - shows error message.
    * @default false
    */
   error?: boolean;
@@ -102,9 +99,8 @@ export interface ListProps<T = unknown> extends Omit<ComponentPropsWithoutRef<'d
    */
   onErrorRetry?: () => void;
 
-  // Phase 1: Enhanced Empty State
   /**
-   * Empty state title when no items provided
+   * Empty state title when no items provided.
    * @default 'No items'
    */
   emptyTitle?: string;
@@ -122,7 +118,6 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
     renderItem,
     emptyMessage = 'No items found.',
     showDividers = true,
-    // Phase 1 props
     loading = false,
     loadingItems = 3,
     error = false,
@@ -154,7 +149,6 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
     return <div className={styles.headerMedia}>{header.thumbnail}</div>;
   };
 
-  // Phase 1: Loading State - Smart loading based on items
   const renderLoading = () => {
     const itemCount = items.length;
 
@@ -169,33 +163,27 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
       <div key={i} className={styles.listItemWrapper} style={{ pointerEvents: 'none' }}>
         <div className={styles.listItem}>
           <div className={styles.itemMedia}>
-            <Skeleton
-              width={40}
-              height={40}
-              animation
-              style={{ borderRadius: 'var(--ai-radius-md)' }}
-            />
+            <Skeleton width={40} height={40} borderRadius="var(--radius-md)" />
           </div>
           <div className={styles.itemBody}>
             <div className={styles.itemHeader}>
-              <Skeleton width="60%" height={16} animation />
+              <Skeleton width={180} height={16} />
             </div>
-            <div className={styles.itemSubtitleRow} style={{ marginTop: 'var(--ai-spacing-2)' }}>
-              <Skeleton width="40%" height={14} animation />
+            <div className={styles.itemSubtitleRow} style={{ marginTop: '8px' }}>
+              <Skeleton width={120} height={14} />
             </div>
           </div>
           <div className={styles.itemTrailing}>
-            <Skeleton width={60} height={14} animation />
+            <Skeleton width={60} height={14} />
           </div>
         </div>
       </div>
     ));
   };
 
-  // Phase 1: Error State - Early return
   if (error) {
     return (
-      <div ref={ref} className={cn(styles.listContainer, className)} {...rest}>
+      <div ref={ref} className={clsx(styles.listContainer, className)} {...rest}>
         {header && (
           <div className={styles.listHeader}>
             <div className={styles.headerRow}>
@@ -208,37 +196,43 @@ const ListInner = <T,>(props: ListProps<T>, ref: React.ForwardedRef<HTMLDivEleme
           </div>
         )}
         <div className={styles.errorContainer}>
-          <Alert layout="card" title={errorTitle} message={errorMessage} onAction={onErrorRetry} />
+          <Alert
+            color="danger"
+            variant="soft"
+            title={errorTitle}
+            description={errorMessage}
+            actions={
+              onErrorRetry ? (
+                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                  Retry
+                </Button>
+              ) : undefined
+            }
+          />
         </div>
       </div>
     );
   }
 
-  // Phase 1: Enhanced Empty State
   const renderEmptyState = () => {
     // Custom empty state
     if (emptyState) {
       return <div className={styles.emptyContainer}>{emptyState}</div>;
     }
 
-    // Default empty state with title and message
-    if (emptyTitle || emptyMessage) {
-      return (
-        <div className={styles.emptyContainer}>
-          <div className={styles.emptyContent}>
-            <div className={styles.emptyTitle}>{emptyTitle}</div>
-            {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
-          </div>
-        </div>
-      );
-    }
-
-    // Fallback to old behavior
-    return <div className={styles.emptyState}>{emptyMessage}</div>;
+    // Default empty state with EmptyMessage from apps-sdk-ui
+    return (
+      <div className={styles.emptyContainer}>
+        <EmptyMessage fill="none">
+          <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+          {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+        </EmptyMessage>
+      </div>
+    );
   };
 
   return (
-    <div ref={ref} className={cn(styles.listContainer, className)} {...rest}>
+    <div ref={ref} className={clsx(styles.listContainer, className)} {...rest}>
       {header && (
         <div className={styles.listHeader}>
           <div className={styles.headerRow}>

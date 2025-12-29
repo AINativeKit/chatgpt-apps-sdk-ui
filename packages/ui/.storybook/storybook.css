@@ -1,0 +1,496 @@
+/**
+ * Storybook CSS Entry Point
+ * Imports apps-sdk-ui base styles and our extension tokens
+ */
+
+/* Tailwind CSS base */
+@import "tailwindcss";
+
+/* apps-sdk-ui base styles and tokens */
+@import "@openai/apps-sdk-ui/css";
+
+/* Our extension tokens (compatibility layer) */
+@import "../src/tokens/tokens.css";
+
+/**
+ * Typography styles for story showcase pages
+ * Tailwind preflight resets heading styles, so we add them back
+ * using apps-sdk-ui typography tokens
+ */
+@layer base {
+  h1 {
+    font-size: var(--font-heading-xl-size);
+    line-height: var(--font-heading-xl-line-height);
+    font-weight: var(--font-heading-xl-weight);
+    letter-spacing: var(--font-heading-xl-tracking);
+    color: var(--color-text);
+  }
+
+  h2 {
+    font-size: var(--font-heading-lg-size);
+    line-height: var(--font-heading-lg-line-height);
+    font-weight: var(--font-heading-lg-weight);
+    letter-spacing: var(--font-heading-lg-tracking);
+    color: var(--color-text);
+  }
+
+  h3 {
+    font-size: var(--font-heading-md-size);
+    line-height: var(--font-heading-md-line-height);
+    font-weight: var(--font-heading-md-weight);
+    letter-spacing: var(--font-heading-md-tracking);
+    color: var(--color-text);
+  }
+
+  h4 {
+    font-size: var(--font-heading-sm-size);
+    line-height: var(--font-heading-sm-line-height);
+    font-weight: var(--font-heading-sm-weight);
+    letter-spacing: var(--font-heading-sm-tracking);
+    color: var(--color-text);
+  }
+
+  h5, h6 {
+    font-size: var(--font-text-md-size);
+    line-height: var(--font-text-md-line-height);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+  }
+}
+
+/**
+ * Storybook Docs Page Styles
+ * Following OpenAI SDK UI documentation pattern
+ */
+
+/* Docs wrapper */
+.sbdocs-wrapper {
+  display: block !important;
+  padding-top: 20px !important;
+  background: var(--color-surface) !important;
+}
+
+@media (width >= 769px) {
+  .sbdocs-wrapper {
+    padding-top: 58px !important;
+    padding-right: 260px !important;
+    padding-left: 40px !important;
+  }
+}
+
+/* Docs content */
+.sbdocs-content {
+  flex: 1 !important;
+  min-width: 200px !important;
+  max-width: 780px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+}
+
+/* Title - large bold heading */
+h1.sbdocs-title,
+.sbdocs-content h1.sbdocs-title {
+  margin-bottom: 10px !important;
+  color: var(--color-text) !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 36px !important;
+}
+
+@media (width >= 769px) {
+  h1.sbdocs-title,
+  .sbdocs-content h1.sbdocs-title {
+    font-size: 36px !important;
+    line-height: 42px !important;
+  }
+}
+
+/* Subtitle - lighter gray description */
+h2.sbdocs-subtitle,
+.sbdocs-content h2.sbdocs-subtitle {
+  margin-bottom: 30px !important;
+  color: var(--color-text-secondary) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+
+@media (width >= 769px) {
+  h2.sbdocs-subtitle,
+  .sbdocs-content h2.sbdocs-subtitle {
+    font-size: 20px !important;
+  }
+}
+
+/* H2 Sections */
+.sbdocs-content > h2:not(.sbdocs-subtitle) {
+  padding: 0 !important;
+  border: 0 !important;
+  margin-top: 40px !important;
+  margin-bottom: 10px !important;
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+/* H3 Sections */
+.sbdocs-content > h3 {
+  margin: 26px 0 10px !important;
+  color: var(--color-text) !important;
+  font-size: 18px !important;
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+/* Paragraphs */
+.sbdocs-content > :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) {
+  color: var(--color-text) !important;
+  font-size: var(--font-text-md-size) !important;
+  line-height: var(--font-text-md-line-height) !important;
+}
+
+/* Inline code */
+.sbdocs-content > :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) code {
+  border: 1px solid var(--alpha-12, rgba(0,0,0,0.12)) !important;
+  border-radius: 4px !important;
+  background-color: var(--gray-25, #fafafa) !important;
+  color: var(--color-text) !important;
+  padding: 2px 5px !important;
+  font-size: 0.9em !important;
+}
+
+[data-theme="dark"] .sbdocs-content > :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) code {
+  background-color: var(--color-surface-elevated) !important;
+  border-color: var(--gray-350) !important;
+}
+
+/* Canvas preview */
+.sbdocs-preview {
+  border-color: var(--alpha-10, rgba(0,0,0,0.1)) !important;
+  border-radius: var(--radius-md, 8px) !important;
+  box-shadow:
+    0 4px 12px -3px rgba(0, 0, 0, 0.12),
+    0 4px 4px -4px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="dark"] .sbdocs-preview {
+  background: var(--color-surface) !important;
+  border-color: var(--gray-350) !important;
+  box-shadow: none !important;
+}
+
+/* MDX Markdown tables */
+.sbdocs-content table:not(.docblock-argstable) {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.sbdocs-content table:not(.docblock-argstable) thead th {
+  padding: 8px 14px;
+  border-top: 1px solid var(--alpha-08, rgba(0,0,0,0.08));
+  border-bottom: 1px solid var(--alpha-08, rgba(0,0,0,0.08));
+  background: var(--gray-50, #f5f5f5);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+}
+
+[data-theme="dark"] .sbdocs-content table:not(.docblock-argstable) thead th {
+  background: var(--color-surface-elevated);
+  border-color: var(--gray-350);
+}
+
+.sbdocs-content table:not(.docblock-argstable) thead th:first-child {
+  border-left: 1px solid var(--alpha-08, rgba(0,0,0,0.08));
+  border-top-left-radius: var(--radius-md, 8px);
+}
+
+[data-theme="dark"] .sbdocs-content table:not(.docblock-argstable) thead th:first-child {
+  border-left-color: var(--gray-350);
+}
+
+.sbdocs-content table:not(.docblock-argstable) thead th:last-child {
+  border-right: 1px solid var(--alpha-08, rgba(0,0,0,0.08));
+  border-top-right-radius: var(--radius-md, 8px);
+}
+
+[data-theme="dark"] .sbdocs-content table:not(.docblock-argstable) thead th:last-child {
+  border-right-color: var(--gray-350);
+}
+
+.sbdocs-content table:not(.docblock-argstable) tbody td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--alpha-10, rgba(0,0,0,0.1));
+  border-left: 1px solid var(--alpha-10, rgba(0,0,0,0.1));
+  background: transparent;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+[data-theme="dark"] .sbdocs-content table:not(.docblock-argstable) tbody td {
+  border-color: var(--gray-350);
+}
+
+.sbdocs-content table:not(.docblock-argstable) tbody td:last-child {
+  border-right: 1px solid var(--alpha-10, rgba(0,0,0,0.1));
+}
+
+[data-theme="dark"] .sbdocs-content table:not(.docblock-argstable) tbody td:last-child {
+  border-right-color: var(--gray-350);
+}
+
+.sbdocs-content table:not(.docblock-argstable) tbody tr:last-child td:first-child {
+  border-bottom-left-radius: var(--radius-md, 8px);
+}
+
+.sbdocs-content table:not(.docblock-argstable) tbody tr:last-child td:last-child {
+  border-bottom-right-radius: var(--radius-md, 8px);
+}
+
+.sbdocs-content table:not(.docblock-argstable) code {
+  border: 1px solid var(--alpha-12, rgba(0,0,0,0.12));
+  border-radius: 4px;
+  background-color: var(--gray-25, #fafafa);
+  color: var(--color-text);
+  padding: 2px 5px;
+  font-size: 0.9em;
+}
+
+[data-theme="dark"] .sbdocs-content table:not(.docblock-argstable) code {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--gray-350);
+}
+
+/* Type hint styling (matches ArgTypes type display) */
+.sbdocs-content table:not(.docblock-argstable) .type-hint {
+  display: block;
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, consolas, "liberation mono", menlo, monospace;
+  font-size: 12px;
+}
+
+/* ArgTypes table */
+.docblock-argstable {
+  margin-top: 20px !important;
+  border-collapse: separate;
+}
+
+.docblock-argstable-head th {
+  padding: 8px 14px !important;
+  border-top: 1px solid var(--alpha-08, rgba(0,0,0,0.08)) !important;
+  background: var(--gray-50, #f5f5f5) !important;
+  color: var(--color-text-secondary) !important;
+  font-size: 13px !important;
+  font-weight: var(--font-weight-semibold);
+}
+
+[data-theme="dark"] .docblock-argstable-head th {
+  background: var(--color-surface-elevated) !important;
+  border-top-color: var(--gray-350) !important;
+}
+
+.docblock-argstable-head th:first-child {
+  border-left: 1px solid var(--alpha-08, rgba(0,0,0,0.08)) !important;
+  border-top-left-radius: var(--radius-md, 8px) !important;
+}
+
+[data-theme="dark"] .docblock-argstable-head th:first-child {
+  border-left-color: var(--gray-350) !important;
+}
+
+.docblock-argstable-head th:last-of-type {
+  border-right: 1px solid var(--alpha-08, rgba(0,0,0,0.08)) !important;
+  border-top-right-radius: var(--radius-md, 8px) !important;
+}
+
+[data-theme="dark"] .docblock-argstable-head th:last-of-type {
+  border-right-color: var(--gray-350) !important;
+}
+
+.docblock-argstable-body {
+  filter: none !important;
+  font-size: 14px !important;
+}
+
+.docblock-argstable-body td {
+  padding: 8px 14px !important;
+  border-color: var(--alpha-10, rgba(0,0,0,0.1)) !important;
+  background: transparent !important;
+  color: var(--color-text) !important;
+}
+
+[data-theme="dark"] .docblock-argstable-body td {
+  border-color: var(--gray-350) !important;
+}
+
+.docblock-argstable-body > tr:last-of-type > td:first-of-type {
+  border-bottom-left-radius: var(--radius-md, 8px) !important;
+}
+
+.docblock-argstable-body > tr:last-of-type > td:last-of-type {
+  border-bottom-right-radius: var(--radius-md, 8px) !important;
+}
+
+/* Prop name styling */
+.docblock-argstable-body tr > td:first-child > span:first-child {
+  flex: 0 0 auto;
+  max-width: 100%;
+  padding: 2px 5px;
+  border: 1px solid var(--alpha-12, rgba(0,0,0,0.12));
+  border-radius: 4px;
+  margin: 0 4px 4px 0;
+  background-color: var(--gray-25, #fafafa);
+  color: var(--color-text);
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, consolas, "liberation mono", menlo, monospace;
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 13px;
+}
+
+[data-theme="dark"] .docblock-argstable-body tr > td:first-child > span:first-child {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--gray-350);
+}
+
+/* Code block source */
+.docblock-source {
+  border-color: var(--alpha-10, rgba(0,0,0,0.1)) !important;
+  border-radius: var(--radius-md, 8px) !important;
+  margin: 18px 0 24px !important;
+  background: var(--gray-25, #fafafa) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .docblock-source {
+  border: 0 !important;
+  background: var(--color-surface-elevated) !important;
+}
+
+/* Copy button container */
+.docblock-source > div:last-child {
+  right: -1px !important;
+  bottom: -1px !important;
+  z-index: auto !important;
+  background: none !important;
+}
+
+/* Copy button styling */
+.docblock-source button {
+  border: 1px solid var(--alpha-10, rgba(0,0,0,0.1)) !important;
+  border-radius: var(--radius-md, 8px) 0 var(--radius-md, 8px) 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+}
+
+[data-theme="dark"] .docblock-source button {
+  border-color: var(--alpha-15, rgba(255,255,255,0.15)) !important;
+  background: var(--gray-400) !important;
+}
+
+/* Syntax highlighting */
+.docblock-source .prismjs,
+.sbdocs-preview > div:nth-child(2) .prismjs {
+  padding: 14px 20px !important;
+  font-size: 1em !important;
+}
+
+/* Comments */
+.prismjs .token.comment,
+.prismjs .token.prolog,
+.prismjs .token.doctype,
+.prismjs .token.cdata {
+  color: var(--gray-400, #888) !important;
+  font-style: italic !important;
+}
+
+[data-theme="dark"] .prismjs .token.comment,
+[data-theme="dark"] .prismjs .token.prolog,
+[data-theme="dark"] .prismjs .token.doctype,
+[data-theme="dark"] .prismjs .token.cdata {
+  color: var(--gray-600, #666) !important;
+}
+
+/* Tags and selectors */
+.prismjs .token.tag,
+.prismjs .token.selector {
+  color: var(--pink-500, #e91e63) !important;
+}
+
+/* Strings */
+.prismjs .token.attr-value,
+.prismjs .token.string {
+  color: var(--green-600, #2e7d32) !important;
+}
+
+[data-theme="dark"] .prismjs .token.attr-value,
+[data-theme="dark"] .prismjs .token.string {
+  color: var(--green-300, #81c784) !important;
+}
+
+/* Keywords */
+.prismjs .token.keyword,
+.prismjs .token.function-variable {
+  color: var(--blue-600, #1565c0) !important;
+}
+
+[data-theme="dark"] .prismjs .token.keyword,
+[data-theme="dark"] .prismjs .token.function-variable {
+  color: var(--blue-100, #90caf9) !important;
+}
+
+/* Class names */
+.prismjs .token.class-name,
+.prismjs .token.maybe-class-name {
+  color: var(--purple-500, #9c27b0) !important;
+}
+
+[data-theme="dark"] .prismjs .token.class-name,
+[data-theme="dark"] .prismjs .token.maybe-class-name {
+  color: var(--purple-300, #ce93d8) !important;
+}
+
+/* Attribute names */
+.prismjs .token.attr-name,
+.prismjs .token.property,
+.prismjs .token.regex,
+.prismjs .token.entity {
+  color: var(--blue-600, #1565c0) !important;
+}
+
+[data-theme="dark"] .prismjs .token.attr-name,
+[data-theme="dark"] .prismjs .token.property,
+[data-theme="dark"] .prismjs .token.regex,
+[data-theme="dark"] .prismjs .token.entity {
+  color: var(--blue-100, #90caf9) !important;
+}
+
+/* Punctuation */
+.prismjs .token.punctuation,
+.prismjs .token.operator {
+  color: var(--gray-400, #888) !important;
+}
+
+[data-theme="dark"] .prismjs .token.punctuation,
+[data-theme="dark"] .prismjs .token.operator {
+  color: var(--gray-800, #ccc) !important;
+}
+
+/* Functions */
+.prismjs .token.function {
+  color: #0f786d !important;
+}
+
+[data-theme="dark"] .prismjs .token.function {
+  color: var(--yellow-100, #fff59d) !important;
+}
+
+/* Plain text */
+.prismjs .token.plain-text {
+  color: var(--color-text) !important;
+}

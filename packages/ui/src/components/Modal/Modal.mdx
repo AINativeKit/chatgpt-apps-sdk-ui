@@ -1,0 +1,111 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as ModalStories from './Modal.stories'
+
+<Meta of={ModalStories} />
+
+<Title>Modal</Title>
+<Subtitle>A centered overlay panel with backdrop for dialogs and focused interactions</Subtitle>
+
+## Usage
+
+```tsx
+import { Modal } from "@ainativekit/ui";
+
+function MyComponent() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setOpen(true)}>Open</button>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <YourContent />
+      </Modal>
+    </>
+  );
+}
+```
+
+<Canvas of={ModalStories.Base} />
+
+## Reference
+
+<ArgTypes of={ModalStories.Base} />
+
+## Examples
+
+### Wide modal
+
+Override the default width for larger content.
+
+<Canvas of={ModalStories.WideModal} />
+
+### Persistent modal
+
+Disable backdrop click to require explicit action to close.
+
+<Canvas of={ModalStories.PersistentModal} />
+
+### Scrollable content
+
+Set a max height to enable scrolling within the modal.
+
+<Canvas of={ModalStories.ScrollableContent} />
+
+## Tokens
+
+Customize modal appearance by overriding these CSS custom properties:
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span className="type-hint">`--modal-width`</span></td>
+      <td>`356px`</td>
+      <td>Default width of the modal</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--modal-max-width`</span></td>
+      <td>`90vw`</td>
+      <td>Maximum width constraint</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--modal-max-height`</span></td>
+      <td>`min(85vh, 600px)`</td>
+      <td>Maximum height constraint</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--modal-radius`</span></td>
+      <td>`var(--radius-4xl)`</td>
+      <td>Border radius</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--modal-shadow`</span></td>
+      <td>`var(--shadow-300)`</td>
+      <td>Box shadow</td>
+    </tr>
+    <tr>
+      <td><span className="type-hint">`--modal-backdrop`</span></td>
+      <td>`rgb(0 0 0 / 50%)`</td>
+      <td>Backdrop color</td>
+    </tr>
+  </tbody>
+</table>
+
+## Accessibility
+
+- Uses `role="dialog"` and `aria-modal="true"`
+- Escape key closes the modal by default
+- Body scroll is disabled when modal is open
+- Focus trap should be implemented in your content for full accessibility
+
+## Notes
+
+- Modal uses `position: fixed` and renders at the root level
+- The close button is not included by default - add your own in the children content
+- For responsive layouts, consider using `Modal` for mobile and `Sidebar` for desktop

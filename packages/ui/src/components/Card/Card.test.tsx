@@ -17,8 +17,8 @@ describe('Card', () => {
     );
 
     const card = screen.getByTestId('card');
-    expect(card.style.getPropertyValue('--card-shadow-value')).toBe('var(--ai-elevation-3-shadow)');
-    expect(card.style.getPropertyValue('--card-border-color')).toBe('var(--ai-color-border-light)');
+    expect(card.style.getPropertyValue('--card-shadow-value')).toBe('var(--shadow-300)');
+    expect(card.style.getPropertyValue('--card-border-color')).toBe('var(--color-border-subtle)');
   });
 
   it('uses next elevation on hover when interactive', () => {
@@ -30,7 +30,7 @@ describe('Card', () => {
 
     const card = screen.getByTestId('interactive-card');
     expect(card.style.getPropertyValue('--card-hover-shadow-value')).toBe(
-      'var(--ai-elevation-3-shadow)'
+      'var(--shadow-300)'
     );
   });
 
@@ -55,9 +55,9 @@ describe('Card', () => {
       // Content should not be visible
       expect(screen.queryByText('Card Content')).not.toBeInTheDocument();
 
-      // Skeleton should be present (3 skeleton elements by default)
+      // Card should have aria-busy="true" when loading
       const card = screen.getByTestId('card');
-      expect(card.querySelector('[aria-busy="true"]')).toBeInTheDocument();
+      expect(card).toHaveAttribute('aria-busy', 'true');
     });
 
     it('shows custom skeleton when provided', () => {
@@ -132,7 +132,7 @@ describe('Card', () => {
           Content
         </Card>
       );
-      expect(screen.getByRole('button', { name: 'Try Again' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Retry' })).toBeInTheDocument();
     });
 
     it('should call onErrorRetry when retry button clicked', async () => {
@@ -144,7 +144,7 @@ describe('Card', () => {
         </Card>
       );
 
-      await user.click(screen.getByRole('button', { name: 'Try Again' }));
+      await user.click(screen.getByRole('button', { name: 'Retry' }));
       expect(onRetry).toHaveBeenCalledTimes(1);
     });
 

@@ -5,6 +5,7 @@ declare const styles: {
   readonly emptyCard: string;
   readonly imageContainer: string;
   readonly image: string;
+  readonly imageFallback: string;
   readonly content: string;
   readonly title: string;
   readonly subtitle: string;

@@ -1,103 +1,55 @@
-import React from 'react';
-import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../../utils/cn';
+import type { CSSProperties } from 'react';
 import styles from './Skeleton.module.css';
+import clsx from 'clsx';
 
-export type SkeletonVariant = 'text' | 'rectangular' | 'circular';
-
-export interface SkeletonProps extends ComponentPropsWithoutRef<'div'> {
-  /**
-   * The shape variant of the skeleton
-   * @default 'rectangular'
-   */
-  variant?: SkeletonVariant;
-
-  /**
-   * Width of the skeleton. Can be a number (px) or CSS string
-   */
-  width?: number | string;
-
-  /**
-   * Height of the skeleton. Can be a number (px) or CSS string
-   */
-  height?: number | string;
-
-  /**
-   * Border radius of the skeleton. Can be a number (px) or CSS string
-   */
-  borderRadius?: number | string;
-
-  /**
-   * Whether to animate the skeleton
-   * @default true
-   */
-  animation?: boolean;
-
-  /**
-   * Optional test ID for testing purposes
-   */
-  'data-testid'?: string;
+export interface SkeletonProps {
+  /** Width of the skeleton (number for px, string for any CSS value) */
+  width?: string | number;
+  /** Height of the skeleton (number for px, string for any CSS value) */
+  height?: string | number;
+  /** Additional inline styles */
+  style?: CSSProperties;
+  /** Additional CSS class name */
+  className?: string;
+  /** Border radius override */
+  borderRadius?: string | number;
 }
 
 /**
- * Skeleton component for loading states
+ * Skeleton component for loading placeholders.
+ *
+ * Provides a shimmer animation effect to indicate loading state.
  *
  * @example
  * ```tsx
- * // Text skeleton
- * <Skeleton variant="text" width="80%" />
+ * // Basic usage
+ * <Skeleton width={200} height={20} />
  *
- * // Rectangular skeleton (default)
- * <Skeleton width={200} height={100} />
+ * // Full width with custom height
+ * <Skeleton width="100%" height={100} />
  *
- * // Circular skeleton (avatar)
- * <Skeleton variant="circular" width={40} height={40} />
- *
- * // Without animation
- * <Skeleton animation={false} />
+ * // Circular skeleton
+ * <Skeleton width={40} height={40} borderRadius="50%" />
  * ```
  */
-export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>((props, ref) => {
-  const {
-    variant = 'rectangular',
-    width,
-    height,
-    borderRadius,
-    animation = true,
-    className,
-    style,
-    'data-testid': testId,
-    ...rest
-  } = props;
-
-  const normalizedWidth = typeof width === 'number' ? `${width}px` : width;
-  const normalizedHeight = typeof height === 'number' ? `${height}px` : height;
-  const normalizedBorderRadius =
-    typeof borderRadius === 'number' ? `${borderRadius}px` : borderRadius;
-
-  const inlineStyle = {
-    ...(normalizedWidth && { width: normalizedWidth }),
-    ...(normalizedHeight && { height: normalizedHeight }),
-    ...(normalizedBorderRadius && { borderRadius: normalizedBorderRadius }),
-    ...style,
-  };
-
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        styles.skeleton,
-        styles[`skeleton--${variant}`],
-        animation && styles['skeleton--animated'],
-        className
-      )}
-      style={inlineStyle}
-      data-testid={testId}
-      aria-busy="true"
-      aria-live="polite"
-      {...rest}
-    />
-  );
-});
+export const Skeleton = ({
+  width,
+  height,
+  style,
+  className,
+  borderRadius,
+}: SkeletonProps) => (
+  <div
+    className={clsx(styles.skeleton, className)}
+    style={{
+      width: typeof width === 'number' ? `${width}px` : width,
+      height: typeof height === 'number' ? `${height}px` : (height ?? '1em'),
+      borderRadius:
+        typeof borderRadius === 'number' ? `${borderRadius}px` : borderRadius,
+      ...style,
+    }}
+    aria-hidden="true"
+  />
+);
 
 Skeleton.displayName = 'Skeleton';

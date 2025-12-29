@@ -1,0 +1,86 @@
+import { Canvas, Meta, Subtitle, Title, ArgTypes } from '@storybook/blocks'
+import * as ListStories from './List.stories'
+import * as ListItemStories from './ListItem.stories'
+
+<Meta of={ListStories} />
+
+<Title>List</Title>
+<Subtitle>Flexible list component for displaying data collections with rich metadata for ChatGPT Apps SDK</Subtitle>
+
+## Usage
+
+```tsx
+import { List, ListItem } from "@ainativekit/ui";
+
+<List
+  items={contacts}
+  renderItem={(contact) => (
+    <ListItem
+      key={contact.id}
+      title={contact.name}
+      subtitle={contact.email}
+      media={contact.avatar}
+    />
+  )}
+/>
+```
+
+<Canvas of={ListStories.Base} />
+
+## Reference
+
+<ArgTypes of={ListStories.Base} />
+
+## Examples
+
+### With header
+
+Add a header section with title and optional action button.
+
+<Canvas of={ListStories.WithHeader} />
+
+### Ranked with features
+
+Display numbered ranking with feature chips for ratings, prices, or other metadata.
+
+<Canvas of={ListStories.RankedWithFeatures} />
+
+### Interactive
+
+Enable selection and click handling for interactive lists.
+
+<Canvas of={ListStories.Interactive} />
+
+### Loading
+
+Show skeleton placeholders while data is loading with `loading={true}`.
+
+<Canvas of={ListStories.Loading} />
+
+### Error
+
+Display an error message when content fails to load with `error={true}`. Add retry functionality with `onErrorRetry`.
+
+<Canvas of={ListStories.Error} />
+
+### Empty
+
+Show an empty state when there are no items. Customize with `emptyTitle` and `emptyMessage`.
+
+<Canvas of={ListStories.Empty} />
+
+### No dividers
+
+Remove visual dividers between items with `showDividers={false}`.
+
+<Canvas of={ListStories.NoDividers} />
+
+## ListItem Props
+
+<ArgTypes of={ListItemStories.Default} />
+
+## Technical Notes
+
+**Accessibility:** ARIA roles, keyboard navigation (Tab, Enter, Space), screen reader support.
+
+**Responsive:** Items adapt layout between mobile and desktop. Metadata moves inline on mobile.

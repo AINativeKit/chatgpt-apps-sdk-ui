@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Features } from '../Feature';
 import type { FeatureItem } from '../Feature';
 import { Skeleton } from '../Skeleton';
@@ -58,11 +58,13 @@ export interface ListItemProps extends Omit<ComponentPropsWithoutRef<'div'>, 'ti
 
   /**
    * Hide metadata from the inline mobile row.
+   * @default false
    */
   hideMetadataOnMobile?: boolean;
 
   /**
    * Enable hover/focus states even without an onClick handler.
+   * @default false
    */
   interactive?: boolean;
 
@@ -152,36 +154,31 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
     return (
       <div
         ref={ref}
-        className={cn(styles.listItemWrapper, className)}
+        className={clsx(styles.listItemWrapper, className)}
         style={{ pointerEvents: 'none' }}
         {...rest}
       >
         <div className={styles.listItem}>
           {/* Media skeleton */}
-          {(media || rank !== undefined) && (
+          {media && (
             <div className={styles.itemMedia}>
-              <Skeleton
-                width={40}
-                height={40}
-                animation
-                style={{ borderRadius: 'var(--ai-radius-md)' }}
-              />
+              <Skeleton width={40} height={40} borderRadius="var(--radius-md)" />
             </div>
           )}
           {rank !== undefined && (
             <div className={styles.itemRank}>
-              <Skeleton width={24} height={16} animation />
+              <Skeleton width={24} height={16} />
             </div>
           )}
 
           {/* Body skeleton */}
           <div className={styles.itemBody}>
             <div className={styles.itemHeader}>
-              <Skeleton width="60%" height={16} animation />
+              <Skeleton width={180} height={16} />
             </div>
             {(subtitle || features) && (
-              <div className={styles.itemSubtitleRow} style={{ marginTop: 'var(--ai-spacing-2)' }}>
-                <Skeleton width="40%" height={14} animation />
+              <div className={styles.itemSubtitleRow} style={{ marginTop: '8px' }}>
+                <Skeleton width={120} height={14} />
               </div>
             )}
           </div>
@@ -189,7 +186,7 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
           {/* Trailing skeleton */}
           {(metadata || action) && (
             <div className={styles.itemTrailing}>
-              <Skeleton width={60} height={14} animation />
+              <Skeleton width={60} height={14} />
             </div>
           )}
         </div>
@@ -200,7 +197,7 @@ export const ListItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, 
   return (
     <div
       ref={ref}
-      className={cn(styles.listItemWrapper, className)}
+      className={clsx(styles.listItemWrapper, className)}
       data-interactive={isInteractive}
       onClick={isInteractive ? onClick : undefined}
       onKeyDown={isInteractive ? handleKeyDown : undefined}

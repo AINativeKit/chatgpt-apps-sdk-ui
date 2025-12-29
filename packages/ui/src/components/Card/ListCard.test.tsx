@@ -292,6 +292,86 @@ describe('ListCard', () => {
     });
   });
 
+  describe('Loading State', () => {
+    it('shows skeleton when loading prop is true', () => {
+      render(<ListCard headerTitle="Menu" loading />);
+      const skeleton = screen.getByRole('status');
+      expect(skeleton).toBeInTheDocument();
+    });
+
+    it('shows loading text for screen readers', () => {
+      render(<ListCard headerTitle="Menu" loading />);
+      expect(screen.getByText(/Loading list content/)).toBeInTheDocument();
+    });
+
+    it('hides content when loading', () => {
+      render(<ListCard headerTitle="Menu" items={mockItems} loading />);
+      expect(screen.queryByText('Item 1')).not.toBeInTheDocument();
+    });
+
+    it('renders correct number of skeleton items', () => {
+      const { container } = render(<ListCard loading loadingItemCount={5} />);
+      const skeletonItems = container.querySelectorAll('[class*="listItem"]');
+      expect(skeletonItems).toHaveLength(5);
+    });
+  });
+
+  describe('Error State', () => {
+    it('shows error message when error prop is true', () => {
+      render(<ListCard error />);
+      expect(screen.getByTestId('list-card-error')).toBeInTheDocument();
+    });
+
+    it('shows custom error title and message', () => {
+      render(
+        <ListCard error errorTitle="Custom Error" errorMessage="Custom message" />
+      );
+      expect(screen.getByText('Custom Error')).toBeInTheDocument();
+      expect(screen.getByText('Custom message')).toBeInTheDocument();
+    });
+
+    it('shows retry button when onErrorRetry provided', () => {
+      const handleRetry = vi.fn();
+      render(<ListCard error onErrorRetry={handleRetry} />);
+      const retryButton = screen.getByRole('button', { name: /Retry/ });
+      expect(retryButton).toBeInTheDocument();
+    });
+
+    it('calls onErrorRetry when retry button clicked', async () => {
+      const user = userEvent.setup();
+      const handleRetry = vi.fn();
+      render(<ListCard error onErrorRetry={handleRetry} />);
+      const retryButton = screen.getByRole('button', { name: /Retry/ });
+      await user.click(retryButton);
+      expect(handleRetry).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('Empty State', () => {
+    it('shows empty state when items array is empty', () => {
+      const { container } = render(<ListCard items={[]} />);
+      expect(container.querySelector('[class*="emptyState"]')).toBeInTheDocument();
+    });
+
+    it('shows default empty title', () => {
+      render(<ListCard items={[]} />);
+      expect(screen.getByText('No items')).toBeInTheDocument();
+    });
+
+    it('shows custom empty title and message', () => {
+      render(
+        <ListCard items={[]} emptyTitle="Cart is empty" emptyMessage="Add items to get started" />
+      );
+      expect(screen.getByText('Cart is empty')).toBeInTheDocument();
+      expect(screen.getByText('Add items to get started')).toBeInTheDocument();
+    });
+
+    it('preserves header in empty state', () => {
+      render(<ListCard headerTitle="Your Cart" items={[]} />);
+      expect(screen.getByText('Your Cart')).toBeInTheDocument();
+    });
+  });
+
   describe('Card Props Inheritance', () => {
     it('passes through elevation props', () => {
       const { container } = render(<ListCard items={mockItems} elevationLevel={3} />);

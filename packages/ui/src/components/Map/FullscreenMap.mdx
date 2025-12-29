@@ -1,0 +1,63 @@
+import { Canvas, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as FullscreenMapStories from './FullscreenMap.stories'
+
+<Meta of={FullscreenMapStories} />
+
+<Title>FullscreenMap</Title>
+<Subtitle>Immersive map experience with synchronized sidebar, inspector panel, and mobile carousel for full exploration</Subtitle>
+
+## Usage
+
+```tsx
+import { FullscreenMap } from "@ainativekit/ui";
+```
+
+<Canvas of={FullscreenMapStories.Base} />
+
+## Reference
+
+<ArgTypes of={FullscreenMapStories.Base} />
+
+## Examples
+
+### Marker variants
+
+Choose between traditional pin markers, minimal dot markers, or hybrid mode (recommended).
+
+<Canvas of={FullscreenMapStories.MarkerVariants} />
+
+### Popup control
+
+Toggle popup bubbles on markers. Popups are disabled by default for a cleaner map experience. Enable with `showPopup={true}` when you want marker click details.
+
+<Canvas of={FullscreenMapStories.PopupControl} />
+
+### Loading
+
+Show skeleton map while data is loading with `loading={true}`.
+
+<Canvas of={FullscreenMapStories.Loading} />
+
+### Error
+
+Display an error message when content fails to load with `error={true}`. Add retry functionality via `onErrorRetry`.
+
+<Canvas of={FullscreenMapStories.Error} />
+
+### Empty
+
+Show an empty state when there are no locations.
+
+<Canvas of={FullscreenMapStories.Empty} />
+
+### Custom icons
+
+Features support custom React elements as icons alongside standard icon strings.
+
+<Canvas of={FullscreenMapStories.CustomIcons} />
+
+### Real-world example
+
+Complete example showing FullscreenMap with collapse button for transitioning back to compact view.
+
+<Canvas of={FullscreenMapStories.RealWorld} />

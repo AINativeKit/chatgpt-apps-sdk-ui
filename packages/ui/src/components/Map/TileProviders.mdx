@@ -1,0 +1,120 @@
+import { Canvas, Meta, Subtitle, Title, ArgTypes } from '@storybook/blocks'
+import * as TileProviderStories from './TileProviders.stories'
+
+<Meta of={TileProviderStories} />
+
+<Title>Tile Providers</Title>
+<Subtitle>18+ map tile styles powered by OpenStreetMap data, from CARTO basemaps to specialized cycling and transit maps</Subtitle>
+
+## Usage
+
+```tsx
+import { CompactMap, FullscreenMap } from "@ainativekit/ui";
+
+// Use a preset provider
+<CompactMap locations={locations} tileProvider="carto-voyager" />
+
+// Or provide custom configuration
+<CompactMap
+  locations={locations}
+  tileProvider={{
+    url: 'https://your-tiles.com/{z}/{x}/{y}.png',
+    attribution: '© Your Company',
+    maxZoom: 19,
+  }}
+/>
+```
+
+All tile providers shown below are **free to use** (no API key required). Retina/high-DPI support is enabled by default.
+
+## Reference
+
+<ArgTypes of={TileProviderStories.CartoLight} />
+
+## CARTO Basemaps
+
+Clean, modern basemap styles optimized for data visualization. Free via Fastly CDN.
+
+### CARTO Light (Positron)
+
+<Canvas of={TileProviderStories.CartoLight} />
+
+### CARTO Dark (Dark Matter)
+
+<Canvas of={TileProviderStories.CartoDark} />
+
+### CARTO Voyager (Default)
+
+<Canvas of={TileProviderStories.CartoVoyager} />
+
+## OpenStreetMap Styles
+
+Official OpenStreetMap rendering styles. Free to use, donation-funded.
+
+### OSM Standard
+
+<Canvas of={TileProviderStories.OsmStandard} />
+
+### OSM Humanitarian (HOT)
+
+<Canvas of={TileProviderStories.OsmHumanitarian} />
+
+## Specialized Maps
+
+Purpose-built map styles for specific use cases.
+
+### CyclOSM
+
+<Canvas of={TileProviderStories.CyclOSM} />
+
+### OpenTopoMap
+
+<Canvas of={TileProviderStories.OpenTopoMap} />
+
+### ÖPNVKarte (Public Transport)
+
+<Canvas of={TileProviderStories.Opnvkarte} />
+
+## Custom Configuration
+
+<Canvas of={TileProviderStories.CustomConfig} />
+
+## Premium Providers (API Key Required)
+
+Additional tile providers are available that require API keys. All offer generous free tiers:
+
+<table>
+  <thead>
+    <tr>
+      <th>Provider</th>
+      <th>Styles</th>
+      <th>Sign Up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Stamen Design</strong> (via Stadia Maps)</td>
+      <td><code>stamen-toner</code>, <code>stamen-terrain</code>, <code>stamen-watercolor</code></td>
+      <td><a href="https://client.stadiamaps.com/signup/">Stadia Maps</a></td>
+    </tr>
+    <tr>
+      <td><strong>Geoapify</strong></td>
+      <td><code>geoapify-osm-bright-grey</code>, <code>geoapify-osm-bright-smooth</code></td>
+      <td><a href="https://www.geoapify.com/">Geoapify</a></td>
+    </tr>
+    <tr>
+      <td><strong>Thunderforest</strong></td>
+      <td><code>thunderforest-transport</code>, <code>thunderforest-landscape</code></td>
+      <td><a href="https://www.thunderforest.com/">Thunderforest</a></td>
+    </tr>
+  </tbody>
+</table>
+
+```tsx
+// Example: Using Stamen Watercolor with API key
+<CompactMap
+  locations={locations}
+  tileProvider="stamen-watercolor"
+  tileApiKey={process.env.REACT_APP_STADIA_MAPS_KEY}
+/>
+```

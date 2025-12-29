@@ -394,14 +394,14 @@ describe('Card Compound Components', () => {
     });
   });
 
-  describe('Card.ChipGroup', () => {
+  describe('Card.BadgeGroup', () => {
     it('should render chip group with children', () => {
       render(
         <Card>
-          <Card.ChipGroup data-testid="card-chip-group">
-            <Card.Chip>Chip 1</Card.Chip>
-            <Card.Chip>Chip 2</Card.Chip>
-          </Card.ChipGroup>
+          <Card.BadgeGroup data-testid="card-chip-group">
+            <Card.Badge>Chip 1</Card.Badge>
+            <Card.Badge>Chip 2</Card.Badge>
+          </Card.BadgeGroup>
         </Card>
       );
 
@@ -414,17 +414,17 @@ describe('Card Compound Components', () => {
     it('should render multiple chips', () => {
       render(
         <Card>
-          <Card.ChipGroup data-testid="card-chip-group">
-            <Card.Chip variant="neutral" size="sm">
+          <Card.BadgeGroup data-testid="card-chip-group">
+            <Card.Badge variant="neutral" size="sm">
               Design
-            </Card.Chip>
-            <Card.Chip variant="neutral" size="sm">
+            </Card.Badge>
+            <Card.Badge variant="neutral" size="sm">
               Systems
-            </Card.Chip>
-            <Card.Chip variant="success" size="sm">
+            </Card.Badge>
+            <Card.Badge variant="success" size="sm">
               New
-            </Card.Chip>
-          </Card.ChipGroup>
+            </Card.Badge>
+          </Card.BadgeGroup>
         </Card>
       );
 
@@ -438,9 +438,9 @@ describe('Card Compound Components', () => {
     it('should apply custom className', () => {
       render(
         <Card>
-          <Card.ChipGroup data-testid="card-chip-group" className="custom-class">
+          <Card.BadgeGroup data-testid="card-chip-group" className="custom-class">
             Chip Group
-          </Card.ChipGroup>
+          </Card.BadgeGroup>
         </Card>
       );
 
@@ -451,9 +451,9 @@ describe('Card Compound Components', () => {
       const ref = { current: null as HTMLDivElement | null };
       render(
         <Card>
-          <Card.ChipGroup ref={ref}>
-            <Card.Chip>Chip</Card.Chip>
-          </Card.ChipGroup>
+          <Card.BadgeGroup ref={ref}>
+            <Card.Badge>Chip</Card.Badge>
+          </Card.BadgeGroup>
         </Card>
       );
 
@@ -486,16 +486,7 @@ describe('Card Compound Components', () => {
       expect(screen.getByTestId('card-badge')).toBeInTheDocument();
     });
 
-    it('should forward ref', () => {
-      const ref = { current: null as HTMLSpanElement | null };
-      render(
-        <Card>
-          <Card.Badge ref={ref}>Badge</Card.Badge>
-        </Card>
-      );
-
-      expect(ref.current).toBeInstanceOf(HTMLSpanElement);
-    });
+    // Note: CardBadge wraps apps-sdk-ui Badge which doesn't forward refs
   });
 
   describe('Card.ActionButton', () => {
@@ -528,18 +519,7 @@ describe('Card Compound Components', () => {
       expect(screen.getByTestId('action-btn')).toBeInTheDocument();
     });
 
-    it('should forward ref', () => {
-      const ref = { current: null as HTMLButtonElement | null };
-      render(
-        <Card>
-          <Card.Actions>
-            <Card.ActionButton ref={ref}>Button</Card.ActionButton>
-          </Card.Actions>
-        </Card>
-      );
-
-      expect(ref.current).toBeInstanceOf(HTMLButtonElement);
-    });
+    // Note: CardActionButton wraps apps-sdk-ui Button which doesn't forward refs
   });
 
   describe('Card.Description', () => {

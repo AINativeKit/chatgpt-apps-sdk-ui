@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './CardParts.module.css';
 
 export interface CardImageProps extends ComponentPropsWithoutRef<'img'> {
@@ -30,7 +30,7 @@ export const CardImage = React.forwardRef<HTMLImageElement, CardImageProps>((pro
       ref={ref}
       src={src}
       alt={alt}
-      className={cn(styles.cardImage, className)}
+      className={clsx(styles.cardImage, className)}
       data-testid={testId}
       style={{
         ...(aspectRatio

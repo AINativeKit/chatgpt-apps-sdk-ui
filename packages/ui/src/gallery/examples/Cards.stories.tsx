@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ImageCard, SummaryCard, ListCard } from '../../components/Card';
-import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { PropsTable } from '../../tokens/PropsTable';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
+import { PlusCircleAdd, Star } from '@openai/apps-sdk-ui/components/Icon';
 
 // Dummy component for Storybook
 const CardsExample = () => null;
@@ -28,7 +30,8 @@ const CardsComponent = () => {
       style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+        fontFamily:
+          'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
       }}
     >
       {/* Header Section */}
@@ -38,7 +41,7 @@ const CardsComponent = () => {
             fontSize: '32px',
             fontWeight: '700',
             marginBottom: '12px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           🎨 Card Components
@@ -46,13 +49,14 @@ const CardsComponent = () => {
         <p
           style={{
             fontSize: '16px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             margin: 0,
             lineHeight: '1.6',
           }}
         >
-          Flexible card components for displaying content in different layouts. From image galleries to summaries and lists,
-          cards are the building blocks for structured content presentation. Each card type is optimized for specific use cases.
+          Flexible card components for displaying content in different layouts. From image galleries
+          to summaries and lists, cards are the building blocks for structured content presentation.
+          Each card type is optimized for specific use cases.
         </p>
       </section>
 
@@ -63,7 +67,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Live Examples
@@ -76,7 +80,7 @@ const CardsComponent = () => {
               fontSize: '16px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             📸 ImageCard - Image-First Content
@@ -84,11 +88,12 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
-            Large background image with text overlay, title, and action button. Perfect for restaurants, products, hotels, and featured content with strong visual hierarchy.
+            Large background image with text overlay, title, and action button. Perfect for
+            restaurants, products, hotels, and featured content with strong visual hierarchy.
           </p>
 
           {/* Standard Variant */}
@@ -98,7 +103,7 @@ const CardsComponent = () => {
               fontWeight: '600',
               marginBottom: '12px',
               marginTop: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Standard Variant
@@ -106,7 +111,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -122,9 +127,23 @@ const CardsComponent = () => {
             }}
           >
             {[
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png', title: "Tony's Pizzeria", subtitle: 'Award-Winning', badge: 'NEW', badgeVariant: 'success' as const },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png', title: 'Golden Boy Pizza', subtitle: 'Since 1994' },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png', title: 'Pizzeria Delfina', subtitle: 'Sophisticated Italian' },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+                title: "Tony's Pizzeria",
+                subtitle: 'Award-Winning',
+                badge: 'NEW',
+                badgeVariant: 'soft' as const,
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
+                title: 'Golden Boy Pizza',
+                subtitle: 'Since 1994',
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
+                title: 'Pizzeria Delfina',
+                subtitle: 'Sophisticated Italian',
+              },
             ].map((item, i) => (
               <div key={i}>
                 <ImageCard
@@ -134,7 +153,7 @@ const CardsComponent = () => {
                   badge={item.badge}
                   badgeVariant={item.badgeVariant}
                   interactive
-                  actionIcon="plus-add-md"
+                  actionIcon={<PlusCircleAdd />}
                   actionLabel={`Add ${item.title} to cart`}
                   onAction={() => console.log(`Added ${item.title}`)}
                 />
@@ -149,7 +168,7 @@ const CardsComponent = () => {
               fontWeight: '600',
               marginBottom: '12px',
               marginTop: '32px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Compact Variant
@@ -157,11 +176,12 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
-            Space-efficient version for carousels, horizontal scrolling lists, and discovery feeds. Perfect for browsing and quick interaction.
+            Space-efficient version for carousels, horizontal scrolling lists, and discovery feeds.
+            Perfect for browsing and quick interaction.
           </p>
           <div
             style={{
@@ -173,10 +193,26 @@ const CardsComponent = () => {
             }}
           >
             {[
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png', title: "Tony's Pizzeria", subtitle: 'Napoletana' },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png', title: 'Golden Boy Pizza', subtitle: 'By-the-Slice' },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png', title: 'Pizzeria Delfina', subtitle: 'Authentic' },
-              { image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png', title: 'Pepo Pizza', subtitle: 'Sicilian' },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+                title: "Tony's Pizzeria",
+                subtitle: 'Napoletana',
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
+                title: 'Golden Boy Pizza',
+                subtitle: 'By-the-Slice',
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
+                title: 'Pizzeria Delfina',
+                subtitle: 'Authentic',
+              },
+              {
+                image: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+                title: 'Pepo Pizza',
+                subtitle: 'Sicilian',
+              },
             ].map((item, i) => (
               <div key={i}>
                 <ImageCard
@@ -185,7 +221,7 @@ const CardsComponent = () => {
                   title={item.title}
                   subtitle={item.subtitle}
                   interactive
-                  actionIcon="star"
+                  actionIcon={<Star />}
                   actionLabel={`Save ${item.title}`}
                   onAction={() => console.log(`Saved ${item.title}`)}
                 />
@@ -201,7 +237,7 @@ const CardsComponent = () => {
               fontSize: '16px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             📊 SummaryCard - Flexible Image Layouts
@@ -209,11 +245,13 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
-            Display content summaries with flexible image layouts—from single hero images to multi-image grids. Perfect for restaurant listings, product summaries, and content previews.
+            Display content summaries with flexible image layouts—from single hero images to
+            multi-image grids. Perfect for restaurant listings, product summaries, and content
+            previews.
           </p>
 
           {/* Single Image */}
@@ -223,7 +261,7 @@ const CardsComponent = () => {
               fontWeight: '600',
               marginBottom: '12px',
               marginTop: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Single Hero Image
@@ -231,7 +269,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -247,8 +285,24 @@ const CardsComponent = () => {
             }}
           >
             {[
-              { images: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png', title: 'Tony\'s Pizzeria', subtitle: 'Downtown Location', badge: '9.2', badgeVariant: 'default' as const, description: 'Award-winning Napoletana pizza. A family-owned favorite since 1985 with authentic Italian recipes.' },
-              { images: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png', title: 'Golden Boy Pizza', subtitle: 'Mission District', badge: '8.9', badgeVariant: 'default' as const, description: 'Famous by-the-slice pizzeria. Fresh ingredients and traditional techniques keep crowds coming.' },
+              {
+                images: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+                title: "Tony's Pizzeria",
+                subtitle: 'Downtown Location',
+                badge: '9.2',
+                badgeVariant: 'soft' as const,
+                description:
+                  'Award-winning Napoletana pizza. A family-owned favorite since 1985 with authentic Italian recipes.',
+              },
+              {
+                images: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
+                title: 'Golden Boy Pizza',
+                subtitle: 'Mission District',
+                badge: '8.9',
+                badgeVariant: 'soft' as const,
+                description:
+                  'Famous by-the-slice pizzeria. Fresh ingredients and traditional techniques keep crowds coming.',
+              },
             ].map((item, i) => (
               <div key={i}>
                 <SummaryCard
@@ -271,7 +325,7 @@ const CardsComponent = () => {
               fontWeight: '600',
               marginBottom: '12px',
               marginTop: '32px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Multiple Images (2-4 Grid)
@@ -279,7 +333,7 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
@@ -304,8 +358,9 @@ const CardsComponent = () => {
                 title: 'Menu Showcase',
                 subtitle: 'Popular Items',
                 badge: 'Featured',
-                badgeVariant: 'success' as const,
-                description: 'Explore our most-loved dishes. Hand-crafted with premium ingredients.'
+                badgeVariant: 'soft' as const,
+                description:
+                  'Explore our most-loved dishes. Hand-crafted with premium ingredients.',
               },
               {
                 images: [
@@ -313,11 +368,11 @@ const CardsComponent = () => {
                   'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
                   'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
                 ],
-                title: 'Chef\'s Selection',
-                subtitle: 'This Week\'s Specials',
+                title: "Chef's Selection",
+                subtitle: "This Week's Specials",
                 badge: 'Hot',
-                badgeVariant: 'default' as const,
-                description: 'Limited-time seasonal specials created by our head chef.'
+                badgeVariant: 'soft' as const,
+                description: 'Limited-time seasonal specials created by our head chef.',
               },
               {
                 images: [
@@ -329,8 +384,9 @@ const CardsComponent = () => {
                 title: 'Photo Gallery',
                 subtitle: 'Restaurant Collection',
                 badge: 'Gallery',
-                badgeVariant: 'default' as const,
-                description: 'Complete visual showcase with 2x2 image grid layout for rich content.'
+                badgeVariant: 'soft' as const,
+                description:
+                  'Complete visual showcase with 2x2 image grid layout for rich content.',
               },
             ].map((item, i) => (
               <div key={i}>
@@ -355,7 +411,7 @@ const CardsComponent = () => {
               fontSize: '16px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             📋 ListCard - Item Collections
@@ -363,11 +419,12 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
-            Common list card configurations with optional header, top image, and action buttons. Perfect for menus, playlists, order summaries, and content collections.
+            Common list card configurations with optional header, top image, and action buttons.
+            Perfect for menus, playlists, order summaries, and content collections.
           </p>
 
           <div
@@ -383,11 +440,28 @@ const CardsComponent = () => {
               {
                 title: 'Featured Pizzas',
                 headerActionLabel: 'Edit featured pizzas',
-                topImage: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop',
+                topImage:
+                  'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop',
                 items: [
-                  { title: 'Pepperoni Pizza', subtitle: 'Classic favorite', description: 'Cupped pepperoni with mozzarella, finished with oregano and olive oil.', actionLabel: 'Add to cart' },
-                  { title: 'Margherita Pizza', subtitle: 'Traditional Italian', description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.', actionLabel: 'Add to cart' },
-                  { title: 'Veggie Supreme', subtitle: 'Garden fresh', description: 'Bell peppers, onions, mushrooms, olives, and fresh vegetables.', actionLabel: 'Add to cart' },
+                  {
+                    title: 'Pepperoni Pizza',
+                    subtitle: 'Classic favorite',
+                    description:
+                      'Cupped pepperoni with mozzarella, finished with oregano and olive oil.',
+                    actionLabel: 'Add to cart',
+                  },
+                  {
+                    title: 'Margherita Pizza',
+                    subtitle: 'Traditional Italian',
+                    description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.',
+                    actionLabel: 'Add to cart',
+                  },
+                  {
+                    title: 'Veggie Supreme',
+                    subtitle: 'Garden fresh',
+                    description: 'Bell peppers, onions, mushrooms, olives, and fresh vegetables.',
+                    actionLabel: 'Add to cart',
+                  },
                 ],
                 buttonText: 'View All',
               },
@@ -395,16 +469,40 @@ const CardsComponent = () => {
                 title: 'Order Summary',
                 headerActionLabel: 'Edit order',
                 items: [
-                  { title: 'Pepperoni Pizza', subtitle: 'Classic favorite', description: 'Cupped pepperoni with mozzarella, finished with oregano and olive oil.', actionLabel: 'Add to cart' },
-                  { title: 'Margherita Pizza', subtitle: 'Traditional Italian', description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.', actionLabel: 'Add to cart' },
+                  {
+                    title: 'Pepperoni Pizza',
+                    subtitle: 'Classic favorite',
+                    description:
+                      'Cupped pepperoni with mozzarella, finished with oregano and olive oil.',
+                    actionLabel: 'Add to cart',
+                  },
+                  {
+                    title: 'Margherita Pizza',
+                    subtitle: 'Traditional Italian',
+                    description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.',
+                    actionLabel: 'Add to cart',
+                  },
                 ],
                 buttonText: 'Place Order',
               },
               {
                 title: 'Quick Add',
                 items: [
-                  { title: 'Pepperoni Pizza', subtitle: 'Classic favorite', description: 'Cupped pepperoni with mozzarella, finished with oregano and olive oil.', onItemAction: () => console.log('Add'), actionLabel: 'Add' },
-                  { title: 'Margherita Pizza', subtitle: 'Traditional Italian', description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.', onItemAction: () => console.log('Add'), actionLabel: 'Add' },
+                  {
+                    title: 'Pepperoni Pizza',
+                    subtitle: 'Classic favorite',
+                    description:
+                      'Cupped pepperoni with mozzarella, finished with oregano and olive oil.',
+                    onItemAction: () => console.log('Add'),
+                    actionLabel: 'Add',
+                  },
+                  {
+                    title: 'Margherita Pizza',
+                    subtitle: 'Traditional Italian',
+                    description: 'Fresh mozzarella, tomatoes, basil, and extra virgin olive oil.',
+                    onItemAction: () => console.log('Add'),
+                    actionLabel: 'Add',
+                  },
                 ],
               },
             ].map((config, i) => (
@@ -431,7 +529,7 @@ const CardsComponent = () => {
               fontSize: '16px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             ⭐ SummaryCard Compact - Featured Recommendations
@@ -439,11 +537,13 @@ const CardsComponent = () => {
           <p
             style={{
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
             }}
           >
-            Premium featured content with 4:3 aspect ratio images, ratings, feature highlights, and strong visual prominence. Perfect for discovery browsing, restaurant recommendations, and spotlights. Uses compact size variant for denser layout.
+            Premium featured content with 4:3 aspect ratio images, ratings, feature highlights, and
+            strong visual prominence. Perfect for discovery browsing, restaurant recommendations,
+            and spotlights. Uses compact size variant for denser layout.
           </p>
 
           <div
@@ -460,12 +560,12 @@ const CardsComponent = () => {
             {[
               {
                 image: featuredImagePrimary,
-                title: 'Tony\'s Pizzeria',
+                title: "Tony's Pizzeria",
                 subtitle: 'Downtown SF',
                 badge: '4.9',
                 badgeIcon: 'star',
                 features: ['Napoletana', 'Wood-fired'],
-                description: 'Family-owned since 1985. Award-winning authentic recipes.'
+                description: 'Family-owned since 1985. Award-winning authentic recipes.',
               },
               {
                 image: featuredImageSecondary,
@@ -474,7 +574,7 @@ const CardsComponent = () => {
                 badge: '4.7',
                 badgeIcon: 'star',
                 features: ['$$$', 'Focaccia', 'Fresh daily'],
-                description: 'Famous by-the-slice since 1994. Legendary in the city.'
+                description: 'Famous by-the-slice since 1994. Legendary in the city.',
               },
               {
                 image: featuredImageTertiary,
@@ -483,7 +583,7 @@ const CardsComponent = () => {
                 badge: '🔥 Trending',
                 badgeIcon: undefined,
                 features: [],
-                description: 'What the community is ordering most right now.'
+                description: 'What the community is ordering most right now.',
               },
             ].map((item, i) => (
               <SummaryCard
@@ -494,7 +594,7 @@ const CardsComponent = () => {
                 badge={item.badge}
                 size="compact"
                 imageAspectRatio="4/3"
-                metadata={item.features.map(f => ({ label: f, separator: '•' }))}
+                metadata={item.features.map((f) => ({ label: f, separator: '•' }))}
                 description={item.description}
                 buttonText={i === 2 ? 'Discover' : 'Order now'}
                 onButtonClick={() => console.log(`Action for ${item.title}`)}
@@ -505,6 +605,189 @@ const CardsComponent = () => {
         </div>
       </section>
 
+      {/* Component Props Section */}
+      <section style={{ marginBottom: '64px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--color-text)',
+          }}
+        >
+          Component Props
+        </h2>
+
+        <div style={{ marginBottom: '32px' }}>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            ImageCard
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'image',
+                description: 'Image URL or object with src, alt, width, height (required)',
+              },
+              {
+                name: 'title',
+                description: 'Main heading text',
+              },
+              {
+                name: 'subtitle',
+                description: 'Secondary text below title',
+              },
+              {
+                name: 'badge',
+                description: 'Badge text (e.g., "NEW", "Featured")',
+              },
+              {
+                name: 'badgeVariant',
+                description: 'Badge style: "solid" | "soft". Default: "solid"',
+              },
+              {
+                name: 'size',
+                description: 'Card size: "standard" | "compact". Default: "standard"',
+              },
+              {
+                name: 'interactive',
+                description: 'Enable hover/focus states. Default: false',
+              },
+              {
+                name: 'actionIcon',
+                description: 'Icon element for action button',
+              },
+              {
+                name: 'actionLabel',
+                description: 'Accessible label for action button',
+              },
+              {
+                name: 'onAction',
+                description: 'Callback when action button is clicked',
+              },
+            ]}
+          />
+        </div>
+
+        <div style={{ marginBottom: '32px' }}>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            SummaryCard
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'images',
+                description: 'Single URL or array of URLs (1-4 images with auto grid layout)',
+              },
+              {
+                name: 'title',
+                description: 'Main heading text',
+              },
+              {
+                name: 'subtitle',
+                description: 'Secondary text below title',
+              },
+              {
+                name: 'badge',
+                description: 'Badge text (e.g., "4.8", "Featured")',
+              },
+              {
+                name: 'badgeVariant',
+                description: 'Badge style: "solid" | "soft". Default: "soft"',
+              },
+              {
+                name: 'description',
+                description: 'Description text (clamped to 2 lines)',
+              },
+              {
+                name: 'metadata',
+                description: 'Array of metadata items: { label: string; separator?: string }[]',
+              },
+              {
+                name: 'size',
+                description: 'Card size: "standard" | "compact". Default: "standard"',
+              },
+              {
+                name: 'imageAspectRatio',
+                description: 'Image aspect ratio: "16/9" | "4/3" | "1/1". Default: "16/9"',
+              },
+              {
+                name: 'buttonText',
+                description: 'Primary button text',
+              },
+              {
+                name: 'onButtonClick',
+                description: 'Callback when button is clicked',
+              },
+            ]}
+          />
+        </div>
+
+        <div>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            ListCard
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'headerTitle',
+                description: 'Title text in the header',
+              },
+              {
+                name: 'headerActionLabel',
+                description: 'Accessible label for header action button',
+              },
+              {
+                name: 'onHeaderAction',
+                description: 'Callback when header action is clicked',
+              },
+              {
+                name: 'topImage',
+                description: 'Optional image URL above the list',
+              },
+              {
+                name: 'items',
+                description: 'Array of list items with title, subtitle, description, actionLabel, onItemAction',
+              },
+              {
+                name: 'buttonText',
+                description: 'Footer button text',
+              },
+              {
+                name: 'onButtonClick',
+                description: 'Callback when footer button is clicked',
+              },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* Component Selection Guide */}
       <section style={{ marginBottom: '64px' }}>
         <h2
@@ -512,7 +795,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Component Selection Guide
@@ -530,41 +813,61 @@ const CardsComponent = () => {
               title: '📸 ImageCard',
               description: 'Visual-first content with image, title, and metadata.',
               bestFor: 'Product listings, galleries, restaurant/hotel finder, image-heavy content',
-              features: ['Large image display', 'Title + subtitle', 'Flexible actions', 'Selection state'],
+              features: [
+                'Large image display',
+                'Title + subtitle',
+                'Flexible actions',
+                'Selection state',
+              ],
             },
             {
               title: '📊 SummaryCard',
               description: 'Compact data summary with metrics and status.',
               bestFor: 'Dashboard metrics, project status, achievement summaries, KPI display',
-              features: ['Optional images', 'Title + subtitle', 'Badge + description', 'Button support'],
+              features: [
+                'Optional images',
+                'Title + subtitle',
+                'Badge + description',
+                'Button support',
+              ],
             },
             {
               title: '📋 ListCard',
               description: 'Structured data in list format with metadata.',
               bestFor: 'To-do lists, steps, collections, structured data, action items',
-              features: ['Top image', 'List items with metadata', 'Header + button', 'Flexible layout'],
+              features: [
+                'Top image',
+                'List items with metadata',
+                'Header + button',
+                'Flexible layout',
+              ],
             },
             {
               title: '⭐ SummaryCard Compact',
               description: 'Dense layout with compact typography (replaces DiscoveryCard).',
               bestFor: 'Featured products, spotlight content, recommendations, carousels',
-              features: ['4:3 aspect ratio', 'Compact typography', 'Badge support', 'Metadata separators'],
+              features: [
+                '4:3 aspect ratio',
+                'Compact typography',
+                'Badge support',
+                'Metadata separators',
+              ],
             },
           ].map((card, index) => (
             <div
               key={index}
               style={{
                 padding: '20px',
-                border: '1px solid var(--ai-color-border-light)',
+                border: '1px solid var(--color-border-subtle)',
                 borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
+                background: 'var(--color-surface)',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
                 ...(selectedCard === card.title
                   ? {
-                      borderColor: 'var(--ai-color-accent-blue)',
-                      background: 'var(--ai-color-bg-secondary)',
-                      boxShadow: '0 0 0 2px var(--ai-color-accent-blue)',
+                      borderColor: 'var(--blue-400)',
+                      background: 'var(--color-surface-secondary)',
+                      boxShadow: '0 0 0 2px var(--blue-400)',
                     }
                   : {}),
               }}
@@ -575,7 +878,7 @@ const CardsComponent = () => {
                   fontSize: '15px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 {card.title}
@@ -583,7 +886,7 @@ const CardsComponent = () => {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: '0 0 12px 0',
                   fontStyle: 'italic',
                 }}
@@ -595,15 +898,23 @@ const CardsComponent = () => {
                   fontSize: '12px',
                   marginBottom: '12px',
                   paddingBottom: '12px',
-                  borderBottom: '1px solid var(--ai-color-border-light)',
+                  borderBottom: '1px solid var(--color-border-subtle)',
                 }}
               >
-                <strong style={{ color: 'var(--ai-color-text-primary)' }}>Best for:</strong>
-                <p style={{ margin: '4px 0 0 0', color: 'var(--ai-color-text-secondary)' }}>{card.bestFor}</p>
+                <strong style={{ color: 'var(--color-text)' }}>Best for:</strong>
+                <p style={{ margin: '4px 0 0 0', color: 'var(--color-text-secondary)' }}>
+                  {card.bestFor}
+                </p>
               </div>
               <div style={{ fontSize: '12px' }}>
-                <strong style={{ color: 'var(--ai-color-text-primary)' }}>Features:</strong>
-                <ul style={{ margin: '4px 0 0 0', paddingLeft: '20px', color: 'var(--ai-color-text-secondary)' }}>
+                <strong style={{ color: 'var(--color-text)' }}>Features:</strong>
+                <ul
+                  style={{
+                    margin: '4px 0 0 0',
+                    paddingLeft: '20px',
+                    color: 'var(--color-text-secondary)',
+                  }}
+                >
                   {card.features.map((feature, i) => (
                     <li key={i} style={{ fontSize: '11px' }}>
                       {feature}
@@ -623,7 +934,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Best Practices for Developers
@@ -695,8 +1006,8 @@ const CardsComponent = () => {
               key={index}
               style={{
                 padding: '20px',
-                borderLeft: '4px solid var(--ai-color-accent-blue)',
-                background: 'var(--ai-color-bg-secondary)',
+                borderLeft: '4px solid var(--blue-400)',
+                background: 'var(--color-surface-secondary)',
                 borderRadius: '4px',
               }}
             >
@@ -705,7 +1016,7 @@ const CardsComponent = () => {
                   fontSize: '15px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 {practice.title}
@@ -713,7 +1024,7 @@ const CardsComponent = () => {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: '0 0 12px 0',
                 }}
               >
@@ -724,7 +1035,7 @@ const CardsComponent = () => {
                   margin: 0,
                   paddingLeft: '20px',
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   lineHeight: '1.8',
                 }}
               >
@@ -744,7 +1055,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Real-World Use Cases
@@ -758,22 +1069,47 @@ const CardsComponent = () => {
           }}
         >
           {[
-            { title: '🍕 Restaurant Finder', description: 'ImageCard grid for browsing restaurants with ratings and cuisines' },
-            { title: '📱 Product Catalog', description: 'Mix of ImageCard and SummaryCard (compact) for featured and regular items' },
-            { title: '✈️ Travel Guide', description: 'ImageCard for attractions + ListCard for itineraries and guides' },
-            { title: '📊 Dashboard', description: 'SummaryCard for KPIs and metrics with real-time updates' },
-            { title: '📚 Learning Platform', description: 'ListCard for course steps + SummaryCard (compact) for featured courses' },
-            { title: '🏥 Service Locator', description: 'ImageCard for locations + SummaryCard for hours/ratings' },
-            { title: '🛍️ E-commerce', description: 'SummaryCard (compact) for sale items + ImageCard for regular products' },
-            { title: '✅ Task Manager', description: 'ListCard for to-do items with metadata and progress tracking' },
+            {
+              title: '🍕 Restaurant Finder',
+              description: 'ImageCard grid for browsing restaurants with ratings and cuisines',
+            },
+            {
+              title: '📱 Product Catalog',
+              description:
+                'Mix of ImageCard and SummaryCard (compact) for featured and regular items',
+            },
+            {
+              title: '✈️ Travel Guide',
+              description: 'ImageCard for attractions + ListCard for itineraries and guides',
+            },
+            {
+              title: '📊 Dashboard',
+              description: 'SummaryCard for KPIs and metrics with real-time updates',
+            },
+            {
+              title: '📚 Learning Platform',
+              description: 'ListCard for course steps + SummaryCard (compact) for featured courses',
+            },
+            {
+              title: '🏥 Service Locator',
+              description: 'ImageCard for locations + SummaryCard for hours/ratings',
+            },
+            {
+              title: '🛍️ E-commerce',
+              description: 'SummaryCard (compact) for sale items + ImageCard for regular products',
+            },
+            {
+              title: '✅ Task Manager',
+              description: 'ListCard for to-do items with metadata and progress tracking',
+            },
           ].map((useCase, index) => (
             <div
               key={index}
               style={{
                 padding: '16px',
                 borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
-                border: '1px solid var(--ai-color-border-light)',
+                background: 'var(--color-surface)',
+                border: '1px solid var(--color-border-subtle)',
               }}
             >
               <h3
@@ -781,7 +1117,7 @@ const CardsComponent = () => {
                   fontSize: '14px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 {useCase.title}
@@ -789,7 +1125,7 @@ const CardsComponent = () => {
               <p
                 style={{
                   fontSize: '12px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: 0,
                   lineHeight: '1.5',
                 }}
@@ -808,22 +1144,13 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Quick Reference
         </h2>
 
-        <div style={codeBlockStyles.primary}>
-          <pre
-            style={{
-              margin: 0,
-              color: 'var(--ai-color-text-primary)',
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}
-          >
-{`// ImageCard - Visual-first content
+        <CodeBlock language="tsx">{`// ImageCard - Visual-first content
 <ImageCard
   image="url-or-object"
   title="Product Name"
@@ -855,9 +1182,7 @@ const CardsComponent = () => {
   size="compact"
   imageAspectRatio="4/3"
   description="Description"
-/>`}
-          </pre>
-        </div>
+/>`}</CodeBlock>
       </section>
 
       {/* Key Features */}
@@ -867,7 +1192,7 @@ const CardsComponent = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Key Features
@@ -881,21 +1206,36 @@ const CardsComponent = () => {
           }}
         >
           {[
-            { title: 'Multiple Variants', description: '3 specialized card types with compact size variant' },
-            { title: 'Responsive Design', description: 'Adapts seamlessly to mobile, tablet, and desktop' },
-            { title: 'Selection State', description: 'Built-in selected state for interactive applications' },
-            { title: 'Flexible Content', description: 'Support for images, text, metadata, actions, and lists' },
+            {
+              title: 'Multiple Variants',
+              description: '3 specialized card types with compact size variant',
+            },
+            {
+              title: 'Responsive Design',
+              description: 'Adapts seamlessly to mobile, tablet, and desktop',
+            },
+            {
+              title: 'Selection State',
+              description: 'Built-in selected state for interactive applications',
+            },
+            {
+              title: 'Flexible Content',
+              description: 'Support for images, text, metadata, actions, and lists',
+            },
             { title: 'Accessibility', description: 'Full WCAG compliance with semantic HTML' },
             { title: 'Customizable', description: 'Styled with CSS variables for easy theming' },
             { title: 'Performance', description: 'Optimized rendering and lazy loading support' },
-            { title: 'Developer-Friendly', description: 'Simple props-based API with TypeScript support' },
+            {
+              title: 'Developer-Friendly',
+              description: 'Simple props-based API with TypeScript support',
+            },
           ].map((feature, index) => (
             <div
               key={index}
               style={{
                 padding: '16px',
                 borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
+                background: 'var(--color-surface)',
               }}
             >
               <h3
@@ -903,7 +1243,7 @@ const CardsComponent = () => {
                   fontSize: '14px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 ✓ {feature.title}
@@ -911,7 +1251,7 @@ const CardsComponent = () => {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: 0,
                   lineHeight: '1.5',
                 }}

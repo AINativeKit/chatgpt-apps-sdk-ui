@@ -1,52 +1,129 @@
-import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { AlbumCard } from './AlbumCard';
-import { PropsTable } from '../../tokens/PropsTable';
+import type { Meta } from '@storybook/react';
+import { AlbumCard, type AlbumCardProps } from './AlbumCard';
 import type { Album } from './types';
 
-const meta: Meta<typeof AlbumCard> = {
-  title: 'Composed Components/Cards/Album Cards',
+const meta: Meta<AlbumCardProps> = {
+  title: 'Components/Cards/AlbumCard',
   component: AlbumCard,
+  tags: ['!dev'],
   parameters: {
     layout: 'padded',
   },
-};
+  argTypes: {
+    album: {
+      description: 'Album data object with photos',
+      control: false,
+      table: { type: { summary: 'Album' } },
+    },
+    onSelect: {
+      description: 'Callback when album is clicked',
+      control: false,
+      table: { type: { summary: '(album: Album) => void' } },
+    },
+    onImageLoad: {
+      description: 'Callback when cover image loads',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onImageError: {
+      description: 'Callback when cover image fails to load',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    width: {
+      description: 'Card width',
+      table: { type: { summary: 'number | string' }, defaultValue: { summary: '272px' } },
+    },
+    loading: {
+      description: 'Shows skeleton placeholder',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Album unavailable' } },
+    },
+    errorMessage: {
+      description: 'Custom error message',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'This album could not be loaded' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No album' } },
+    },
+    imageLoading: {
+      description: 'Image loading strategy',
+      table: { type: { summary: "'eager' | 'lazy'" }, defaultValue: { summary: 'lazy' } },
+    },
+    badgePosition: {
+      description: 'Badge position on the image',
+      table: { type: { summary: "'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'" }, defaultValue: { summary: 'top-right' } },
+    },
+    badgeVariant: {
+      description: 'Badge visual style',
+      table: { type: { summary: "'solid' | 'soft'" }, defaultValue: { summary: 'soft' } },
+    },
+    badgeSize: {
+      description: 'Badge size',
+      table: { type: { summary: "'sm' | 'md' | 'lg'" }, defaultValue: { summary: 'sm' } },
+    },
+    badgePill: {
+      description: 'Use pill-shaped badge',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
+    },
+    badgeColor: {
+      description: 'Badge color variant',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'secondary' } },
+    },
+    titleLines: {
+      description: 'Max lines for title (1-3)',
+      table: { type: { summary: '1 | 2 | 3' }, defaultValue: { summary: '1' } },
+    },
+    subtitleLines: {
+      description: 'Max lines for subtitle (1-3)',
+      table: { type: { summary: '1 | 2 | 3' }, defaultValue: { summary: '1' } },
+    },
+  },
+} satisfies Meta<typeof AlbumCard>;
 
 export default meta;
 
-// Sample albums
-const SAMPLE_ALBUMS: Album[] = [
-  {
-    id: '1',
-    title: 'Summer Vacation 2025',
-    cover: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=544&q=80',
-    photos: Array.from({ length: 24 }, (_, i) => ({
-      id: `s${i}`,
-      url: `https://images.unsplash.com/photo-150690${5900 + i}?w=800`,
-      alt: `Summer photo ${i + 1}`,
-    })),
-  },
-  {
-    id: '2',
-    title: 'City Architecture',
-    cover: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=544&q=80',
-    photos: Array.from({ length: 15 }, (_, i) => ({
-      id: `c${i}`,
-      url: `https://images.unsplash.com/photo-148640${6140 + i}?w=800`,
-      alt: `City photo ${i + 1}`,
-    })),
-  },
-  {
-    id: '3',
-    title: 'Nature & Wildlife',
-    cover: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=544&q=80',
-    photos: Array.from({ length: 8 }, (_, i) => ({
-      id: `n${i}`,
-      url: `https://images.unsplash.com/photo-144197${4230 + i}?w=800`,
-      alt: `Nature photo ${i + 1}`,
-    })),
-  },
-];
+// Sample albums for stories
+const SAMPLE_ALBUM: Album = {
+  id: '1',
+  title: 'Summer Vacation 2025',
+  cover: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=544&q=80',
+  photos: Array.from({ length: 24 }, (_, i) => ({
+    id: `s${i}`,
+    url: `https://images.unsplash.com/photo-150690${5900 + i}?w=800`,
+    alt: `Summer photo ${i + 1}`,
+  })),
+};
+
+const SAMPLE_ALBUM_2: Album = {
+  id: '2',
+  title: 'City Architecture',
+  cover: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=544&q=80',
+  photos: Array.from({ length: 15 }, (_, i) => ({
+    id: `c${i}`,
+    url: `https://images.unsplash.com/photo-148640${6140 + i}?w=800`,
+    alt: `City photo ${i + 1}`,
+  })),
+};
+
+const SAMPLE_ALBUM_3: Album = {
+  id: '3',
+  title: 'Nature & Wildlife',
+  cover: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=544&q=80',
+  photos: Array.from({ length: 8 }, (_, i) => ({
+    id: `n${i}`,
+    url: `https://images.unsplash.com/photo-144197${4230 + i}?w=800`,
+    alt: `Nature photo ${i + 1}`,
+  })),
+};
 
 const EMPTY_ALBUM: Album = {
   id: '0',
@@ -55,436 +132,444 @@ const EMPTY_ALBUM: Album = {
   photos: [],
 };
 
-const CARD_WIDTH = 272;
+// Base story
+export const Base = (args: AlbumCardProps) => <AlbumCard {...args} />;
 
-// Main unified showcase component
-const AlbumCardShowcase: React.FC = () => {
-  const [retryCount, setRetryCount] = useState(0);
-
-  return (
-    <div style={{ padding: '24px' }}>
-      <h1 style={{ marginBottom: '32px' }}>AlbumCard System</h1>
-
-      {/* Introduction */}
-      <section style={{ marginBottom: '64px' }}>
-        <p
-          style={{
-            marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
-            fontSize: '16px',
-            lineHeight: '1.6',
-          }}
-        >
-          Album cards display photo collections with a cover image, title, and photo count. Features
-          loading, error, and empty states with badge support and multi-line text. Perfect for photo
-          galleries, media libraries, and portfolio sections.
-        </p>
-      </section>
-
-      {/* Basic Variations */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Basic Variations</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Standard album cards with different content
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          <AlbumCard
-            album={SAMPLE_ALBUMS[0]}
-            onSelect={(album) => console.log('Selected:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <AlbumCard
-            album={SAMPLE_ALBUMS[1]}
-            onSelect={(album) => console.log('Selected:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <AlbumCard
-            album={SAMPLE_ALBUMS[2]}
-            onSelect={(album) => console.log('Selected:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-        </div>
-      </section>
-
-      {/* With Badges */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Badge Support</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Add visual indicators with badges in different positions and variants
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          <AlbumCard
-            album={SAMPLE_ALBUMS[0]}
-            badge="New"
-            badgeVariant="filled"
-            badgePosition="top-left"
-            onSelect={(album) => console.log('Selected:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <AlbumCard
-            album={SAMPLE_ALBUMS[1]}
-            badge={15}
-            badgeVariant="filled"
-            badgePosition="top-right"
-            onSelect={(album) => console.log('Selected:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <AlbumCard
-            album={SAMPLE_ALBUMS[2]}
-            badge="Featured"
-            badgeVariant="filled"
-            badgePosition="top-right"
-            onSelect={(album) => console.log('Selected:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-        </div>
-      </section>
-
-      {/* Multi-line Text */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Multi-line Text Support</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Configurable line clamping for longer titles and subtitles
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          <AlbumCard
-            album={{
-              ...SAMPLE_ALBUMS[0],
-              title: 'Summer Vacation Road Trip Across America with Friends 2025',
-            }}
-            titleLines={2}
-            onSelect={(album) => console.log('Selected:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <AlbumCard
-            album={{
-              ...SAMPLE_ALBUMS[1],
-              title: 'Urban Architecture and City Life Photography Collection',
-            }}
-            titleLines={3}
-            onSelect={(album) => console.log('Selected:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-        </div>
-      </section>
-
-      {/* States Showcase */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>States Showcase</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Loading, error, and empty states with retry functionality
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          {/* Loading */}
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              Loading
-            </h3>
-            <AlbumCard
-              album={SAMPLE_ALBUMS[0]}
-              loading={true}
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-          </div>
-
-          {/* Error */}
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              Error
-            </h3>
-            <AlbumCard
-              album={SAMPLE_ALBUMS[0]}
-              error={true}
-              errorMessage="Failed to load album"
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-          </div>
-
-          {/* Error with Retry */}
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              Error with Retry ({retryCount} attempts)
-            </h3>
-            <AlbumCard
-              album={SAMPLE_ALBUMS[0]}
-              error={true}
-              errorTitle="Album Unavailable"
-              errorMessage="Unable to load this album. Please try again."
-              onErrorRetry={() => {
-                setRetryCount(retryCount + 1);
-                console.log('Retry clicked, count:', retryCount + 1);
-              }}
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-          </div>
-
-          {/* Empty */}
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              Empty
-            </h3>
-            <AlbumCard
-              album={EMPTY_ALBUM}
-              emptyTitle="No photos yet"
-              emptyMessage="Add photos to get started"
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Performance Features */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Performance Features</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Lazy loading and image callbacks for optimal performance
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              Eager Loading (Above-the-fold)
-            </h3>
-            <AlbumCard
-              album={SAMPLE_ALBUMS[0]}
-              imageLazy={false}
-              onSelect={(album) => console.log('Selected:', album.title)}
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-          </div>
-
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              With Image Callbacks
-            </h3>
-            <AlbumCard
-              album={SAMPLE_ALBUMS[1]}
-              onImageLoad={() => console.log('Cover image loaded')}
-              onImageError={() => console.error('Cover image failed')}
-              onSelect={(album) => console.log('Selected:', album.title)}
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Real-World Example */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Real-World Example</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Photo gallery with mixed features
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          <AlbumCard
-            album={SAMPLE_ALBUMS[0]}
-            badge="New"
-            badgeVariant="filled"
-            onImageLoad={() => console.log('Image loaded')}
-            onSelect={(album) => console.log('Opening album:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <AlbumCard
-            album={SAMPLE_ALBUMS[1]}
-            badge={15}
-            badgeVariant="filled"
-            titleLines={2}
-            onSelect={(album) => console.log('Opening album:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <AlbumCard
-            album={SAMPLE_ALBUMS[2]}
-            onSelect={(album) => console.log('Opening album:', album.title)}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-        </div>
-      </section>
-
-      {/* Props Documentation */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Complete API reference for AlbumCard
-          </p>
-        </header>
-        <PropsTable
-          hideThemeColumn
-          rows={[
-            {
-              name: 'album',
-              description: 'Album data with id, title, cover, and photos array (Album type)',
-            },
-            {
-              name: 'onSelect',
-              description: 'Callback when card is clicked: (album: Album) => void',
-            },
-            {
-              name: 'width',
-              description: 'Card width - default: "272px"',
-            },
-            {
-              name: 'loading',
-              description: 'Show loading skeleton - default: false',
-            },
-            {
-              name: 'error',
-              description: 'Show error state - default: false',
-            },
-            {
-              name: 'errorTitle',
-              description: 'Error title text - default: "Failed to load"',
-            },
-            {
-              name: 'errorMessage',
-              description: 'Error message text',
-            },
-            {
-              name: 'onErrorRetry',
-              description: 'Retry callback for error state: () => void',
-            },
-            {
-              name: 'emptyTitle',
-              description: 'Empty state title - default: "No album"',
-            },
-            {
-              name: 'emptyMessage',
-              description: 'Empty state message text',
-            },
-            {
-              name: 'imageLazy',
-              description: 'Enable lazy loading for cover image - default: true',
-            },
-            {
-              name: 'onImageLoad',
-              description: 'Callback when cover image loads: (event: SyntheticEvent) => void',
-            },
-            {
-              name: 'onImageError',
-              description: 'Callback when cover image fails: (event: SyntheticEvent) => void',
-            },
-            {
-              name: 'badge',
-              description: 'Badge content to display (string or number)',
-            },
-            {
-              name: 'badgePosition',
-              description: 'Badge position: "top-left" | "top-right" - default: "top-right"',
-            },
-            {
-              name: 'badgeVariant',
-              description: 'Badge style variant',
-            },
-            {
-              name: 'titleLines',
-              description: 'Number of lines for title: 1 | 2 | 3 - default: 1',
-            },
-            {
-              name: 'subtitleLines',
-              description: 'Number of lines for subtitle: 1 | 2 | 3 - default: 1',
-            },
-          ]}
-        />
-      </section>
-    </div>
-  );
+Base.args = {
+  album: SAMPLE_ALBUM,
+  onSelect: (album: Album) => console.log('Selected:', album.title),
 };
 
-// Export the unified story as the main showcase
-export const AlbumCards: StoryObj = {
-  render: () => <AlbumCardShowcase />,
+// Multiple albums grid
+export const AlbumGrid = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <AlbumCard album={SAMPLE_ALBUM} onSelect={(album) => console.log('Selected:', album.title)} />
+    <AlbumCard album={SAMPLE_ALBUM_2} onSelect={(album) => console.log('Selected:', album.title)} />
+    <AlbumCard album={SAMPLE_ALBUM_3} onSelect={(album) => console.log('Selected:', album.title)} />
+  </div>
+);
+
+AlbumGrid.parameters = {
+  docs: {
+    source: {
+      code: `<AlbumCard
+  album={{
+    id: '1',
+    title: 'Summer Vacation 2025',
+    cover: 'https://example.com/cover.jpg',
+    photos: [...],
+  }}
+  onSelect={(album) => console.log('Selected:', album.title)}
+/>`,
+    },
+  },
+};
+
+// Badge variants
+export const WithBadge = (args: AlbumCardProps) => <AlbumCard {...args} />;
+
+WithBadge.args = {
+  album: SAMPLE_ALBUM,
+  badge: 'New',
+  badgeVariant: 'solid',
+  badgeColor: 'info',
+  onSelect: (album: Album) => console.log('Selected:', album.title),
+};
+
+WithBadge.parameters = {
+  docs: {
+    source: {
+      code: `<AlbumCard
+  album={album}
+  badge="New"
+  badgeVariant="solid"
+  badgeColor="info"
+  onSelect={(album) => console.log('Selected:', album.title)}
+/>`,
+    },
+  },
+};
+
+// Badge positions and styles
+export const BadgeVariants = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <AlbumCard
+      album={SAMPLE_ALBUM}
+      badge="New"
+      badgeVariant="solid"
+      badgeColor="info"
+      badgePosition="top-left"
+      onSelect={(album) => console.log('Selected:', album.title)}
+    />
+    <AlbumCard
+      album={SAMPLE_ALBUM_2}
+      badge={15}
+      badgeVariant="solid"
+      badgeColor="info"
+      badgePill
+      badgePosition="top-right"
+      onSelect={(album) => console.log('Selected:', album.title)}
+    />
+    <AlbumCard
+      album={SAMPLE_ALBUM_3}
+      badge="Featured"
+      badgeVariant="solid"
+      badgeColor="success"
+      badgePosition="top-right"
+      onSelect={(album) => console.log('Selected:', album.title)}
+    />
+  </div>
+);
+
+BadgeVariants.parameters = {
+  docs: {
+    source: {
+      code: `// Text badge, top-left
+<AlbumCard
+  album={album}
+  badge="New"
+  badgeVariant="solid"
+  badgeColor="info"
+  badgePosition="top-left"
+/>
+
+// Numeric badge with pill shape
+<AlbumCard
+  album={album}
+  badge={15}
+  badgeVariant="solid"
+  badgeColor="info"
+  badgePill
+/>
+
+// Featured badge
+<AlbumCard
+  album={album}
+  badge="Featured"
+  badgeVariant="solid"
+  badgeColor="success"
+/>`,
+    },
+  },
+};
+
+// Multi-line text
+export const MultiLineText = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <AlbumCard
+      album={{
+        ...SAMPLE_ALBUM,
+        title: 'Summer Vacation Road Trip Across America with Friends 2025',
+      }}
+      titleLines={2}
+      onSelect={(album) => console.log('Selected:', album.title)}
+    />
+    <AlbumCard
+      album={{
+        ...SAMPLE_ALBUM_2,
+        title: 'Urban Architecture and City Life Photography Collection',
+      }}
+      titleLines={3}
+      onSelect={(album) => console.log('Selected:', album.title)}
+    />
+  </div>
+);
+
+MultiLineText.parameters = {
+  docs: {
+    source: {
+      code: `// 2-line title
+<AlbumCard
+  album={{ ...album, title: 'Summer Vacation Road Trip Across America with Friends 2025' }}
+  titleLines={2}
+/>
+
+// 3-line title
+<AlbumCard
+  album={{ ...album, title: 'Urban Architecture and City Life Photography Collection' }}
+  titleLines={3}
+/>`,
+    },
+  },
+};
+
+// Loading state
+export const Loading = (args: AlbumCardProps) => <AlbumCard {...args} />;
+
+Loading.args = {
+  album: SAMPLE_ALBUM,
+  loading: true,
+};
+
+Loading.parameters = {
+  docs: {
+    source: {
+      code: `<AlbumCard album={album} loading />`,
+    },
+  },
+};
+
+// Error state
+export const Error = (args: AlbumCardProps) => <AlbumCard {...args} />;
+
+Error.args = {
+  album: SAMPLE_ALBUM,
+  error: true,
+  errorMessage: 'Failed to load album',
+};
+
+Error.parameters = {
+  docs: {
+    source: {
+      code: `<AlbumCard
+  album={album}
+  error
+  errorMessage="Failed to load album"
+/>`,
+    },
+  },
+};
+
+// Empty state
+export const Empty = (args: AlbumCardProps) => <AlbumCard {...args} />;
+
+Empty.args = {
+  album: EMPTY_ALBUM,
+  emptyTitle: 'No photos yet',
+  emptyMessage: 'Add photos to get started',
+};
+
+Empty.parameters = {
+  docs: {
+    source: {
+      code: `<AlbumCard
+  album={{ id: '0', title: '', cover: '', photos: [] }}
+  emptyTitle="No photos yet"
+  emptyMessage="Add photos to get started"
+/>`,
+    },
+  },
+};
+
+// All states showcase
+export const States = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <div>
+      <div
+        style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}
+      >
+        Loading
+      </div>
+      <AlbumCard album={SAMPLE_ALBUM} loading />
+    </div>
+    <div>
+      <div
+        style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}
+      >
+        Error
+      </div>
+      <AlbumCard album={SAMPLE_ALBUM} error errorMessage="Failed to load album" />
+    </div>
+    <div>
+      <div
+        style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}
+      >
+        Empty
+      </div>
+      <AlbumCard album={EMPTY_ALBUM} emptyTitle="No photos yet" emptyMessage="Add photos to get started" />
+    </div>
+  </div>
+);
+
+States.parameters = {
+  docs: {
+    source: {
+      code: `// Loading state
+<AlbumCard album={album} loading />
+
+// Error state
+<AlbumCard album={album} error errorMessage="Failed to load album" />
+
+// Empty state
+<AlbumCard
+  album={{ id: '0', title: '', cover: '', photos: [] }}
+  emptyTitle="No photos yet"
+  emptyMessage="Add photos to get started"
+/>`,
+    },
+  },
+};
+
+// Eager loading for above-the-fold
+export const EagerLoading = (args: AlbumCardProps) => <AlbumCard {...args} />;
+
+EagerLoading.args = {
+  album: SAMPLE_ALBUM,
+  imageLoading: 'eager',
+  onSelect: (album: Album) => console.log('Selected:', album.title),
+};
+
+EagerLoading.parameters = {
+  docs: {
+    source: {
+      code: `<AlbumCard
+  album={album}
+  imageLoading="eager"
+  onSelect={(album) => console.log('Selected:', album.title)}
+/>`,
+    },
+  },
+};
+
+// Image callbacks
+export const WithImageCallbacks = (args: AlbumCardProps) => <AlbumCard {...args} />;
+
+WithImageCallbacks.args = {
+  album: SAMPLE_ALBUM_2,
+  onImageLoad: () => console.log('Cover image loaded'),
+  onImageError: () => console.error('Cover image failed'),
+  onSelect: (album: Album) => console.log('Selected:', album.title),
+};
+
+WithImageCallbacks.parameters = {
+  docs: {
+    source: {
+      code: `<AlbumCard
+  album={album}
+  onImageLoad={() => console.log('Cover image loaded')}
+  onImageError={() => console.error('Cover image failed')}
+  onSelect={(album) => console.log('Selected:', album.title)}
+/>`,
+    },
+  },
+};
+
+// Performance features showcase
+export const Performance = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <div>
+      <div
+        style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}
+      >
+        Eager Loading (Above-the-fold)
+      </div>
+      <AlbumCard
+        album={SAMPLE_ALBUM}
+        imageLoading="eager"
+        onSelect={(album) => console.log('Selected:', album.title)}
+      />
+    </div>
+    <div>
+      <div
+        style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}
+      >
+        With Image Callbacks
+      </div>
+      <AlbumCard
+        album={SAMPLE_ALBUM_2}
+        onImageLoad={() => console.log('Cover image loaded')}
+        onImageError={() => console.error('Cover image failed')}
+        onSelect={(album) => console.log('Selected:', album.title)}
+      />
+    </div>
+  </div>
+);
+
+Performance.parameters = {
+  docs: {
+    source: {
+      code: `// Eager loading for above-the-fold images
+<AlbumCard
+  album={album}
+  imageLoading="eager"
+/>
+
+// Track image load/error events
+<AlbumCard
+  album={album}
+  onImageLoad={() => console.log('Cover image loaded')}
+  onImageError={() => console.error('Cover image failed')}
+/>`,
+    },
+  },
+};
+
+// Real-world example
+export const RealWorld = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <AlbumCard
+      album={SAMPLE_ALBUM}
+      badge="New"
+      badgeVariant="solid"
+      onImageLoad={() => console.log('Image loaded')}
+      onSelect={(album) => console.log('Opening album:', album.title)}
+    />
+    <AlbumCard
+      album={SAMPLE_ALBUM_2}
+      badge={15}
+      badgeVariant="solid"
+      titleLines={2}
+      onSelect={(album) => console.log('Opening album:', album.title)}
+    />
+    <AlbumCard
+      album={SAMPLE_ALBUM_3}
+      onSelect={(album) => console.log('Opening album:', album.title)}
+    />
+  </div>
+);
+
+RealWorld.parameters = {
+  docs: {
+    source: {
+      code: `<AlbumCard
+  album={album}
+  badge="New"
+  badgeVariant="solid"
+  onImageLoad={() => console.log('Image loaded')}
+  onSelect={(album) => console.log('Opening album:', album.title)}
+/>`,
+    },
+  },
 };

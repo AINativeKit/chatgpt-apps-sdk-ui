@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import { useOpenAiGlobal } from './useOpenAiGlobal';
 import type { Theme } from './types';
-import { ThemeContext } from '../../providers/ThemeProvider';
 
 export interface UseThemeResult {
   /**
@@ -10,32 +8,21 @@ export interface UseThemeResult {
   theme: Theme | null;
 
   /**
-   * Function to programmatically set the theme.
-   * Only available when using ThemeProvider.
-   * In ChatGPT environment, this will warn and have no effect (read-only).
-   */
-  setTheme?: (theme: Theme) => void;
-
-  /**
    * Whether the theme is controlled by ChatGPT (read-only mode).
-   * When true, setTheme will have no effect.
    */
   isControlledByChatGPT: boolean;
 }
 
 /**
- * Get the current theme and optionally control it
+ * Get the current theme from ChatGPT environment
  *
- * This hook works in multiple contexts:
- * - **Inside ChatGPT**: Returns read-only theme from ChatGPT (`window.openai.theme`)
- * - **Inside ThemeProvider**: Returns theme with setTheme control
- * - **Standalone**: Returns null theme
+ * This hook reads the theme from ChatGPT's global object (`window.openai.theme`).
+ * For theme control in non-ChatGPT environments, use AppsSDKUIProvider from apps-sdk-ui.
  *
- * @returns Object with theme, setTheme (optional), and control info
+ * @returns Object with theme and control info
  *
  * @example
  * ```tsx
- * // Inside ChatGPT (read-only)
  * import { useTheme } from '@ainativekit/ui';
  *
  * function MyComponent() {
@@ -49,52 +36,12 @@ export interface UseThemeResult {
  *   );
  * }
  * ```
- *
- * @example
- * ```tsx
- * // With ThemeProvider (controllable)
- * import { ThemeProvider, useTheme } from '@ainativekit/ui';
- *
- * function App() {
- *   return (
- *     <ThemeProvider>
- *       <MyComponent />
- *     </ThemeProvider>
- *   );
- * }
- *
- * function MyComponent() {
- *   const { theme, setTheme, isControlledByChatGPT } = useTheme();
- *
- *   return (
- *     <button
- *       onClick={() => setTheme?.(theme === 'light' ? 'dark' : 'light')}
- *       disabled={isControlledByChatGPT}
- *     >
- *       Toggle theme (current: {theme})
- *     </button>
- *   );
- * }
- * ```
  */
 export const useTheme = (): UseThemeResult => {
-  // Call all hooks at top level (Rules of Hooks)
-  const contextValue = useContext(ThemeContext);
   const chatGPTTheme = useOpenAiGlobal('theme');
 
-  // If ThemeProvider context is available, use it
-  if (contextValue) {
-    return {
-      theme: contextValue.theme,
-      setTheme: contextValue.setTheme,
-      isControlledByChatGPT: contextValue.isControlledByChatGPT,
-    };
-  }
-
-  // Fall back to ChatGPT theme (read-only)
   return {
     theme: chatGPTTheme,
-    setTheme: undefined,
     isControlledByChatGPT: !!chatGPTTheme,
   };
 };

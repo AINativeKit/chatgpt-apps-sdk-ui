@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
-import { cn } from '../../utils/cn';
-import type { ElevationLevel } from '../../tokens/elevation';
+import clsx from 'clsx';
 import styles from './Card.module.css';
 import { CardHeader } from './CardHeader';
 import { CardBody } from './CardBody';
@@ -11,11 +10,28 @@ import { CardActions, CardActionButton } from './CardActions';
 import { CardTitle } from './CardTitle';
 import { CardDescription } from './CardDescription';
 import { CardMeta } from './CardMeta';
-import { CardChipGroup } from './CardChipGroup';
+import { CardBadgeGroup } from './CardBadgeGroup';
 import { CardBadge } from './CardBadge';
-import { CardChip } from './CardChip';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
 import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
+
+/**
+ * Elevation level for Card component (0-4)
+ * Maps to apps-sdk-ui shadow tokens: --shadow-100 through --shadow-400
+ */
+export type ElevationLevel = 0 | 1 | 2 | 3 | 4;
+
+/**
+ * Maps elevation levels to apps-sdk-ui shadow tokens
+ */
+const ELEVATION_TO_SHADOW: Record<ElevationLevel, string> = {
+  0: 'none',
+  1: 'var(--shadow-100)',
+  2: 'var(--shadow-200)',
+  3: 'var(--shadow-300)',
+  4: 'var(--shadow-400)',
+};
 
 export type CardBorder = 'light' | 'default' | 'heavy';
 
@@ -42,7 +58,7 @@ export interface CardProps extends Omit<ComponentPropsWithoutRef<'div'>, 'color'
   interactive?: boolean;
   /**
    * Padding for the card. Can be a CSS value string or number (in px).
-   * @default 'var(--ai-spacing-12)'
+   * @default '48px'
    */
   padding?: string | number;
   /**
@@ -86,13 +102,13 @@ export interface CardProps extends Omit<ComponentPropsWithoutRef<'div'>, 'color'
 }
 
 const BORDER_TOKENS: Record<CardBorder, string> = {
-  light: 'var(--ai-color-border-light)',
-  default: 'var(--ai-color-border-default)',
-  heavy: 'var(--ai-color-border-heavy)',
+  light: 'var(--color-border-subtle)',
+  default: 'var(--color-border)',
+  heavy: 'var(--color-border-strong)',
 };
 
 const clampElevation = (level: number): ElevationLevel => {
-  return Math.max(0, Math.min(5, level)) as ElevationLevel;
+  return Math.max(0, Math.min(4, level)) as ElevationLevel;
 };
 
 const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
@@ -101,7 +117,7 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     border = 'heavy',
     hoverElevationLevel,
     interactive = false,
-    padding = 'var(--ai-spacing-8)',
+    padding = 'calc(var(--spacing) * 4)',
     loading = false,
     skeleton,
     error = false,
@@ -117,16 +133,13 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   } = props;
 
   const hoverLevel = hoverElevationLevel ?? clampElevation(elevationLevel + (interactive ? 1 : 0));
-  const elevationShadowVar = `var(--ai-elevation-${elevationLevel}-shadow)`;
-  const hoverShadowVar = `var(--ai-elevation-${hoverLevel}-shadow)`;
-  const elevationOverlayVar = `var(--ai-elevation-${elevationLevel}-overlay)`;
+  const elevationShadowVar = ELEVATION_TO_SHADOW[elevationLevel];
+  const hoverShadowVar = ELEVATION_TO_SHADOW[hoverLevel];
 
   const baseStyle: CSSProperties = {
     '--card-border-color': BORDER_TOKENS[border],
     '--card-shadow-value': elevationShadowVar,
     '--card-hover-shadow-value': hoverShadowVar,
-    '--card-overlay-light': elevationOverlayVar,
-    '--card-overlay-dark': elevationOverlayVar,
     padding: typeof padding === 'number' ? `${padding}px` : padding,
   } as React.CSSProperties;
 
@@ -136,14 +149,26 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const defaultSkeleton = (
     <>
       <Skeleton height={200} style={{ marginBottom: 12 }} />
-      <Skeleton variant="text" width="60%" style={{ marginBottom: 8 }} />
-      <Skeleton variant="text" width="80%" />
+      <Skeleton height={16} width="60%" style={{ marginBottom: 8 }} />
+      <Skeleton height={16} width="80%" />
     </>
   );
 
   // Default error layout if error and no custom error content provided
   const defaultError = (
-    <Alert layout="card" title={errorTitle} message={errorMessage} onAction={onErrorRetry} />
+    <Alert
+      color="danger"
+      variant="soft"
+      title={errorTitle ?? 'Something went wrong'}
+      description={errorMessage}
+      actions={
+        onErrorRetry ? (
+          <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+            Retry
+          </Button>
+        ) : undefined
+      }
+    />
   );
 
   // Determine what to render
@@ -159,7 +184,7 @@ const CardBase = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   return (
     <div
       ref={ref}
-      className={cn(styles.card, className)}
+      className={clsx(styles.card, className)}
       style={mergedStyle}
       data-hover={interactive}
       data-interactive={interactive}
@@ -185,9 +210,8 @@ const CardWithCompounds = Object.assign(CardBase, {
   Title: CardTitle,
   Description: CardDescription,
   Meta: CardMeta,
-  ChipGroup: CardChipGroup,
+  BadgeGroup: CardBadgeGroup,
   Badge: CardBadge,
-  Chip: CardChip,
 });
 
 export { CardWithCompounds as Card };

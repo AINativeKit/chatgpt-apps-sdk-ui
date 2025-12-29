@@ -5,10 +5,7 @@ declare const styles: {
   readonly mapWrapper: string;
   readonly map: string;
   readonly mobileCarousel: string;
-  readonly fallbackLayout: string;
-  readonly fallbackMap: string;
-  readonly fallbackOverlay: string;
-  readonly fallbackOverlayContent: string;
+  readonly stateOverlay: string;
   readonly collapseButton: string;
 };
 

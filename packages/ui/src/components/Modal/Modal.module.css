@@ -1,0 +1,49 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--modal-backdrop);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  pointer-events: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.contained {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  overflow: hidden;
+  width: var(--modal-width-override, var(--modal-width));
+  max-width: var(--modal-max-width-override, var(--modal-max-width));
+  max-height: var(--modal-max-height-override, var(--modal-max-height));
+  border-radius: var(--modal-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--modal-shadow);
+}

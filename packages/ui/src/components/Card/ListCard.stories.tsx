@@ -1,14 +1,90 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { ListCard } from './ListCard';
-import { PropsTable } from '../../tokens/PropsTable';
-import { codeBlockStyles } from '../storybook/codeBlockStyles';
+import type { Meta } from '@storybook/react';
+import { ListCard, type ListCardProps, type ListCardItem } from './ListCard';
 
-const meta: Meta<typeof ListCard> = {
-  title: 'Composed Components/Cards/List Cards',
+const meta: Meta<ListCardProps> = {
+  title: 'Components/Cards/ListCard',
   component: ListCard,
+  tags: ['!dev'],
   parameters: {
     layout: 'padded',
+  },
+  argTypes: {
+    topImage: {
+      description: 'Image URL displayed at top of card',
+      control: false,
+      table: { type: { summary: 'string' } },
+    },
+    items: {
+      description: 'Array of list items to display',
+      control: false,
+      table: { type: { summary: 'ListCardItem[]' } },
+    },
+    onHeaderAction: {
+      description: 'Callback when header action is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onButtonClick: {
+      description: 'Callback when action button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onErrorRetry: {
+      description: 'Callback when retry button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onTopImageLoad: {
+      description: 'Callback when top image loads',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onTopImageError: {
+      description: 'Callback when top image fails to load',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    emptyIcon: {
+      description: 'Custom icon for empty state',
+      control: false,
+      table: { type: { summary: 'ReactNode' } },
+    },
+    loading: {
+      description: 'Shows skeleton placeholder',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    loadingItemCount: {
+      description: 'Number of skeleton items when loading',
+      table: { type: { summary: 'number' }, defaultValue: { summary: '3' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Failed to load' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No items' } },
+    },
+    buttonDisabled: {
+      description: 'Disable the action button',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    topImageLoading: {
+      description: 'Top image loading strategy',
+      table: { type: { summary: "'eager' | 'lazy'" }, defaultValue: { summary: 'lazy' } },
+    },
+    itemImagesLoading: {
+      description: 'Item images loading strategy',
+      table: { type: { summary: "'eager' | 'lazy'" }, defaultValue: { summary: 'lazy' } },
+    },
+    elevationLevel: {
+      description: 'Shadow elevation level (0-3)',
+      table: { type: { summary: '0 | 1 | 2 | 3' }, defaultValue: { summary: '1' } },
+    },
   },
 };
 
@@ -26,8 +102,8 @@ const SAMPLE_IMAGES = {
 
 const CARD_WIDTH = 375;
 
-// Sample items for examples
-const sampleItems = [
+// Sample items
+const sampleItems: ListCardItem[] = [
   {
     image: SAMPLE_IMAGES.pepperoni,
     title: 'Pepperoni Pizza',
@@ -51,683 +127,414 @@ const sampleItems = [
   },
 ];
 
-// Main unified ListCard showcase component
-const ListCardsComponent: React.FC = () => {
-  const [retryCount, setRetryCount] = React.useState(0);
+// Base story
+export const Base = (args: ListCardProps) => <ListCard {...args} />;
 
-  return (
-    <div style={{ padding: '24px' }}>
-      <h1 style={{ marginBottom: '32px' }}>ListCard System</h1>
+Base.args = {
+  headerTitle: 'Menu Items',
+  items: sampleItems,
+  buttonText: 'View All',
+  onButtonClick: () => console.log('View all'),
+  style: { maxWidth: `${CARD_WIDTH}px` },
+};
 
-      {/* Introduction */}
-      <section style={{ marginBottom: '64px' }}>
-        <p
-          style={{
-            marginBottom: '24px',
-            color: 'var(--ai-color-text-secondary)',
-            fontSize: '16px',
-            lineHeight: '1.6',
-          }}
-        >
-          Cards displaying lists of items with optional header, top image, and action buttons.
-          Perfect for menus, playlists, order summaries, and content collections. Features loading,
-          error, and empty states with native lazy loading for optimal performance.
-        </p>
-      </section>
+Base.parameters = {
+  docs: {
+    source: {
+      code: `<ListCard
+  headerTitle="Menu Items"
+  items={[
+    { title: 'Pepperoni Pizza', subtitle: 'Classic favorite' },
+    { title: 'Margherita Pizza', subtitle: 'Traditional Italian' },
+  ]}
+  buttonText="View All"
+  onButtonClick={() => console.log('View all')}
+/>`,
+    },
+  },
+};
 
-      {/* Basic Layouts */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Basic Layouts</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Common list card configurations with various features
-          </p>
-        </header>
+// With top image
+export const WithTopImage = (args: ListCardProps) => <ListCard {...args} />;
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          <ListCard
-            topImage={SAMPLE_IMAGES.pizza}
-            headerTitle="Featured Pizzas"
-            headerActionLabel="Edit featured pizzas"
-            onHeaderAction={() => console.log('Edit')}
-            items={sampleItems}
-            buttonText="View All"
-            onButtonClick={() => console.log('View all')}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <ListCard
-            headerTitle="Order Summary"
-            headerActionLabel="Edit order"
-            onHeaderAction={() => console.log('Edit')}
-            items={sampleItems.slice(0, 2)}
-            buttonText="Place Order"
-            onButtonClick={() => console.log('Place order')}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-          <ListCard
-            headerTitle="Quick Add"
-            items={sampleItems.slice(0, 2).map((item) => ({
-              ...item,
-              onItemAction: () => console.log(`Add ${item.title}`),
-            }))}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-        </div>
-      </section>
+WithTopImage.args = {
+  topImage: SAMPLE_IMAGES.pizza,
+  headerTitle: 'Featured Pizzas',
+  headerActionLabel: 'Edit featured pizzas',
+  onHeaderAction: () => console.log('Edit'),
+  items: sampleItems,
+  buttonText: 'View All',
+  onButtonClick: () => console.log('View all'),
+  style: { maxWidth: `${CARD_WIDTH}px` },
+};
 
-      {/* States System */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>States System</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Loading, error, and empty states for complete UX coverage
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          {/* Loading State */}
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                fontWeight: 600,
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
-              }}
-            >
-              Loading State
-            </h3>
-            <ListCard
-              headerTitle="Loading Menu"
-              loading={true}
-              loadingItemCount={3}
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-            <p
-              style={{
-                marginTop: '8px',
-                fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              Skeleton UI with customizable item count
-            </p>
-          </div>
-
-          {/* Error State */}
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                fontWeight: 600,
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
-              }}
-            >
-              Error State
-            </h3>
-            <ListCard
-              headerTitle="Menu Items"
-              error={true}
-              errorTitle="Failed to load"
-              errorMessage="Unable to fetch menu items. Please try again."
-              onErrorRetry={() => {
-                setRetryCount((c) => c + 1);
-                console.log('Retry clicked', retryCount);
-              }}
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-            <p
-              style={{
-                marginTop: '8px',
-                fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              Error with retry functionality
-            </p>
-          </div>
-
-          {/* Empty State */}
-          <div>
-            <h3
-              style={{
-                fontSize: '14px',
-                fontWeight: 600,
-                marginBottom: '12px',
-                color: 'var(--ai-color-text-primary)',
-              }}
-            >
-              Empty State
-            </h3>
-            <ListCard
-              headerTitle="Your Cart"
-              headerActionLabel="Clear cart"
-              onHeaderAction={() => console.log('Clear')}
-              items={[]}
-              emptyTitle="Cart is empty"
-              emptyMessage="Add items to your cart to get started"
-              style={{ maxWidth: `${CARD_WIDTH}px` }}
-            />
-            <p
-              style={{
-                marginTop: '8px',
-                fontSize: '13px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              Custom empty state messaging
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Item Variations */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Item Variations</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Different item configurations and content layouts
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          {/* With images and actions */}
-          <ListCard
-            headerTitle="Add to Order"
-            items={sampleItems.map((item) => ({
-              ...item,
-              onItemAction: () => console.log(`Add ${item.title}`),
-            }))}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-
-          {/* Without images */}
-          <ListCard
-            headerTitle="Simple List"
-            items={[
-              { title: 'Margherita Pizza', subtitle: '$12.99' },
-              { title: 'Pepperoni Pizza', subtitle: '$14.99' },
-              { title: 'Veggie Supreme', subtitle: '$13.99' },
-            ]}
-            buttonText="Checkout"
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-
-          {/* Minimal items */}
-          <ListCard
-            headerTitle="Order #1234"
-            items={[
-              {
-                image: SAMPLE_IMAGES.pepperoni,
-                title: 'Pepperoni Pizza',
-                subtitle: 'Large (14")',
-              },
-            ]}
-            buttonText="Track Order"
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-        </div>
-      </section>
-
-      {/* Performance Features */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Performance Features</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Native lazy loading and image callbacks for optimal performance
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          <ListCard
-            topImage={SAMPLE_IMAGES.pizza}
-            topImageLazy={true}
-            onTopImageLoad={() => console.log('Top image loaded')}
-            headerTitle="Lazy Loaded Images"
-            items={sampleItems.map((item) => ({
-              ...item,
-              image:
-                typeof item.image === 'string'
-                  ? { src: item.image, alt: item.title, lazy: true }
-                  : item.image,
-              onImageLoad: () => console.log(`${item.title} image loaded`),
-            }))}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-        </div>
-        <p
-          style={{
-            marginTop: '16px',
-            fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
-            fontStyle: 'italic',
-          }}
-        >
-          All images use native browser lazy loading by default. Check console for load events.
-        </p>
-      </section>
-
-      {/* Accessibility */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Accessibility</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            WCAG 2.1 AA compliant with required action labels and ARIA attributes
-          </p>
-        </header>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
-          <ListCard
-            headerTitle="Accessible List"
-            headerActionLabel="Edit menu items"
-            onHeaderAction={() => console.log('Edit')}
-            items={sampleItems.map((item) => ({
-              ...item,
-              actionLabel: `Add ${item.title} to cart`,
-              onItemAction: () => console.log(`Add ${item.title}`),
-            }))}
-            buttonText="View Full Menu"
-            onButtonClick={() => console.log('View menu')}
-            style={{ maxWidth: `${CARD_WIDTH}px` }}
-          />
-        </div>
-        <p
-          style={{
-            marginTop: '16px',
-            fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
-            fontStyle: 'italic',
-          }}
-        >
-          All action buttons have descriptive aria-labels. Development mode validates required
-          labels.
-        </p>
-      </section>
-
-      {/* Usage */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Usage</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Code examples for common ListCard patterns
-          </p>
-        </header>
-
-        <details style={{ marginBottom: '16px', cursor: 'pointer' }}>
-          <summary style={{ fontWeight: 600, marginBottom: '12px' }}>Basic ListCard</summary>
-          <pre style={codeBlockStyles.primary}>{`import { ListCard } from '@ainativekit/ui';
-
-function Component() {
-  return (
-    <ListCard
-      headerTitle="Menu Items"
-      items={[
-        { title: 'Pizza', subtitle: '$12.99' },
-        { title: 'Pasta', subtitle: '$10.99' },
-      ]}
-      buttonText="Order Now"
-      onButtonClick={() => console.log('Order')}
-    />
-  );
-}`}</pre>
-        </details>
-
-        <details style={{ marginBottom: '16px', cursor: 'pointer' }}>
-          <summary style={{ fontWeight: 600, marginBottom: '12px' }}>
-            With Images and Actions
-          </summary>
-          <pre style={codeBlockStyles.primary}>{`<ListCard
+WithTopImage.parameters = {
+  docs: {
+    source: {
+      code: `<ListCard
   topImage="/hero-image.jpg"
-  headerTitle="Featured Items"
+  headerTitle="Featured Pizzas"
+  headerActionLabel="Edit featured pizzas"
+  onHeaderAction={() => console.log('Edit')}
+  items={items}
+  buttonText="View All"
+  onButtonClick={() => console.log('View all')}
+/>`,
+    },
+  },
+};
+
+// Header variations
+export const HeaderVariations = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <ListCard
+      headerTitle="With Action Button"
+      headerActionLabel="Edit items"
+      onHeaderAction={() => console.log('Edit')}
+      items={sampleItems.slice(0, 2)}
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+    <ListCard
+      headerTitle="Title Only"
+      items={sampleItems.slice(0, 2)}
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+    <ListCard items={sampleItems.slice(0, 2)} style={{ maxWidth: `${CARD_WIDTH}px` }} />
+  </div>
+);
+
+HeaderVariations.parameters = {
+  docs: {
+    source: {
+      code: `// With action button
+<ListCard
+  headerTitle="With Action Button"
   headerActionLabel="Edit items"
   onHeaderAction={() => console.log('Edit')}
+  items={items}
+/>
+
+// Title only
+<ListCard headerTitle="Title Only" items={items} />
+
+// No header
+<ListCard items={items} />`,
+    },
+  },
+};
+
+// Item variations
+export const ItemVariations = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <ListCard
+      headerTitle="With Images & Actions"
+      items={sampleItems.map((item) => ({
+        ...item,
+        onItemAction: () => console.log(`Add ${item.title}`),
+      }))}
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+    <ListCard
+      headerTitle="Simple List"
+      items={[
+        { title: 'Margherita Pizza', subtitle: '$12.99' },
+        { title: 'Pepperoni Pizza', subtitle: '$14.99' },
+        { title: 'Veggie Supreme', subtitle: '$13.99' },
+      ]}
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+    <ListCard
+      headerTitle="With Descriptions"
+      items={sampleItems.slice(0, 2)}
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+  </div>
+);
+
+ItemVariations.parameters = {
+  docs: {
+    source: {
+      code: `// With images and actions
+<ListCard
+  headerTitle="With Images & Actions"
   items={[
     {
-      image: '/item1.jpg',
-      title: 'Item Name',
-      subtitle: 'Description',
-      actionLabel: 'Add Item Name to cart',
+      image: '/pizza.jpg',
+      title: 'Pepperoni Pizza',
+      subtitle: '$14.99',
+      actionLabel: 'Add to cart',
       onItemAction: () => addToCart(),
     },
   ]}
-/>`}</pre>
-        </details>
-
-        <details style={{ marginBottom: '16px', cursor: 'pointer' }}>
-          <summary style={{ fontWeight: 600, marginBottom: '12px' }}>
-            Loading & Error States
-          </summary>
-          <pre style={codeBlockStyles.primary}>{`// Loading state
-<ListCard 
-  loading 
-  loadingItemCount={3}
-  {...props} 
 />
 
-// Error state with retry
+// Simple list
 <ListCard
-  error
-  errorTitle="Failed to load"
-  errorMessage="Unable to fetch items"
-  onErrorRetry={() => retry()}
-  {...props}
-/>
-
-// Empty state
-<ListCard
-  items={[]}
-  emptyTitle="No items"
-  emptyMessage="Add items to get started"
-  {...props}
-/>`}</pre>
-        </details>
-
-        <details style={{ marginBottom: '16px', cursor: 'pointer' }}>
-          <summary style={{ fontWeight: 600, marginBottom: '12px' }}>With Accessibility</summary>
-          <pre style={codeBlockStyles.primary}>{`// All action buttons need descriptive labels
-<ListCard
-  headerTitle="Cart"
-  headerActionLabel="Edit cart items"
-  onHeaderAction={() => edit()}
+  headerTitle="Simple List"
   items={[
-    {
-      title: 'Pizza',
-      actionLabel: 'Add pizza to order',
-      onItemAction: () => add(),
-    },
+    { title: 'Margherita Pizza', subtitle: '$12.99' },
+    { title: 'Pepperoni Pizza', subtitle: '$14.99' },
   ]}
-/>`}</pre>
-        </details>
-
-        <details style={{ cursor: 'pointer' }}>
-          <summary style={{ fontWeight: 600, marginBottom: '12px' }}>
-            Performance Optimization
-          </summary>
-          <pre style={codeBlockStyles.primary}>{`// Native lazy loading (enabled by default)
-<ListCard
-  topImage="/large-image.jpg"
-  topImageLazy={true}
-  onTopImageLoad={() => console.log('Loaded')}
-  items={items.map(item => ({
-    ...item,
-    image: { src: item.img, alt: item.name, lazy: true },
-    onImageLoad: () => trackLoad(item.id),
-  }))}
-/>`}</pre>
-        </details>
-
-        <div
-          style={{
-            marginTop: '32px',
-            display: 'grid',
-            gap: '16px',
-            fontSize: '14px',
-            lineHeight: '1.6',
-          }}
-        >
-          <div
-            style={{
-              padding: '16px',
-              backgroundColor: 'var(--ai-color-surface-secondary)',
-              borderRadius: '8px',
-            }}
-          >
-            <strong style={{ color: 'var(--ai-color-success)' }}>✓ Best Practices:</strong>
-            <ul
-              style={{
-                margin: '8px 0 0 0',
-                paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              <li>
-                Provide descriptive actionLabel for all action buttons (required for accessibility)
-              </li>
-              <li>Use loading state while fetching data to improve perceived performance</li>
-              <li>Show error state with retry functionality for better UX</li>
-              <li>Provide empty state guidance to help users understand next steps</li>
-              <li>Keep item lists focused (3-5 items ideal for readability)</li>
-              <li>Use top image for visual context and brand consistency</li>
-              <li>Leverage native lazy loading (enabled by default for performance)</li>
-            </ul>
-          </div>
-
-          <div
-            style={{
-              padding: '16px',
-              backgroundColor: 'var(--ai-color-surface-secondary)',
-              borderRadius: '8px',
-            }}
-          >
-            <strong style={{ color: 'var(--ai-color-error)' }}>✗ Avoid:</strong>
-            <ul
-              style={{
-                margin: '8px 0 0 0',
-                paddingLeft: '20px',
-                color: 'var(--ai-color-text-secondary)',
-              }}
-            >
-              <li>Showing empty component without loading/error states</li>
-              <li>Using vague action labels like "Action" or "Click here"</li>
-              <li>Displaying very long lists without pagination or virtual scrolling</li>
-              <li>Forgetting accessibility labels on action buttons (fails WCAG 2.1 AA)</li>
-              <li>Mixing different content types in the same list</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Props */}
-      <section style={{ marginBottom: '64px' }}>
-        <header style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '8px' }}>Props</h2>
-          <p style={{ color: 'var(--ai-color-text-secondary)', margin: 0, fontSize: '14px' }}>
-            Complete prop reference for ListCard
-          </p>
-        </header>
-
-        <PropsTable
-          hideThemeColumn
-          rows={[
-            // Content Props
-            {
-              name: 'topImage: string | ListCardImage',
-              description:
-                'Top image displayed at 210px height. Can be URL string or image object with lazy loading control.',
-            },
-            {
-              name: 'headerTitle: string',
-              description: 'Header title using body-emph typography.',
-            },
-            {
-              name: 'items: ListCardItem[]',
-              description: 'Array of list items to display. Default: []',
-            },
-            {
-              name: 'buttonText: string',
-              description: 'Button text for bottom action button.',
-            },
-
-            // Actions
-            {
-              name: 'onHeaderAction: (event) => void',
-              description: 'Callback when header action button is clicked.',
-            },
-            {
-              name: 'onButtonClick: (event) => void',
-              description: 'Callback when bottom action button is clicked.',
-            },
-            {
-              name: 'buttonDisabled: boolean',
-              description: 'Whether the action button is disabled. Default: false',
-            },
-
-            // State Props (Phase 1)
-            {
-              name: 'loading: boolean',
-              description: 'Show skeleton loading UI. Default: false',
-            },
-            {
-              name: 'loadingItemCount: number',
-              description: 'Number of skeleton items to show during loading. Default: 3',
-            },
-            {
-              name: 'error: boolean',
-              description: 'Show error message. Default: false',
-            },
-            {
-              name: 'errorTitle: string',
-              description: 'Custom error title. Default: "Failed to load"',
-            },
-            {
-              name: 'errorMessage: string',
-              description: 'Custom error description.',
-            },
-            {
-              name: 'onErrorRetry: () => void',
-              description: 'Error retry handler - shows retry button when provided.',
-            },
-            {
-              name: 'emptyTitle: string',
-              description: 'Empty state title when items array is empty. Default: "No items"',
-            },
-            {
-              name: 'emptyMessage: string',
-              description: 'Empty state description.',
-            },
-            {
-              name: 'emptyIcon: IconName',
-              description: 'Empty state icon.',
-            },
-
-            // Performance Props (Phase 2)
-            {
-              name: 'topImageLazy: boolean',
-              description: 'Enable native lazy loading for top image. Default: true',
-            },
-            {
-              name: 'itemImagesLazy: boolean',
-              description: 'Enable native lazy loading for item images. Default: true',
-            },
-            {
-              name: 'onTopImageLoad: (event) => void',
-              description: 'Callback when top image loads successfully.',
-            },
-            {
-              name: 'onTopImageError: (event) => void',
-              description: 'Callback when top image fails to load.',
-            },
-
-            // Accessibility Props (Phase 2)
-            {
-              name: 'headerActionLabel: string',
-              description:
-                'REQUIRED accessibility label for header action button (when onHeaderAction provided).',
-            },
-
-            // Inherited from Card
-            {
-              name: 'elevationLevel: 0 | 1 | 2 | 3 | 4 | 5',
-              description: 'Card elevation level (inherited from Card). Default: 1',
-            },
-            {
-              name: 'interactive: boolean',
-              description: 'Enable interactive hover state (inherited from Card). Default: false',
-            },
-          ]}
-        />
-
-        <div style={{ marginTop: '32px' }}>
-          <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px' }}>
-            ListCardItem Interface
-          </h3>
-          <PropsTable
-            hideThemeColumn
-            rows={[
-              {
-                name: 'image: string | ListCardImage',
-                description: 'Small circular image (44x44). Can be URL or image object.',
-              },
-              {
-                name: 'title: string',
-                description: 'Item title (required).',
-              },
-              {
-                name: 'subtitle: string',
-                description: 'Item subtitle with secondary color.',
-              },
-              {
-                name: 'description: string',
-                description: 'Item description using body-small.',
-              },
-              {
-                name: 'onItemAction: (event) => void',
-                description: 'Callback when item action button is clicked.',
-              },
-              {
-                name: 'actionLabel: string',
-                description:
-                  'REQUIRED accessibility label for item action (when onItemAction provided).',
-              },
-              {
-                name: 'onImageLoad: (event) => void',
-                description: 'Callback when item image loads successfully.',
-              },
-              {
-                name: 'onImageError: (event) => void',
-                description: 'Callback when item image fails to load.',
-              },
-            ]}
-          />
-        </div>
-      </section>
-    </div>
-  );
+/>`,
+    },
+  },
 };
 
-export const ListCards: StoryObj = {
-  render: () => <ListCardsComponent />,
-  parameters: {
-    docs: {
-      source: {
-        code: `// See component implementation above for full examples`,
-      },
+// With action button
+export const WithActionButton = (args: ListCardProps) => <ListCard {...args} />;
+
+WithActionButton.args = {
+  headerTitle: 'Your Cart',
+  items: sampleItems.slice(0, 2),
+  buttonText: 'Place Order',
+  onButtonClick: () => console.log('Place order'),
+  style: { maxWidth: `${CARD_WIDTH}px` },
+};
+
+WithActionButton.parameters = {
+  docs: {
+    source: {
+      code: `<ListCard
+  headerTitle="Your Cart"
+  items={cartItems}
+  buttonText="Place Order"
+  onButtonClick={() => placeOrder()}
+/>`,
+    },
+  },
+};
+
+// Loading state
+export const Loading = (args: ListCardProps) => <ListCard {...args} />;
+
+Loading.args = {
+  headerTitle: 'Loading Menu',
+  loading: true,
+  loadingItemCount: 3,
+  style: { maxWidth: `${CARD_WIDTH}px` },
+};
+
+Loading.parameters = {
+  docs: {
+    source: {
+      code: `<ListCard
+  headerTitle="Loading Menu"
+  loading
+  loadingItemCount={3}
+/>`,
+    },
+  },
+};
+
+// Error state
+export const Error = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <ListCard
+      headerTitle="Default Error"
+      error
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+    <ListCard
+      headerTitle="With Retry"
+      error
+      errorTitle="Failed to load"
+      errorMessage="Unable to fetch menu items. Please try again."
+      onErrorRetry={() => console.log('Retry clicked')}
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+  </div>
+);
+
+Error.parameters = {
+  docs: {
+    source: {
+      code: `// Default error
+<ListCard headerTitle="Menu" error />
+
+// Custom error with retry
+<ListCard
+  headerTitle="Menu"
+  error
+  errorTitle="Failed to load"
+  errorMessage="Unable to fetch menu items. Please try again."
+  onErrorRetry={() => handleRetry()}
+/>`,
+    },
+  },
+};
+
+// Empty state
+export const Empty = (args: ListCardProps) => <ListCard {...args} />;
+
+Empty.args = {
+  headerTitle: 'Your Cart',
+  headerActionLabel: 'Clear cart',
+  onHeaderAction: () => console.log('Clear'),
+  items: [],
+  emptyTitle: 'Cart is empty',
+  emptyMessage: 'Add items to your cart to get started',
+  style: { maxWidth: `${CARD_WIDTH}px` },
+};
+
+Empty.parameters = {
+  docs: {
+    source: {
+      code: `<ListCard
+  headerTitle="Your Cart"
+  items={[]}
+  emptyTitle="Cart is empty"
+  emptyMessage="Add items to your cart to get started"
+/>`,
+    },
+  },
+};
+
+// All states showcase
+export const States = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Loading
+      </div>
+      <ListCard
+        headerTitle="Loading Menu"
+        loading
+        loadingItemCount={3}
+        style={{ maxWidth: `${CARD_WIDTH}px` }}
+      />
+    </div>
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Error
+      </div>
+      <ListCard
+        headerTitle="Menu Items"
+        error
+        errorMessage="Failed to load menu items"
+        onErrorRetry={() => console.log('Retry')}
+        style={{ maxWidth: `${CARD_WIDTH}px` }}
+      />
+    </div>
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Empty
+      </div>
+      <ListCard
+        headerTitle="Your Cart"
+        items={[]}
+        emptyTitle="Cart is empty"
+        emptyMessage="Add items to get started"
+        style={{ maxWidth: `${CARD_WIDTH}px` }}
+      />
+    </div>
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Normal
+      </div>
+      <ListCard
+        headerTitle="Menu Items"
+        items={sampleItems.slice(0, 2)}
+        buttonText="View All"
+        style={{ maxWidth: `${CARD_WIDTH}px` }}
+      />
+    </div>
+  </div>
+);
+
+States.parameters = {
+  docs: {
+    source: {
+      code: `// Loading state
+<ListCard loading loadingItemCount={3} />
+
+// Error state
+<ListCard error errorMessage="Failed to load" onErrorRetry={() => retry()} />
+
+// Empty state
+<ListCard items={[]} emptyTitle="Cart is empty" />
+
+// Normal state
+<ListCard items={items} buttonText="View All" />`,
+    },
+  },
+};
+
+// Real-world example
+export const RealWorld = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(345px, 1fr))',
+      gap: '24px',
+      alignItems: 'start',
+    }}
+  >
+    <ListCard
+      topImage={SAMPLE_IMAGES.pizza}
+      headerTitle="Featured Pizzas"
+      headerActionLabel="Edit featured pizzas"
+      onHeaderAction={() => console.log('Edit')}
+      items={sampleItems.map((item) => ({
+        ...item,
+        onItemAction: () => console.log(`Add ${item.title}`),
+      }))}
+      buttonText="View Full Menu"
+      onButtonClick={() => console.log('View menu')}
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+    <ListCard
+      headerTitle="Order Summary"
+      items={sampleItems.slice(0, 2)}
+      buttonText="Place Order"
+      onButtonClick={() => console.log('Place order')}
+      style={{ maxWidth: `${CARD_WIDTH}px` }}
+    />
+  </div>
+);
+
+RealWorld.parameters = {
+  docs: {
+    source: {
+      code: `<ListCard
+  topImage="/hero.jpg"
+  headerTitle="Featured Pizzas"
+  headerActionLabel="Edit featured pizzas"
+  onHeaderAction={() => console.log('Edit')}
+  items={items.map(item => ({
+    ...item,
+    onItemAction: () => addToCart(item),
+  }))}
+  buttonText="View Full Menu"
+  onButtonClick={() => navigate('/menu')}
+/>`,
     },
   },
 };

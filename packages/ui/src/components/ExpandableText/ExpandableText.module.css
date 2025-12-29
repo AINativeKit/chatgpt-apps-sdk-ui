@@ -6,27 +6,35 @@
 /* Text Content */
 .text {
   margin: 0;
-  font-size: var(--ai-font-size-body);
-  line-height: var(--ai-line-height-body);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  color: var(--color-text);
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
+/* Clamped state using CSS line-clamp */
+.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--max-lines, 5);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Toggle Button */
 .toggleButton {
-  display: inline;
+  display: inline-block;
+  margin-top: calc(var(--spacing) * 2);
   padding: 0;
   border: none;
   background: none;
-  color: var(--ai-color-text-primary);
+  color: var(--color-text);
   font-size: inherit;
-  font-weight: var(--ai-font-weight-medium);
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   text-decoration: underline;
   transition: opacity 0.2s ease;
-  white-space: nowrap;
 }
 
 .toggleButton:hover {

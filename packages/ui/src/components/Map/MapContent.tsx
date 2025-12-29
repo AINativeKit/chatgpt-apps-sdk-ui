@@ -6,9 +6,7 @@ import type { MapViewProps } from './MapView';
 import type { LocationData, RenderMarkerParams } from './types';
 import { TILE_PROVIDER_PRESETS, type TileProviderConfig } from './tileProviders';
 import { Features } from '../Feature/Features';
-import { ThemeContext } from '../../providers/ThemeProvider';
-import type { ThemeContextValue } from '../../providers/ThemeProvider';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Map.module.css';
 
 /**
@@ -27,12 +25,18 @@ function serializeReactElement(element: React.ReactElement): string {
       .filter(([key]) => key !== 'dangerouslySetInnerHTML')
       .map(([key, value]) => {
         // Convert React prop names to HTML attributes
-        const attrName = key === 'className' ? 'class' :
-                        key === 'strokeWidth' ? 'stroke-width' :
-                        key === 'fillOpacity' ? 'fill-opacity' :
-                        key === 'strokeLinecap' ? 'stroke-linecap' :
-                        key === 'strokeLinejoin' ? 'stroke-linejoin' :
-                        key;
+        const attrName =
+          key === 'className'
+            ? 'class'
+            : key === 'strokeWidth'
+              ? 'stroke-width'
+              : key === 'fillOpacity'
+                ? 'fill-opacity'
+                : key === 'strokeLinecap'
+                  ? 'stroke-linecap'
+                  : key === 'strokeLinejoin'
+                    ? 'stroke-linejoin'
+                    : key;
         return `${attrName}="${value}"`;
       })
       .join(' ');
@@ -55,7 +59,11 @@ function serializeReactElement(element: React.ReactElement): string {
 
   // For non-SVG elements, create a temp div and use outerHTML
   const div = document.createElement('div');
-  const ReactDOM = (window as typeof globalThis & { ReactDOM?: { createRoot?: (el: HTMLElement) => { render: (el: React.ReactElement) => void } } }).ReactDOM;
+  const ReactDOM = (
+    window as typeof globalThis & {
+      ReactDOM?: { createRoot?: (el: HTMLElement) => { render: (el: React.ReactElement) => void } };
+    }
+  ).ReactDOM;
   const root = ReactDOM?.createRoot?.(div);
   if (root) {
     root.render(element);
@@ -81,12 +89,18 @@ function serializeSVGChild(element: React.ReactElement): string {
     .filter(([key]) => key !== 'dangerouslySetInnerHTML')
     .map(([key, value]) => {
       // Convert React prop names to HTML attributes
-      const attrName = key === 'className' ? 'class' :
-                      key === 'strokeWidth' ? 'stroke-width' :
-                      key === 'fillOpacity' ? 'fill-opacity' :
-                      key === 'strokeLinecap' ? 'stroke-linecap' :
-                      key === 'strokeLinejoin' ? 'stroke-linejoin' :
-                      key;
+      const attrName =
+        key === 'className'
+          ? 'class'
+          : key === 'strokeWidth'
+            ? 'stroke-width'
+            : key === 'fillOpacity'
+              ? 'fill-opacity'
+              : key === 'strokeLinecap'
+                ? 'stroke-linecap'
+                : key === 'strokeLinejoin'
+                  ? 'stroke-linejoin'
+                  : key;
       return `${attrName}="${value}"`;
     })
     .join(' ');
@@ -318,15 +332,19 @@ const DEFAULT_ICON_SIZE: [number, number] = [28, 40];
 const DEFAULT_ICON_ANCHOR: [number, number] = [14, 40];
 const DEFAULT_POPUP_ANCHOR: [number, number] = [0, -40]; /* Adjusted for custom popup styling */
 
+// Hardcoded light mode colors for map markers (map tiles are always light mode)
+const LIGHT_MODE_SURFACE = '#ffffff';
+const LIGHT_MODE_BORDER = 'rgba(0, 0, 0, 0.1)';
+
 function createMarkerIcon(color: string, isSelected: boolean) {
   const innerCircle = isSelected
     ? `<circle cx="14" cy="13.5" r="4" fill="${color}" />`
-    : `<circle cx="14" cy="13.5" r="3.5" fill="var(--ai-color-border-default)" />`; /* Use token for subtle background */
+    : `<circle cx="14" cy="13.5" r="3.5" fill="${LIGHT_MODE_BORDER}" />`;
 
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="40" viewBox="0 0 28 40">
-      <path fill="${color}" stroke="var(--ai-color-bg-primary)" stroke-width="2" d="M14 1C7.373 1 2 6.373 2 13c0 8 12 26 12 26S26 21 26 13c0-6.627-5.373-12-12-12z" />
-      <circle cx="14" cy="13.5" r="7" fill="#ffffff" />
+      <path fill="${color}" stroke="${LIGHT_MODE_SURFACE}" stroke-width="2" d="M14 1C7.373 1 2 6.373 2 13c0 8 12 26 12 26S26 21 26 13c0-6.627-5.373-12-12-12z" />
+      <circle cx="14" cy="13.5" r="7" fill="${LIGHT_MODE_SURFACE}" />
       ${innerCircle}
     </svg>
   `;
@@ -344,7 +362,7 @@ function createMarkerIcon(color: string, isSelected: boolean) {
 
 /**
  * Create dot marker icon (20x20px with 2px border)
- * Uses CSS variables for automatic dark mode support
+ * Uses hardcoded light mode colors since map tiles are always light mode
  * Total size: 20×20, Fill: 16×16, Border: 2px
  */
 function createDotMarkerIcon(color: string, isSelected: boolean): L.DivIcon {
@@ -355,10 +373,10 @@ function createDotMarkerIcon(color: string, isSelected: boolean): L.DivIcon {
       <circle
         cx="10" cy="10" r="8"
         fill="${color}"
-        stroke="var(--ai-color-bg-primary)"
+        stroke="${LIGHT_MODE_SURFACE}"
         stroke-width="2"
       />
-      ${isSelected ? '<circle cx="10" cy="10" r="4" fill="var(--ai-color-bg-primary)" />' : ''}
+      ${isSelected ? `<circle cx="10" cy="10" r="4" fill="${LIGHT_MODE_SURFACE}" />` : ''}
     </svg>
   `;
 
@@ -433,12 +451,12 @@ export const MapContent: React.FC<MapViewProps> = ({
   style,
   isInspectorOpen,
   scrollWheelZoom = false,
-  showPopup = true,
-  hideAttribution = true,
+  showPopup = false,
+  hideAttribution = false,
   tileProvider,
   tileApiKey,
 }) => {
-  const containerClassName = cn(
+  const containerClassName = clsx(
     styles.mapContainer,
     !hideAttribution && 'show-attribution',
     className
@@ -452,15 +470,8 @@ export const MapContent: React.FC<MapViewProps> = ({
 
   const markerRefs = useRef<Map<string, L.Marker>>(new Map());
 
-  // Get resolved brand color from theme (optional - graceful fallback)
-  const themeContext: ThemeContextValue | null = React.useContext(ThemeContext);
-  const brandColors = themeContext?.brandColors;
-  const theme = themeContext?.theme || 'light';
-  const primaryColor = brandColors?.primary;
-  const MARKER_COLOR =
-    typeof primaryColor === 'string'
-      ? primaryColor
-      : primaryColor?.[theme] || primaryColor?.light || 'var(--ai-color-brand-primary)';
+  // Use CSS variable for brand color - no ThemeProvider dependency
+  const MARKER_COLOR = 'var(--blue-400)';
 
   const defaultIcon = useMemo(
     () =>

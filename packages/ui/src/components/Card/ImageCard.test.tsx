@@ -4,6 +4,7 @@ import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { act } from 'react';
 import { ImageCard } from './ImageCard';
+import { PlusCircleAdd } from '@openai/apps-sdk-ui/components/Icon';
 
 describe('ImageCard', () => {
   const mockImage = 'https://example.com/image.jpg';
@@ -41,7 +42,7 @@ describe('ImageCard', () => {
       const { container } = render(<ImageCard image={imageObj} />);
       const img = container.querySelector('img') as HTMLImageElement;
       expect(img).toHaveAttribute('src', mockImage);
-      expect(img).toHaveAttribute('aria-label', 'Test image description');
+      expect(img).toHaveAttribute('alt', 'Test image description');
     });
   });
 
@@ -78,7 +79,7 @@ describe('ImageCard', () => {
   describe('Action Button', () => {
     it('renders action button when actionIcon provided', () => {
       const { container } = render(
-        <ImageCard image={mockImage} actionIcon="plus-circle-add" actionLabel="Add item" />
+        <ImageCard image={mockImage} actionIcon={<PlusCircleAdd />} actionLabel="Add item" />
       );
       fireImageLoad(container);
       const button = screen.getByRole('button', { name: /Add item/ });
@@ -98,7 +99,7 @@ describe('ImageCard', () => {
       const { container } = render(
         <ImageCard
           image={mockImage}
-          actionIcon="plus-circle-add"
+          actionIcon={<PlusCircleAdd />}
           actionLabel="Add"
           onAction={handleAction}
         />
@@ -116,7 +117,7 @@ describe('ImageCard', () => {
       render(
         <ImageCard
           image={mockImage}
-          actionIcon="plus-circle-add"
+          actionIcon={<PlusCircleAdd />}
           actionLabel="" // Empty label should trigger warning
         />
       );
@@ -135,7 +136,7 @@ describe('ImageCard', () => {
       const { container } = render(
         <ImageCard
           image={mockImage}
-          actionIcon="plus-circle-add"
+          actionIcon={<PlusCircleAdd />}
           actionLabel="" // Empty label
         />
       );
@@ -153,7 +154,7 @@ describe('ImageCard', () => {
         <ImageCard
           image={mockImage}
           title="Pizza"
-          actionIcon="plus-circle-add"
+          actionIcon={<PlusCircleAdd />}
           actionLabel="Add to favorites"
         />
       );
@@ -182,6 +183,18 @@ describe('ImageCard', () => {
       const img = container.querySelector('img') as HTMLElement;
       expect(img).toHaveClass('imagePositionBottom');
     });
+
+    it('applies left position when specified', () => {
+      const { container } = render(<ImageCard image={mockImage} imagePosition="left" />);
+      const img = container.querySelector('img') as HTMLElement;
+      expect(img).toHaveClass('imagePositionLeft');
+    });
+
+    it('applies right position when specified', () => {
+      const { container } = render(<ImageCard image={mockImage} imagePosition="right" />);
+      const img = container.querySelector('img') as HTMLElement;
+      expect(img).toHaveClass('imagePositionRight');
+    });
   });
 
   describe('Gradient Overlay', () => {
@@ -194,7 +207,7 @@ describe('ImageCard', () => {
 
     it('renders gradient overlay when action button exists with valid label', () => {
       const { container } = render(
-        <ImageCard image={mockImage} actionIcon="plus-circle-add" actionLabel="Add" />
+        <ImageCard image={mockImage} actionIcon={<PlusCircleAdd />} actionLabel="Add" />
       );
       fireImageLoad(container);
       const overlay = container.querySelector('[class*="gradientOverlay"]');
@@ -254,12 +267,12 @@ describe('ImageCard', () => {
       expect(ref.current).toBeInstanceOf(HTMLDivElement);
     });
 
-    it('provides proper aria-label for image element', () => {
+    it('provides proper alt text for image element', () => {
       const { container } = render(
         <ImageCard image={{ src: mockImage, alt: 'Beautiful landscape' }} />
       );
       const img = container.querySelector('img');
-      expect(img).toHaveAttribute('aria-label', 'Beautiful landscape');
+      expect(img).toHaveAttribute('alt', 'Beautiful landscape');
     });
 
     it('renders semantic HTML structure', () => {
@@ -313,8 +326,34 @@ describe('ImageCard', () => {
     it('shows retry button when onErrorRetry provided', () => {
       const handleRetry = vi.fn();
       render(<ImageCard image={mockImage} error onErrorRetry={handleRetry} />);
-      const retryButton = screen.getByRole('button', { name: /Try Again/ });
+      const retryButton = screen.getByRole('button', { name: /Retry/ });
       expect(retryButton).toBeInTheDocument();
+    });
+  });
+
+  describe('Empty State', () => {
+    it('shows empty state when image is empty string', () => {
+      render(<ImageCard image="" />);
+      expect(screen.getByTestId('image-card-empty')).toBeInTheDocument();
+    });
+
+    it('shows default empty title', () => {
+      render(<ImageCard image="" />);
+      expect(screen.getByText('No image')).toBeInTheDocument();
+    });
+
+    it('shows custom empty title and message', () => {
+      render(
+        <ImageCard image="" emptyTitle="No photo" emptyMessage="Upload an image to get started" />
+      );
+      expect(screen.getByText('No photo')).toBeInTheDocument();
+      expect(screen.getByText('Upload an image to get started')).toBeInTheDocument();
+    });
+
+    it('does not render img element when image is empty', () => {
+      const { container } = render(<ImageCard image="" />);
+      const img = container.querySelector('img');
+      expect(img).not.toBeInTheDocument();
     });
   });
 
@@ -391,10 +430,10 @@ describe('ImageCard', () => {
       expect(img).toHaveAttribute('loading', 'lazy');
     });
 
-    it('disables lazy loading when lazy=false', () => {
-      const { container } = render(<ImageCard image={mockImage} lazy={false} />);
+    it('uses eager loading when imageLoading="eager"', () => {
+      const { container } = render(<ImageCard image={mockImage} imageLoading="eager" />);
       const img = container.querySelector('img');
-      expect(img).not.toHaveAttribute('loading');
+      expect(img).toHaveAttribute('loading', 'eager');
     });
   });
 });

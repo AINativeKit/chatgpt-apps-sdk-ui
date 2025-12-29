@@ -1,121 +1,151 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef, SyntheticEvent } from 'react';
-import { cn } from '../../utils/cn';
-import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
-import { Badge, type BadgeProps } from '../Badge';
-import { Chip, type ChipProps } from '../Chip';
+import clsx from 'clsx';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+import { Skeleton, ImageSkeleton } from '../Skeleton';
 import type { Album } from './types';
 import styles from './AlbumCard.module.css';
 
 export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>, 'onSelect'> {
   /**
-   * Album data to display
+   * Album data object containing id, title, cover image URL, and photos array.
+   * The photo count is derived from photos.length.
    */
   album: Album;
 
   /**
-   * Callback when album card is clicked
+   * Callback fired when the album card is clicked.
+   * Receives the album object as an argument.
    */
   onSelect?: (album: Album) => void;
 
   /**
-   * Width of the card
+   * Card width. Accepts any valid CSS width value.
    * @default '272px'
    */
   width?: string;
 
   // State Management
   /**
-   * Loading state - shows skeleton UI
+   * When true, displays a skeleton loading state with animated placeholders.
    * @default false
    */
   loading?: boolean;
 
   /**
-   * Error state - shows error message
+   * When true, displays an error alert instead of the album content.
    * @default false
    */
   error?: boolean;
 
   /**
-   * Custom error title
-   * @default 'Failed to load'
+   * Title text shown in the error alert.
+   * @default 'Album unavailable'
    */
   errorTitle?: string;
 
   /**
-   * Custom error message
+   * Description text shown in the error alert.
+   * @default 'This album could not be loaded'
    */
   errorMessage?: string;
 
   /**
-   * Retry callback for error state
-   */
-  onErrorRetry?: () => void;
-
-  /**
-   * Empty state title
+   * Title text shown when the album has no content (empty cover, title, and photos).
    * @default 'No album'
    */
   emptyTitle?: string;
 
   /**
-   * Empty state message
+   * Description text shown in the empty state.
    */
   emptyMessage?: string;
 
   // Image Controls
   /**
-   * Enable lazy loading for cover image
-   * @default true
+   * Native browser loading behavior for the cover image.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  imageLazy?: boolean;
+  imageLoading?: 'lazy' | 'eager';
 
   /**
-   * Callback when cover image loads
+   * Callback fired when the cover image successfully loads.
+   * Useful for tracking image load performance or triggering animations.
    */
   onImageLoad?: (event: SyntheticEvent<HTMLImageElement>) => void;
 
   /**
-   * Callback when cover image fails to load
+   * Callback fired when the cover image fails to load.
+   * Useful for fallback handling or error tracking.
    */
   onImageError?: (event: SyntheticEvent<HTMLImageElement>) => void;
 
   // Badge Support
   /**
-   * Badge content (text or number).
-   * - For short content (≤4 chars): Badge component is used (e.g., "New", "5", "✓")
-   * - For longer content (>4 chars): Chip component is used (e.g., "Featured", "New Album")
+   * Badge content displayed on the card. Accepts text or numbers.
+   * Common uses: "New", "Featured", count indicators.
    */
   badge?: string | number;
 
   /**
-   * Badge position
+   * Position of the badge on the card.
    * @default 'top-right'
    */
   badgePosition?: 'top-left' | 'top-right';
 
   /**
-   * Badge/Chip variant style
+   * Visual style variant for the badge.
+   * - 'solid': Filled background with high contrast
+   * - 'soft': Subtle tinted background
+   * - 'outline': Border only with transparent background
+   * @default 'soft'
    */
-  badgeVariant?: BadgeProps['variant'] | ChipProps['variant'];
+  badgeVariant?: BadgeProps['variant'];
+
+  /**
+   * Size of the badge. Heights: sm=18px, md=22px, lg=24px.
+   * @default 'sm'
+   */
+  badgeSize?: BadgeProps['size'];
+
+  /**
+   * When true, renders the badge with fully rounded (pill) corners.
+   * Recommended for numeric badges.
+   * @default true
+   */
+  badgePill?: boolean;
+
+  /**
+   * Semantic color for the badge.
+   * - 'secondary': Neutral gray
+   * - 'success': Green for positive states
+   * - 'danger': Red for errors/warnings
+   * - 'warning': Orange for caution
+   * - 'info': Blue for informational
+   * - 'discovery': Purple for new/featured
+   * @default 'secondary'
+   */
+  badgeColor?: BadgeProps['color'];
 
   // Text Display
   /**
-   * Number of lines for title (1-3)
+   * Maximum number of lines for the title before truncation with ellipsis.
    * @default 1
    */
   titleLines?: 1 | 2 | 3;
 
   /**
-   * Number of lines for subtitle (1-3)
+   * Maximum number of lines for the subtitle (photo count) before truncation.
    * @default 1
    */
   subtitleLines?: 1 | 2 | 3;
 
   /**
-   * Optional test ID for testing purposes
+   * Test ID for automated testing.
    */
   'data-testid'?: string;
 }
@@ -136,7 +166,7 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
  *
  * @example
  * ```tsx
- * // With short badge (uses Badge component)
+ * // Basic usage with badge
  * <AlbumCard
  *   album={{
  *     id: '1',
@@ -145,16 +175,17 @@ export interface AlbumCardProps extends Omit<ComponentPropsWithoutRef<'button'>,
  *     photos: [...]
  *   }}
  *   onSelect={(album) => console.log('Selected:', album)}
- *   loading={isLoading}
  *   badge="New"
- *   badgeVariant="filled"
+ *   badgeVariant="solid"
+ *   badgeColor="info"
  * />
  *
- * // With longer badge (automatically uses Chip component)
+ * // With pill badge
  * <AlbumCard
  *   album={{...}}
- *   badge="Featured"
- *   badgeVariant="neutral"
+ *   badge={15}
+ *   badgePill
+ *   badgeColor="secondary"
  * />
  * ```
  */
@@ -168,22 +199,26 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     style,
     loading = false,
     error = false,
-    errorTitle = 'Failed to load',
-    errorMessage,
-    onErrorRetry,
+    errorTitle = 'Album unavailable',
+    errorMessage = 'This album could not be loaded',
     emptyTitle = 'No album',
     emptyMessage,
-    imageLazy = true,
+    imageLoading = 'lazy',
     onImageLoad,
     onImageError,
     badge,
     badgePosition = 'top-right',
-    badgeVariant = 'default',
+    badgeVariant = 'soft',
+    badgeSize = 'sm',
+    badgePill = true,
+    badgeColor = 'secondary',
     titleLines = 1,
     subtitleLines = 1,
     'data-testid': testId,
     ...buttonProps
   } = props;
+
+  const [imageError, setImageError] = React.useState(false);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onClick?.(event);
@@ -192,6 +227,11 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     if (!event.defaultPrevented) {
       onSelect?.(album);
     }
+  };
+
+  const handleImageError = (event: SyntheticEvent<HTMLImageElement>) => {
+    setImageError(true);
+    onImageError?.(event);
   };
 
   const photoCount = album.photos.length;
@@ -206,7 +246,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
   if (showLoading) {
     return (
       <div
-        className={cn(styles.albumCard, styles.loadingCard, className)}
+        className={clsx(styles.albumCard, styles.loadingCard, className)}
         style={{ width, ...style }}
         role="status"
         aria-live="polite"
@@ -214,7 +254,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
       >
         <span className={styles.visuallyHidden}>Loading album</span>
         <div className={styles.imageContainer}>
-          <Skeleton className={styles.skeletonImage} />
+          <ImageSkeleton width="100%" height="100%" className={styles.skeletonImage} iconSize={40} />
         </div>
         <div className={styles.content}>
           <Skeleton width="80%" height={16} className={styles.skeletonTitle} />
@@ -228,12 +268,17 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
   if (showError) {
     return (
       <div
-        className={cn(styles.albumCard, styles.errorCard, className)}
+        className={clsx(styles.albumCard, styles.errorCard, className)}
         style={{ width, ...style }}
         data-testid={testId}
       >
         <div className={styles.errorContainer}>
-          <Alert title={errorTitle} message={errorMessage} onAction={onErrorRetry} />
+          <Alert
+            color="danger"
+            variant="soft"
+            title={errorTitle}
+            description={errorMessage}
+          />
         </div>
       </div>
     );
@@ -243,13 +288,15 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
   if (showEmpty) {
     return (
       <div
-        className={cn(styles.albumCard, styles.emptyCard, className)}
+        className={clsx(styles.albumCard, styles.emptyCard, className)}
         style={{ width, ...style }}
         data-testid={testId}
       >
         <div className={styles.emptyContainer}>
-          <div className={styles.emptyTitle}>{emptyTitle}</div>
-          {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
+          <EmptyMessage fill="none">
+            <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+            {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+          </EmptyMessage>
         </div>
       </div>
     );
@@ -260,7 +307,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     <button
       ref={ref}
       type="button"
-      className={cn(styles.albumCard, className)}
+      className={clsx(styles.albumCard, className)}
       onClick={handleClick}
       style={{ width, ...style }}
       data-testid={testId}
@@ -268,29 +315,31 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
     >
       {/* Album Cover Image */}
       <div className={styles.imageContainer}>
-        <img
-          src={album.cover}
-          alt={album.title}
-          className={styles.image}
-          loading={imageLazy ? 'lazy' : 'eager'}
-          onLoad={onImageLoad}
-          onError={onImageError}
-        />
-        {/* Badge/Chip - Uses Chip for longer text, Badge for short content */}
+        {imageError ? (
+          <div className={styles.imageFallback}>
+            <ImageSkeleton width="100%" height="100%" iconSize={40} />
+          </div>
+        ) : (
+          <img
+            src={album.cover}
+            alt={album.title}
+            className={styles.image}
+            loading={imageLoading}
+            onLoad={onImageLoad}
+            onError={handleImageError}
+          />
+        )}
+        {/* Badge */}
         {badge && (
           <div
-            className={cn(
+            className={clsx(
               styles.badge,
               badgePosition === 'top-left' ? styles.badgeTopLeft : styles.badgeTopRight
             )}
           >
-            {String(badge).length > 4 ? (
-              <Chip variant={badgeVariant as ChipProps['variant']} size="sm">
-                {badge}
-              </Chip>
-            ) : (
-              <Badge variant={badgeVariant as BadgeProps['variant']}>{badge}</Badge>
-            )}
+            <Badge variant={badgeVariant} size={badgeSize} pill={badgePill} color={badgeColor}>
+              {badge}
+            </Badge>
           </div>
         )}
       </div>
@@ -298,7 +347,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
       {/* Album Info */}
       <div className={styles.content}>
         <div
-          className={cn(
+          className={clsx(
             styles.title,
             titleLines === 2 && styles.titleLines2,
             titleLines === 3 && styles.titleLines3
@@ -307,7 +356,7 @@ export const AlbumCard = React.forwardRef<HTMLButtonElement, AlbumCardProps>((pr
           {album.title}
         </div>
         <div
-          className={cn(
+          className={clsx(
             styles.subtitle,
             subtitleLines === 2 && styles.subtitleLines2,
             subtitleLines === 3 && styles.subtitleLines3

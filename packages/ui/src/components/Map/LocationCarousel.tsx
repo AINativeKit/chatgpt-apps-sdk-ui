@@ -1,8 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { Carousel } from '../Carousel';
 import { MapPlaceCard } from './MapPlaceCard';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import type { LocationData } from './types';
 import styles from './LocationCarousel.module.css';
 
@@ -90,15 +90,39 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [emblaApi, setEmblaApi] = useState<EmblaCarouselType | null>(null);
+  const prevSelectedIdRef = useRef<string | undefined>(selectedId);
 
-  // Scroll to selected card when selectedId changes
+  // Calculate initial index only on mount (for returning from fullscreen)
+  const initialIndex = useMemo(() => {
+    if (!selectedId) return 0;
+    const index = locations.findIndex((location) => location.id === selectedId);
+    return index >= 0 ? index : 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Scroll to selected card when selectedId changes (skip when emblaApi just became available)
   useEffect(() => {
-    if (!selectedId) return;
+    if (!selectedId) {
+      prevSelectedIdRef.current = selectedId;
+      return;
+    }
+
+    // Only scroll if selectedId actually changed (not just emblaApi becoming available)
+    const selectedIdChanged = prevSelectedIdRef.current !== selectedId;
+    prevSelectedIdRef.current = selectedId;
+
+    if (!selectedIdChanged) {
+      return;
+    }
 
     if (emblaApi) {
       const index = locations.findIndex((location) => location.id === selectedId);
       if (index >= 0) {
-        emblaApi.scrollTo(index);
+        // Force reInit before scrolling to ensure fresh scroll position calculations
+        emblaApi.reInit();
+        requestAnimationFrame(() => {
+          emblaApi.scrollTo(index, false);
+        });
         return;
       }
     }
@@ -117,16 +141,16 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
   // Loading State
   if (loading) {
     return (
-      <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
+      <div className={clsx(styles.locationCarousel, className)} ref={carouselRef}>
         <Carousel
           className={styles.carousel}
           align="start"
           loop={false}
           showNavigation={true}
-          showEdgeGradients={true}
-          gap="var(--ai-spacing-8)"
+          showEdgeGradients={false}
+          gap="32px"
           flushStart={true}
-          startInset="var(--ai-spacing-6)"
+          startInset="24px"
           viewportPadding="0"
         >
           {Array.from({ length: loadingCardCount }).map((_, i) => (
@@ -142,15 +166,15 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
   // Error State
   if (error) {
     return (
-      <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
+      <div className={clsx(styles.locationCarousel, className)} ref={carouselRef}>
         <Carousel
           className={styles.carousel}
           align="start"
           loop={false}
           showNavigation={false}
-          gap="var(--ai-spacing-8)"
+          gap="32px"
           flushStart={true}
-          startInset="var(--ai-spacing-6)"
+          startInset="24px"
           error={true}
           errorTitle={errorTitle}
           errorMessage={errorMessage}
@@ -163,15 +187,15 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
   // Empty State
   if (locations.length === 0) {
     return (
-      <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
+      <div className={clsx(styles.locationCarousel, className)} ref={carouselRef}>
         <Carousel
           className={styles.carousel}
           align="start"
           loop={false}
           showNavigation={false}
-          gap="var(--ai-spacing-8)"
+          gap="32px"
           flushStart={true}
-          startInset="var(--ai-spacing-6)"
+          startInset="24px"
           emptyTitle={emptyTitle}
           emptyMessage={emptyMessage}
         />
@@ -181,17 +205,19 @@ export const LocationCarousel: React.FC<LocationCarouselProps> = ({
 
   // Normal Content
   return (
-    <div className={cn(styles.locationCarousel, className)} ref={carouselRef}>
+    <div className={clsx(styles.locationCarousel, className)} ref={carouselRef}>
       <Carousel
         className={styles.carousel}
-        align="start"
+        align="center"
         loop={false}
         showNavigation={true}
-        showEdgeGradients={true}
-        gap="var(--ai-spacing-8)"
+        showEdgeGradients={false}
+        gap="32px"
         flushStart={true}
-        startInset="var(--ai-spacing-6)"
+        startInset="24px"
         viewportPadding="0"
+        dragFree={false}
+        startIndex={initialIndex}
         onApi={setEmblaApi}
       >
         {locations.map((location) => (

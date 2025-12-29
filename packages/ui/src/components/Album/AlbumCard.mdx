@@ -1,0 +1,73 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as AlbumCardStories from './AlbumCard.stories'
+
+<Meta of={AlbumCardStories} />
+
+<Title>AlbumCard</Title>
+<Subtitle>Display album cover with title and photo count</Subtitle>
+
+## Usage
+
+```tsx
+import { AlbumCard } from "@ainativekit/ui";
+```
+
+<Canvas of={AlbumCardStories.Base} />
+
+## Reference
+
+<ArgTypes of={AlbumCardStories.Base} />
+
+## Examples
+
+### Album grid
+
+Display multiple albums in a responsive grid layout.
+
+<Canvas of={AlbumCardStories.AlbumGrid} />
+
+### Badges
+
+Add visual indicators with badges using the `badge` prop. Supports `badgeVariant`, `badgeSize`, `badgePill`, `badgeColor`, and `badgePosition` props.
+
+<Canvas of={AlbumCardStories.WithBadge} />
+
+Different badge positions and styles:
+
+<Canvas of={AlbumCardStories.BadgeVariants} sourceState="none" />
+
+### Multi-line text
+
+Use `titleLines` to allow longer titles to wrap to multiple lines (1, 2, or 3).
+
+<Canvas of={AlbumCardStories.MultiLineText} />
+
+### Loading
+
+Show a skeleton placeholder while data is loading with `loading={true}`.
+
+<Canvas of={AlbumCardStories.Loading} />
+
+### Error
+
+Display an error message when album fails to load with `error={true}`. Customize with `errorTitle` and `errorMessage`.
+
+<Canvas of={AlbumCardStories.Error} />
+
+### Empty
+
+Show an empty state when the album has no content (empty cover, title, and photos). Customize with `emptyTitle` and `emptyMessage`.
+
+<Canvas of={AlbumCardStories.Empty} />
+
+### Eager loading
+
+Use `imageLoading="eager"` for above-the-fold images that should load immediately instead of lazy loading.
+
+<Canvas of={AlbumCardStories.EagerLoading} />
+
+### Image callbacks
+
+Track image load and error events with `onImageLoad` and `onImageError` callbacks.
+
+<Canvas of={AlbumCardStories.WithImageCallbacks} />

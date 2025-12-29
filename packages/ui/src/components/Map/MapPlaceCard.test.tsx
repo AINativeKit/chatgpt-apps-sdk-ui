@@ -2,6 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MapPlaceCard } from './MapPlaceCard';
 import type { Feature } from './types';
+import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
 
 describe('MapPlaceCard', () => {
   const defaultProps = {
@@ -22,7 +23,7 @@ describe('MapPlaceCard', () => {
     });
 
     it('renders features when provided', () => {
-      const features: Feature[] = [{ icon: 'star', label: '4.5' }, { label: '$100' }];
+      const features: Feature[] = [{ icon: <StarFilled />, label: '4.5' }, { label: '$100' }];
       render(<MapPlaceCard {...defaultProps} features={features} />);
       expect(screen.getByText('4.5')).toBeInTheDocument();
       expect(screen.getByText('$100')).toBeInTheDocument();
@@ -134,8 +135,8 @@ describe('MapPlaceCard', () => {
       expect(img.getAttribute('loading')).toBe('lazy');
     });
 
-    it('sets loading="eager" when imageLazy=false', () => {
-      render(<MapPlaceCard {...defaultProps} imageLazy={false} />);
+    it('sets loading="eager" when imageLoading="eager"', () => {
+      render(<MapPlaceCard {...defaultProps} imageLoading="eager" />);
       const img = screen.getByAltText('Test Location') as HTMLImageElement;
       expect(img.getAttribute('loading')).toBe('eager');
     });
@@ -195,7 +196,7 @@ describe('MapPlaceCard', () => {
     });
 
     it('renders badge with custom variant', () => {
-      render(<MapPlaceCard {...defaultProps} badge="Sale" badgeVariant="success" />);
+      render(<MapPlaceCard {...defaultProps} badge="Sale" badgeVariant="soft" />);
       const badge = screen.getByText('Sale');
       expect(badge).toBeInTheDocument();
     });

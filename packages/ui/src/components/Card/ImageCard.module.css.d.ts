@@ -6,8 +6,11 @@ declare const styles: {
   readonly imagePositionCenter: string;
   readonly imagePositionTop: string;
   readonly imagePositionBottom: string;
+  readonly imagePositionLeft: string;
+  readonly imagePositionRight: string;
   readonly loadingContainer: string;
   readonly errorContainer: string;
+  readonly emptyContainer: string;
   readonly visuallyHidden: string;
   readonly gradientOverlay: string;
   readonly badge: string;

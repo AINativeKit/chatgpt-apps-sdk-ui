@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import { SummaryCard } from './SummaryCard';
+import { Clock, CalendarToday, User } from '@openai/apps-sdk-ui/components/Icon';
 
 describe('SummaryCard', () => {
   it('renders without crashing', () => {
@@ -172,10 +173,10 @@ describe('SummaryCard', () => {
   });
 
   it('renders badge with different variants', () => {
-    const { rerender } = render(<SummaryCard badge="5" badgeVariant="filled" />);
+    const { rerender } = render(<SummaryCard badge="5" badgeVariant="solid" />);
     expect(screen.getByText('5')).toBeInTheDocument();
 
-    rerender(<SummaryCard badge="99+" badgeVariant="error" />);
+    rerender(<SummaryCard badge="99+" badgeVariant="soft" />);
     expect(screen.getByText('99+')).toBeInTheDocument();
   });
 
@@ -349,7 +350,7 @@ describe('SummaryCard', () => {
     it('shows retry button when onErrorRetry provided', () => {
       const handleRetry = vi.fn();
       render(<SummaryCard error onErrorRetry={handleRetry} />);
-      const retryButton = screen.getByRole('button', { name: /try again/i });
+      const retryButton = screen.getByRole('button', { name: /retry/i });
       expect(retryButton).toBeInTheDocument();
     });
 
@@ -358,7 +359,7 @@ describe('SummaryCard', () => {
       const handleRetry = vi.fn();
       render(<SummaryCard error onErrorRetry={handleRetry} />);
 
-      const retryButton = screen.getByRole('button', { name: /try again/i });
+      const retryButton = screen.getByRole('button', { name: /retry/i });
       await user.click(retryButton);
 
       expect(handleRetry).toHaveBeenCalledTimes(1);
@@ -483,8 +484,8 @@ describe('SummaryCard', () => {
       });
     });
 
-    it('disables lazy loading when imageLazy is false', () => {
-      render(<SummaryCard images={{ src: 'test.jpg', alt: 'Test' }} imageLazy={false} />);
+    it('uses eager loading when imageLoading is "eager"', () => {
+      render(<SummaryCard images={{ src: 'test.jpg', alt: 'Test' }} imageLoading="eager" />);
       const img = screen.getByRole('img');
       expect(img).toHaveAttribute('loading', 'eager');
     });
@@ -503,15 +504,15 @@ describe('SummaryCard', () => {
       expect(images[1]).toHaveAttribute('loading', 'lazy');
     });
 
-    it('per-image lazy=false overrides imageLazy=true', () => {
+    it('per-image lazy=false overrides imageLoading="lazy"', () => {
       render(
-        <SummaryCard images={{ src: 'test.jpg', alt: 'Test', lazy: false }} imageLazy={true} />
+        <SummaryCard images={{ src: 'test.jpg', alt: 'Test', lazy: false }} imageLoading="lazy" />
       );
       const img = screen.getByRole('img');
       expect(img).toHaveAttribute('loading', 'eager');
     });
 
-    it('applies lazy loading to all grid images when imageLazy=true', () => {
+    it('applies lazy loading to all grid images when imageLoading="lazy"', () => {
       const { container } = render(
         <SummaryCard
           images={[
@@ -519,7 +520,7 @@ describe('SummaryCard', () => {
             { src: 'img2.jpg', alt: 'Image 2' },
             { src: 'img3.jpg', alt: 'Image 3' },
           ]}
-          imageLazy={true}
+          imageLoading="lazy"
         />
       );
       const images = container.querySelectorAll('img');
@@ -547,8 +548,8 @@ describe('SummaryCard', () => {
         <SummaryCard
           title="Article"
           metadata={[
-            { icon: 'clock', label: '10 min read' },
-            { icon: 'calendar-today', label: 'October 30, 2025' },
+            { icon: <Clock />, label: '10 min read' },
+            { icon: <CalendarToday />, label: 'October 30, 2025' },
           ]}
         />
       );
@@ -584,9 +585,9 @@ describe('SummaryCard', () => {
         <SummaryCard
           title="Article"
           metadata={[
-            { icon: 'clock', label: '10 min read' },
-            { icon: 'calendar-today', label: 'October 30, 2025' },
-            { icon: 'user', label: 'John Doe' },
+            { icon: <Clock />, label: '10 min read' },
+            { icon: <CalendarToday />, label: 'October 30, 2025' },
+            { icon: <User />, label: 'John Doe' },
           ]}
         />
       );
@@ -603,8 +604,8 @@ describe('SummaryCard', () => {
           title="Building AI-Native UIs"
           description="Build modern, accessible UI with AINativeKit."
           metadata={[
-            { icon: 'clock', label: '10 min read' },
-            { icon: 'calendar-today', label: 'October 30, 2025' },
+            { icon: <Clock />, label: '10 min read' },
+            { icon: <CalendarToday />, label: 'October 30, 2025' },
           ]}
           buttonText="Explore Docs"
           onButtonClick={handleClick}

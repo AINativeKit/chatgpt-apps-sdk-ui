@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  padding: var(--ai-spacing-16);
+  padding: calc(var(--spacing) * 8);
 }
 
 /* Phase 1: Empty Container */
@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  padding: var(--ai-spacing-16);
+  padding: calc(var(--spacing) * 8);
 }
 
 .emptyContent {
@@ -28,15 +28,15 @@
 }
 
 .emptyTitle {
-  font-size: var(--ai-font-size-body-large);
-  font-weight: var(--ai-font-weight-semibold);
-  color: var(--ai-color-text-primary);
-  margin-bottom: var(--ai-spacing-4);
+  font-size: var(--font-text-lg-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: calc(var(--spacing) * 2);
 }
 
 .emptyMessage {
-  font-size: var(--ai-font-size-body-regular);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-md-size);
+  color: var(--color-text-secondary);
 }
 
 /* Embla Viewport */
@@ -84,10 +84,9 @@
   display: block;
   height: 100%;
   width: 100%;
-  border-left: 1px solid var(--ai-color-border-light);
   background: linear-gradient(
     to right,
-    color-mix(in srgb, var(--ai-color-text-primary) var(--ai-opacity-disabled), transparent),
+    color-mix(in srgb, var(--color-text) 30%, transparent),
     transparent
   );
   -webkit-mask-image: linear-gradient(
@@ -109,10 +108,9 @@
   display: block;
   height: 100%;
   width: 100%;
-  border-right: 1px solid var(--ai-color-border-light);
   background: linear-gradient(
     to left,
-    color-mix(in srgb, var(--ai-color-text-primary) var(--ai-opacity-disabled), transparent),
+    color-mix(in srgb, var(--color-text) 30%, transparent),
     transparent
   );
   -webkit-mask-image: linear-gradient(
@@ -129,7 +127,7 @@
 :global([data-theme='dark']) .edgeGradientLeft::before {
   background: linear-gradient(
     to right,
-    color-mix(in srgb, var(--ai-color-text-inverted) var(--ai-opacity-disabled), transparent),
+    color-mix(in srgb, var(--color-text-inverse) 30%, transparent),
     transparent
   );
 }
@@ -137,7 +135,7 @@
 :global([data-theme='dark']) .edgeGradientRight::before {
   background: linear-gradient(
     to left,
-    color-mix(in srgb, var(--ai-color-text-inverted) var(--ai-opacity-disabled), transparent),
+    color-mix(in srgb, var(--color-text-inverse) 30%, transparent),
     transparent
   );
 }
@@ -151,27 +149,27 @@
   height: 32px;
   min-width: 32px;
   min-height: 32px;
-  background-color: var(--ai-color-bg-primary);
+  background-color: var(--color-surface);
   border-radius: 50%;
-  box-shadow: var(--ai-elevation-1-shadow);
+  box-shadow: var(--shadow-100);
   transition:
     background-color 0.15s ease,
     box-shadow 0.15s ease;
 }
 
 .navButton:hover {
-  background-color: var(--ai-color-bg-secondary);
+  background-color: var(--color-surface-secondary);
 }
 
 .navButton:active {
-  background-color: var(--ai-color-bg-tertiary);
+  background-color: var(--color-surface-tertiary);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .navButtonPrev {
-  left: var(--ai-spacing-4);
+  left: calc(var(--spacing) * 2);
 }
 
 .navButtonNext {
-  right: var(--ai-spacing-4);
+  right: calc(var(--spacing) * 2);
 }

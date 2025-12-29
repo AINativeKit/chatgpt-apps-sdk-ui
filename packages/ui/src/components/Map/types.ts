@@ -1,11 +1,11 @@
-import type { IconName } from '../../tokens/icons';
+import type { AvatarListItem } from '../AvatarList';
 
 export interface Feature {
   /**
    * Optional icon to display before label.
-   * Can be either an IconName string or a React element (e.g., custom SVG component).
+   * Pass a React element (e.g., icon component from apps-sdk-ui).
    */
-  icon?: IconName | React.ReactElement;
+  icon?: React.ReactNode;
 
   /**
    * Label text to display (e.g., "4.8", "$$", "Open now").
@@ -30,34 +30,12 @@ export interface Action {
   onClick?: () => void;
 }
 
-export interface ListItem {
-  /**
-   * Unique identifier for the list item.
-   */
-  id: string;
+/**
+ * @deprecated Use AvatarListItem from '@ainativekit/ui' instead
+ */
+export type ListItem = AvatarListItem;
 
-  /**
-   * Optional image URL for display (can be avatar, icon, or any image).
-   */
-  image?: string;
-
-  /**
-   * Item title or name.
-   */
-  title: string;
-
-  /**
-   * Optional description or content.
-   */
-  description?: string;
-
-  /**
-   * Optional metadata (author, date, rating, etc.).
-   */
-  metadata?: string;
-}
-
-export interface GenericList {
+export interface MapInspectorList {
   /**
    * List title.
    */
@@ -66,7 +44,7 @@ export interface GenericList {
   /**
    * List items.
    */
-  items: ListItem[];
+  items: AvatarListItem[];
 }
 
 // Forward declare LocationData to avoid circular reference
@@ -147,7 +125,7 @@ export interface LocationData {
   /**
    * Optional generic lists (reviews, related items, etc.).
    */
-  lists?: GenericList[];
+  lists?: MapInspectorList[];
 
   /**
    * Optional custom marker renderer for this specific location.

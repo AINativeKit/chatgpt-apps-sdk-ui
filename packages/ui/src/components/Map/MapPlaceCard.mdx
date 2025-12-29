@@ -1,0 +1,57 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as MapPlaceCardStories from './MapPlaceCard.stories'
+
+<Meta of={MapPlaceCardStories} />
+
+<Title>MapPlaceCard</Title>
+<Subtitle>Card for displaying map places with thumbnail, title, features, and selection state</Subtitle>
+
+## Usage
+
+```tsx
+import { MapPlaceCard } from "@ainativekit/ui";
+```
+
+<Canvas of={MapPlaceCardStories.Base} />
+
+## Reference
+
+<ArgTypes of={MapPlaceCardStories.Base} />
+
+## Examples
+
+### Variants
+
+Two visual variants for different contexts: carousel (subtle selection) and list (prominent selection).
+
+<Canvas of={MapPlaceCardStories.Variants} />
+
+### Badges
+
+Add status or label badges with semantic colors.
+
+<Canvas of={MapPlaceCardStories.WithBadge} />
+
+### Loading
+
+Show skeleton placeholders while data is loading with `loading={true}`.
+
+<Canvas of={MapPlaceCardStories.Loading} />
+
+### Error
+
+Display an error message when content fails to load with `error={true}`. Add retry functionality with `onErrorRetry`.
+
+<Canvas of={MapPlaceCardStories.Error} />
+
+### Empty
+
+Show an empty state when there's no location. Customize with `emptyTitle` and `emptyMessage`.
+
+<Canvas of={MapPlaceCardStories.Empty} />
+
+### Real-world example
+
+Complete examples showing MapPlaceCard in typical use cases.
+
+<Canvas of={MapPlaceCardStories.RealWorld} />

@@ -27,13 +27,13 @@
 
 /* Popup Styles */
 .popup {
-  font-family: var(--ai-font-family);
+  font-family: var(--font-sans);
   min-width: 220px;
   max-width: 360px;
-  padding: var(--ai-spacing-6) var(--ai-spacing-8);
-  background: var(--ai-color-bg-primary);
-  border-radius: var(--ai-radius-xl);
-  border: 1px solid var(--ai-color-border-light);
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+  background: var(--color-surface);
+  border-radius: var(--radius-4xl);
+  border: 1px solid var(--color-border-subtle);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -48,19 +48,19 @@
   bottom: -8px;
   width: 14px;
   height: 14px;
-  background: var(--ai-color-bg-primary);
+  background: var(--color-surface);
   transform: translateX(-50%) rotate(45deg);
   border-radius: 4px;
-  border-bottom: 1px solid var(--ai-color-border-light);
-  border-right: 1px solid var(--ai-color-border-light);
+  border-bottom: 1px solid var(--color-border-subtle);
+  border-right: 1px solid var(--color-border-subtle);
 }
 
 .popupTitle {
-  font-size: var(--ai-font-size-body-emph);
-  line-height: var(--ai-line-height-body-emph);
-  font-weight: var(--ai-font-weight-medium);
-  letter-spacing: var(--ai-letter-spacing-body-emph);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--font-text-md-tracking);
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -68,31 +68,31 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-2);
+  gap: var(--spacing);
 }
 
 .popupSubtitle {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
 .popupDescription {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
 /* Minimal Leaflet container styling */
 :global(.leaflet-container) {
-  font-family: var(--ai-font-family);
-  background-color: var(--ai-color-bg-secondary);
+  font-family: var(--font-sans);
+  background-color: var(--color-surface-secondary);
 }
 
 /* Minimal popup wrapper - only positioning */
@@ -112,29 +112,29 @@
 
 /* Zoom controls styling */
 :global(.leaflet-control-zoom) {
-  border: 1px solid var(--ai-color-border-light) !important;
-  background: var(--ai-color-bg-primary);
-  border-radius: var(--ai-radius-base);
+  border: 1px solid var(--color-border-subtle) !important;
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
   overflow: hidden;
 }
 
 /* ========== DARK MODE OVERRIDES ========== */
 :global([data-theme='dark']) .popup {
-  background: var(--ai-color-bg-primary);
-  border-color: var(--ai-color-border-medium);
+  background: var(--color-surface);
+  border-color: var(--color-border);
 }
 
 :global([data-theme='dark']) .popup::after {
-  background: var(--ai-color-bg-primary);
-  border-color: var(--ai-color-border-medium);
+  background: var(--color-surface);
+  border-color: var(--color-border);
 }
 
 :global([data-theme='dark']) .popupTitle {
-  color: var(--ai-color-text-primary);
+  color: var(--color-text);
 }
 
 :global([data-theme='dark']) .popupDescription {
-  color: var(--ai-color-text-secondary);
+  color: var(--color-text-secondary);
 }
 
 :global([data-theme='dark']) :global(.leaflet-popup-content-wrapper) {

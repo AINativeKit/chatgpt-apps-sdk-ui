@@ -75,6 +75,11 @@ web-bundles/
 examples/
 
 # ===========================================
+# 📚 Reference libraries (for development only)
+# ===========================================
+reference/
+
+# ===========================================
 # 📚 Documentation build outputs
 # ===========================================
 docs/.vitepress/dist/

@@ -2,22 +2,22 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: var(--ai-color-bg-primary);
+  background-color: var(--color-surface);
 }
 
 .loadingContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--ai-color-bg-secondary);
-  color: var(--ai-color-text-secondary);
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-secondary);
 }
 
 .loadingText {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
 }
 
 .mapWrapper {
@@ -27,16 +27,13 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
-}
 
-/* Desktop: adjust for sidebar */
-@media (min-width: 1024px) /* desktop-wide */ {
-  .mapWrapper {
+  @mixin breakpoint lg {
     left: 340px;
-    right: var(--ai-spacing-4);
-    top: var(--ai-spacing-4);
+    right: calc(var(--spacing) * 2);
+    top: calc(var(--spacing) * 2);
     bottom: 0;
-    border-radius: var(--ai-radius-xl);
+    border-radius: var(--radius-4xl);
   }
 }
 
@@ -47,49 +44,26 @@
 
 .mobileCarousel {
   display: block;
-}
 
-/* Hide carousel on desktop */
-@media (min-width: 1024px) /* desktop-wide */ {
-  .mobileCarousel {
+  @mixin breakpoint lg {
     display: none;
   }
 }
 
-.fallbackLayout {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: var(--ai-color-bg-primary);
-}
-
-.fallbackMap {
-  width: 100%;
-  height: 100%;
-  filter: grayscale(45%) brightness(0.85);
-  opacity: 0.5;
-}
-
-.fallbackOverlay {
-  position: absolute;
-  inset: 0;
+.stateOverlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
-  padding: var(--ai-spacing-24);
-}
-
-.fallbackOverlayContent {
-  pointer-events: auto;
-  width: min(420px, 100%);
+  width: 100%;
+  height: 100%;
+  padding: calc(var(--spacing) * 12);
 }
 
 .collapseButton {
   position: absolute;
-  top: var(--ai-spacing-8);
-  right: var(--ai-spacing-8);
+  top: calc(var(--spacing) * 4);
+  right: calc(var(--spacing) * 4);
   z-index: 20;
-  background: var(--ai-color-bg-primary);
-  box-shadow: var(--ai-elevation-2-shadow);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-200);
 }

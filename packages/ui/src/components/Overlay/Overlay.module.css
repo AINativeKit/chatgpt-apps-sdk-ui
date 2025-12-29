@@ -1,13 +1,8 @@
 /* Overlay - Generic overlay component for images/media */
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   display: flex;
   align-items: center;
   z-index: 1;
-  border-radius: 16px 16px 0 0;
   pointer-events: auto;
   box-sizing: border-box;
 }

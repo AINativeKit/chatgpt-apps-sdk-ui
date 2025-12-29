@@ -25,9 +25,9 @@
 .inspector.sidebar {
   position: absolute;
   width: 356px;
-  right: calc(var(--ai-spacing-4) + var(--ai-spacing-6));
-  top: calc(var(--ai-spacing-4) + var(--ai-spacing-6));
-  bottom: var(--ai-spacing-6);
+  right: calc(calc(var(--spacing) * 2) + calc(var(--spacing) * 3));
+  top: calc(calc(var(--spacing) * 2) + calc(var(--spacing) * 3));
+  bottom: calc(var(--spacing) * 3);
   left: auto;
   max-height: none;
   z-index: 25;
@@ -52,31 +52,31 @@
 
 .closeButton {
   position: absolute;
-  top: var(--ai-spacing-6);
-  right: var(--ai-spacing-6);
+  top: calc(var(--spacing) * 3);
+  right: calc(var(--spacing) * 3);
   z-index: 20;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: none;
   border-radius: 50%;
-  padding: var(--ai-spacing-4);
-  background-color: var(--ai-color-bg-primary);
-  box-shadow: var(--ai-elevation-2-shadow);
+  padding: calc(var(--spacing) * 2);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-200);
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .closeButton:hover {
-  background-color: var(--ai-color-bg-secondary);
+  background-color: var(--color-surface-secondary);
 }
 
 .content {
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: var(--ai-color-bg-primary);
-  color: var(--ai-color-text-primary);
+  background-color: var(--color-surface);
+  color: var(--color-text);
   overflow: hidden;
   width: 100%;
 }
@@ -86,9 +86,9 @@
   width: min(90vw, 356px);
   max-width: 356px;
   max-height: min(85vh, 600px);
-  border-radius: var(--ai-radius-xl);
-  border: 1px solid var(--ai-color-border-default);
-  box-shadow: var(--ai-elevation-2-shadow);
+  border-radius: var(--radius-4xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-200);
 }
 
 /* Sidebar content styling */
@@ -97,7 +97,7 @@
   height: auto;
   max-width: none;
   max-height: calc(100vh - 60px);
-  border-radius: var(--ai-radius-xl);
+  border-radius: var(--radius-4xl);
   border: none;
 }
 
@@ -133,46 +133,46 @@
 }
 
 .detailsSection {
-  padding: var(--ai-spacing-8) var(--ai-spacing-10) 0;
-  margin-bottom: var(--ai-spacing-12);
+  padding: calc(var(--spacing) * 4) calc(var(--spacing) * 5) 0;
+  margin-bottom: calc(var(--spacing) * 6);
 }
 
 .title {
-  font-size: var(--ai-font-size-h2);
-  line-height: var(--ai-line-height-h2);
-  font-weight: var(--ai-font-weight-h2);
-  letter-spacing: var(--ai-letter-spacing-h2);
-  margin-bottom: var(--ai-spacing-4);
+  font-size: var(--font-heading-lg-size);
+  line-height: var(--font-heading-lg-line-height);
+  font-weight: var(--font-heading-lg-weight);
+  letter-spacing: var(--font-heading-lg-tracking);
+  margin-bottom: calc(var(--spacing) * 2);
   word-wrap: break-word;
-  color: var(--ai-color-text-primary);
+  color: var(--color-text);
 }
 
 .subtitle {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  margin-bottom: var(--ai-spacing-6);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  margin-bottom: calc(var(--spacing) * 3);
+  color: var(--color-text-secondary);
 }
 
 .features {
   display: flex;
   align-items: center;
-  gap: var(--ai-spacing-2);
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  margin-top: var(--ai-spacing-2);
-  color: var(--ai-color-text-secondary);
+  gap: var(--spacing);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  margin-top: var(--spacing);
+  color: var(--color-text-secondary);
   flex-wrap: wrap;
 }
 
 .feature {
   display: flex;
   align-items: center;
-  gap: var(--ai-spacing-1);
+  gap: calc(var(--spacing) * 0.5);
 }
 
 .featureIcon {
@@ -180,128 +180,47 @@
 }
 
 .separator {
-  margin: 0 var(--ai-spacing-2);
-  color: var(--ai-color-text-secondary);
+  margin: 0 var(--spacing);
+  color: var(--color-text-secondary);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--ai-spacing-6);
-  margin-top: var(--ai-spacing-8);
-  font-weight: var(--ai-font-weight-button);
-}
-
-.primaryButton {
-  /* Primary Button - using Button component tokens */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--ai-spacing-4);
-  min-width: 88px;
-  height: 44px;
-  padding: 0 var(--ai-spacing-12);
-  font-size: var(--ai-font-size-button);
-  line-height: var(--ai-line-height-button);
-  font-weight: var(--ai-font-weight-button);
-  letter-spacing: var(--ai-letter-spacing-button);
-  border-radius: 22px;
-  border: none;
-  background-color: var(--ai-color-brand-primary);
-  color: #ffffff; /* White text on colored background */
-
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  transition:
-    background-color 0.15s ease,
-    opacity 0.15s ease,
-    transform 0.1s ease;
-}
-
-.primaryButton:not(:disabled):hover {
-  opacity: 0.9;
-}
-
-.primaryButton:not(:disabled):active {
-  transform: scale(0.98);
-  opacity: 1;
-}
-
-.primaryButton:disabled {
-  cursor: not-allowed;
-  opacity: 0.4;
-}
-
-.secondaryButton {
-  /* Secondary Button - using Button component tokens */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--ai-spacing-4);
-  min-width: 88px;
-  height: 44px;
-  padding: 0 var(--ai-spacing-12);
-  font-size: var(--ai-font-size-button);
-  line-height: var(--ai-line-height-button);
-  font-weight: var(--ai-font-weight-button);
-  letter-spacing: var(--ai-letter-spacing-button);
-  border-radius: 22px;
-  border: 1.5px solid var(--ai-color-border-heavy);
-  background-color: transparent;
-  color: var(--ai-color-text-primary);
-
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    opacity 0.15s ease,
-    transform 0.1s ease;
-}
-
-.secondaryButton:not(:disabled):hover {
-  border-color: var(--ai-color-text-secondary);
-  background-color: var(--ai-color-bg-secondary);
-}
-
-.secondaryButton:not(:disabled):active {
-  border-color: var(--ai-color-text-primary);
-  background-color: var(--ai-color-bg-tertiary);
-  transform: scale(0.98);
-}
-
-.secondaryButton:disabled {
-  cursor: not-allowed;
-  opacity: 0.4;
+  gap: calc(var(--spacing) * 3);
+  margin-top: calc(var(--spacing) * 4);
 }
 
 /* Headline - Auction/sale method info (Title 3) */
 .headline {
-  font-size: var(--ai-font-size-h3);
-  line-height: var(--ai-line-height-h3);
-  font-weight: var(--ai-font-weight-medium);
-  letter-spacing: var(--ai-letter-spacing-h3);
-  margin-top: var(--ai-spacing-8);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-heading-sm-size);
+  line-height: var(--font-heading-sm-line-height);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--font-heading-sm-tracking);
+  margin-top: calc(var(--spacing) * 4);
+  color: var(--color-text);
 }
 
 .description {
-  font-size: var(--ai-font-size-body);
-  line-height: var(--ai-line-height-body);
-  font-weight: var(--ai-font-weight-body);
-  letter-spacing: var(--ai-letter-spacing-body);
-  margin-top: var(--ai-spacing-8);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-text-md-weight);
+  letter-spacing: var(--font-text-md-tracking);
+  margin-top: calc(var(--spacing) * 4);
+  color: var(--color-text);
 }
 
 /* Bottom Action - Link button at bottom */
 .bottomAction {
-  margin-top: var(--ai-spacing-8);
+  margin-top: calc(var(--spacing) * 4);
 }
 
 /* Full width override for Button component */
 .bottomActionButton {
   width: 100%;
+}
+
+/* List section spacing */
+.listSection {
+  padding: 0 calc(var(--spacing) * 5) calc(var(--spacing) * 4);
 }

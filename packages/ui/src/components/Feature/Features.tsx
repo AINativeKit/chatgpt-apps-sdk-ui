@@ -1,10 +1,8 @@
 import React from 'react';
-import { Icon } from '../Icon';
-import type { IconName } from '../../tokens/icons';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Features.module.css';
 
-export type FeatureItem = string | { icon?: IconName | React.ReactElement; label: string };
+export type FeatureItem = string | { icon?: React.ReactNode; label: string };
 
 export interface FeaturesProps {
   /**
@@ -12,7 +10,7 @@ export interface FeaturesProps {
    * Can be strings or objects with optional icon and label
    * @example
    * ["Feature1", "Feature2"]
-   * [{ icon: "star-filled", label: "4.8" }, "Feature2"]
+   * [{ icon: <StarFilled />, label: "4.8" }, "Feature2"]
    */
   items: FeatureItem[];
 
@@ -23,6 +21,7 @@ export interface FeaturesProps {
   separator?: string;
 
   /**
+   * @deprecated No longer used - icons are passed as React elements
    * Icon size (default: 14)
    * @default 14
    */
@@ -50,17 +49,18 @@ export interface FeaturesProps {
  * // Simple strings
  * <Features items={["Neapolitan", "Wood-fired"]} />
  *
- * // With icons
+ * // With icons (use apps-sdk-ui icons)
+ * import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
  * <Features items={[
- *   { icon: "star-filled", label: "4.8" },
+ *   { icon: <StarFilled />, label: "4.8" },
  *   "Wood-fired"
  * ]} />
  * ```
  */
 export const Features = React.forwardRef<HTMLDivElement, FeaturesProps>(
-  ({ items, separator = '•', iconSize = 14, className, style }, ref) => {
+  ({ items, separator = '•', iconSize: _iconSize = 14, className, style }, ref) => {
     return (
-      <div ref={ref} className={cn(styles.feature, className)} style={style}>
+      <div ref={ref} className={clsx(styles.feature, className)} style={style}>
         {items.map((item, idx) => {
           const isLast = idx === items.length - 1;
           const isObject = typeof item === 'object';
@@ -70,13 +70,7 @@ export const Features = React.forwardRef<HTMLDivElement, FeaturesProps>(
           return (
             <React.Fragment key={`${label}-${idx}`}>
               <span className={styles.item}>
-                {icon && (
-                  typeof icon === 'string' ? (
-                    <Icon name={icon as IconName} size={iconSize} className={styles.icon} />
-                  ) : (
-                    <span className={styles.icon}>{icon}</span>
-                  )
-                )}
+                {icon && <span className={styles.icon}>{icon}</span>}
                 <span>{label}</span>
               </span>
               {!isLast && <span className={styles.separator}>{separator}</span>}

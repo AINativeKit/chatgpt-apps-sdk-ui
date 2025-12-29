@@ -26,7 +26,10 @@ export interface MapProps extends Omit<MapViewProps, 'className' | 'style'> {
   /**
    * Props passed to CompactMap when not in fullscreen
    */
-  compactMapProps?: Omit<CompactMapProps, keyof MapViewProps | 'onExpand' | 'autoExpandOnCarouselClick'>;
+  compactMapProps?: Omit<
+    CompactMapProps,
+    keyof MapViewProps | 'onExpand' | 'autoExpandOnCarouselClick'
+  >;
 
   /**
    * Props passed to FullscreenMap when in fullscreen

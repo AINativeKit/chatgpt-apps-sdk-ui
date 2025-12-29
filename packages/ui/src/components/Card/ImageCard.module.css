@@ -39,6 +39,14 @@
   object-position: bottom;
 }
 
+.imagePositionLeft {
+  object-position: left;
+}
+
+.imagePositionRight {
+  object-position: right;
+}
+
 /* Loading State */
 .loadingContainer {
   position: absolute;
@@ -53,9 +61,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ai-color-surface-primary);
+  background: var(--color-surface);
   z-index: 3;
-  padding: var(--ai-spacing-8);
+  padding: calc(var(--spacing) * 4);
+}
+
+/* Empty State */
+.emptyContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-secondary);
+  z-index: 3;
+  padding: calc(var(--spacing) * 4);
+  text-align: center;
 }
 
 /* Visually Hidden (for screen readers) */
@@ -98,14 +120,14 @@
 /* Text Content Overlay */
 .content {
   position: absolute;
-  bottom: var(--ai-spacing-8);
-  left: var(--ai-spacing-8);
-  right: var(--ai-spacing-8);
+  bottom: calc(var(--spacing) * 4);
+  left: calc(var(--spacing) * 4);
+  right: calc(var(--spacing) * 4);
   color: #ffffff;
   z-index: 2;
 
   /* Ensure text doesn't overlap with action button */
-  padding-right: var(--ai-spacing-16); /* 64px for action button spacing */
+  padding-right: calc(var(--spacing) * 8); /* 64px for action button spacing */
 }
 
 .contentNoAction {
@@ -114,16 +136,16 @@
 
 /* Title with multi-line support */
 .title {
-  font-size: var(--ai-font-size-body-emph);
-  line-height: var(--ai-line-height-body-emph);
-  font-weight: var(--ai-font-weight-body-emph);
-  letter-spacing: var(--ai-letter-spacing-body-emph);
-  margin: 0 0 var(--ai-spacing-2) 0;
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-text-md-tracking);
+  margin: 0 0 var(--spacing) 0;
   color: #ffffff; /* white on top of image */
 
   /* Text shadow for better readability */
   text-shadow: 0 1px 2px
-    color-mix(in srgb, var(--ai-color-text-primary) var(--ai-opacity-muted), transparent);
+    color-mix(in srgb, var(--color-text) 50%, transparent);
 
   /* Default: single line truncation */
   overflow: hidden;
@@ -149,16 +171,15 @@
 
 /* Subtitle with multi-line support */
 .subtitle {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
   margin: 0;
-  color: color-mix(in srgb, var(--ai-color-text-inverted) var(--ai-opacity-subtle), transparent);
+  color: rgba(255, 255, 255, 0.85);
 
-  /* Text shadow for better readability */
-  text-shadow: 0 1px 2px
-    color-mix(in srgb, var(--ai-color-text-primary) var(--ai-opacity-muted), transparent);
+  /* Text shadow for better readability on images */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 
   /* Default: single line truncation */
   overflow: hidden;
@@ -182,30 +203,46 @@
   line-clamp: 3;
 }
 
-/* Action Button */
+/* Action Button Container */
 .actionButton {
   position: absolute;
-  bottom: var(--ai-spacing-8);
-  right: var(--ai-spacing-8);
+  bottom: calc(var(--spacing) * 4);
+  right: calc(var(--spacing) * 4);
   z-index: 2;
+}
 
-  /* Override button size to 44x44 per design spec (examples/openai-apps-sdk-examples/design/image.png) */
+/* Action button with circular dark background for WCAG-compliant contrast on any image */
+.actionButton button {
   width: 44px;
   height: 44px;
   min-width: 44px;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.actionButton button:hover {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.actionButton button:focus-visible {
+  color: #ffffff;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
 }
 
 /* Badge */
 .badge {
   position: absolute;
-  top: var(--ai-spacing-4);
+  top: calc(var(--spacing) * 2);
   z-index: 2;
 }
 
 .badgeTopLeft {
-  left: var(--ai-spacing-4);
+  left: calc(var(--spacing) * 2);
 }
 
 .badgeTopRight {
-  right: var(--ai-spacing-4);
+  right: calc(var(--spacing) * 2);
 }

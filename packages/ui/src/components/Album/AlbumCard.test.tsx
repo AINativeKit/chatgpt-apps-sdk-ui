@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AlbumCard } from './AlbumCard';
 import type { Album } from './types';
@@ -257,7 +257,7 @@ describe('AlbumCard', () => {
       render(<AlbumCard album={mockAlbum} error={true} />);
 
       // Default error title
-      expect(screen.getByText('Failed to load')).toBeInTheDocument();
+      expect(screen.getByText('Album unavailable')).toBeInTheDocument();
     });
 
     it('shows custom error title and message', () => {
@@ -272,26 +272,6 @@ describe('AlbumCard', () => {
 
       expect(screen.getByText('Album Unavailable')).toBeInTheDocument();
       expect(screen.getByText('This album could not be loaded')).toBeInTheDocument();
-    });
-
-    it('shows retry button when onErrorRetry provided', () => {
-      const handleRetry = vi.fn();
-      render(<AlbumCard album={mockAlbum} error={true} onErrorRetry={handleRetry} />);
-
-      const retryButton = screen.getByRole('button');
-      expect(retryButton).toBeInTheDocument();
-    });
-
-    it('calls onErrorRetry when retry button clicked', async () => {
-      const user = userEvent.setup();
-      const handleRetry = vi.fn();
-
-      render(<AlbumCard album={mockAlbum} error={true} onErrorRetry={handleRetry} />);
-
-      const retryButton = screen.getByRole('button');
-      await user.click(retryButton);
-
-      expect(handleRetry).toHaveBeenCalledTimes(1);
     });
 
     it('hides content when error is true', () => {
@@ -341,7 +321,7 @@ describe('AlbumCard', () => {
 
       // Should show loading, not error
       expect(screen.getByText('Loading album')).toBeInTheDocument();
-      expect(screen.queryByText('Failed to load')).not.toBeInTheDocument();
+      expect(screen.queryByText('Album unavailable')).not.toBeInTheDocument();
     });
 
     it('error takes priority over empty', () => {
@@ -355,7 +335,7 @@ describe('AlbumCard', () => {
       render(<AlbumCard album={emptyAlbum} error={true} />);
 
       // Should show error, not empty
-      expect(screen.getByText('Failed to load')).toBeInTheDocument();
+      expect(screen.getByText('Album unavailable')).toBeInTheDocument();
       expect(screen.queryByText('No album')).not.toBeInTheDocument();
     });
   });
@@ -368,8 +348,8 @@ describe('AlbumCard', () => {
       expect(img.getAttribute('loading')).toBe('lazy');
     });
 
-    it('disables lazy loading when imageLazy is false', () => {
-      render(<AlbumCard album={mockAlbum} imageLazy={false} />);
+    it('uses eager loading when imageLoading is "eager"', () => {
+      render(<AlbumCard album={mockAlbum} imageLoading="eager" />);
 
       const img = screen.getByAltText('Test Album') as HTMLImageElement;
       expect(img.getAttribute('loading')).toBe('eager');
@@ -377,22 +357,26 @@ describe('AlbumCard', () => {
   });
 
   describe('Image Callbacks', () => {
-    it('calls onImageLoad when cover image loads', () => {
+    it('calls onImageLoad when cover image loads', async () => {
       const handleImageLoad = vi.fn();
       render(<AlbumCard album={mockAlbum} onImageLoad={handleImageLoad} />);
 
       const img = screen.getByAltText('Test Album') as HTMLImageElement;
-      img.dispatchEvent(new Event('load', { bubbles: true }));
+      await act(async () => {
+        img.dispatchEvent(new Event('load', { bubbles: true }));
+      });
 
       expect(handleImageLoad).toHaveBeenCalledTimes(1);
     });
 
-    it('calls onImageError when cover image fails', () => {
+    it('calls onImageError when cover image fails', async () => {
       const handleImageError = vi.fn();
       render(<AlbumCard album={mockAlbum} onImageError={handleImageError} />);
 
       const img = screen.getByAltText('Test Album') as HTMLImageElement;
-      img.dispatchEvent(new Event('error', { bubbles: true }));
+      await act(async () => {
+        img.dispatchEvent(new Event('error', { bubbles: true }));
+      });
 
       expect(handleImageError).toHaveBeenCalledTimes(1);
     });

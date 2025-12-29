@@ -1,15 +1,16 @@
 import React from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Card, type CardProps } from './Card';
-import { Badge, type BadgeVariant } from '../Badge/Badge';
-import { Chip, type ChipVariant } from '../Chip/Chip';
-import { Button } from '../Button/Button';
-import { Icon } from '../Icon';
-import type { IconName } from '../../tokens/icons';
-import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 import { Overlay, type OverlayProps } from '../Overlay';
+import { Skeleton, ImageSkeleton } from '../Skeleton';
 import styles from './SummaryCard.module.css';
+
+/** Badge variant type for compatibility */
+export type BadgeVariant = BadgeProps['variant'];
 
 export interface SummaryCardImage {
   src: string;
@@ -26,24 +27,19 @@ export interface SummaryCardImage {
  *
  * @example
  * ```tsx
- * // Using library icons
- * const metadata: SummaryCardMetadata[] = [
- *   { icon: 'clock', label: '10 min read' },
- *   { icon: 'calendar-today', label: 'Oct 30, 2025' }
- * ];
+ * import { Clock, Calendar } from '@openai/apps-sdk-ui/components/Icon';
  *
- * // Using custom icons (React elements)
  * const metadata: SummaryCardMetadata[] = [
- *   { icon: <BedIcon size={16} />, label: '5 bedrooms' },
- *   { icon: <svg>...</svg>, label: 'Custom' }
+ *   { icon: <Clock />, label: '10 min read' },
+ *   { icon: <Calendar />, label: 'Oct 30, 2025' }
  * ];
  * ```
  */
 export interface SummaryCardMetadata {
   /**
-   * Icon to display - can be a library icon name (IconName union) or custom React element
+   * Icon to display - pass a React element (e.g., icon component from apps-sdk-ui)
    */
-  icon?: IconName | React.ReactElement;
+  icon?: React.ReactNode;
   /**
    * Label text to display next to the icon
    */
@@ -79,10 +75,28 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
   badge?: string | number;
 
   /**
-   * Badge variant.
-   * @default 'default'
+   * Badge variant style
+   * @default 'soft'
    */
   badgeVariant?: BadgeVariant;
+
+  /**
+   * Badge size
+   * @default 'sm' (auto-sizes to 'md' for longer badges)
+   */
+  badgeSize?: BadgeProps['size'];
+
+  /**
+   * Badge pill shape (fully rounded)
+   * @default true
+   */
+  badgePill?: boolean;
+
+  /**
+   * Badge color
+   * @default 'secondary'
+   */
+  badgeColor?: BadgeProps['color'];
 
   /**
    * Card variant
@@ -129,22 +143,20 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
    * When loading={true}, the skeleton will automatically render the same number
    * of skeleton placeholders as items in the metadata array (similar to descriptionLines behavior).
    *
-   * Icons can be:
-   * - Icon name string from the icon library (e.g., 'clock', 'calendar-today')
-   * - Custom React element (e.g., <CustomIcon />, <svg>...</svg>)
+   * Icons should be React elements from @openai/apps-sdk-ui/components/Icon.
    *
    * @example
    * ```tsx
-   * // Using library icons
+   * import { Clock, CalendarToday } from '@openai/apps-sdk-ui/components/Icon';
+   *
+   * // Using apps-sdk-ui icons
    * metadata={[
-   *   { icon: 'clock', label: '10 min read' },
-   *   { icon: 'calendar-today', label: 'Oct 30, 2025' }
+   *   { icon: <Clock />, label: '10 min read' },
+   *   { icon: <CalendarToday />, label: 'Oct 30, 2025' }
    * ]}
    *
-   * // Using custom icons
+   * // Using custom SVG icons
    * metadata={[
-   *   { icon: <BedIcon size={16} />, label: '5' },
-   *   { icon: <BathIcon size={16} />, label: '2' },
    *   { icon: <svg>...</svg>, label: '625m²' }
    * ]}
    * ```
@@ -175,7 +187,6 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
    */
   buttonFullWidth?: boolean;
 
-  // Phase 1: Critical Improvements (P0)
   /**
    * Loading state - shows skeleton UI
    * @default false
@@ -221,12 +232,14 @@ export interface SummaryCardProps extends Omit<CardProps, 'children'> {
    */
   emptyMessage?: string;
 
-  // Phase 2: Performance & Accessibility (P1)
   /**
-   * Enable lazy loading for all images
-   * @default true
+   * Native browser loading behavior for all images.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * Individual images can override this with their own `loading` property.
+   * @default 'lazy'
    */
-  imageLazy?: boolean;
+  imageLoading?: 'lazy' | 'eager';
 
   /**
    * Callback when a single image loads successfully
@@ -316,7 +329,7 @@ export type SummaryCardOverlayProps = OverlayProps;
  *   ]}
  *   title="Little Nona's"
  *   badge="9.2"
- *   badgeVariant="filled"
+ *   badgeVariant="solid"
  * />
  * ```
  */
@@ -326,7 +339,10 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     title,
     subtitle,
     badge,
-    badgeVariant = 'default',
+    badgeVariant = 'soft',
+    badgeSize,
+    badgePill = true,
+    badgeColor = 'secondary',
     variant = 'default',
     size = 'default',
     imageAspectRatio = 'auto',
@@ -337,7 +353,6 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     onButtonClick,
     buttonDisabled = false,
     buttonFullWidth,
-    // Phase 1 props
     loading = false,
     loadingImageCount,
     error = false,
@@ -346,8 +361,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     onErrorRetry,
     emptyTitle = 'No content',
     emptyMessage,
-    // Phase 2 props
-    imageLazy = true,
+    imageLoading = 'lazy',
     onImageLoad,
     onImageError,
     onImagesLoad,
@@ -374,11 +388,6 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
   const hasDescription = !!description;
   const hasButton = !!buttonText;
 
-  // Determine if badge text is long (use Chip for long text, Badge for short)
-  const badgeText = String(badge ?? '');
-  const isLongBadge = badgeText.length > 4; // More than 4 characters, use Chip
-
-  // Phase 1: State logic
   const isEmpty = !loading && !error && !hasImages && !title && !description && !hasButton;
   const defaultLoadingCount = hasImages && !isSingleImage ? 3 : 1;
   const skeletonImageCount = loadingImageCount ?? defaultLoadingCount;
@@ -393,22 +402,19 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
     ? Math.max(88, Math.min(buttonText.length * 8 + 48, 200))
     : 140;
 
-  // Helper to render badge/chip based on text length
+  // Helper to render badge
   const renderBadge = () => {
     if (badge === undefined) return null;
 
-    if (isLongBadge) {
-      // Map BadgeVariant to ChipVariant
-      const chipVariant: ChipVariant = badgeVariant === 'default' ? 'neutral' : badgeVariant;
-      return (
-        <Chip variant={chipVariant} size="sm" className={styles.badge}>
-          {badge}
-        </Chip>
-      );
-    }
-
+    const badgeText = String(badge);
     return (
-      <Badge variant={badgeVariant} className={styles.badge}>
+      <Badge
+        variant={badgeVariant}
+        size={badgeSize ?? (badgeText.length > 4 ? 'md' : 'sm')}
+        pill={badgePill}
+        color={badgeColor}
+        className={styles.badge}
+      >
         {badge}
       </Badge>
     );
@@ -419,7 +425,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
       ref={ref}
       padding={variant === 'flat' ? 0 : 8}
       elevationLevel={variant === 'flat' ? 0 : cardProps.elevationLevel}
-      className={cn(styles.summaryCard, className)}
+      className={clsx(styles.summaryCard, className)}
       data-size={size}
       data-variant={variant}
       {...cardProps}
@@ -430,7 +436,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
           {/* Image Skeleton */}
           <div className={styles.imageSection}>
             <div className={styles.skeletonImageContainer} data-aspect={imageAspectRatio}>
-              <Skeleton width="100%" height="100%" borderRadius={16} />
+              <ImageSkeleton width="100%" height="100%" borderRadius={16} iconSize={40} />
             </div>
           </div>
 
@@ -639,10 +645,17 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
       {error && !loading && (
         <div className={styles.errorContainer}>
           <Alert
-            layout="card"
+            color="danger"
+            variant="soft"
             title={errorTitle}
-            message={errorMessage}
-            onAction={onErrorRetry}
+            description={errorMessage}
+            actions={
+              onErrorRetry ? (
+                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                  Retry
+                </Button>
+              ) : undefined
+            }
             data-testid="summary-card-error"
           />
         </div>
@@ -663,8 +676,10 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
           )}
 
           <div className={styles.emptyState}>
-            <h4 className={styles.emptyTitle}>{emptyTitle}</h4>
-            {emptyMessage && <p className={styles.emptyMessage}>{emptyMessage}</p>}
+            <EmptyMessage fill="none">
+              <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+              {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+            </EmptyMessage>
           </div>
         </div>
       )}
@@ -682,7 +697,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
                     alt={imageArray[0].alt}
                     className={styles.imageSingle}
                     data-aspect={imageAspectRatio}
-                    loading={imageArray[0].lazy !== false && imageLazy ? 'lazy' : 'eager'}
+                    loading={imageArray[0].lazy === false ? 'eager' : imageLoading}
                     onLoad={onImageLoad}
                     onError={onImageError}
                   />
@@ -696,7 +711,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
                           src={image.src}
                           alt={image.alt}
                           className={styles.imageGridItem}
-                          loading={image.lazy !== false && imageLazy ? 'lazy' : 'eager'}
+                          loading={image.lazy === false ? 'eager' : imageLoading}
                           onLoad={onImagesLoad ? (e) => onImagesLoad(index, e) : undefined}
                           onError={onImagesError ? (e) => onImagesError(index, e) : undefined}
                         />
@@ -732,12 +747,7 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
                   {metadata.map((item, index) => (
                     <React.Fragment key={index}>
                       <div className={styles.metadataItem}>
-                        {item.icon &&
-                          (typeof item.icon === 'string' ? (
-                            <Icon name={item.icon as IconName} size="sm" tone="secondary" />
-                          ) : (
-                            <span className={styles.customIcon}>{item.icon}</span>
-                          ))}
+                        {item.icon && <span className={styles.customIcon}>{item.icon}</span>}
                         <span>{item.label}</span>
                       </div>
                       {item.separator && index < metadata.length - 1 && (
@@ -764,9 +774,12 @@ const SummaryCardComponent = React.forwardRef<HTMLDivElement, SummaryCardProps>(
           {hasButton && (
             <div className={styles.buttonSection} data-full-width={isButtonFullWidth}>
               <Button
-                variant="primary"
+                color="primary"
+                variant="solid"
+                size={size === 'compact' ? 'lg' : '2xl'}
                 onClick={onButtonClick}
                 disabled={buttonDisabled}
+                block={isButtonFullWidth}
                 className={styles.button}
               >
                 {buttonText}

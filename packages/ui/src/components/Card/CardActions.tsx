@@ -1,8 +1,7 @@
 import React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../../utils/cn';
-import { Button } from '../Button';
-import type { ButtonProps } from '../Button';
+import clsx from 'clsx';
+import { Button, type ButtonProps } from '@openai/apps-sdk-ui/components/Button';
 import styles from './CardParts.module.css';
 
 export type CardActionsAlign = 'start' | 'center' | 'end' | 'stretch';
@@ -39,7 +38,7 @@ export const CardActions = React.forwardRef<HTMLDivElement, CardActionsProps>((p
   return (
     <div
       ref={ref}
-      className={cn(styles.cardActions, className)}
+      className={clsx(styles.cardActions, className)}
       data-align={align}
       data-testid={testId}
       {...rest}
@@ -52,12 +51,17 @@ export const CardActions = React.forwardRef<HTMLDivElement, CardActionsProps>((p
 CardActions.displayName = 'Card.Actions';
 
 // Convenience component for button actions
-export type CardActionButtonProps = ButtonProps;
+// Make color and size optional since we provide defaults
+export type CardActionButtonProps = Omit<ButtonProps, 'color' | 'size'> & {
+  color?: ButtonProps['color'];
+  size?: ButtonProps['size'];
+};
 
 /**
  * Card.ActionButton - Pre-configured button for card actions
  *
  * A convenience wrapper around Button with sensible defaults for card usage.
+ * Defaults to size="2xl" and color="primary".
  *
  * @example
  * ```tsx
@@ -69,7 +73,8 @@ export type CardActionButtonProps = ButtonProps;
  */
 export const CardActionButton = React.forwardRef<HTMLButtonElement, CardActionButtonProps>(
   (props, ref) => {
-    return <Button ref={ref} {...props} />;
+    const { color = 'primary', size = '2xl', ...rest } = props;
+    return <Button ref={ref} color={color} size={size} {...rest} />;
   }
 );
 

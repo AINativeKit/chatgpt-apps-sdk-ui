@@ -1,0 +1,59 @@
+import { Canvas, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as ExpandableTextStories from './ExpandableText.stories'
+
+<Meta of={ExpandableTextStories} />
+
+<Title>ExpandableText</Title>
+<Subtitle>Text component with CSS line-clamp and expand/collapse toggle</Subtitle>
+
+## Usage
+
+```tsx
+import { ExpandableText } from "@ainativekit/ui";
+
+<ExpandableText
+  text="Long description text that may exceed the visible area..."
+  maxLines={3}
+  expandLabel="Read more"
+  collapseLabel="Read less"
+/>
+```
+
+<Canvas of={ExpandableTextStories.Base} />
+
+## Reference
+
+<ArgTypes of={ExpandableTextStories.Base} />
+
+## Examples
+
+### Short text (no toggle)
+
+When text fits within the line limit, the toggle button is automatically hidden.
+
+<Canvas of={ExpandableTextStories.ShortText} />
+
+### Custom line clamp
+
+Control the number of visible lines with `maxLines`.
+
+<Canvas of={ExpandableTextStories.CustomLineClamp} />
+
+### Custom labels
+
+Customize expand/collapse button text.
+
+<Canvas of={ExpandableTextStories.CustomLabels} />
+
+### Single line truncation
+
+Minimal single-line preview with compact labels.
+
+<Canvas of={ExpandableTextStories.SingleLine} />
+
+## Notes
+
+- Uses CSS `line-clamp` for efficient text truncation
+- Toggle button only appears when text is actually clamped
+- Supports `aria-expanded` for accessibility
+- Works with any text content including formatted descriptions

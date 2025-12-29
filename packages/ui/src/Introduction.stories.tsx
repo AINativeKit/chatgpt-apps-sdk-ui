@@ -6,11 +6,22 @@ import type { Album as AlbumType } from './components/Album/types';
 import { Carousel as CarouselComponent } from './components/Carousel';
 import { Card, SummaryCard } from './components/Card';
 import { List, ListItem } from './components/List';
-import { Button } from './components/Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import {
+  StarFilled,
+  Clock,
+  MapPin,
+  CalendarToday,
+  ThumbUp,
+  ThumbDown,
+  Copy,
+  DotsHorizontal,
+  PlusCircleAdd,
+  CheckCircleFilled,
+} from '@openai/apps-sdk-ui/components/Icon';
 import { Map, FullscreenMap } from './components/Map';
-import { Icon } from './components/Icon';
 import { Features } from './components/Feature/Features';
-import { codeBlockStyles } from './components/storybook/codeBlockStyles';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 import type { LocationData } from './components/Map/types';
 
 type PizzaRestaurant = {
@@ -201,7 +212,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Award-winning Neapolitan pies in North Beach. A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [{ icon: 'star', label: '4.8' }, { label: '$$$' }],
+    features: [{ icon: <StarFilled />, label: '4.8' }, { label: '$$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Contact', variant: 'secondary' },
@@ -235,7 +246,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Focaccia-style squares, late-night favorite. Classic North Beach spot known for thick, fluffy focaccia pizza by the slice.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Call', variant: 'secondary' },
@@ -262,7 +273,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Thin-crust classics on 18th Street. Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Reservations', variant: 'secondary' },
@@ -276,7 +287,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Deep-dish and cornmeal crust favorites. Innovative pizzeria from the Flour + Water team with seasonal rotating menu.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
   },
   {
     id: 'beretta',
@@ -286,7 +297,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Wood-fired pies and burrata in North Beach. Stylish spot combining pizza excellence with a full cocktail program.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$$' }],
   },
 ];
 
@@ -295,8 +306,8 @@ const pageContainerStyle: CSSProperties = {
   margin: '0 auto',
   padding: '40px 20px',
   fontFamily:
-    'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
-  color: 'var(--ai-color-text-primary)',
+    'var(--font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+  color: 'var(--color-text)',
 };
 
 const userMessageWrapperStyle: CSSProperties = {
@@ -306,11 +317,11 @@ const userMessageWrapperStyle: CSSProperties = {
 };
 
 const userMessageBubbleStyle: CSSProperties = {
-  background: 'var(--ai-color-bg-secondary)',
+  background: 'var(--color-surface-secondary)',
   padding: '12px 16px',
   borderRadius: '18px',
   maxWidth: '80%',
-  color: 'var(--ai-color-text-primary)',
+  color: 'var(--color-text)',
   fontSize: '15px',
   lineHeight: '1.5',
   wordWrap: 'break-word',
@@ -321,7 +332,7 @@ const assistantMessageWrapperStyle: CSSProperties = {
   display: 'flex',
   justifyContent: 'flex-start',
   marginBottom: '24px',
-  color: 'var(--ai-color-text-primary)',
+  color: 'var(--color-text)',
   fontSize: '15px',
   lineHeight: '1.5',
   width: '100%',
@@ -340,7 +351,7 @@ const actionButtonsStyle: CSSProperties = {
   display: 'flex',
   gap: '12px',
   marginTop: '12px',
-  color: 'var(--ai-color-text-secondary)',
+  color: 'var(--color-text-secondary)',
 };
 
 const assistantIntroStyle: CSSProperties = { marginBottom: '16px' };
@@ -352,26 +363,23 @@ const mapContainerStyle: CSSProperties = {
   height: '478px',
   borderRadius: '8px',
   overflow: 'hidden',
-  boxShadow: 'var(--ai-elevation-2-shadow)',
+  boxShadow: 'var(--shadow-200)',
 };
-
-// Use unified code block styles (primary for main examples, terminal for CLI commands)
-const codeBlockStyle = codeBlockStyles.primary;
 
 const assistantFooterStyle: CSSProperties = {
   marginTop: '16px',
-  color: 'var(--ai-color-text-secondary)',
+  color: 'var(--color-text-secondary)',
 };
 
 const fullscreenOverlayStyle: CSSProperties = {
   position: 'fixed',
   inset: 0,
   zIndex: 1000,
-  backgroundColor: 'var(--ai-color-bg-primary)',
+  backgroundColor: 'var(--color-surface)',
   display: 'flex',
   flexDirection: 'column',
   fontFamily:
-    'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+    'var(--font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
 };
 
 const fullscreenContentStyle: CSSProperties = {
@@ -393,10 +401,18 @@ const AssistantMessage = ({ children }: { children: ReactNode }) => (
 
 const ActionButtons = () => (
   <div style={actionButtonsStyle}>
-    <Icon name="thumb-up" size="sm" tone="secondary" interactive />
-    <Icon name="thumb-down" size="sm" tone="secondary" interactive />
-    <Icon name="copy" size="sm" tone="secondary" interactive />
-    <Icon name="dots-horizontal-more-menu" size="sm" tone="secondary" interactive />
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
+      <ThumbUp />
+    </span>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
+      <ThumbDown />
+    </span>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
+      <Copy />
+    </span>
+    <span style={{ fontSize: '16px', cursor: 'pointer', color: 'var(--color-text-secondary)' }}>
+      <DotsHorizontal />
+    </span>
   </div>
 );
 
@@ -452,16 +468,16 @@ const IntroductionPage = () => {
           <strong>What you get:</strong>
         </div>
         <div style={assistantParagraphStyle}>
-          ✓ Full TypeScript support with IntelliSense
+          ✓ Extension components: Cards, Carousel, List, Album, Map
           <br />
-          ✓ Responsive design out of the box
+          ✓ Built on @openai/apps-sdk-ui primitives
+          <br />
+          ✓ ChatGPT hooks: useTheme, useDisplayMode, useWidgetState
+          <br />
+          ✓ Full TypeScript with IntelliSense
           <br />
           ✓ Dark & light mode automatically
-          <br />
-          ✓ Built on OpenAI's official design system
-          <br />
-          ✓ 417 ready-to-use icons
-          <br />✓ WCAG 2.1 AA accessible
+          <br />✓ Responsive and accessible
         </div>
         <div style={assistantParagraphStyle}>
           <strong>Bottom line:</strong> Stop rebuilding the same components. Start shipping features
@@ -504,12 +520,12 @@ const IntroductionPage = () => {
             title="Little Nona's"
             subtitle="1427 Via Campania, North Beach"
             badge="9.2"
-            badgeVariant="success"
+            badgeVariant="soft"
             description="A tiny, brick-walled trattoria tucked down a side street near Washington Square Park. The windows glow warm gold at night."
             metadata={[
-              { icon: 'star', label: '9.2 rating' },
-              { icon: 'map-pin', label: 'North Beach' },
-              { icon: 'clock', label: 'Open now' },
+              { icon: <StarFilled />, label: '9.2 rating' },
+              { icon: <MapPin />, label: 'North Beach' },
+              { icon: <Clock />, label: 'Open now' },
             ]}
             buttonText="Reserve"
             onButtonClick={() => {}}
@@ -523,8 +539,8 @@ const IntroductionPage = () => {
             title="Building AI-Native UIs"
             description="Build modern, accessible UI with AINativeKit. Master reusable component patterns that scale."
             metadata={[
-              { icon: 'clock', label: '10 min read' },
-              { icon: 'calendar-today', label: 'October 30, 2025' },
+              { icon: <Clock />, label: '10 min read' },
+              { icon: <CalendarToday />, label: 'October 30, 2025' },
             ]}
             buttonText="Explore"
             onButtonClick={() => {}}
@@ -554,7 +570,6 @@ const IntroductionPage = () => {
             onAlbumSelect={setSelectedAlbum}
             align="center"
             showNavigation
-            showEdgeGradients
             flushStart
           />
         </div>
@@ -612,7 +627,11 @@ const IntroductionPage = () => {
               subtitle: 'A ranking of the best pizzerias',
               thumbnail:
                 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=200&fit=crop',
-              action: <Button variant="primary">Save List</Button>,
+              action: (
+                <Button color="primary" variant="solid">
+                  Save List
+                </Button>
+              ),
             }}
             items={pizzaPlaces}
             renderItem={(place: PizzaPlace, index: number) => (
@@ -620,7 +639,7 @@ const IntroductionPage = () => {
                 key={place.id}
                 rank={index + 1}
                 title={place.name}
-                features={[{ icon: 'star', label: `${place.rating}` }]}
+                features={[{ icon: <StarFilled />, label: `${place.rating}` }]}
                 media={place.thumbnail}
                 mediaAlt={place.name}
                 metadata={place.city}
@@ -634,9 +653,8 @@ const IntroductionPage = () => {
                 interactive
                 action={
                   <Button
-                    iconOnly={
-                      selectedPlaces.includes(place.id) ? 'check-circle-filled' : 'plus-circle-add'
-                    }
+                    uniform
+                    color="secondary"
                     aria-label={`${selectedPlaces.includes(place.id) ? 'Remove from' : 'Add to'} favorites`}
                     variant="ghost"
                     onClick={(e: MouseEvent) => {
@@ -647,7 +665,13 @@ const IntroductionPage = () => {
                           : [...prev, place.id]
                       );
                     }}
-                  />
+                  >
+                    {selectedPlaces.includes(place.id) ? (
+                      <CheckCircleFilled />
+                    ) : (
+                      <PlusCircleAdd />
+                    )}
+                  </Button>
                 }
               />
             )}
@@ -703,41 +727,25 @@ const IntroductionPage = () => {
           Perfect when you have structured data from your backend. The SummaryCard automatically
           handles layouts, images, and actions. Here's the library docs rendered as data:
         </div>
-        <div style={codeBlockStyle}>
-          import {'{'}SummaryCard{'}'} from '@ainativekit/ui';
-          <br />
-          <br />
-          {'const articleData = {'}
-          <br />
-          &nbsp;&nbsp;title: "Building AI-Native UIs",
-          <br />
-          &nbsp;&nbsp;image: "https://images.unsplash.com/...",
-          <br />
-          &nbsp;&nbsp;description: "Build modern, accessible UI with AINativeKit...",
-          <br />
-          &nbsp;&nbsp;metadata: [<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: 'clock', label: '10 min read{'}'},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: 'calendar-today', label: 'October 30, 2025{'}'}
-          <br />
-          &nbsp;&nbsp;]
-          <br />
-          {'}'};<br />
-          <br />
-          {'<SummaryCard'}
-          <br />
-          &nbsp;&nbsp;images={'{articleData.image}'}
-          <br />
-          &nbsp;&nbsp;title={'{articleData.title}'}
-          <br />
-          &nbsp;&nbsp;description={'{articleData.description}'}
-          <br />
-          &nbsp;&nbsp;metadata={'{articleData.metadata}'}
-          <br />
-          &nbsp;&nbsp;buttonText="Explore Docs"
-          <br />
-          {'/>'}
-          <br />
-        </div>
+        <CodeBlock language="tsx">{`import { SummaryCard } from '@ainativekit/ui';
+
+const articleData = {
+  title: "Building AI-Native UIs",
+  image: "https://images.unsplash.com/...",
+  description: "Build modern, accessible UI with AINativeKit...",
+  metadata: [
+    { icon: <Clock />, label: '10 min read' },
+    { icon: <CalendarToday />, label: 'October 30, 2025' }
+  ]
+};
+
+<SummaryCard
+  images={articleData.image}
+  title={articleData.title}
+  description={articleData.description}
+  metadata={articleData.metadata}
+  buttonText="Explore Docs"
+/>`}</CodeBlock>
         <div
           style={{
             ...contentSectionStyle,
@@ -755,8 +763,8 @@ const IntroductionPage = () => {
             title="Building AI-Native UIs"
             description="Build modern, accessible UI with AINativeKit. Master reusable component patterns that scale."
             metadata={[
-              { icon: 'clock', label: '10 min read' },
-              { icon: 'calendar-today', label: 'October 30, 2025' },
+              { icon: <Clock />, label: '10 min read' },
+              { icon: <CalendarToday />, label: 'October 30, 2025' },
             ]}
             buttonText="Explore Docs"
             onButtonClick={() => {}}
@@ -768,7 +776,7 @@ const IntroductionPage = () => {
             ...assistantParagraphStyle,
             marginTop: '32px',
             paddingTop: '24px',
-            borderTop: '1px solid var(--ai-color-border-light)',
+            borderTop: '1px solid var(--color-border-subtle)',
           }}
         >
           <strong>See how the same data adapts to different layouts?</strong> Pattern 1 is fast,
@@ -782,63 +790,32 @@ const IntroductionPage = () => {
           Need more control? Use compound Card components for rich customization. Same data, but
           with custom tags, advanced metadata, and full styling control:
         </div>
-        <div style={codeBlockStyle}>
-          {'<Card elevationLevel={1} interactive>'}
-          <br />
-          &nbsp;&nbsp;{'<Card.Header>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.ChipGroup>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.Chip variant="neutral" size="sm">ChatGPT Apps SDK</Card.Chip>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.Chip variant="neutral" size="sm">UI Components</Card.Chip>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.ChipGroup>'}
-          <br />
-          &nbsp;&nbsp;{'</Card.Header>'}
-          <br />
-          &nbsp;&nbsp;{'<Card.Image src="..." />'}
-          <br />
-          &nbsp;&nbsp;{'<Card.Body>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Title as="h3">Building AI-Native UIs</Card.Title>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Description>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Build modern, accessible UI with AINativeKit...
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.Description>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Meta>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'<Features items={['}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: 'clock', label: '10 min read
-          {'}'},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'{'}icon: 'calendar-today', label: 'Oct
-          30, 2025{'}'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{']} />'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.Meta>'}
-          <br />
-          &nbsp;&nbsp;{'</Card.Body>'}
-          <br />
-          &nbsp;&nbsp;{'<Card.Footer>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'<Card.Actions align="start">'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {'<Card.ActionButton variant="primary">Explore Docs</Card.ActionButton>'}
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{'</Card.Actions>'}
-          <br />
-          &nbsp;&nbsp;{'</Card.Footer>'}
-          <br />
-          {'</Card>'}
-        </div>
+        <CodeBlock language="tsx">{`<Card elevationLevel={1} interactive>
+  <Card.Header>
+    <Card.BadgeGroup>
+      <Card.Badge variant="soft" size="sm">ChatGPT Apps SDK</Card.Badge>
+      <Card.Badge variant="soft" size="sm">UI Components</Card.Badge>
+    </Card.BadgeGroup>
+  </Card.Header>
+  <Card.Image src="..." />
+  <Card.Body>
+    <Card.Title as="h3">Building AI-Native UIs</Card.Title>
+    <Card.Description>
+      Build modern, accessible UI with AINativeKit...
+    </Card.Description>
+    <Card.Meta>
+      <Features items={[
+        { icon: <Clock />, label: '10 min read' },
+        { icon: <CalendarToday />, label: 'Oct 30, 2025' }
+      ]} />
+    </Card.Meta>
+  </Card.Body>
+  <Card.Footer>
+    <Card.Actions align="start">
+      <Card.ActionButton color="primary" variant="solid">Explore Docs</Card.ActionButton>
+    </Card.Actions>
+  </Card.Footer>
+</Card>`}</CodeBlock>
         <div
           style={{
             ...contentSectionStyle,
@@ -851,14 +828,14 @@ const IntroductionPage = () => {
           {/* Documentation Card Example - shows what it looks like */}
           <Card elevationLevel={1} interactive>
             <Card.Header>
-              <Card.ChipGroup>
-                <Card.Chip variant="neutral" size="sm">
+              <Card.BadgeGroup>
+                <Card.Badge variant="soft" size="sm">
                   ChatGPT Apps SDK
-                </Card.Chip>
-                <Card.Chip variant="neutral" size="sm">
+                </Card.Badge>
+                <Card.Badge variant="soft" size="sm">
                   UI Components
-                </Card.Chip>
-              </Card.ChipGroup>
+                </Card.Badge>
+              </Card.BadgeGroup>
             </Card.Header>
             <Card.Image
               src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&h=200&fit=crop"
@@ -873,16 +850,17 @@ const IntroductionPage = () => {
               <Card.Meta>
                 <Features
                   items={[
-                    { icon: 'clock', label: '10 min read' },
-                    { icon: 'calendar-today', label: 'October 30, 2025' },
+                    { icon: <Clock />, label: '10 min read' },
+                    { icon: <CalendarToday />, label: 'October 30, 2025' },
                   ]}
-                  iconSize={12}
                 />
               </Card.Meta>
             </Card.Body>
             <Card.Footer>
               <Card.Actions align="start">
-                <Card.ActionButton variant="primary">Explore Docs</Card.ActionButton>
+                <Card.ActionButton color="primary" variant="solid">
+                  Explore Docs
+                </Card.ActionButton>
               </Card.Actions>
             </Card.Footer>
           </Card>
@@ -893,7 +871,7 @@ const IntroductionPage = () => {
             ...assistantParagraphStyle,
             marginTop: '32px',
             paddingTop: '24px',
-            borderTop: '1px solid var(--ai-color-border-light)',
+            borderTop: '1px solid var(--color-border-subtle)',
           }}
         >
           <strong>That's the power of AINativeKit UI:</strong> simplicity when you need it,
@@ -905,15 +883,13 @@ const IntroductionPage = () => {
         </div>
         <div style={assistantParagraphStyle}>
           <strong>1. Install:</strong>
-          <div style={codeBlockStyles.terminal}>npm install @ainativekit/ui</div>
+          <CodeBlock language="bash">{`npm install @ainativekit/ui @openai/apps-sdk-ui`}</CodeBlock>
         </div>
         <div style={assistantParagraphStyle}>
           <strong>2. Import:</strong>
-          <div style={codeBlockStyles.terminal}>
-            import '@ainativekit/ui/styles';
-            <br />
-            import {'{'}SummaryCard, Card{'}'} from '@ainativekit/ui';
-          </div>
+          <CodeBlock language="tsx">{`import '@openai/apps-sdk-ui/css';
+import '@ainativekit/ui/styles';
+import { SummaryCard, Card } from '@ainativekit/ui';`}</CodeBlock>
         </div>
         <div style={assistantParagraphStyle}>
           <strong>3. Use one of the patterns above and ship! 🚀</strong>
@@ -936,19 +912,18 @@ const IntroductionPage = () => {
           <strong>Dive deeper:</strong> Check the Storybook menu for:
           <ul style={{ margin: '8px 0', paddingLeft: '20px' }}>
             <li>
-              <strong>Gallery</strong>: Real-world examples for restaurants, products, articles, and
-              more
+              <strong>Gallery</strong>: Real-world examples for restaurants, products, articles
             </li>
             <li>
-              <strong>Cards</strong>: SummaryCard (with compact variant), ImageCard, ListCard with
-              all features
+              <strong>Components</strong>: Cards, Carousel, List, Album, Map with all features
             </li>
             <li>
-              <strong>Patterns</strong>: Carousel, List, Album, Map with complete examples
+              <strong>Design Tokens</strong>: Base tokens from apps-sdk-ui + component-specific
+              tokens
             </li>
             <li>
-              <strong>Design Tokens</strong>: Colors, typography, spacing, elevation - all
-              customizable
+              <strong>OpenAI Integration</strong>: ChatGPT hooks for theme, display mode, widget
+              state
             </li>
           </ul>
         </div>
@@ -959,7 +934,7 @@ const IntroductionPage = () => {
             href="https://github.com/AINativeKit/chatgpt-apps-sdk-ui"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: 'var(--ai-color-text-primary)', textDecoration: 'underline' }}
+            style={{ color: 'var(--color-text)', textDecoration: 'underline' }}
           >
             GitHub
           </a>{' '}
@@ -968,7 +943,7 @@ const IntroductionPage = () => {
             href="https://www.npmjs.com/package/@ainativekit/ui"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: 'var(--ai-color-text-primary)', textDecoration: 'underline' }}
+            style={{ color: 'var(--color-text)', textDecoration: 'underline' }}
           >
             npm
           </a>

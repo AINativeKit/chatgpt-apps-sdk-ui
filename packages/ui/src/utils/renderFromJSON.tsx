@@ -8,13 +8,12 @@
 
 import { type ComponentType, type ReactNode, createElement } from 'react';
 
-// Import all components that support JSON rendering
-import { Button, type ButtonProps } from '../components/Button';
-import { Alert, type AlertProps } from '../components/Alert';
-import { Badge, type BadgeProps } from '../components/Badge';
-import { Chip, type ChipProps } from '../components/Chip';
-import { Icon, type IconProps } from '../components/Icon';
-import { Skeleton, type SkeletonProps } from '../components/Skeleton';
+// Import apps-sdk-ui primitives
+import { Button, type ButtonProps } from '@openai/apps-sdk-ui/components/Button';
+import { Alert, type AlertProps } from '@openai/apps-sdk-ui/components/Alert';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+
+// Import AINativeKit extension components
 import {
   Card,
   SummaryCard,
@@ -46,12 +45,11 @@ export interface ComponentConfig {
  * Type-safe component props mapping
  */
 export interface ComponentPropsMap {
+  // apps-sdk-ui primitives
   Button: ButtonProps;
   Alert: AlertProps;
   Badge: BadgeProps;
-  Chip: ChipProps;
-  Icon: IconProps;
-  Skeleton: SkeletonProps;
+  // AINativeKit extension components
   Card: CardProps;
   SummaryCard: SummaryCardProps;
   ImageCard: ImageCardProps;
@@ -66,12 +64,11 @@ export interface ComponentPropsMap {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const COMPONENT_REGISTRY: Record<string, ComponentType<any>> = {
+  // apps-sdk-ui primitives
   Button,
   Alert,
   Badge,
-  Chip,
-  Icon,
-  Skeleton,
+  // AINativeKit extension components
   Card,
   SummaryCard,
   ImageCard,

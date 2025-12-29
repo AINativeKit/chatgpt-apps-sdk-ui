@@ -1,11 +1,9 @@
-import React from 'react';
-import type { SyntheticEvent } from 'react';
-import { Skeleton } from '../Skeleton';
+import React, { type SyntheticEvent } from 'react';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
 import { ErrorStateDisplay } from './ErrorStateDisplay';
-import { Badge, type BadgeProps } from '../Badge';
-import { Chip, type ChipProps } from '../Chip';
 import { Features } from '../Feature';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
+import { Skeleton, ImageSkeleton } from '../Skeleton';
 import type { Feature } from './types';
 import styles from './MapPlaceCard.module.css';
 
@@ -47,6 +45,11 @@ export interface MapPlaceCardProps {
    * Additional class name.
    */
   className?: string;
+
+  /**
+   * Inline styles.
+   */
+  style?: React.CSSProperties;
 
   /**
    * Visual variant for different contexts.
@@ -98,18 +101,22 @@ export interface MapPlaceCardProps {
 
   // Image Controls
   /**
-   * Enable lazy loading for thumbnail image
-   * @default true
+   * Native browser loading behavior for the thumbnail image.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  imageLazy?: boolean;
+  imageLoading?: 'lazy' | 'eager';
 
   /**
-   * Callback when thumbnail image loads
+   * Callback fired when the thumbnail image successfully loads.
+   * Useful for tracking image load performance or triggering animations.
    */
   onImageLoad?: (event: SyntheticEvent<HTMLImageElement>) => void;
 
   /**
-   * Callback when thumbnail image fails to load
+   * Callback fired when the thumbnail image fails to load.
+   * Useful for fallback handling or error tracking.
    */
   onImageError?: (event: SyntheticEvent<HTMLImageElement>) => void;
 
@@ -127,8 +134,27 @@ export interface MapPlaceCardProps {
 
   /**
    * Badge variant style
+   * @default 'soft'
    */
   badgeVariant?: BadgeProps['variant'];
+
+  /**
+   * Badge size
+   * @default 'sm'
+   */
+  badgeSize?: BadgeProps['size'];
+
+  /**
+   * Badge pill shape (fully rounded)
+   * @default true
+   */
+  badgePill?: boolean;
+
+  /**
+   * Badge color
+   * @default 'secondary'
+   */
+  badgeColor?: BadgeProps['color'];
 
   // Text Display
   /**
@@ -164,18 +190,20 @@ export interface MapPlaceCardProps {
  *
  * @example
  * ```tsx
+ * import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
+ *
  * <MapPlaceCard
  *   image="https://example.com/location.jpg"
  *   title="Central Park"
  *   subtitle="New York, NY"
  *   features={[
- *     { icon: 'star', text: '4.8' },
- *     { text: 'Free' }
+ *     { icon: <StarFilled />, label: '4.8' },
+ *     { label: 'Free' }
  *   ]}
  *   onClick={() => console.log('Selected')}
  *   loading={isLoading}
  *   badge="Popular"
- *   badgeVariant="success"
+ *   badgeVariant="soft"
  * />
  * ```
  */
@@ -187,6 +215,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   selected = false,
   onClick,
   className,
+  style,
   variant = 'carousel',
   loading = false,
   error = false,
@@ -195,12 +224,15 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   onErrorRetry,
   emptyTitle = 'No location',
   emptyMessage,
-  imageLazy = true,
+  imageLoading = 'lazy',
   onImageLoad,
   onImageError,
   badge,
   badgePosition: _badgePosition = 'top-right',
-  badgeVariant = 'default',
+  badgeVariant = 'soft',
+  badgeSize = 'sm',
+  badgePill = true,
+  badgeColor = 'secondary',
   titleLines = 1,
   subtitleLines = 1,
   'data-testid': testId,
@@ -216,13 +248,14 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   if (showLoading) {
     return (
       <div
-        className={cn(styles.mapPlaceCard, styles.loadingCard, className)}
+        className={clsx(styles.mapPlaceCard, styles.loadingCard, className)}
+        style={style}
         role="status"
         aria-live="polite"
         data-testid={testId}
       >
         <span className={styles.visuallyHidden}>Loading location</span>
-        <Skeleton className={styles.skeletonThumbnail} />
+        <ImageSkeleton className={styles.skeletonThumbnail} iconSize={24} />
         <div className={styles.content}>
           <Skeleton width="80%" height={14} className={styles.skeletonTitle} />
           <Skeleton width="60%" height={12} className={styles.skeletonSubtitle} />
@@ -234,15 +267,13 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   // Error State
   if (showError) {
     return (
-      <div className={cn(styles.mapPlaceCard, styles.errorCard, className)} data-testid={testId}>
+      <div className={clsx(styles.mapPlaceCard, styles.errorCard, className)} style={style} data-testid={testId}>
         <div className={styles.errorContainer}>
           <ErrorStateDisplay
             state="error"
             title={errorTitle || 'Failed to load'}
             message={errorMessage}
             onAction={onErrorRetry}
-            layout="default"
-            hideIcon={false}
           />
         </div>
       </div>
@@ -252,7 +283,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   // Empty State
   if (showEmpty) {
     return (
-      <div className={cn(styles.mapPlaceCard, styles.emptyCard, className)} data-testid={testId}>
+      <div className={clsx(styles.mapPlaceCard, styles.emptyCard, className)} style={style} data-testid={testId}>
         <div className={styles.emptyContainer}>
           <div className={styles.emptyTitle}>{emptyTitle}</div>
           {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
@@ -262,7 +293,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   }
 
   // Normal Content
-  const cardClassName = cn(
+  const cardClassName = clsx(
     styles.mapPlaceCard,
     variant === 'list' && styles.variantList,
     selected && styles.selected,
@@ -272,6 +303,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
   return (
     <div
       className={cardClassName}
+      style={style}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       aria-pressed={onClick ? selected : undefined}
@@ -288,32 +320,28 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
           : undefined
       }
     >
+      {/* Badge - positioned at top-right of card */}
+      {badge && (
+        <div className={styles.badge}>
+          <Badge variant={badgeVariant} size={badgeSize} pill={badgePill} color={badgeColor}>
+            {badge}
+          </Badge>
+        </div>
+      )}
+
       <div className={styles.thumbnailContainer}>
         <img
           src={image}
           alt={title}
           className={styles.thumbnail}
-          loading={imageLazy ? 'lazy' : 'eager'}
+          loading={imageLoading}
           onLoad={onImageLoad}
           onError={onImageError}
         />
       </div>
       <div className={styles.content}>
-        {/* Badge/Chip - positioned in the content area, away from the image */}
-        {badge && (
-          <div className={cn(styles.badge, typeof badge !== 'number' && styles.badgeChip)}>
-            {typeof badge === 'number' ? (
-              <Badge variant={badgeVariant as BadgeProps['variant']}>{badge}</Badge>
-            ) : (
-              <Chip variant={(badgeVariant as ChipProps['variant']) || 'default'} size="sm">
-                {badge}
-              </Chip>
-            )}
-          </div>
-        )}
-
         <div
-          className={cn(
+          className={clsx(
             styles.title,
             titleLines === 2 && styles.titleLines2,
             titleLines === 3 && styles.titleLines3
@@ -323,7 +351,7 @@ export const MapPlaceCard: React.FC<MapPlaceCardProps> = ({
         </div>
         {subtitle && (
           <div
-            className={cn(
+            className={clsx(
               styles.subtitle,
               subtitleLines === 2 && styles.subtitleLines2,
               subtitleLines === 3 && styles.subtitleLines3

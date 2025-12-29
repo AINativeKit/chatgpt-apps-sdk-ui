@@ -2,7 +2,8 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Map, FullscreenMap } from '../../components/Map';
 import type { LocationData } from '../../components/Map/types';
-import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { PropsTable } from '../../tokens/PropsTable';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 
 // Dummy component for Storybook
 const MapsExample = () => null;
@@ -28,10 +29,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Award-winning Neapolitan pies in North Beach. A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [
-      { icon: 'star', label: '4.8' },
-      { label: '$$$' },
-    ],
+    features: [{ icon: 'star', label: '4.8' }, { label: '$$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Contact', variant: 'secondary' },
@@ -65,10 +63,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Focaccia-style squares, late-night favorite. Classic North Beach spot known for thick, fluffy focaccia pizza by the slice.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [
-      { icon: 'star', label: '4.6' },
-      { label: '$' },
-    ],
+    features: [{ icon: 'star', label: '4.6' }, { label: '$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Call', variant: 'secondary' },
@@ -95,10 +90,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Thin-crust classics on 18th Street. Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [
-      { icon: 'star', label: '4.5' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Reservations', variant: 'secondary' },
@@ -112,10 +104,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Deep-dish and cornmeal crust favorites. Innovative pizzeria from the Flour + Water team with seasonal rotating menu.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-6.png',
-    features: [
-      { icon: 'star', label: '4.5' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
   },
   {
     id: 'beretta',
@@ -125,10 +114,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Wood-fired pies and burrata in North Beach. Stylish spot combining pizza excellence with a full cocktail program.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
-    features: [
-      { icon: 'star', label: '4.6' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.6' }, { label: '$$' }],
   },
   {
     id: 'slice-house',
@@ -138,10 +124,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Neighborhood spot with seasonal toppings. Local favorite featuring creative combinations and locally-sourced ingredients.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [
-      { icon: 'star', label: '4.4' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.4' }, { label: '$$' }],
   },
   {
     id: 'pizza-palace',
@@ -151,10 +134,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Sourdough, wood-fired pies near Nob Hill. San Francisco sourdough meets traditional Italian pizza-making.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [
-      { icon: 'star', label: '4.6' },
-      { label: '$$$' },
-    ],
+    features: [{ icon: 'star', label: '4.6' }, { label: '$$$' }],
   },
   {
     id: 'crispy-crust',
@@ -164,10 +144,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Crispy-edged Detroit-style in SoMa. Bringing Detroit-style square pizza to San Francisco with creative toppings.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [
-      { icon: 'star', label: '4.5' },
-      { label: '$$' },
-    ],
+    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
   },
 ];
 
@@ -184,10 +161,11 @@ const MapsComponent: React.FC = () => {
           position: 'fixed',
           inset: 0,
           zIndex: 1000,
-          backgroundColor: 'var(--ai-color-bg-primary)',
+          backgroundColor: 'var(--color-surface)',
           display: 'flex',
           flexDirection: 'column',
-          fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+          fontFamily:
+            'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
         }}
       >
         <div style={{ flex: 1, overflow: 'auto' }}>
@@ -213,7 +191,8 @@ const MapsComponent: React.FC = () => {
       style={{
         maxWidth: '900px',
         margin: '0 auto',
-        fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+        fontFamily:
+          'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
       }}
     >
       {/* Header Section */}
@@ -223,7 +202,7 @@ const MapsComponent: React.FC = () => {
             fontSize: '32px',
             fontWeight: '700',
             marginBottom: '12px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           🗺️ Interactive Maps
@@ -231,14 +210,15 @@ const MapsComponent: React.FC = () => {
         <p
           style={{
             fontSize: '16px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             margin: 0,
             lineHeight: '1.6',
           }}
         >
-          A complete location-based map system with interactive markers, carousel navigation, and fullscreen expansion.
-          Click on locations to explore details, use the carousel to browse, and expand to fullscreen for a complete map
-          experience. Perfect for travel guides, restaurant finders, and location discovery in your ChatGPT App.
+          A complete location-based map system with interactive markers, carousel navigation, and
+          fullscreen expansion. Click on locations to explore details, use the carousel to browse,
+          and expand to fullscreen for a complete map experience. Perfect for travel guides,
+          restaurant finders, and location discovery in your ChatGPT App.
         </p>
       </section>
 
@@ -249,7 +229,7 @@ const MapsComponent: React.FC = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '16px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Live Demo
@@ -258,13 +238,13 @@ const MapsComponent: React.FC = () => {
         <p
           style={{
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             marginBottom: '12px',
             fontStyle: 'italic',
           }}
         >
-          Try clicking the expand button (↗️) in the top-right corner to enter fullscreen, or click locations on the map
-          and in the carousel below.
+          Try clicking the expand button (↗️) in the top-right corner to enter fullscreen, or click
+          locations on the map and in the carousel below.
         </p>
 
         <div
@@ -274,7 +254,7 @@ const MapsComponent: React.FC = () => {
             marginBottom: '24px',
             borderRadius: '12px',
             overflow: 'hidden',
-            boxShadow: 'var(--ai-elevation-2-shadow)',
+            boxShadow: 'var(--elevation-2-shadow)',
           }}
         >
           <Map
@@ -291,13 +271,13 @@ const MapsComponent: React.FC = () => {
         <div
           style={{
             padding: '16px',
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
           }}
         >
-          <strong style={{ color: 'var(--ai-color-text-primary)' }}>✨ Features:</strong>
+          <strong style={{ color: 'var(--color-text)' }}>✨ Features:</strong>
           <ul
             style={{
               margin: '8px 0 0 0',
@@ -323,7 +303,7 @@ const MapsComponent: React.FC = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Use Cases
@@ -339,7 +319,8 @@ const MapsComponent: React.FC = () => {
           {[
             {
               title: '🍕 Restaurant Finder',
-              description: 'Browse nearby restaurants with ratings, hours, and reviews. Expand to see detailed location info.',
+              description:
+                'Browse nearby restaurants with ratings, hours, and reviews. Expand to see detailed location info.',
             },
             {
               title: '✈️ Travel Guide',
@@ -348,7 +329,8 @@ const MapsComponent: React.FC = () => {
             },
             {
               title: '🏠 Real Estate',
-              description: 'Browse properties on an interactive map with details, photos, and agent information.',
+              description:
+                'Browse properties on an interactive map with details, photos, and agent information.',
             },
             {
               title: '🎵 Event Discovery',
@@ -362,15 +344,16 @@ const MapsComponent: React.FC = () => {
             },
             {
               title: '🛍️ Shopping Outlets',
-              description: 'Find retail locations, compare stores, and check inventory at different branches.',
+              description:
+                'Find retail locations, compare stores, and check inventory at different branches.',
             },
           ].map((useCase, index) => (
             <div
               key={index}
               style={{
                 padding: '16px',
-                    borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
+                borderRadius: '8px',
+                background: 'var(--color-surface)',
               }}
             >
               <h3
@@ -378,7 +361,7 @@ const MapsComponent: React.FC = () => {
                   fontSize: '14px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 {useCase.title}
@@ -386,7 +369,7 @@ const MapsComponent: React.FC = () => {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: 0,
                   lineHeight: '1.5',
                 }}
@@ -405,7 +388,7 @@ const MapsComponent: React.FC = () => {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           ChatGPT Apps SDK Integration
@@ -414,26 +397,18 @@ const MapsComponent: React.FC = () => {
         <p
           style={{
             fontSize: '14px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
             marginBottom: '16px',
             lineHeight: '1.6',
           }}
         >
-          The Map component is designed specifically for ChatGPT Apps SDK integration. Use the controlled mode pattern
-          shown below to let ChatGPT manage the iframe expansion when users click the expand button. The component
-          automatically syncs with ChatGPT's display mode changes, so clicking ChatGPT's X button will collapse the map.
+          The Map component is designed specifically for ChatGPT Apps SDK integration. Use the
+          controlled mode pattern shown below to let ChatGPT manage the iframe expansion when users
+          click the expand button. The component automatically syncs with ChatGPT's display mode
+          changes, so clicking ChatGPT's X button will collapse the map.
         </p>
 
-        <div style={codeBlockStyles.primary}>
-          <pre
-            style={{
-              margin: 0,
-              color: 'var(--ai-color-text-primary)',
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}
-          >
-{`import { useState } from 'react';
+        <CodeBlock language="tsx">{`import { useState } from 'react';
 import { Map } from '@ainativekit/ui';
 
 function MyMapApp() {
@@ -451,20 +426,18 @@ function MyMapApp() {
       defaultZoom={12}
     />
   );
-}`}
-          </pre>
-        </div>
+}`}</CodeBlock>
 
         <div
           style={{
             padding: '16px',
-            background: 'var(--ai-color-bg-secondary)',
+            background: 'var(--color-surface-secondary)',
             borderRadius: '8px',
             fontSize: '13px',
-            color: 'var(--ai-color-text-secondary)',
+            color: 'var(--color-text-secondary)',
           }}
         >
-          <strong style={{ color: 'var(--ai-color-text-primary)' }}>💡 Integration Tips:</strong>
+          <strong style={{ color: 'var(--color-text)' }}>💡 Integration Tips:</strong>
           <ul
             style={{
               margin: '8px 0 0 0',
@@ -473,27 +446,158 @@ function MyMapApp() {
             }}
           >
             <li>
-              <strong>Controlled Mode:</strong> Always use controlled mode with ChatGPT integration so ChatGPT can manage
-              iframe expansion
+              <strong>Controlled Mode:</strong> Always use controlled mode with ChatGPT integration
+              so ChatGPT can manage iframe expansion
             </li>
             <li>
-              <strong>isFullscreen + onToggleFullscreen:</strong> Map calls your callback when user clicks expand/collapse
-              button
+              <strong>isFullscreen + onToggleFullscreen:</strong> Map calls your callback when user
+              clicks expand/collapse button
             </li>
             <li>
-              <strong>Automatic Display Mode Sync:</strong> Map listens to ChatGPT's display mode changes - clicking
-              ChatGPT's X button automatically collapses the map
+              <strong>Automatic Display Mode Sync:</strong> Map listens to ChatGPT's display mode
+              changes - clicking ChatGPT's X button automatically collapses the map
             </li>
             <li>
-              <strong>Default Size:</strong> CompactMap uses 478px height (ChatGPT Apps SDK standard)
+              <strong>Default Size:</strong> CompactMap uses 478px height (ChatGPT Apps SDK
+              standard)
             </li>
             <li>
-              <strong>Responsive:</strong> Design automatically adapts to mobile/desktop viewport sizes
+              <strong>Responsive:</strong> Design automatically adapts to mobile/desktop viewport
+              sizes
             </li>
             <li>
-              <strong>Location Data:</strong> Include rich details (description, actions, reviews) for best UX
+              <strong>Location Data:</strong> Include rich details (description, actions, reviews)
+              for best UX
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* Component Props Section */}
+      <section style={{ marginBottom: '64px' }}>
+        <h2
+          style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            marginBottom: '24px',
+            color: 'var(--color-text)',
+          }}
+        >
+          Component Props
+        </h2>
+
+        <div style={{ marginBottom: '32px' }}>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            Map Component
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'locations',
+                description: 'Array of location objects to display on the map (required)',
+              },
+              {
+                name: 'selectedId',
+                description: 'ID of currently selected location (controlled mode)',
+              },
+              {
+                name: 'onLocationSelect',
+                description: 'Callback when a location is selected: (id: string | undefined) => void',
+              },
+              {
+                name: 'defaultCenter',
+                description: 'Initial center coordinates: [latitude, longitude]',
+              },
+              {
+                name: 'defaultZoom',
+                description: 'Initial zoom level (1-18). Default: 12',
+              },
+              {
+                name: 'isFullscreen',
+                description: 'Whether the map is in fullscreen mode (controlled mode)',
+              },
+              {
+                name: 'onToggleFullscreen',
+                description: 'Callback when fullscreen is toggled: (isFullscreen: boolean) => void',
+              },
+              {
+                name: 'markerVariant',
+                description: 'Marker style: "pin" | "dot" | "hybrid". Default: "hybrid"',
+              },
+              {
+                name: 'loading',
+                description: 'Show loading state. Default: false',
+              },
+              {
+                name: 'error',
+                description: 'Error state configuration with title, message, and retry callback',
+              },
+            ]}
+          />
+        </div>
+
+        <div>
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: 'var(--color-text)',
+            }}
+          >
+            LocationData Interface
+          </h3>
+
+          <PropsTable
+            hideThemeColumn
+            rows={[
+              {
+                name: 'id',
+                description: 'Unique identifier for the location (required)',
+              },
+              {
+                name: 'name',
+                description: 'Location name/title (required)',
+              },
+              {
+                name: 'coords',
+                description: 'Geographic coordinates: [latitude, longitude] (required)',
+              },
+              {
+                name: 'thumbnail',
+                description: 'Thumbnail image URL (required)',
+              },
+              {
+                name: 'subtitle',
+                description: 'Secondary text shown below name',
+              },
+              {
+                name: 'description',
+                description: 'Detailed description text',
+              },
+              {
+                name: 'features',
+                description: 'Array of feature items: { icon?: string; label: string }[]',
+              },
+              {
+                name: 'actions',
+                description: 'Action buttons: { label: string; variant?: "primary" | "secondary"; onClick?: () => void }[]',
+              },
+              {
+                name: 'lists',
+                description: 'Optional lists (e.g., reviews): { title: string; items: AvatarListItem[] }[]',
+              },
+            ]}
+          />
         </div>
       </section>
 
@@ -504,7 +608,7 @@ function MyMapApp() {
             fontSize: '20px',
             fontWeight: '600',
             marginBottom: '24px',
-            color: 'var(--ai-color-text-primary)',
+            color: 'var(--color-text)',
           }}
         >
           Key Features
@@ -518,24 +622,45 @@ function MyMapApp() {
           }}
         >
           {[
-            { title: 'Interactive Map', description: 'Leaflet-powered with smooth interactions and animations' },
-            { title: 'Expand/Collapse', description: 'Toggle between compact and fullscreen views' },
-            { title: 'Carousel', description: 'Browse locations with synchronized carousel navigation' },
+            {
+              title: 'Interactive Map',
+              description: 'Leaflet-powered with smooth interactions and animations',
+            },
+            {
+              title: 'Expand/Collapse',
+              description: 'Toggle between compact and fullscreen views',
+            },
+            {
+              title: 'Carousel',
+              description: 'Browse locations with synchronized carousel navigation',
+            },
             {
               title: 'Inspector Panel',
               description: 'View detailed location info with actions and reviews in fullscreen',
             },
-            { title: 'Responsive Design', description: 'Adaptive sidebar on desktop, carousel on mobile' },
-            { title: 'Customizable', description: 'Marker colors, zoom levels, and center coordinates' },
-            { title: 'State Management', description: 'Controlled and uncontrolled modes supported' },
-            { title: 'Loading States', description: 'Built-in loading, error, and empty state handling' },
+            {
+              title: 'Responsive Design',
+              description: 'Adaptive sidebar on desktop, carousel on mobile',
+            },
+            {
+              title: 'Customizable',
+              description: 'Marker colors, zoom levels, and center coordinates',
+            },
+            {
+              title: 'State Management',
+              description: 'Controlled and uncontrolled modes supported',
+            },
+            {
+              title: 'Loading States',
+              description: 'Built-in loading, error, and empty state handling',
+            },
           ].map((feature, index) => (
             <div
               key={index}
               style={{
                 padding: '16px',
-                    borderRadius: '8px',
-                background: 'var(--ai-color-bg-primary)',
+                borderRadius: '8px',
+                background: 'var(--color-surface)',
               }}
             >
               <h3
@@ -543,7 +668,7 @@ function MyMapApp() {
                   fontSize: '14px',
                   fontWeight: '600',
                   margin: '0 0 8px 0',
-                  color: 'var(--ai-color-text-primary)',
+                  color: 'var(--color-text)',
                 }}
               >
                 ✓ {feature.title}
@@ -551,7 +676,7 @@ function MyMapApp() {
               <p
                 style={{
                   fontSize: '13px',
-                  color: 'var(--ai-color-text-secondary)',
+                  color: 'var(--color-text-secondary)',
                   margin: 0,
                   lineHeight: '1.5',
                 }}

@@ -62,7 +62,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({ rows, hideThemeColumn = 
       <thead>
         <tr
           style={{
-            backgroundColor: 'var(--ai-color-bg-secondary)',
+            backgroundColor: 'var(--color-surface-secondary)',
             borderBottom: '1px solid rgba(121, 116, 126, 0.15)',
           }}
         >
@@ -166,7 +166,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({ rows, hideThemeColumn = 
             <td
               style={{
                 padding: '14px 16px',
-                color: 'var(--ai-color-text-secondary)',
+                color: 'var(--color-text-secondary)',
                 fontSize: '14px',
                 borderRight:
                   hasTypeColumn || hasRequiredColumn || hasDefaultColumn || hasThemeColumn

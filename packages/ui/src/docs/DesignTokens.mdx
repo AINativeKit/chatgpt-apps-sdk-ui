@@ -1,0 +1,504 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Design Tokens" />
+
+# Design Tokens
+
+AINativeKit UI uses CSS custom properties (design tokens) for consistent theming.
+
+## Base Tokens (from apps-sdk-ui)
+
+We inherit all design tokens from `@openai/apps-sdk-ui`. These provide the foundation for colors, typography, spacing, and more.
+
+### Colors
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--color-surface</code></td>
+      <td>Primary background color</td>
+    </tr>
+    <tr>
+      <td><code>--color-surface-secondary</code></td>
+      <td>Secondary background</td>
+    </tr>
+    <tr>
+      <td><code>--color-surface-elevated</code></td>
+      <td>Elevated surfaces (cards, popups)</td>
+    </tr>
+    <tr>
+      <td><code>--color-text</code></td>
+      <td>Primary text color</td>
+    </tr>
+    <tr>
+      <td><code>--color-text-secondary</code></td>
+      <td>Secondary/muted text</td>
+    </tr>
+    <tr>
+      <td><code>--color-border</code></td>
+      <td>Default border color</td>
+    </tr>
+    <tr>
+      <td><code>--color-border-subtle</code></td>
+      <td>Subtle dividers</td>
+    </tr>
+    <tr>
+      <td><code>--color-border-strong</code></td>
+      <td>Strong borders</td>
+    </tr>
+    <tr>
+      <td><code>--color-accent</code></td>
+      <td>Primary accent color</td>
+    </tr>
+  </tbody>
+</table>
+
+### Typography
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--font-family</code></td>
+      <td>Primary font family</td>
+    </tr>
+    <tr>
+      <td><code>--font-family-mono</code></td>
+      <td>Monospace font</td>
+    </tr>
+    <tr>
+      <td><code>--control-font-size-sm</code></td>
+      <td>Small control text</td>
+    </tr>
+    <tr>
+      <td><code>--control-font-size-md</code></td>
+      <td>Medium control text</td>
+    </tr>
+    <tr>
+      <td><code>--control-font-size-lg</code></td>
+      <td>Large control text</td>
+    </tr>
+  </tbody>
+</table>
+
+### Spacing
+
+The base spacing unit is `--spacing` (4px). Use with `calc()`:
+
+```css
+padding: calc(var(--spacing) * 2);  /* 8px */
+margin: calc(var(--spacing) * 4);   /* 16px */
+gap: calc(var(--spacing) * 3);      /* 12px */
+```
+
+### Radius
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Value</th>
+      <th>Use case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--radius-2xs</code></td>
+      <td>2px</td>
+      <td>Small elements</td>
+    </tr>
+    <tr>
+      <td><code>--radius-xs</code></td>
+      <td>4px</td>
+      <td>Badges, chips</td>
+    </tr>
+    <tr>
+      <td><code>--radius-sm</code></td>
+      <td>6px</td>
+      <td>Small buttons</td>
+    </tr>
+    <tr>
+      <td><code>--radius-md</code></td>
+      <td>8px</td>
+      <td>Buttons, inputs</td>
+    </tr>
+    <tr>
+      <td><code>--radius-lg</code></td>
+      <td>12px</td>
+      <td>Cards</td>
+    </tr>
+    <tr>
+      <td><code>--radius-xl</code></td>
+      <td>16px</td>
+      <td>Large cards</td>
+    </tr>
+    <tr>
+      <td><code>--radius-2xl</code></td>
+      <td>20px</td>
+      <td>Modals</td>
+    </tr>
+    <tr>
+      <td><code>--radius-3xl</code></td>
+      <td>24px</td>
+      <td>Large modals</td>
+    </tr>
+    <tr>
+      <td><code>--radius-4xl</code></td>
+      <td>28px</td>
+      <td>Cards, sidebars</td>
+    </tr>
+    <tr>
+      <td><code>--radius-full</code></td>
+      <td>9999px</td>
+      <td>Pills, avatars</td>
+    </tr>
+  </tbody>
+</table>
+
+### Shadows (Elevation)
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Use case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--shadow-100</code></td>
+      <td>Subtle elevation (cards)</td>
+    </tr>
+    <tr>
+      <td><code>--shadow-200</code></td>
+      <td>Medium elevation (sidebars)</td>
+    </tr>
+    <tr>
+      <td><code>--shadow-300</code></td>
+      <td>High elevation (modals)</td>
+    </tr>
+    <tr>
+      <td><code>--shadow-400</code></td>
+      <td>Highest elevation</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Component Tokens (AINativeKit UI)
+
+We define additional tokens for our components in `@ainativekit/ui/styles`.
+
+### Card
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--card-border-color</code></td>
+      <td><code>var(--color-border-strong)</code></td>
+    </tr>
+    <tr>
+      <td><code>--card-shadow</code></td>
+      <td><code>var(--shadow-100)</code></td>
+    </tr>
+    <tr>
+      <td><code>--card-radius</code></td>
+      <td><code>var(--radius-4xl)</code></td>
+    </tr>
+    <tr>
+      <td><code>--card-padding</code></td>
+      <td><code>calc(var(--spacing) * 2)</code></td>
+    </tr>
+    <tr>
+      <td><code>--card-gap</code></td>
+      <td><code>calc(var(--spacing) * 2)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Map
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--map-popup-background</code></td>
+      <td><code>var(--color-surface-elevated)</code></td>
+    </tr>
+    <tr>
+      <td><code>--map-popup-border</code></td>
+      <td><code>var(--color-border)</code></td>
+    </tr>
+    <tr>
+      <td><code>--map-popup-radius</code></td>
+      <td><code>var(--radius-4xl)</code></td>
+    </tr>
+    <tr>
+      <td><code>--map-control-background</code></td>
+      <td><code>var(--color-surface)</code></td>
+    </tr>
+    <tr>
+      <td><code>--map-control-border</code></td>
+      <td><code>var(--color-border-subtle)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Album
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--album-filmstrip-background</code></td>
+      <td><code>var(--color-surface-secondary)</code></td>
+    </tr>
+    <tr>
+      <td><code>--album-thumbnail-radius</code></td>
+      <td><code>var(--radius-md)</code></td>
+    </tr>
+    <tr>
+      <td><code>--album-overlay-background</code></td>
+      <td><code>rgb(0 0 0 / 80%)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Carousel
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--carousel-gap</code></td>
+      <td><code>calc(var(--spacing) * 3)</code></td>
+    </tr>
+    <tr>
+      <td><code>--carousel-control-size</code></td>
+      <td><code>var(--control-size-lg)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### List
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--list-item-padding</code></td>
+      <td><code>calc(var(--spacing) * 3)</code></td>
+    </tr>
+    <tr>
+      <td><code>--list-item-gap</code></td>
+      <td><code>calc(var(--spacing) * 2)</code></td>
+    </tr>
+    <tr>
+      <td><code>--list-divider-color</code></td>
+      <td><code>var(--color-border-subtle)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Sidebar
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--sidebar-width</code></td>
+      <td><code>356px</code></td>
+    </tr>
+    <tr>
+      <td><code>--sidebar-top</code></td>
+      <td><code>calc(var(--spacing) * 5)</code></td>
+    </tr>
+    <tr>
+      <td><code>--sidebar-bottom</code></td>
+      <td><code>calc(var(--spacing) * 3)</code></td>
+    </tr>
+    <tr>
+      <td><code>--sidebar-inset</code></td>
+      <td><code>calc(var(--spacing) * 5)</code></td>
+    </tr>
+    <tr>
+      <td><code>--sidebar-radius</code></td>
+      <td><code>var(--radius-4xl)</code></td>
+    </tr>
+    <tr>
+      <td><code>--sidebar-shadow</code></td>
+      <td><code>var(--shadow-200)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Modal
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--modal-width</code></td>
+      <td><code>356px</code></td>
+    </tr>
+    <tr>
+      <td><code>--modal-max-width</code></td>
+      <td><code>90vw</code></td>
+    </tr>
+    <tr>
+      <td><code>--modal-max-height</code></td>
+      <td><code>min(85vh, 600px)</code></td>
+    </tr>
+    <tr>
+      <td><code>--modal-radius</code></td>
+      <td><code>var(--radius-4xl)</code></td>
+    </tr>
+    <tr>
+      <td><code>--modal-shadow</code></td>
+      <td><code>var(--shadow-300)</code></td>
+    </tr>
+    <tr>
+      <td><code>--modal-backdrop</code></td>
+      <td><code>rgb(0 0 0 / 50%)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Breakpoints
+
+We provide CSS breakpoints for responsive layouts:
+
+<table>
+  <thead>
+    <tr>
+      <th>Breakpoint</th>
+      <th>Value</th>
+      <th>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>xs</code></td>
+      <td>380px</td>
+      <td>Small mobile</td>
+    </tr>
+    <tr>
+      <td><code>sm</code></td>
+      <td>576px</td>
+      <td>Mobile / ChatGPT Widget</td>
+    </tr>
+    <tr>
+      <td><code>md</code></td>
+      <td>768px</td>
+      <td>Tablet</td>
+    </tr>
+    <tr>
+      <td><code>lg</code></td>
+      <td>1024px</td>
+      <td>Desktop</td>
+    </tr>
+    <tr>
+      <td><code>xl</code></td>
+      <td>1280px</td>
+      <td>Large desktop</td>
+    </tr>
+    <tr>
+      <td><code>2xl</code></td>
+      <td>1536px</td>
+      <td>Extra large</td>
+    </tr>
+  </tbody>
+</table>
+
+Use the `useBreakpoint` hook from apps-sdk-ui:
+
+```tsx
+import { useBreakpoint } from '@openai/apps-sdk-ui/hooks/useBreakpoints';
+
+function MyComponent() {
+  const { current, atLeast, atMost } = useBreakpoint();
+
+  return (
+    <div>
+      {atMost('sm') && <MobileLayout />}
+      {atLeast('md') && <DesktopLayout />}
+    </div>
+  );
+}
+```
+
+---
+
+## Customization
+
+Override tokens in your app's CSS:
+
+```css
+:root {
+  /* Customize card appearance */
+  --card-radius: var(--radius-lg);
+  --card-shadow: var(--shadow-200);
+
+  /* Customize modal size */
+  --modal-width: 480px;
+  --modal-max-height: 80vh;
+}
+```
+
+For theme-specific overrides:
+
+```css
+[data-theme="dark"] {
+  --map-popup-background: var(--gray-900);
+}
+```

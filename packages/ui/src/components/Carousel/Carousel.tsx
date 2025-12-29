@@ -2,10 +2,12 @@ import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
+import { ChevronLeftMd, ChevronRightMd } from '@openai/apps-sdk-ui/components/Icon';
 import { Card } from '../Card';
-import { Alert } from '../Alert';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Carousel.module.css';
 
 export interface CarouselProps {
@@ -35,13 +37,13 @@ export interface CarouselProps {
 
   /**
    * Show edge gradient overlays.
-   * @default true
+   * @default false
    */
   showEdgeGradients?: boolean;
 
   /**
    * Gap between slides using CSS custom property.
-   * @default 'var(--ai-spacing-8)'
+   * @default 'var(32px)'
    */
   gap?: string;
 
@@ -89,6 +91,12 @@ export interface CarouselProps {
    * @default true
    */
   dragFree?: boolean;
+
+  /**
+   * Initial slide index to start at.
+   * @default 0
+   */
+  startIndex?: number;
 
   // Phase 1: Loading State
   /**
@@ -154,8 +162,8 @@ export const Carousel: React.FC<CarouselProps> = ({
   align = 'center',
   loop = false,
   showNavigation = true,
-  showEdgeGradients = true,
-  gap = 'var(--ai-spacing-8)',
+  showEdgeGradients = false,
+  gap = 'var(32px)',
   onSlideChange,
   className,
   style,
@@ -164,6 +172,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   viewportPadding,
   onApi,
   dragFree = true,
+  startIndex = 0,
   // Phase 1 props
   loading = false,
   loadingSlides = 6,
@@ -179,9 +188,10 @@ export const Carousel: React.FC<CarouselProps> = ({
   const options: EmblaOptionsType = {
     align,
     loop,
-    containScroll: loop ? 'keepSnaps' : 'trimSnaps',
-    slidesToScroll: 'auto',
+    containScroll: 'keepSnaps',
+    slidesToScroll: 1,
     dragFree,
+    startIndex,
   };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [WheelGesturesPlugin()]);
@@ -245,7 +255,7 @@ export const Carousel: React.FC<CarouselProps> = ({
                 style={{
                   width: '100%',
                   minHeight: '240px',
-                  padding: 'var(--ai-spacing-16)',
+                  padding: 'var(64px)',
                 }}
               />
             </div>
@@ -253,32 +263,40 @@ export const Carousel: React.FC<CarouselProps> = ({
 
     // Render static (non-scrollable) loading carousel
     return (
-      <div className={cn(styles.carouselContainer, className)} style={style}>
+      <div className={clsx(styles.carouselContainer, className)} style={style}>
         {/* Navigation Buttons (disabled during loading) */}
         {showNavigation && (
           <>
             <Button
+              color="secondary"
               variant="ghost"
-              iconOnly="chevron-left-md"
-              className={cn(styles.navButton, styles.navButtonPrev)}
+              uniform
+              size="md"
+              className={clsx(styles.navButton, styles.navButtonPrev)}
               disabled
               aria-label="Previous slide"
-            />
+            >
+              <ChevronLeftMd />
+            </Button>
             <Button
+              color="secondary"
               variant="ghost"
-              iconOnly="chevron-right-md"
-              className={cn(styles.navButton, styles.navButtonNext)}
+              uniform
+              size="md"
+              className={clsx(styles.navButton, styles.navButtonNext)}
               disabled
               aria-label="Next slide"
-            />
+            >
+              <ChevronRightMd />
+            </Button>
           </>
         )}
 
         {/* Edge Gradients */}
         {showEdgeGradients && (
           <>
-            <div className={cn(styles.edgeGradient, styles.edgeGradientLeft)} />
-            <div className={cn(styles.edgeGradient, styles.edgeGradientRight)} />
+            <div className={clsx(styles.edgeGradient, styles.edgeGradientLeft)} />
+            <div className={clsx(styles.edgeGradient, styles.edgeGradientRight)} />
           </>
         )}
 
@@ -293,13 +311,13 @@ export const Carousel: React.FC<CarouselProps> = ({
           }
         >
           <div
-            className={cn(styles.emblaContainer, flushStart && styles.emblaContainerFlushStart)}
+            className={clsx(styles.emblaContainer, flushStart && styles.emblaContainerFlushStart)}
             style={containerStyle}
           >
             {React.Children.map(loadingChildren, (child, index) => (
               <div
                 key={index}
-                className={cn(
+                className={clsx(
                   styles.emblaSlide,
                   flushStart && index === 0 && styles.emblaSlideFlushStart
                 )}
@@ -316,9 +334,21 @@ export const Carousel: React.FC<CarouselProps> = ({
   // Phase 1: Error State - Early return
   if (error) {
     return (
-      <div className={cn(styles.carouselContainer, className)} style={style}>
+      <div className={clsx(styles.carouselContainer, className)} style={style}>
         <div className={styles.errorContainer}>
-          <Alert layout="card" title={errorTitle} message={errorMessage} onAction={onErrorRetry} />
+          <Alert
+            color="danger"
+            variant="soft"
+            title={errorTitle}
+            description={errorMessage}
+            actions={
+              onErrorRetry ? (
+                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                  Retry
+                </Button>
+              ) : undefined
+            }
+          />
         </div>
       </div>
     );
@@ -331,7 +361,7 @@ export const Carousel: React.FC<CarouselProps> = ({
     // Custom empty state
     if (emptyState) {
       return (
-        <div className={cn(styles.carouselContainer, className)} style={style}>
+        <div className={clsx(styles.carouselContainer, className)} style={style}>
           <div className={styles.emptyContainer}>{emptyState}</div>
         </div>
       );
@@ -339,19 +369,19 @@ export const Carousel: React.FC<CarouselProps> = ({
 
     // Default empty state
     return (
-      <div className={cn(styles.carouselContainer, className)} style={style}>
+      <div className={clsx(styles.carouselContainer, className)} style={style}>
         <div className={styles.emptyContainer}>
-          <div className={styles.emptyContent}>
-            <div className={styles.emptyTitle}>{emptyTitle}</div>
-            {emptyMessage && <div className={styles.emptyMessage}>{emptyMessage}</div>}
-          </div>
+          <EmptyMessage fill="none">
+            <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+            {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+          </EmptyMessage>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={cn(styles.carouselContainer, className)} style={style}>
+    <div className={clsx(styles.carouselContainer, className)} style={style}>
       {/* Embla Viewport */}
       <div
         className={styles.emblaViewport}
@@ -363,7 +393,7 @@ export const Carousel: React.FC<CarouselProps> = ({
         }
       >
         <div
-          className={cn(styles.emblaContainer, flushStart && styles.emblaContainerFlushStart)}
+          className={clsx(styles.emblaContainer, flushStart && styles.emblaContainerFlushStart)}
           style={containerStyle}
         >
           {React.Children.map(children, (child, index) => (
@@ -396,21 +426,29 @@ export const Carousel: React.FC<CarouselProps> = ({
       {/* Navigation Buttons */}
       {showNavigation && canPrev && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="chevron-left-md"
+          uniform
+          size="md"
           onClick={scrollPrev}
           aria-label="Previous slide"
           className={`${styles.navButton} ${styles.navButtonPrev}`}
-        />
+        >
+          <ChevronLeftMd />
+        </Button>
       )}
       {showNavigation && canNext && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="chevron-right-md"
+          uniform
+          size="md"
           onClick={scrollNext}
           aria-label="Next slide"
           className={`${styles.navButton} ${styles.navButtonNext}`}
-        />
+        >
+          <ChevronRightMd />
+        </Button>
       )}
     </div>
   );

@@ -2,7 +2,7 @@
 .summaryCard {
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-8); /* 16px gap between major sections */
+  gap: calc(var(--spacing) * 4); /* 16px gap between major sections */
   overflow: hidden;
 }
 
@@ -19,19 +19,19 @@
 
 /* Flat variant - imageSection uses Card's border-radius */
 .summaryCard[data-variant='flat'] .imageSection {
-  border-radius: var(--ai-radius-xl);
+  border-radius: var(--radius-4xl);
 }
 
 /* Flat variant with overlay - Slightly larger top radius to fill behind overlay corners */
 .summaryCard[data-variant='flat'] .imageWrapper[data-has-overlay='true'] .imageSection {
-  border-top-left-radius: calc(var(--ai-radius-xl) + 2px);
-  border-top-right-radius: calc(var(--ai-radius-xl) + 2px);
+  border-top-left-radius: calc(var(--radius-4xl) + 2px);
+  border-top-right-radius: calc(var(--radius-4xl) + 2px);
 }
 
 /* Flat variant - topOverlay uses Card's border-radius */
 .summaryCard[data-variant='flat'] .overlay {
-  border-top-left-radius: var(--ai-radius-xl);
-  border-top-right-radius: var(--ai-radius-xl);
+  border-top-left-radius: var(--radius-4xl);
+  border-top-right-radius: var(--radius-4xl);
 }
 
 /* Flat variant - Remove image's own border-radius, let imageSection clip it */
@@ -74,29 +74,29 @@
 
 /* Compact size variant - denser typography */
 .summaryCard[data-size='compact'] .title {
-  font-size: var(--ai-font-size-body);
-  line-height: var(--ai-line-height-body);
-  font-weight: var(--ai-font-weight-body);
-  letter-spacing: var(--ai-letter-spacing-body);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-text-md-weight);
+  letter-spacing: var(--font-text-md-tracking);
 }
 
 .summaryCard[data-size='compact'] .subtitle {
-  font-size: var(--ai-font-size-caption);
-  line-height: var(--ai-line-height-caption);
-  font-weight: var(--ai-font-weight-caption);
-  letter-spacing: var(--ai-letter-spacing-caption);
+  font-size: var(--font-text-xs-size);
+  line-height: var(--font-text-xs-line-height);
+  font-weight: var(--font-text-xs-weight);
+  letter-spacing: var(--font-text-xs-tracking);
 }
 
 .summaryCard[data-size='compact'] .description {
-  font-size: var(--ai-font-size-caption);
-  line-height: var(--ai-line-height-caption);
-  font-weight: var(--ai-font-weight-caption);
-  letter-spacing: var(--ai-letter-spacing-caption);
+  font-size: var(--font-text-xs-size);
+  line-height: var(--font-text-xs-line-height);
+  font-weight: var(--font-text-xs-weight);
+  letter-spacing: var(--font-text-xs-tracking);
 }
 
 .imageGrid {
   display: grid;
-  gap: var(--ai-spacing-2);
+  gap: var(--spacing);
   border-radius: 16px;
   overflow: hidden;
   position: relative;
@@ -127,7 +127,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--ai-spacing-2);
+  border-radius: var(--spacing);
 }
 
 /* Layout for 2 images */
@@ -183,23 +183,23 @@
 /* Overflow indicator for 5+ images */
 .overflowIndicator {
   position: absolute;
-  bottom: var(--ai-spacing-2);
-  right: var(--ai-spacing-2);
+  bottom: var(--spacing);
+  right: var(--spacing);
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: var(--ai-spacing-1) var(--ai-spacing-2);
-  border-radius: var(--ai-spacing-1);
-  font-size: var(--ai-font-size-body-small);
-  font-weight: var(--ai-font-weight-semibold);
+  padding: calc(var(--spacing) * 0.5) var(--spacing);
+  border-radius: calc(var(--spacing) * 0.5);
+  font-size: var(--font-text-sm-size);
+  font-weight: var(--font-weight-semibold);
   pointer-events: none;
 }
 
 /* Content Section - Groups all content: title, metadata, description */
 .contentSection {
-  padding: 0 var(--ai-spacing-4); /* 0 vertical, 8px horizontal */
+  padding: 0 calc(var(--spacing) * 2); /* 0 vertical, 8px horizontal */
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-4); /* 8px between elements inside content */
+  gap: calc(var(--spacing) * 2); /* 8px between elements inside content */
 }
 
 /* Flat variant - Remove horizontal padding for edge-to-edge layout */
@@ -212,7 +212,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--ai-spacing-8); /* Gap between title group and badge */
+  gap: calc(var(--spacing) * 4); /* Gap between title group and badge */
 }
 
 /* Title Group - Title + subtitle with tighter spacing */
@@ -221,15 +221,15 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-1); /* 4px between title and subtitle */
+  gap: calc(var(--spacing) * 0.5); /* 4px between title and subtitle */
 }
 
 .title {
-  font-size: var(--ai-font-size-h3);
-  line-height: var(--ai-line-height-h3);
-  font-weight: var(--ai-font-weight-h3);
-  letter-spacing: var(--ai-letter-spacing-h3);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-heading-sm-size);
+  line-height: var(--font-heading-sm-line-height);
+  font-weight: var(--font-heading-sm-weight);
+  letter-spacing: var(--font-heading-sm-tracking);
+  color: var(--color-text);
   margin: 0;
 
   /* Truncate to single line with ellipsis */
@@ -239,11 +239,11 @@
 }
 
 .subtitle {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text);
   margin: 0;
 
   /* Truncate to single line with ellipsis */
@@ -258,11 +258,11 @@
 
 /* Description Section */
 .description {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small); /* Now 20px from token update */
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height); /* Now 20px from token update */
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text-secondary);
   margin: 0; /* Remove default browser margin */
 
   /* Clamp to configurable number of lines with ellipsis */
@@ -280,31 +280,31 @@
   align-items: stretch;
   /* Match description height exactly - include marginTop spacing (2px between lines) */
   height: calc(
-    var(--ai-line-height-body-small) * var(--description-lines, 2) + 2px *
+    var(--font-text-sm-line-height) * var(--description-lines, 2) + 2px *
       (var(--description-lines, 2) - 1)
   );
 }
 
 /* Compact size uses caption line-height - match description's actual rendered height (slightly shorter due to webkit-line-clamp) */
 .summaryCard[data-size='compact'] .descriptionSkeleton {
-  height: calc(var(--ai-line-height-caption) * var(--description-lines, 2) - 2px);
+  height: calc(var(--font-text-xs-line-height) * var(--description-lines, 2) - 2px);
   gap: 0; /* No gap - line-height handles spacing in description */
 }
 
 /* Metadata Section */
 .metadata {
-  font-size: var(--ai-font-size-body-small);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-sm-size);
+  color: var(--color-text-secondary);
   display: flex;
-  gap: var(--ai-spacing-4);
+  gap: calc(var(--spacing) * 2);
 }
 
 .metadataItem {
   display: flex;
   align-items: center;
   gap: 6px;
-  height: var(--ai-line-height-body-small); /* 20px - matches skeleton height exactly */
-  line-height: var(--ai-line-height-body-small); /* Prevent line-height from affecting height */
+  height: var(--font-text-sm-line-height); /* 20px - matches skeleton height exactly */
+  line-height: var(--font-text-sm-line-height); /* Prevent line-height from affecting height */
   box-sizing: border-box; /* Ensure consistent box model */
 }
 
@@ -312,17 +312,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--ai-color-text-secondary);
+  color: var(--color-text-secondary);
 }
 
 .metadataSeparator {
-  color: var(--ai-color-text-secondary);
-  margin: 0 var(--ai-spacing-1);
+  color: var(--color-text-secondary);
+  margin: 0 calc(var(--spacing) * 0.5);
 }
 
 /* Button Section */
 .buttonSection {
-  padding: 0 var(--ai-spacing-2); /* 0 vertical, 4px horizontal - creates 12px total with card padding */
+  padding: 0 var(--spacing); /* 0 vertical, 4px horizontal - creates 12px total with card padding */
 }
 
 /* Flat variant - Remove horizontal padding for edge-to-edge layout */
@@ -360,7 +360,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--ai-spacing-8); /* 16px gap between major sections - same as card */
+  gap: calc(var(--spacing) * 4); /* 16px gap between major sections - same as card */
   animation: fadeInSkeleton 500ms ease-out forwards;
   animation-delay: 100ms; /* Prevents flash on fast loads */
 }
@@ -409,23 +409,23 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--ai-spacing-16) var(--ai-spacing-8);
+  padding: calc(var(--spacing) * 8) calc(var(--spacing) * 4);
   min-height: 200px;
 }
 
 .emptyTitle {
-  font-size: var(--ai-font-size-body);
-  line-height: var(--ai-line-height-body);
-  font-weight: var(--ai-font-weight-semibold);
-  color: var(--ai-color-text-primary);
-  margin: 0 0 var(--ai-spacing-2) 0;
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--spacing) 0;
 }
 
 .emptyMessage {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  color: var(--ai-color-text-secondary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  color: var(--color-text-secondary);
   margin: 0;
   max-width: 300px;
 }

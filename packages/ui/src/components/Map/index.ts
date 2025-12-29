@@ -36,6 +36,6 @@ export type {
   Feature,
   Action,
   ListItem,
-  GenericList,
+  MapInspectorList,
   RenderMarkerParams,
 } from './types';

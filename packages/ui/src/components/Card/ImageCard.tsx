@@ -1,143 +1,198 @@
 import React, { useState } from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import { Card, type CardProps } from './Card';
-import { Button } from '../Button';
-import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
-import { Badge, type BadgeProps } from '../Badge';
-import { Chip, type ChipProps } from '../Chip';
-import type { IconName } from '../../tokens/icons';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { Badge, type BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
+import { ImageSkeleton } from '../Skeleton';
 import styles from './ImageCard.module.css';
 
 export interface ImageCardProps extends Omit<CardProps, 'children'> {
   /**
-   * Image source URL or object with src and alt
+   * Image source. Accepts a URL string or an object with src and alt properties.
+   * When using a string, the alt text defaults to the title prop if provided.
    */
   image: string | { src: string; alt: string };
 
   /**
-   * Image positioning
+   * Positioning of the background image within the card.
+   * Useful when the image aspect ratio differs from the card.
+   * - Vertical: 'center', 'top', 'bottom'
+   * - Horizontal: 'left', 'right'
    * @default 'center'
    */
-  imagePosition?: 'center' | 'top' | 'bottom';
+  imagePosition?: 'center' | 'top' | 'bottom' | 'left' | 'right';
 
   /**
-   * Card title (optional - only renders if provided)
+   * Card title displayed in the overlay. Only renders when provided.
    */
   title?: string;
 
   /**
-   * Card subtitle (optional - only renders if provided)
+   * Card subtitle displayed below the title. Only renders when provided.
    */
   subtitle?: string;
 
   /**
-   * Action button icon (optional - only renders if provided)
+   * Icon element for the action button. Only renders when provided.
+   * Pass a React element, e.g., `<PlusCircle />` from apps-sdk-ui.
    */
-  actionIcon?: IconName;
+  actionIcon?: React.ReactNode;
 
   /**
-   * Accessibility label for action button
-   * REQUIRED when actionIcon is provided for proper accessibility
+   * Accessibility label for the action button.
+   * Required when actionIcon is provided for screen reader support.
    */
   actionLabel?: string;
 
   /**
-   * Action button click handler
+   * Callback fired when the action button is clicked.
+   * The event is stopped from propagating to the card's onClick handler.
    */
   onAction?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 
   /**
-   * Size variant for the card.
+   * Size variant affecting padding and text sizes.
+   * - 'default': Standard padding and text sizes
+   * - 'compact': Reduced padding for denser layouts
    * @default 'default'
    */
   size?: 'default' | 'compact';
 
   /**
-   * Custom minimum height for the card. Accepts number (px) or CSS length.
+   * Minimum height for the card. Accepts a number (pixels) or CSS length value.
    */
   minHeight?: number | string;
 
   /**
-   * Custom aspect ratio for the card (e.g. '16 / 9').
+   * CSS aspect ratio for the card (e.g., '16 / 9', '1 / 1').
+   * When set, the card maintains this ratio regardless of content.
    */
   aspectRatio?: string;
 
-  // Phase 1: Core Improvements
+  // State Management
   /**
-   * Loading state - shows skeleton UI
+   * When true, displays a skeleton loading state with animated placeholders.
    * @default false
    */
   loading?: boolean;
 
   /**
-   * Error state - shows error message
+   * When true, displays an error alert instead of the image content.
    * @default false
    */
   error?: boolean;
 
   /**
-   * Custom error title
+   * Title text shown in the error alert.
    * @default 'Failed to load'
    */
   errorTitle?: string;
 
   /**
-   * Custom error message
+   * Description text shown in the error alert.
    */
   errorMessage?: string;
 
   /**
-   * Error retry handler - shows retry button when provided
+   * Callback for the retry button in the error state.
+   * When provided, displays a retry button in the error alert.
    */
   onErrorRetry?: () => void;
 
   /**
-   * Badge content (text or number).
-   * - For short content (≤4 chars): Badge component is used (e.g., "New", "5", "✓")
-   * - For longer content (>4 chars): Chip component is used (e.g., "Featured", "On Sale")
+   * Title text shown when the image source is empty.
+   * @default 'No image'
+   */
+  emptyTitle?: string;
+
+  /**
+   * Description text shown in the empty state.
+   */
+  emptyMessage?: string;
+
+  // Badge Support
+  /**
+   * Badge content displayed on the card. Accepts text or numbers.
+   * Common uses: "New", "Sale", count indicators.
    */
   badge?: string | number;
 
   /**
-   * Badge position
+   * Position of the badge on the card.
    * @default 'top-right'
    */
   badgePosition?: 'top-left' | 'top-right';
 
   /**
-   * Badge/Chip variant (inherits from Badge/Chip components)
-   * @default 'default'
+   * Visual style variant for the badge.
+   * - 'solid': Filled background with high contrast (recommended for images)
+   * - 'soft': Subtle tinted background
+   * - 'outline': Border only with transparent background
+   * @default 'solid'
    */
-  badgeVariant?: BadgeProps['variant'] | ChipProps['variant'];
+  badgeVariant?: BadgeProps['variant'];
 
   /**
-   * Number of lines for title (1-3)
+   * Size of the badge. Heights: sm=18px, md=22px, lg=24px.
+   * Auto-sizes to 'md' for badges longer than 4 characters.
+   * @default 'sm'
+   */
+  badgeSize?: BadgeProps['size'];
+
+  /**
+   * When true, renders the badge with fully rounded (pill) corners.
+   * Recommended for numeric badges.
+   * @default true
+   */
+  badgePill?: boolean;
+
+  /**
+   * Semantic color for the badge.
+   * - 'secondary': Neutral gray
+   * - 'success': Green for positive states
+   * - 'danger': Red for errors/warnings
+   * - 'warning': Orange for caution
+   * - 'info': Blue for informational
+   * - 'discovery': Purple for new/featured
+   * @default 'secondary'
+   */
+  badgeColor?: BadgeProps['color'];
+
+  // Text Display
+  /**
+   * Maximum number of lines for the title before truncation with ellipsis.
    * @default 1
    */
   titleLines?: 1 | 2 | 3;
 
   /**
-   * Number of lines for subtitle (1-3)
+   * Maximum number of lines for the subtitle before truncation with ellipsis.
    * @default 1
    */
   subtitleLines?: 1 | 2 | 3;
 
+  // Image Callbacks
   /**
-   * Callback when image loads successfully
+   * Callback fired when the image successfully loads.
+   * Useful for tracking load performance or triggering animations.
    */
   onImageLoad?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
 
   /**
-   * Callback when image fails to load
+   * Callback fired when the image fails to load.
+   * Useful for fallback handling or error tracking.
    */
   onImageError?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
 
   /**
-   * Enable native lazy loading
-   * @default true
+   * Native browser loading behavior for the image.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  lazy?: boolean;
+  imageLoading?: 'lazy' | 'eager';
 }
 
 /**
@@ -156,25 +211,19 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
  *
  * @example
  * ```tsx
- * // Full featured with short badge
+ * import { PlusCircle } from '@openai/apps-sdk-ui/components/Icon';
+ *
+ * // Full featured with badge
  * <ImageCard
  *   image="https://example.com/pizza.jpg"
  *   title="Margherita Pizza"
  *   subtitle="Classic Italian"
- *   actionIcon="plus-circle-add"
+ *   actionIcon={<PlusCircle />}
  *   onAction={() => console.log('Added')}
  *   actionLabel="Add to cart"
  *   badge="New"
- *   badgeVariant="filled"
+ *   badgeVariant="solid"
  *   interactive
- * />
- *
- * // With longer badge text (automatically uses Chip)
- * <ImageCard
- *   image="https://example.com/pizza.jpg"
- *   title="Margherita Pizza"
- *   badge="Featured"
- *   badgeVariant="neutral"
  * />
  *
  * // With loading state
@@ -211,20 +260,25 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     errorTitle = 'Failed to load',
     errorMessage,
     onErrorRetry,
+    emptyTitle = 'No image',
+    emptyMessage,
     badge,
     badgePosition = 'top-right',
-    badgeVariant = 'default',
+    badgeVariant = 'solid',
+    badgeSize,
+    badgePill = true,
+    badgeColor = 'secondary',
     titleLines = 1,
     subtitleLines = 1,
     onImageLoad,
     onImageError,
-    lazy = true,
+    imageLoading = 'lazy',
     className,
     style,
     ...cardProps
   } = props;
 
-  const [imageLoadState, setImageLoadState] = useState<'loading' | 'loaded' | 'error'>('loaded');
+  const [imageLoadState, setImageLoadState] = useState<'loading' | 'loaded' | 'error'>('loading');
   const [internalError, setInternalError] = useState(false);
 
   const imageSrc = typeof image === 'string' ? image : image.src;
@@ -233,9 +287,15 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
   const hasContent = !!(title || subtitle);
   const hasAction = !!actionIcon;
   const hasBadge = badge !== undefined && badge !== null && badge !== '';
+  const isEmpty = !imageSrc;
   const isLoading = loading || imageLoadState === 'loading';
   // Show error state when error prop is true, regardless of loading state
   const hasError = error || internalError || imageLoadState === 'error';
+
+  // State Priority: Loading > Error > Empty > Content
+  const showLoading = loading || (!isEmpty && !error && isLoading && !hasError);
+  const showError = !loading && error;
+  const showEmpty = !loading && !error && isEmpty;
 
   // Development mode validation
   if (process.env.NODE_ENV !== 'production') {
@@ -269,6 +329,8 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     center: styles.imagePositionCenter,
     top: styles.imagePositionTop,
     bottom: styles.imagePositionBottom,
+    left: styles.imagePositionLeft,
+    right: styles.imagePositionRight,
   }[imagePosition];
 
   const normalizedMinHeight = typeof minHeight === 'number' ? `${minHeight}px` : minHeight;
@@ -283,96 +345,117 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>((props
     <Card
       ref={ref}
       padding={0}
-      className={cn(styles.imageCard, size === 'compact' && styles.imageCardCompact, className)}
+      className={clsx(styles.imageCard, size === 'compact' && styles.imageCardCompact, className)}
       style={inlineStyle}
       {...cardProps}
     >
-      {/* Native Image Element - Always render but may be hidden */}
-      <img
-        src={imageSrc}
-        alt={imageAlt}
-        loading={lazy ? 'lazy' : undefined}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
-        className={cn(
-          styles.imageElement,
-          positionClass,
-          (isLoading || hasError) && styles.imageHidden
-        )}
-        aria-label={imageAlt}
-      />
+      {/* Native Image Element - Only render if there's an image source */}
+      {!isEmpty && (
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          loading={imageLoading}
+          onLoad={handleImageLoad}
+          onError={handleImageError}
+          className={clsx(
+            styles.imageElement,
+            positionClass,
+            (isLoading || hasError) && styles.imageHidden
+          )}
+        />
+      )}
 
       {/* Loading State Overlay */}
-      {/* Show skeleton when loading prop is explicitly true (takes precedence over image error),
-          or when naturally loading without errors (and loading prop is not explicitly set) */}
-      {((loading && !error) || (!loading && isLoading && !hasError)) && (
+      {showLoading && (
         <div className={styles.loadingContainer} role="status" aria-live="polite">
-          <Skeleton width="100%" height="100%" animation />
+          <ImageSkeleton width="100%" height="100%" iconSize={48} />
           <span className={styles.visuallyHidden}>Loading image: {title || 'content'}</span>
         </div>
       )}
 
+      {/* Empty State */}
+      {showEmpty && (
+        <div className={styles.emptyContainer} data-testid="image-card-empty">
+          <EmptyMessage fill="none">
+            <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+            {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+          </EmptyMessage>
+        </div>
+      )}
+
       {/* Error State Overlay */}
-      {/* Show error when there's an error and not in explicit loading state (loading prop takes precedence) */}
-      {hasError && !loading && (
+      {showError && (
         <div className={styles.errorContainer}>
           <Alert
-            layout="card"
+            color="danger"
+            variant="soft"
             title={errorTitle}
-            message={errorMessage}
-            onAction={onErrorRetry}
+            description={errorMessage}
+            actions={
+              onErrorRetry ? (
+                <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                  Retry
+                </Button>
+              ) : undefined
+            }
             data-testid="image-card-error"
           />
         </div>
       )}
 
-      {/* Content only visible when image loaded successfully */}
-      {!isLoading && !hasError && (
+      {/* Content only visible when image loaded successfully (not loading, error, or empty) */}
+      {!isLoading && !hasError && !isEmpty && (
         <>
           {/* Gradient Overlay for text readability */}
           {(hasContent || hasAction) && <div className={styles.gradientOverlay} />}
 
-          {/* Badge/Chip - Uses Chip for longer text, Badge for short content */}
+          {/* Badge */}
           {hasBadge && (
             <div
-              className={cn(
+              className={clsx(
                 styles.badge,
                 badgePosition === 'top-left' ? styles.badgeTopLeft : styles.badgeTopRight
               )}
             >
-              {String(badge).length > 4 ? (
-                <Chip variant={badgeVariant as ChipProps['variant']} size="sm">
-                  {badge}
-                </Chip>
-              ) : (
-                <Badge variant={badgeVariant as BadgeProps['variant']}>{badge}</Badge>
-              )}
+              <Badge
+                variant={badgeVariant}
+                size={badgeSize ?? (String(badge).length > 4 ? 'md' : 'sm')}
+                pill={badgePill}
+                color={badgeColor}
+              >
+                {badge}
+              </Badge>
             </div>
           )}
 
           {/* Text Content Overlay */}
           {hasContent && (
-            <div className={cn(styles.content, !hasAction && styles.contentNoAction)}>
+            <div className={clsx(styles.content, !hasAction && styles.contentNoAction)}>
               {title && (
-                <h3 className={cn(styles.title, styles[`titleLines${titleLines}`])}>{title}</h3>
+                <h3 className={clsx(styles.title, styles[`titleLines${titleLines}`])}>{title}</h3>
               )}
               {subtitle && (
-                <p className={cn(styles.subtitle, styles[`subtitleLines${subtitleLines}`])}>
+                <p className={clsx(styles.subtitle, styles[`subtitleLines${subtitleLines}`])}>
                   {subtitle}
                 </p>
               )}
             </div>
           )}
 
-          {/* Action Button */}
+          {/* Action Button - Circular dark background for WCAG contrast */}
           {hasAction && actionLabel && (
-            <Button
-              variant="tertiary"
-              iconOnly={actionIcon}
-              aria-label={`${actionLabel}${title ? ` for ${title}` : ''}`}
-              onClick={onAction}
-              className={styles.actionButton}
-            />
+            <div className={styles.actionButton}>
+              <Button
+                color="secondary"
+                variant="ghost"
+                uniform
+                size="sm"
+                aria-label={`${actionLabel}${title ? ` for ${title}` : ''}`}
+                onClick={onAction}
+              >
+                {actionIcon}
+              </Button>
+            </div>
           )}
         </>
       )}

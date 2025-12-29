@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Carousel as CarouselComponent } from '../../components/Carousel';
 import { SummaryCard } from '../../components/Card';
 import { PropsTable } from '../../tokens/PropsTable';
-import { codeBlockStyles } from '../../components/storybook/codeBlockStyles';
+import { CodeBlock } from '@openai/apps-sdk-ui/components/CodeBlock';
 
 // Dummy component for Storybook
 const CarouselExample = () => null;
@@ -79,13 +79,13 @@ const pizzaRestaurants = [
 // Single comprehensive story
 export const Carousel: Story = {
   render: () => {
-
     return (
       <div
         style={{
           maxWidth: '768px',
           margin: '0 auto',
-          fontFamily: 'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
+          fontFamily:
+            'var(--ai-font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif)',
         }}
       >
         {/* Header Section */}
@@ -95,7 +95,7 @@ export const Carousel: Story = {
               fontSize: '32px',
               fontWeight: '700',
               marginBottom: '12px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             🎠 Carousel - Restaurant Showcase
@@ -103,13 +103,13 @@ export const Carousel: Story = {
           <p
             style={{
               fontSize: '16px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               margin: 0,
               lineHeight: '1.6',
             }}
           >
-            A horizontal scrolling carousel showcasing rich card content. Perfect for restaurant listings, product
-            catalogs, or content discovery experiences in your ChatGPT App.
+            A horizontal scrolling carousel showcasing rich card content. Perfect for restaurant
+            listings, product catalogs, or content discovery experiences in your ChatGPT App.
           </p>
         </section>
 
@@ -120,7 +120,7 @@ export const Carousel: Story = {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Live Demo
@@ -138,7 +138,7 @@ export const Carousel: Story = {
                   badge={restaurant.badge}
                   size="compact"
                   imageAspectRatio="4/3"
-                  metadata={restaurant.features.map(f => ({ label: f, separator: '•' }))}
+                  metadata={restaurant.features.map((f) => ({ label: f, separator: '•' }))}
                   description={restaurant.description}
                   buttonText="Order now"
                   onButtonClick={() => alert(`Order from ${restaurant.title}`)}
@@ -150,14 +150,14 @@ export const Carousel: Story = {
           <div
             style={{
               padding: '16px',
-              background: 'var(--ai-color-bg-secondary)',
+              background: 'var(--color-surface-secondary)',
               borderRadius: '8px',
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
-              border: '1px solid var(--ai-color-border)',
+              color: 'var(--color-text-secondary)',
+              border: '1px solid var(--color-border)',
             }}
           >
-            <strong style={{ color: 'var(--ai-color-text-primary)' }}>✨ Features:</strong>
+            <strong style={{ color: 'var(--color-text)' }}>✨ Features:</strong>
             <ul
               style={{
                 margin: '8px 0 0 0',
@@ -181,7 +181,7 @@ export const Carousel: Story = {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Data Structure
@@ -190,24 +190,16 @@ export const Carousel: Story = {
           <p
             style={{
               fontSize: '14px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
               marginBottom: '16px',
               lineHeight: '1.6',
             }}
           >
-            Define your carousel items with rich content including images, descriptions, and metadata.
+            Define your carousel items with rich content including images, descriptions, and
+            metadata.
           </p>
 
-          <div style={codeBlockStyles.primary}>
-            <pre
-              style={{
-                margin: 0,
-                color: 'var(--ai-color-text-primary)',
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-              }}
-            >
-{`type FeatureItem = string | { icon?: IconName; label: string };
+          <CodeBlock language="typescript">{`type FeatureItem = string | { icon?: IconName; label: string };
 
 interface SummaryCardItem {
   id: string;
@@ -237,25 +229,23 @@ const items: SummaryCardItem[] = [
     ],
   },
   // ... more items
-];`}
-            </pre>
-          </div>
+];`}</CodeBlock>
 
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
               fontSize: '13px',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <p style={{ margin: '0 0 12px 0' }}>
-              <strong style={{ color: 'var(--ai-color-text-primary)' }}>💡 Pro Tip:</strong> Use the{' '}
+              <strong style={{ color: 'var(--color-text)' }}>💡 Pro Tip:</strong> Use the{' '}
               <code
                 style={{
-                  background: 'var(--ai-color-bg-primary)',
+                  background: 'var(--color-surface)',
                   padding: '2px 6px',
                   borderRadius: '4px',
                   fontFamily: 'monospace',
@@ -263,8 +253,9 @@ const items: SummaryCardItem[] = [
               >
                 badgeIcon
               </code>{' '}
-              prop to display icons alongside ratings (e.g., star-filled, verified). SummaryCard with size="compact" is optimized
-              for discovery/carousel layouts with 4:3 images and dense typography.
+              prop to display icons alongside ratings (e.g., star-filled, verified). SummaryCard
+              with size="compact" is optimized for discovery/carousel layouts with 4:3 images and
+              dense typography.
             </p>
           </div>
         </section>
@@ -276,22 +267,13 @@ const items: SummaryCardItem[] = [
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Quick Start
           </h2>
 
-          <div style={codeBlockStyles.primary}>
-            <pre
-              style={{
-                margin: 0,
-                color: 'var(--ai-color-text-primary)',
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-              }}
-            >
-{`import { Carousel } from '@ainativekit/ui';
+          <CodeBlock language="tsx">{`import { Carousel } from '@ainativekit/ui';
 import { SummaryCard } from '@ainativekit/ui';
 
 // 1. Define your carousel items with flexible features
@@ -327,7 +309,7 @@ const items = [
 // 2. Render the carousel with SummaryCard (compact)
 function MyCarousel() {
   return (
-    <CarouselComponent>
+    <Carousel>
       {items.map((item) => (
         <SummaryCard
           key={item.id}
@@ -344,11 +326,9 @@ function MyCarousel() {
           onButtonClick={() => handleOrder(item.id)}
         />
       ))}
-    </CarouselComponent>
+    </Carousel>
   );
-}`}
-            </pre>
-          </div>
+}`}</CodeBlock>
         </section>
 
         {/* Component Props Section */}
@@ -358,7 +338,7 @@ function MyCarousel() {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Component Props
@@ -370,7 +350,7 @@ function MyCarousel() {
                 fontSize: '16px',
                 fontWeight: '600',
                 marginBottom: '16px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               Carousel Component
@@ -401,7 +381,7 @@ function MyCarousel() {
                 fontSize: '16px',
                 fontWeight: '600',
                 marginBottom: '16px',
-                color: 'var(--ai-color-text-primary)',
+                color: 'var(--color-text)',
               }}
             >
               SummaryCard Component (Card Content)
@@ -436,7 +416,8 @@ function MyCarousel() {
                 },
                 {
                   name: 'features',
-                  description: 'Array of feature items (strings or {icon, label} objects with dot separator)',
+                  description:
+                    'Array of feature items (strings or {icon, label} objects with dot separator)',
                 },
                 {
                   name: 'description',
@@ -466,7 +447,7 @@ function MyCarousel() {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '24px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Use Cases
@@ -504,8 +485,8 @@ function MyCarousel() {
               <div
                 key={useCase.title}
                 style={{
-                  background: 'var(--ai-color-bg-secondary)',
-                  border: '1px solid var(--ai-color-border)',
+                  background: 'var(--color-surface-secondary)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '8px',
                   padding: '16px',
                 }}
@@ -516,7 +497,7 @@ function MyCarousel() {
                     margin: '0 0 8px 0',
                     fontSize: '14px',
                     fontWeight: '600',
-                    color: 'var(--ai-color-text-primary)',
+                    color: 'var(--color-text)',
                   }}
                 >
                   {useCase.title}
@@ -525,7 +506,7 @@ function MyCarousel() {
                   style={{
                     margin: 0,
                     fontSize: '13px',
-                    color: 'var(--ai-color-text-secondary)',
+                    color: 'var(--color-text-secondary)',
                     lineHeight: '1.5',
                   }}
                 >
@@ -543,7 +524,7 @@ function MyCarousel() {
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '16px',
-              color: 'var(--ai-color-text-primary)',
+              color: 'var(--color-text)',
             }}
           >
             Related Components
@@ -551,24 +532,27 @@ function MyCarousel() {
 
           <div
             style={{
-              background: 'var(--ai-color-bg-secondary)',
-              border: '1px solid var(--ai-color-border)',
+              background: 'var(--color-surface-secondary)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
               padding: '16px',
               fontSize: '14px',
               lineHeight: '1.6',
-              color: 'var(--ai-color-text-secondary)',
+              color: 'var(--color-text-secondary)',
             }}
           >
             <p style={{ margin: '0 0 12px 0' }}>
-              This carousel gallery uses <strong>SummaryCard (compact)</strong>, which pairs well with:
+              This carousel gallery uses <strong>SummaryCard (compact)</strong>, which pairs well
+              with:
             </p>
             <ul style={{ margin: 0, paddingLeft: '20px' }}>
               <li>
-                <strong>SummaryCard (size="compact")</strong> - Optimized for discovery/carousel layouts with 4:3 images and dense typography
+                <strong>SummaryCard (size="compact")</strong> - Optimized for discovery/carousel
+                layouts with 4:3 images and dense typography
               </li>
               <li>
-                <strong>SummaryCard (default)</strong> - General-purpose cards with flexible image layouts (1 or multiple images)
+                <strong>SummaryCard (default)</strong> - General-purpose cards with flexible image
+                layouts (1 or multiple images)
               </li>
               <li>
                 <strong>ImageCard</strong> - Image-focused cards with minimal text overlay

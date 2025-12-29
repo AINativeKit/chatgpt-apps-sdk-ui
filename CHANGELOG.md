@@ -7,6 +7,88 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-12-28
+
+### Breaking Changes
+
+- **Architecture Shift**: @ainativekit/ui is now an extension layer built on @openai/apps-sdk-ui
+  - Added `@openai/apps-sdk-ui@^0.2.0` as peer dependency
+  - Must import base CSS: `import '@openai/apps-sdk-ui/css'` before `import '@ainativekit/ui/styles'`
+
+- **Removed Primitives** (use @openai/apps-sdk-ui instead):
+  - `Button` → `import { Button } from '@openai/apps-sdk-ui/components/Button'`
+  - `Badge` → `import { Badge } from '@openai/apps-sdk-ui/components/Badge'`
+  - `Alert` → `import { Alert } from '@openai/apps-sdk-ui/components/Alert'`
+  - `Icon` → `import { StarFilled } from '@openai/apps-sdk-ui/components/Icon'`
+  - `Chip` → `import { Chip } from '@openai/apps-sdk-ui/components/Chip'`
+  - `Avatar` → `import { Avatar } from '@openai/apps-sdk-ui/components/Avatar'`
+
+- **Removed Hook**: `useBreakpoint` → `import { useBreakpoint } from '@openai/apps-sdk-ui'`
+
+### Added
+
+- **New Components**:
+  - `Modal`: Centered overlay dialog with customizable content
+  - `Sidebar`: Animated slide-in panel (left/right positioning)
+  - `AvatarList`: Reusable list with avatar, title, metadata, and description
+
+- **Comprehensive MDX Documentation**:
+  - All components now have dedicated .mdx documentation files
+  - Interactive examples with code snippets
+  - Props tables with type hints
+
+- **Gallery Stories**:
+  - Production-ready pattern examples (Cards, Carousel, List, Albums, Maps)
+  - CodeBlock integration for syntax-highlighted code examples
+
+- **Design Tokens Page**: Documents base tokens from apps-sdk-ui + component-specific tokens
+
+### Changed
+
+- **Storybook Organization**: Reorganized into categories
+  - Cards: Card, SummaryCard, ImageCard, ListCard
+  - Media: Album, AlbumCard, Carousel, PhotoCarousel
+  - Maps: CompactMap, FullscreenMap, MapPlaceCard, TileProviders, CustomMarkers
+  - Layout: Modal, Sidebar, Skeleton, Overlay
+  - Utilities: ExpandableText, Features, AvatarList, List
+  - Hooks: OpenAI Integration (useTheme, useDisplayMode, useWidgetState)
+  - Gallery: Interactive showcases
+
+- **All Components**: Updated to use apps-sdk-ui primitives (Button, Badge, Icon, Avatar)
+
+- **Documentation**:
+  - README updated to "🧩 AINativeKit UI - ChatGPT Apps SDK Extension"
+  - Positions library as 100% compatible extension layer
+  - Accurate feature descriptions (no false claims about icons)
+
+### Migration Guide
+
+1. Install peer dependency:
+   ```bash
+   npm install @openai/apps-sdk-ui
+   ```
+
+2. Update CSS imports:
+   ```tsx
+   // Before
+   import '@ainativekit/ui/styles';
+
+   // After
+   import '@openai/apps-sdk-ui/css';
+   import '@ainativekit/ui/styles';
+   ```
+
+3. Update primitive imports:
+   ```tsx
+   // Before
+   import { Button, Badge, Icon } from '@ainativekit/ui';
+
+   // After
+   import { Button } from '@openai/apps-sdk-ui/components/Button';
+   import { Badge } from '@openai/apps-sdk-ui/components/Badge';
+   import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
+   ```
+
 ## [0.17.0] - 2025-11-26
 
 ### Fixed
@@ -440,6 +522,7 @@ This library follows [Semantic Versioning](https://semver.org/):
 
 ---
 
+[1.0.0]: https://github.com/AINativeKit/chatgpt-apps-sdk-ui/releases/tag/v1.0.0
 [0.17.0]: https://github.com/AINativeKit/chatgpt-apps-sdk-ui/releases/tag/v0.17.0
 [0.16.0]: https://github.com/AINativeKit/chatgpt-apps-sdk-ui/releases/tag/v0.16.0
 [0.15.0]: https://github.com/AINativeKit/chatgpt-apps-sdk-ui/releases/tag/v0.15.0

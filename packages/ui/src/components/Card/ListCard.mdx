@@ -1,0 +1,69 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as ListCardStories from './ListCard.stories'
+
+<Meta of={ListCardStories} />
+
+<Title>ListCard</Title>
+<Subtitle>Card displaying lists of items with optional header, top image, and action buttons</Subtitle>
+
+## Usage
+
+```tsx
+import { ListCard } from "@ainativekit/ui";
+```
+
+<Canvas of={ListCardStories.Base} />
+
+## Reference
+
+<ArgTypes of={ListCardStories.Base} />
+
+## Examples
+
+### With top image
+
+Display a prominent image at the top of the card.
+
+<Canvas of={ListCardStories.WithTopImage} />
+
+### Header variations
+
+Add a header with title and optional action button.
+
+<Canvas of={ListCardStories.HeaderVariations} />
+
+### List items
+
+Items can have images, titles, subtitles, descriptions, and action buttons.
+
+<Canvas of={ListCardStories.ItemVariations} />
+
+### Action button
+
+Add a primary action button at the bottom of the card.
+
+<Canvas of={ListCardStories.WithActionButton} />
+
+### Loading
+
+Show skeleton placeholders while data is loading with `loading={true}`.
+
+<Canvas of={ListCardStories.Loading} />
+
+### Error
+
+Display an error message when content fails to load with `error={true}`. Add retry functionality with `onErrorRetry`.
+
+<Canvas of={ListCardStories.Error} />
+
+### Empty
+
+Show an empty state when there are no items. Customize with `emptyTitle`, `emptyMessage`, and `emptyIcon`.
+
+<Canvas of={ListCardStories.Empty} />
+
+### Real-world example
+
+Complete examples showing ListCard in typical use cases.
+
+<Canvas of={ListCardStories.RealWorld} />

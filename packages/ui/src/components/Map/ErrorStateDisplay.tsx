@@ -4,8 +4,10 @@
  */
 
 import React from 'react';
-import { Alert } from '../Alert';
-import type { AlertLayout, AlertVariant } from '../Alert';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
+import { Maps } from '@openai/apps-sdk-ui/components/Icon';
 
 export interface ErrorStateDisplayProps {
   /**
@@ -34,18 +36,6 @@ export interface ErrorStateDisplayProps {
   actionLabel?: string;
 
   /**
-   * Whether to hide the icon
-   * @default true
-   */
-  hideIcon?: boolean;
-
-  /**
-   * Alert layout variant
-   * @default 'card'
-   */
-  layout?: AlertLayout;
-
-  /**
    * Additional className
    */
   className?: string;
@@ -66,26 +56,47 @@ export const ErrorStateDisplay: React.FC<ErrorStateDisplayProps> = ({
   message,
   onAction,
   actionLabel,
-  hideIcon = true,
-  layout = 'card',
   className,
   containerClassName,
 }) => {
-  const variant: AlertVariant = state === 'error' ? 'error' : 'info';
-  const defaultActionLabel = state === 'error' ? 'Try again' : undefined;
+  // Error state uses Alert
+  if (state === 'error') {
+    const buttonLabel = actionLabel ?? 'Try again';
 
+    return (
+      <div className={containerClassName}>
+        <Alert
+          color="danger"
+          variant="soft"
+          title={title}
+          description={message}
+          actions={
+            onAction ? (
+              <Button color="primary" size="sm" variant="ghost" onClick={onAction}>
+                {buttonLabel}
+              </Button>
+            ) : undefined
+          }
+          className={className}
+        />
+      </div>
+    );
+  }
+
+  // Empty state uses EmptyMessage
   return (
     <div className={containerClassName}>
-      <Alert
-        variant={variant}
-        hideIcon={hideIcon}
-        layout={layout}
-        title={title}
-        message={message}
-        onAction={onAction}
-        actionLabel={actionLabel ?? defaultActionLabel}
-        className={className}
-      />
+      <EmptyMessage fill="none" className={className}>
+        <EmptyMessage.Icon>
+          <Maps />
+        </EmptyMessage.Icon>
+        <EmptyMessage.Title>{title}</EmptyMessage.Title>
+        {message && (
+          <EmptyMessage.Description>
+            <span style={{ whiteSpace: 'nowrap' }}>{message}</span>
+          </EmptyMessage.Description>
+        )}
+      </EmptyMessage>
     </div>
   );
 };

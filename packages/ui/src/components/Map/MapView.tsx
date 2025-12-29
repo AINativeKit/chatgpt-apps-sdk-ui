@@ -1,7 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import type { LocationData, RenderMarkerParams } from './types';
 import type { TileProviderConfig, TileProviderPreset } from './tileProviders';
-import { Skeleton } from '../Skeleton';
+import { ImageSkeleton } from '../Skeleton';
+import { Maps } from '@openai/apps-sdk-ui/components/Icon';
 import styles from './Map.module.css';
 
 export interface MapViewProps {
@@ -129,9 +130,9 @@ export interface MapViewProps {
 
   /**
    * Show popup bubbles when markers are clicked.
-   * When false, disables the Leaflet popup that appears on marker click.
-   * Useful when you want to handle marker selection with external UI (e.g., a sidebar).
-   * @default true
+   * When true, enables the Leaflet popup that appears on marker click.
+   * When false (default), popups are disabled for a cleaner map experience.
+   * @default false
    */
   showPopup?: boolean;
 
@@ -139,7 +140,7 @@ export interface MapViewProps {
    * Hide Leaflet attribution control.
    * When true, hides the attribution text in bottom-right corner.
    * Note: Attribution is required by most tile providers' terms of service.
-   * @default true (for backward compatibility, will change to false in future)
+   * @default false
    */
   hideAttribution?: boolean;
 
@@ -202,7 +203,7 @@ const LoadingFallback: React.FC<{ className?: string; style?: React.CSSPropertie
   style,
 }) => (
   <div className={`${styles.mapContainer} ${className || ''}`} style={style}>
-    <Skeleton width="100%" height="100%" />
+    <ImageSkeleton width="100%" height="100%" icon={<Maps />} iconSize={48} borderRadius={0} />
   </div>
 );
 

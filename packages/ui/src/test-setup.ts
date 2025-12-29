@@ -1,9 +1,13 @@
-import '@testing-library/jest-dom';
+import * as matchers from '@testing-library/jest-dom/matchers';
+import { cleanup } from '@testing-library/react';
+import { afterEach, expect } from 'vitest';
 
-// React 19 Testing Setup
-// Disable the deprecated ReactDOMTestUtils.act warning since we're using React 19
-// where act is properly exported from 'react' directly
-process.env.NODE_ENV = 'test';
+expect.extend(matchers);
+
+// Clean up render after each test
+afterEach(() => {
+  cleanup();
+});
 
 // Mock window.matchMedia for theme detection tests
 Object.defineProperty(window, 'matchMedia', {
@@ -12,8 +16,8 @@ Object.defineProperty(window, 'matchMedia', {
     matches: false,
     media: query,
     onchange: null,
-    addListener: () => {}, // deprecated
-    removeListener: () => {}, // deprecated
+    addListener: () => {},
+    removeListener: () => {},
     addEventListener: () => {},
     removeEventListener: () => {},
     dispatchEvent: () => true,

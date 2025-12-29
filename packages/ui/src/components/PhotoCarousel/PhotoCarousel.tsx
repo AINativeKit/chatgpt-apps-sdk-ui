@@ -1,8 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Overlay } from '../Overlay';
-import { Button } from '../Button';
-import { cn } from '../../utils/cn';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { ChevronLeftMd, ChevronRightMd } from '@openai/apps-sdk-ui/components/Icon';
+import clsx from 'clsx';
 import styles from './PhotoCarousel.module.css';
 
 export interface PhotoCarouselProps {
@@ -113,10 +114,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   // Loading state
   if (loading) {
     return (
-      <div
-        className={cn(styles.photoCarousel, className)}
-        style={{ aspectRatio }}
-      >
+      <div className={clsx(styles.photoCarousel, className)} style={{ aspectRatio }}>
         <div className={styles.loading}>Loading photos...</div>
       </div>
     );
@@ -125,10 +123,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   // Error state
   if (error) {
     return (
-      <div
-        className={cn(styles.photoCarousel, className)}
-        style={{ aspectRatio }}
-      >
+      <div className={clsx(styles.photoCarousel, className)} style={{ aspectRatio }}>
         <div className={styles.error}>Failed to load photos</div>
       </div>
     );
@@ -137,10 +132,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   // Empty state
   if (!images || images.length === 0) {
     return (
-      <div
-        className={cn(styles.photoCarousel, className)}
-        style={{ aspectRatio }}
-      >
+      <div className={clsx(styles.photoCarousel, className)} style={{ aspectRatio }}>
         <div className={styles.empty}>No photos available</div>
       </div>
     );
@@ -150,7 +142,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   const hasNext = selectedIndex < images.length - 1;
 
   return (
-    <div className={cn(styles.photoCarousel, className)} style={{ aspectRatio }}>
+    <div className={clsx(styles.photoCarousel, className)} style={{ aspectRatio }}>
       {/* Embla Carousel */}
       <div className={styles.emblaViewport} ref={emblaRef}>
         <div className={styles.emblaContainer}>
@@ -168,26 +160,34 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
       </div>
 
       {/* Top Overlay (branding, logo, etc.) */}
-      {topOverlay && <div className={styles.overlayContainer}>{topOverlay}</div>}
+      {topOverlay}
 
       {/* Navigation Arrows */}
       {showArrows && images.length > 1 && hasPrev && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="chevron-left-md"
+          uniform
+          size="md"
           onClick={scrollPrev}
           aria-label="Previous photo"
-          className={cn(styles.navButton, styles.navButtonPrev)}
-        />
+          className={clsx(styles.navButton, styles.navButtonPrev)}
+        >
+          <ChevronLeftMd />
+        </Button>
       )}
       {showArrows && images.length > 1 && hasNext && (
         <Button
+          color="secondary"
           variant="ghost"
-          iconOnly="chevron-right-md"
+          uniform
+          size="md"
           onClick={scrollNext}
           aria-label="Next photo"
-          className={cn(styles.navButton, styles.navButtonNext)}
-        />
+          className={clsx(styles.navButton, styles.navButtonNext)}
+        >
+          <ChevronRightMd />
+        </Button>
       )}
 
       {/* Navigation Dots */}
@@ -196,7 +196,7 @@ export const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
           {images.map((_, index) => (
             <button
               key={index}
-              className={cn(styles.dot, index === selectedIndex && styles.dotActive)}
+              className={clsx(styles.dot, index === selectedIndex && styles.dotActive)}
               onClick={() => scrollTo(index)}
               aria-label={`Go to photo ${index + 1}`}
               aria-current={index === selectedIndex ? 'true' : 'false'}

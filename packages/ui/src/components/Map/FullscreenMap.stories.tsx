@@ -1,15 +1,12 @@
-import { useMemo, useState } from 'react';
-import type { FC, CSSProperties } from 'react';
+import { useState } from 'react';
 import type { Meta } from '@storybook/react';
-import { FullscreenMap } from './FullscreenMap';
+import { FullscreenMap, type FullscreenMapProps } from './FullscreenMap';
 import type { LocationData } from './types';
-import { PropsTable } from '../../tokens/PropsTable';
+import { StarFilled } from '@openai/apps-sdk-ui/components/Icon';
 
-const DOC_LAYOUT_WIDTH = 1200;
-const PRIMARY_HEIGHT = '620px';
+const FULLSCREEN_HEIGHT = '620px';
 const SECONDARY_HEIGHT = '520px';
 
-// Import the rich location data from Maps story for consistent showcase
 const sampleLocations: LocationData[] = [
   {
     id: 'tonys-pizza',
@@ -17,7 +14,7 @@ const sampleLocations: LocationData[] = [
     subtitle: 'Neapolitan Pizzeria · North Beach',
     coords: [37.8001, -122.4098],
     description:
-      'Award-winning Neapolitan pies in North Beach.<br/><br/>A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients.',
+      'Award-winning Neapolitan pies in North Beach. A San Francisco institution serving authentic Italian pizza with locally-sourced ingredients. Chef Tony Gemignani has won numerous World Pizza Cup titles and brings his expertise to every pie. The restaurant features multiple ovens for different pizza styles, from classic Margherita to innovative seasonal creations. Open late on weekends, it\'s a favorite among locals and tourists alike.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
     images: [
       'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
@@ -25,7 +22,7 @@ const sampleLocations: LocationData[] = [
       'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
       'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
     ],
-    features: [{ icon: 'star', label: '4.8' }, { label: '$$$' }],
+    features: [{ icon: <StarFilled />, label: '4.8' }, { label: '$$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Contact', variant: 'secondary' },
@@ -39,13 +36,15 @@ const sampleLocations: LocationData[] = [
             title: 'Sarah M.',
             metadata: '2 weeks ago',
             description:
-              'Great location!<br/>The service was excellent and the atmosphere was perfect.',
+              'Great location! The service was excellent and the atmosphere was perfect.',
+            image: 'https://i.pravatar.cc/150?img=5',
           },
           {
             id: 'review-2',
             title: 'John D.',
             metadata: '1 month ago',
             description: 'Highly recommend! Will definitely come back with friends.',
+            image: 'https://i.pravatar.cc/150?img=12',
           },
         ],
       },
@@ -59,7 +58,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Focaccia-style squares, late-night favorite. Classic North Beach spot known for thick, fluffy focaccia pizza by the slice.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Call', variant: 'secondary' },
@@ -73,6 +72,7 @@ const sampleLocations: LocationData[] = [
             title: 'Maria L.',
             metadata: '3 weeks ago',
             description: 'Late-night gem! Best focaccia pizza in the city.',
+            image: 'https://i.pravatar.cc/150?img=9',
           },
         ],
       },
@@ -84,9 +84,9 @@ const sampleLocations: LocationData[] = [
     subtitle: 'Thin-Crust Pizza · Mission District',
     coords: [37.7613, -122.4255],
     description:
-      'Thin-crust classics on 18th Street.<br/>Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
+      'Thin-crust classics on 18th Street. Celebrated for perfectly charred, thin-crust pizzas made in a wood-burning oven.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
     actions: [
       { label: 'Add to favorites', variant: 'primary' },
       { label: 'Reservations', variant: 'secondary' },
@@ -100,7 +100,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Deep-dish and cornmeal crust favorites. Innovative pizzeria from the Flour + Water team with seasonal rotating menu.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-6.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
   },
   {
     id: 'beretta',
@@ -110,7 +110,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Wood-fired pies and burrata in North Beach. Stylish spot combining pizza excellence with a full cocktail program.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-4.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$$' }],
   },
   {
     id: 'slice-house',
@@ -120,7 +120,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Neighborhood spot with seasonal toppings. Local favorite featuring creative combinations and locally-sourced ingredients.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
-    features: [{ icon: 'star', label: '4.4' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.4' }, { label: '$$' }],
   },
   {
     id: 'pizza-palace',
@@ -130,7 +130,7 @@ const sampleLocations: LocationData[] = [
     description:
       'Sourdough, wood-fired pies near Nob Hill. San Francisco sourdough meets traditional Italian pizza-making.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
-    features: [{ icon: 'star', label: '4.6' }, { label: '$$$' }],
+    features: [{ icon: <StarFilled />, label: '4.6' }, { label: '$$$' }],
   },
   {
     id: 'crispy-crust',
@@ -140,198 +140,598 @@ const sampleLocations: LocationData[] = [
     description:
       'Crispy-edged Detroit-style in SoMa. Bringing Detroit-style square pizza to San Francisco with creative toppings.',
     thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-3.png',
-    features: [{ icon: 'star', label: '4.5' }, { label: '$$' }],
+    features: [{ icon: <StarFilled />, label: '4.5' }, { label: '$$' }],
   },
 ];
 
-const containerStyle: CSSProperties = {
-  width: '100%',
-  maxWidth: `${DOC_LAYOUT_WIDTH}px`,
-  borderRadius: '16px',
-  overflow: 'hidden',
-  border: '1px solid var(--ai-color-border-subtle)',
-  boxShadow: 'var(--ai-elevation-2-shadow)',
-};
-
-const meta: Meta<typeof FullscreenMap> = {
-  title: 'Composed Components/Maps',
+const meta: Meta<FullscreenMapProps> = {
+  title: 'Components/Maps/FullscreenMap',
   component: FullscreenMap,
+  tags: ['!dev'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
+  },
+  argTypes: {
+    locations: {
+      description: 'Array of location data objects',
+      control: false,
+      table: { type: { summary: 'LocationData[]' } },
+    },
+    onLocationSelect: {
+      description: 'Callback when location is selected',
+      control: false,
+      table: { type: { summary: '(id: string | undefined) => void' } },
+    },
+    onCollapse: {
+      description: 'Callback when collapse button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    onErrorRetry: {
+      description: 'Callback when retry button is clicked',
+      control: false,
+      table: { type: { summary: '() => void' } },
+    },
+    renderMarker: {
+      description: 'Custom marker renderer function',
+      control: false,
+      table: { type: { summary: '(params: RenderMarkerParams) => ReactElement | null' } },
+    },
+    className: {
+      description: 'Class name for root container',
+      control: false,
+      table: { type: { summary: 'string' } },
+    },
+    defaultCenter: {
+      description: 'Default map center coordinates [lat, lng]',
+      table: { type: { summary: '[number, number]' }, defaultValue: { summary: '[37.7749, -122.4194]' } },
+    },
+    defaultZoom: {
+      description: 'Default zoom level',
+      table: { type: { summary: 'number' }, defaultValue: { summary: '12' } },
+    },
+    selectedId: {
+      description: 'ID of the currently selected location',
+      table: { type: { summary: 'string' } },
+    },
+    activeId: {
+      description: 'ID of the currently active/hovered location',
+      table: { type: { summary: 'string' } },
+    },
+    tileProvider: {
+      description: 'Tile provider preset or custom config',
+      table: { type: { summary: 'TileProviderPreset | TileProviderConfig' }, defaultValue: { summary: 'carto-voyager' } },
+    },
+    tileApiKey: {
+      description: 'API key for premium tile providers',
+      table: { type: { summary: 'string' } },
+    },
+    height: {
+      description: 'Fixed height for the fullscreen map container',
+      table: { type: { summary: 'number | string' }, defaultValue: { summary: '100vh' } },
+    },
+    loading: {
+      description: 'Shows skeleton UI while loading',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    error: {
+      description: 'Shows error message when true',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    errorTitle: {
+      description: 'Custom error title',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'Failed to load map' } },
+    },
+    errorMessage: {
+      description: 'Custom error message',
+      table: { type: { summary: 'string' } },
+    },
+    emptyTitle: {
+      description: 'Empty state title when no locations',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No locations' } },
+    },
+    emptyMessage: {
+      description: 'Empty state message',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'No locations to display' } },
+    },
+    markerVariant: {
+      description: 'Marker style: pin, dot, or hybrid',
+      table: { type: { summary: "'pin' | 'dot' | 'hybrid'" }, defaultValue: { summary: 'pin' } },
+    },
+    showPopup: {
+      description: 'Show popup bubbles when markers are clicked',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    hideAttribution: {
+      description: 'Hide Leaflet attribution control',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    scrollWheelZoom: {
+      description: 'Enable scroll wheel zoom on the map',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
+    },
+    isInspectorOpen: {
+      description: 'Whether the inspector panel is open',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
   },
 };
 
 export default meta;
 
-const FullscreenMapDoc: FC = () => {
-  const locations = useMemo(() => sampleLocations, []);
+// Base story with interactive controls
+export const Base = (args: FullscreenMapProps) => {
   const [selectedId, setSelectedId] = useState<string | undefined>('tonys-pizza');
 
   return (
-    <div style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '64px' }}>
-      <section>
-        <h1 style={{ marginBottom: '16px' }}>FullscreenMap</h1>
-        <p
-          style={{
-            margin: 0,
-            maxWidth: '760px',
-            color: 'var(--ai-color-text-secondary)',
-            fontSize: '16px',
-            lineHeight: 1.6,
-          }}
-        >
-          Immersive map experience with synchronized sidebar, inspector, and mobile carousel. Ideal
-          for ChatGPT Apps when users escalate from a compact inline map to a full exploration
-          surface.
-        </p>
-      </section>
-
-      <section style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        <header>
-          <h2 style={{ marginBottom: '8px' }}>Primary Layout</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
-            Desktop layout with sidebar navigation and inspector panel. Mobile view collapses to a
-            bottom carousel automatically.
-          </p>
-        </header>
-        <div style={{ ...containerStyle, height: PRIMARY_HEIGHT }}>
-          <FullscreenMap
-            locations={locations}
-            selectedId={selectedId}
-            onLocationSelect={setSelectedId}
-            height={PRIMARY_HEIGHT}
-          />
-        </div>
-      </section>
-
-      <section
-        style={{
-          display: 'grid',
-          gap: '24px',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
-        }}
-      >
-        <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
-            Loading
-          </h3>
-          <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
-            <FullscreenMap locations={locations} loading height={SECONDARY_HEIGHT} />
-          </div>
-        </article>
-
-        <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
-            Error
-          </h3>
-          <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
-            <FullscreenMap
-              locations={locations}
-              error
-              height={SECONDARY_HEIGHT}
-              errorTitle="Failed to load locations"
-              errorMessage="Unable to retrieve location data. Please try again."
-            />
-          </div>
-        </article>
-
-        <article style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <h3 style={{ margin: 0, fontSize: '14px', color: 'var(--ai-color-text-secondary)' }}>
-            Empty
-          </h3>
-          <div style={{ ...containerStyle, height: SECONDARY_HEIGHT }}>
-            <FullscreenMap locations={[]} height={SECONDARY_HEIGHT} />
-          </div>
-        </article>
-      </section>
-
-      <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <header>
-          <h2 style={{ marginBottom: '8px' }}>Interaction Considerations</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
-            Tips for keeping the fullscreen experience smooth across desktop and mobile contexts.
-          </p>
-        </header>
-        <ul style={{ margin: 0, paddingLeft: '20px', color: 'var(--ai-color-text-secondary)' }}>
-          <li>Maintain shared selection state so compact and fullscreen maps stay in sync.</li>
-          <li>
-            Provide `onErrorRetry` callbacks when remote data is involved to keep recovery within
-            the Apps surface.
-          </li>
-          <li>
-            Use inspector notes to summarise key attributes so users don't rely solely on the map.
-          </li>
-          <li>
-            Respect layout breakpoints—sidebar hides under 1024px with the carousel taking over.
-          </li>
-          <li>
-            Fullscreen maps use native scroll wheel zoom by default (`scrollWheelZoom=true`) for the
-            best desktop experience, while compact maps use custom pinch-to-zoom handlers.
-          </li>
-          <li>
-            Add an `images` array to LocationData for multi-photo locations—the inspector
-            automatically renders a PhotoCarousel with dots and arrows when multiple images are
-            present, falling back to a single thumbnail otherwise.
-          </li>
-        </ul>
-      </section>
-
-      <section style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <header>
-          <h2 style={{ marginBottom: '8px' }}>FullscreenMap Props</h2>
-          <p style={{ margin: 0, color: 'var(--ai-color-text-secondary)' }}>
-            Extends `MapView` with layout, loading, and content configuration for the fullscreen
-            shell.
-          </p>
-        </header>
-        <PropsTable
-          hideThemeColumn
-          rows={[
-            {
-              name: 'locations',
-              description: 'Array of locations to render. Type: LocationData[] (required)',
-            },
-            {
-              name: 'defaultSelectedId',
-              description: 'Initial location id for inspector/sidebar selection.',
-            },
-            {
-              name: 'height',
-              description: 'Container height. Accepts number (px) or string. Default: "100vh".',
-            },
-            {
-              name: 'loading',
-              description: 'Render the skeleton layout (map + cards) while data loads.',
-            },
-            {
-              name: 'error',
-              description: 'Show error summary via the location carousel (mobile-first surface).',
-            },
-            {
-              name: 'errorTitle',
-              description: 'Custom error title displayed in the carousel overlay.',
-            },
-            {
-              name: 'errorMessage',
-              description: 'Supporting error copy presented in the carousel overlay.',
-            },
-            {
-              name: 'onErrorRetry',
-              description: 'Callback used to expose a retry button within the carousel.',
-            },
-            {
-              name: 'emptyTitle',
-              description: 'Headline shown when no locations provided. Default: "No locations".',
-            },
-            {
-              name: 'emptyMessage',
-              description: 'Supporting text for empty state. Default: "No locations to display".',
-            },
-          ]}
-        />
-      </section>
+    <div
+      style={{
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid var(--color-border-subtle)',
+        boxShadow: 'var(--shadow-200)',
+      }}
+    >
+      <FullscreenMap
+        {...args}
+        locations={sampleLocations}
+        selectedId={selectedId}
+        onLocationSelect={setSelectedId}
+        height={FULLSCREEN_HEIGHT}
+      />
     </div>
   );
 };
 
-export const FullscreenMaps = () => <FullscreenMapDoc />;
+Base.args = {};
+
+Base.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap
+  locations={locations}
+  selectedId={selectedId}
+  onLocationSelect={setSelectedId}
+  height="620px"
+/>`,
+    },
+  },
+};
+
+// Loading state
+export const Loading = (args: FullscreenMapProps) => (
+  <div
+    style={{
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: '1px solid var(--color-border-subtle)',
+    }}
+  >
+    <FullscreenMap {...args} />
+  </div>
+);
+
+Loading.args = {
+  locations: sampleLocations,
+  loading: true,
+  height: SECONDARY_HEIGHT,
+};
+
+Loading.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap locations={locations} loading />`,
+    },
+  },
+};
+
+// Error state
+export const Error = (args: FullscreenMapProps) => (
+  <div
+    style={{
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: '1px solid var(--color-border-subtle)',
+    }}
+  >
+    <FullscreenMap {...args} />
+  </div>
+);
+
+Error.args = {
+  locations: sampleLocations,
+  error: true,
+  height: SECONDARY_HEIGHT,
+  errorTitle: 'Failed to load locations',
+  errorMessage: 'Unable to retrieve location data. Please try again.',
+  onErrorRetry: () => console.log('Retry clicked'),
+};
+
+Error.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap
+  locations={locations}
+  error
+  errorTitle="Failed to load locations"
+  errorMessage="Unable to retrieve location data."
+  onErrorRetry={() => handleRetry()}
+/>`,
+    },
+  },
+};
+
+// Empty state
+export const Empty = (args: FullscreenMapProps) => (
+  <div
+    style={{
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: '1px solid var(--color-border-subtle)',
+    }}
+  >
+    <FullscreenMap {...args} />
+  </div>
+);
+
+Empty.args = {
+  locations: [],
+  height: SECONDARY_HEIGHT,
+};
+
+Empty.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap locations={[]} />`,
+    },
+  },
+};
+
+// States overview
+export const States = () => (
+  <div
+    style={{
+      display: 'grid',
+      gap: '24px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+    }}
+  >
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Loading
+      </div>
+      <div
+        style={{
+          borderRadius: '16px',
+          overflow: 'hidden',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <FullscreenMap locations={sampleLocations} loading height={SECONDARY_HEIGHT} />
+      </div>
+    </div>
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Error
+      </div>
+      <div
+        style={{
+          borderRadius: '16px',
+          overflow: 'hidden',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <FullscreenMap
+          locations={sampleLocations}
+          error
+          height={SECONDARY_HEIGHT}
+          errorTitle="Failed to load"
+          onErrorRetry={() => console.log('Retry')}
+        />
+      </div>
+    </div>
+    <div>
+      <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+        Empty
+      </div>
+      <div
+        style={{
+          borderRadius: '16px',
+          overflow: 'hidden',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <FullscreenMap locations={[]} height={SECONDARY_HEIGHT} />
+      </div>
+    </div>
+  </div>
+);
+
+States.parameters = {
+  docs: {
+    source: {
+      code: `// Loading state
+<FullscreenMap locations={locations} loading />
+
+// Error state
+<FullscreenMap locations={locations} error />
+
+// Empty state
+<FullscreenMap locations={[]} />`,
+    },
+  },
+};
+
+// Marker variants
+export const MarkerVariants = () => {
+  const [selectedPin, setSelectedPin] = useState<string | undefined>('tonys-pizza');
+  const [selectedDot, setSelectedDot] = useState<string | undefined>('golden-boy');
+  const [selectedHybrid, setSelectedHybrid] = useState<string | undefined>('delfina');
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gap: '24px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+      }}
+    >
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          Pin markers (default)
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedPin}
+            onLocationSelect={setSelectedPin}
+            markerVariant="pin"
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          Dot markers
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedDot}
+            onLocationSelect={setSelectedDot}
+            markerVariant="dot"
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          Hybrid markers (recommended)
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedHybrid}
+            onLocationSelect={setSelectedHybrid}
+            markerVariant="hybrid"
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+MarkerVariants.parameters = {
+  docs: {
+    source: {
+      code: `// Pin markers (default)
+<FullscreenMap locations={locations} markerVariant="pin" />
+
+// Dot markers
+<FullscreenMap locations={locations} markerVariant="dot" />
+
+// Hybrid markers (recommended)
+<FullscreenMap locations={locations} markerVariant="hybrid" />`,
+    },
+  },
+};
+
+// Popup control
+export const PopupControl = () => {
+  const [selectedWithPopup, setSelectedWithPopup] = useState<string | undefined>('tonys-pizza');
+  const [selectedNoPopup, setSelectedNoPopup] = useState<string | undefined>('golden-boy');
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gap: '24px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+      }}
+    >
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          With popup (showPopup=true)
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedWithPopup}
+            onLocationSelect={setSelectedWithPopup}
+            showPopup
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: '14px', marginBottom: '12px', color: 'var(--color-text-secondary)' }}>
+          No popup (default)
+        </div>
+        <div
+          style={{
+            borderRadius: '16px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <FullscreenMap
+            locations={sampleLocations.slice(0, 4)}
+            selectedId={selectedNoPopup}
+            onLocationSelect={setSelectedNoPopup}
+            height={SECONDARY_HEIGHT}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+PopupControl.parameters = {
+  docs: {
+    source: {
+      code: `// With popup
+<FullscreenMap locations={locations} showPopup />
+
+// Without popup (default)
+<FullscreenMap locations={locations} />`,
+    },
+  },
+};
+
+// Custom icons
+const CustomHeartSVG = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+    <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z" />
+  </svg>
+);
+
+export const CustomIcons = () => {
+  const [selectedId, setSelectedId] = useState<string | undefined>('custom-1');
+
+  const customLocations: LocationData[] = [
+    {
+      id: 'custom-1',
+      name: 'Popular Restaurant',
+      subtitle: 'Italian · Downtown',
+      coords: [37.7749, -122.4194],
+      thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-1.png',
+      features: [
+        { icon: <CustomHeartSVG />, label: 'Popular' },
+        { icon: <StarFilled />, label: '4.9' },
+      ],
+    },
+    {
+      id: 'custom-2',
+      name: 'Hidden Gem',
+      subtitle: 'Japanese · Mission',
+      coords: [37.7599, -122.4148],
+      thumbnail: 'https://persistent.oaistatic.com/pizzaz/pizzaz-2.png',
+      features: [
+        { icon: <CustomHeartSVG />, label: 'Favorite' },
+        { icon: <StarFilled />, label: '4.7' },
+      ],
+    },
+  ];
+
+  return (
+    <div
+      style={{
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid var(--color-border-subtle)',
+      }}
+    >
+      <FullscreenMap
+        locations={customLocations}
+        selectedId={selectedId}
+        onLocationSelect={setSelectedId}
+        height={SECONDARY_HEIGHT}
+      />
+    </div>
+  );
+};
+
+CustomIcons.parameters = {
+  docs: {
+    source: {
+      code: `<FullscreenMap
+  locations={[{
+    id: 'custom',
+    name: 'Restaurant',
+    coords: [37.7749, -122.4194],
+    features: [
+      { icon: <CustomHeartSVG />, label: 'Popular' },
+      { icon: <StarFilled />, label: '4.9' },
+    ],
+  }]}
+/>`,
+    },
+  },
+};
+
+// Real-world example
+export const RealWorld = () => {
+  const [selectedId, setSelectedId] = useState<string | undefined>('tonys-pizza');
+
+  return (
+    <div
+      style={{
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid var(--color-border-subtle)',
+        boxShadow: 'var(--shadow-200)',
+      }}
+    >
+      <FullscreenMap
+        locations={sampleLocations}
+        selectedId={selectedId}
+        onLocationSelect={setSelectedId}
+        onCollapse={() => console.log('Collapse to compact view')}
+        markerVariant="hybrid"
+        height={FULLSCREEN_HEIGHT}
+      />
+    </div>
+  );
+};
+
+RealWorld.parameters = {
+  docs: {
+    source: {
+      code: `const [selectedId, setSelectedId] = useState<string>();
+
+<FullscreenMap
+  locations={locations}
+  selectedId={selectedId}
+  onLocationSelect={setSelectedId}
+  onCollapse={() => navigateToCompactView()}
+  markerVariant="hybrid"
+  height="620px"
+/>`,
+    },
+  },
+};

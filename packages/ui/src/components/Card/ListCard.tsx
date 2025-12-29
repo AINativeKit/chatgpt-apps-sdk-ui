@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, type CardProps } from './Card';
-import { Button } from '../Button';
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
+import { EditPencil, Plus } from '@openai/apps-sdk-ui/components/Icon';
 import { Skeleton } from '../Skeleton';
-import { Alert } from '../Alert';
-import type { IconName } from '../../tokens/icons';
 import styles from './ListCard.module.css';
 
 export interface ListCardImage {
@@ -95,7 +96,6 @@ export interface ListCardProps extends Omit<CardProps, 'children'> {
    */
   buttonDisabled?: boolean;
 
-  // Phase 1: Critical Improvements (P0)
   /**
    * Loading state - shows skeleton UI
    * @default false
@@ -142,22 +142,25 @@ export interface ListCardProps extends Omit<CardProps, 'children'> {
   emptyMessage?: string;
 
   /**
-   * Empty state icon
+   * Empty state icon (React element, e.g., icon component from apps-sdk-ui)
    */
-  emptyIcon?: IconName;
-
-  // Phase 2: Performance & Accessibility (P1)
-  /**
-   * Top image lazy loading
-   * @default true
-   */
-  topImageLazy?: boolean;
+  emptyIcon?: React.ReactNode;
 
   /**
-   * Item images lazy loading
-   * @default true
+   * Native browser loading behavior for the top image.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
    */
-  itemImagesLazy?: boolean;
+  topImageLoading?: 'lazy' | 'eager';
+
+  /**
+   * Native browser loading behavior for item images.
+   * - 'lazy': Defers loading until image is near viewport (default, best for below-the-fold)
+   * - 'eager': Loads immediately (use for above-the-fold images)
+   * @default 'lazy'
+   */
+  itemImagesLoading?: 'lazy' | 'eager';
 
   /**
    * Callback when top image loads successfully
@@ -202,8 +205,8 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
     emptyTitle = 'No items',
     emptyMessage,
     emptyIcon,
-    topImageLazy = true,
-    itemImagesLazy = true,
+    topImageLoading = 'lazy',
+    itemImagesLoading = 'lazy',
     onTopImageLoad,
     onTopImageError,
     headerActionLabel,
@@ -256,7 +259,7 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                 <div key={index}>
                   <div className={styles.listItem}>
                     <div className={styles.itemHeader}>
-                      <Skeleton variant="circular" width={44} height={44} />
+                      <Skeleton width={44} height={44} borderRadius="50%" />
                       <div className={styles.itemTextContent}>
                         <Skeleton width="70%" height={16} />
                         <Skeleton width="50%" height={14} />
@@ -276,10 +279,17 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
         {error && !loading && (
           <div className={styles.errorContainer}>
             <Alert
-              layout="card"
+              color="danger"
+              variant="soft"
               title={errorTitle}
-              message={errorMessage}
-              onAction={onErrorRetry}
+              description={errorMessage}
+              actions={
+                onErrorRetry ? (
+                  <Button color="primary" size="sm" variant="ghost" onClick={onErrorRetry}>
+                    Retry
+                  </Button>
+                ) : undefined
+              }
               data-testid="list-card-error"
             />
           </div>
@@ -294,24 +304,26 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                 {headerTitle && <h3 className={styles.headerTitle}>{headerTitle}</h3>}
                 {onHeaderAction && (
                   <Button
+                    color="secondary"
                     variant="ghost"
-                    iconOnly="edit-pencil"
+                    uniform
+                    size="sm"
                     onClick={onHeaderAction}
                     aria-label={headerActionLabel || 'Edit'}
                     className={styles.headerActionButton}
-                  />
+                  >
+                    <EditPencil />
+                  </Button>
                 )}
               </div>
             )}
 
             <div className={styles.emptyState}>
-              {emptyIcon && (
-                <div className={styles.emptyIcon} aria-hidden="true">
-                  {/* Icon would be rendered here if we had icon component */}
-                </div>
-              )}
-              <h4 className={styles.emptyTitle}>{emptyTitle}</h4>
-              {emptyMessage && <p className={styles.emptyMessage}>{emptyMessage}</p>}
+              <EmptyMessage fill="none">
+                {emptyIcon && <EmptyMessage.Icon>{emptyIcon}</EmptyMessage.Icon>}
+                <EmptyMessage.Title>{emptyTitle}</EmptyMessage.Title>
+                {emptyMessage && <EmptyMessage.Description>{emptyMessage}</EmptyMessage.Description>}
+              </EmptyMessage>
             </div>
           </div>
         )}
@@ -326,7 +338,7 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                   src={topImageData.src}
                   alt={topImageData.alt}
                   className={styles.topImage}
-                  loading={topImageLazy && topImageData.lazy !== false ? 'lazy' : undefined}
+                  loading={topImageData.lazy === false ? 'eager' : topImageLoading}
                   onLoad={onTopImageLoad}
                   onError={onTopImageError}
                 />
@@ -339,12 +351,16 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                 {headerTitle && <h3 className={styles.headerTitle}>{headerTitle}</h3>}
                 {onHeaderAction && (
                   <Button
+                    color="secondary"
                     variant="ghost"
-                    iconOnly="edit-pencil"
+                    uniform
+                    size="sm"
                     onClick={onHeaderAction}
                     aria-label={headerActionLabel || 'Edit'}
                     className={styles.headerActionButton}
-                  />
+                  >
+                    <EditPencil />
+                  </Button>
                 )}
               </div>
             )}
@@ -365,9 +381,7 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                             src={itemImageData.src}
                             alt={itemImageData.alt}
                             className={styles.itemImage}
-                            loading={
-                              itemImagesLazy && itemImageData.lazy !== false ? 'lazy' : undefined
-                            }
+                            loading={itemImageData.lazy === false ? 'eager' : itemImagesLoading}
                             onLoad={item.onImageLoad}
                             onError={item.onImageError}
                           />
@@ -380,12 +394,16 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
                         </div>
                         {item.onItemAction && (
                           <Button
-                            variant="tertiary"
-                            iconOnly="plus-add-md"
+                            color="secondary"
+                            variant="ghost"
+                            uniform
+                            size="sm"
                             onClick={item.onItemAction}
                             aria-label={item.actionLabel || 'Add'}
                             className={styles.itemActionButton}
-                          />
+                          >
+                            <Plus />
+                          </Button>
                         )}
                       </div>
                       {item.description && (
@@ -403,10 +421,12 @@ export const ListCard = React.forwardRef<HTMLDivElement, ListCardProps>((props, 
             {hasButton && (
               <div className={styles.buttonContainer}>
                 <Button
+                  color="primary"
+                  variant="solid"
+                  size="2xl"
                   onClick={onButtonClick}
                   disabled={buttonDisabled}
-                  variant="primary"
-                  style={{ width: '100%' }}
+                  block
                 >
                   {buttonText}
                 </Button>

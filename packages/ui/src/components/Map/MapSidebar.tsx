@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPlaceCard } from './MapPlaceCard';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import type { LocationData } from './types';
 import styles from './MapSidebar.module.css';
 
@@ -72,7 +72,7 @@ export const MapSidebar: React.FC<MapSidebarProps> = ({
   }, [selectedId]);
 
   return (
-    <div className={cn(styles.sidebar, className)}>
+    <div className={clsx(styles.sidebar, className)}>
       <div ref={scrollRef} className={styles.scrollContainer}>
         <div className={styles.header}>
           <span className={styles.resultsCount}>{locations.length} results</span>

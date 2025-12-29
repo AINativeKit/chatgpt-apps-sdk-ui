@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../../utils/cn';
+import clsx from 'clsx';
 import styles from './Overlay.module.css';
 
 export interface OverlayProps {
@@ -18,6 +18,12 @@ export interface OverlayProps {
    * @default 56
    */
   height?: number | string;
+
+  /**
+   * Position of the overlay within the parent container
+   * @default "bottom"
+   */
+  position?: 'top' | 'bottom';
 
   /**
    * Horizontal alignment of content
@@ -63,7 +69,15 @@ export interface OverlayProps {
  */
 export const Overlay = React.forwardRef<HTMLDivElement, OverlayProps>(
   (
-    { background = 'dark', height = 56, align = 'center', padding = 8, children, className },
+    {
+      background = 'dark',
+      height = 56,
+      position = 'bottom',
+      align = 'center',
+      padding = 8,
+      children,
+      className,
+    },
     ref
   ) => {
     // Map background presets to CSS values
@@ -84,11 +98,20 @@ export const Overlay = React.forwardRef<HTMLDivElement, OverlayProps>(
 
     const justifyContent = justifyContentMap[align] || 'center';
 
+    // Position styles
+    const positionStyles: React.CSSProperties = {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      ...(position === 'top' ? { top: 0 } : { bottom: 0 }),
+    };
+
     return (
       <div
         ref={ref}
-        className={cn(styles.overlay, className)}
+        className={clsx(styles.overlay, className)}
         style={{
+          ...positionStyles,
           background: backgroundValue,
           height: typeof height === 'number' ? `${height}px` : height,
           justifyContent,

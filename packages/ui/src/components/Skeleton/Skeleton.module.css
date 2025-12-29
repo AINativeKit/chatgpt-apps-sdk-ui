@@ -1,73 +1,21 @@
-/* Base Skeleton */
-.skeleton {
-  background-color: var(--ai-color-bg-secondary);
-  display: block;
-  width: 100%;
-}
-
-/* Variant: Rectangular (default) */
-.skeleton--rectangular {
-  border-radius: var(--ai-radius-base); /* 12px */
-  min-height: 20px;
-}
-
-/* Variant: Text */
-.skeleton--text {
-  border-radius: var(--ai-radius-xs); /* 4px */
-  height: 1em; /* Matches current font size */
-  transform-origin: 0 60%;
-  transform: scale(1, 0.6); /* Make it look like text */
-}
-
-/* Variant: Circular */
-.skeleton--circular {
-  border-radius: 50%;
-  min-height: 40px;
-  width: 40px;
-}
-
-/* Animation */
-.skeleton--animated {
-  position: relative;
-  overflow: hidden;
-}
-
-.skeleton--animated::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: translateX(-100%);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in srgb, var(--ai-color-bg-primary) 50%, transparent) 50%,
-    transparent 100%
-  );
-  animation: skeleton-wave 1.6s linear 0.5s infinite;
-}
-
-@keyframes skeleton-wave {
+/* Skeleton shimmer animation */
+@keyframes shimmer {
   0% {
-    transform: translateX(-100%);
+    background-position: 200% 0;
   }
   100% {
-    transform: translateX(100%);
+    background-position: -200% 0;
   }
 }
 
-/* Dark theme adjustments */
-:global([data-theme='dark']) .skeleton {
-  background-color: var(--ai-color-bg-tertiary);
-}
-
-:global([data-theme='dark']) .skeleton--animated::after {
+.skeleton {
   background: linear-gradient(
     90deg,
-    transparent 0%,
-    color-mix(in srgb, var(--ai-color-bg-primary) 30%, transparent) 50%,
-    transparent 100%
+    var(--gray-100) 25%,
+    var(--gray-150) 50%,
+    var(--gray-100) 75%
   );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+  border-radius: var(--radius-sm, 4px);
 }

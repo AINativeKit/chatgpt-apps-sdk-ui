@@ -1,78 +1,21 @@
 /**
- * Design Tokens - AI Native Kit
- * Centralized export of all design tokens
+ * Design Tokens - @ainativekit/ui
+ * Extension components for apps-sdk-ui
+ *
+ * This package extends @openai/apps-sdk-ui with additional components.
+ * Token CSS variables from apps-sdk-ui are available globally when using AppsSDKUIProvider.
+ *
+ * Use apps-sdk-ui tokens directly in your CSS:
+ * - Colors: --color-*, --gray-*, --blue-*, etc.
+ * - Typography: --font-*, --control-font-size-*
+ * - Spacing: --spacing (4px base unit, use with calc)
+ * - Radius: --radius-* (2xs through 4xl, full)
+ * - Elevation: --shadow-* (100 through 400)
+ *
+ * Icons: Use @openai/apps-sdk-ui (755 icons) via Icon component.
  *
  * @packageDocumentation
  */
 
-/**
- * Design Tokens Export
- * Provides type-safe access to design tokens with autocomplete support
- */
-
-// Export icons and utilities
-export * from './icons';
-export * from './icon-utils';
-export * from './utility-classes';
-
-// Export types
-export type { ColorTheme, ThemeMode, BrandColorConfig, BrandColorValue } from './colors';
-export type { ElevationLevel, ElevationDefinition } from './elevation';
-export type { SpacingScale } from './spacing';
-export type { ColorPath, RadiusScale, TypographyStyle, OpacityPreset } from './token-helpers';
-
-// Export fontStack from typography
-export { fontStack } from './typography';
-
-// Export type-safe token helpers (primary API)
-export {
-  spacing,
-  colors,
-  radius,
-  typography,
-  elevation,
-  opacity,
-  defaultRadius,
-  defaultElevation,
-  cssVar,
-  customVar,
-  varWithFallback,
-  applyTypography,
-  applyElevation,
-} from './token-helpers';
-
-import { colors } from './colors';
-import { typography, fontStack } from './typography';
-import { spacing } from './spacing';
-import { radius, defaultRadius } from './radius';
-import { elevation, defaultElevation } from './elevation';
-import { opacity } from './opacity';
-import { iconMetadata, iconNames, icons } from './icons';
-
-/**
- * All design tokens combined into a single object
- *
- * @example
- * ```typescript
- * import { tokens } from '@ainativekit/ui';
- *
- * const bgColor = tokens.colors.light.background.primary;
- * const h1Size = tokens.typography.heading1.fontSize;
- * const gap = tokens.spacing[16]; // Numeric keys
- * const shadow = tokens.elevation[1].shadow; // Numeric keys
- * ```
- */
-export const tokens = {
-  colors,
-  typography,
-  fontStack,
-  spacing,
-  radius,
-  defaultRadius,
-  elevation,
-  defaultElevation,
-  opacity,
-  icons,
-  iconMetadata,
-  iconNames,
-} as const;
+// Export ElevationLevel type (used by Card component)
+export type { ElevationLevel } from '../components/Card/Card';

@@ -1,0 +1,110 @@
+import { Canvas, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as PhotoCarouselStories from './PhotoCarousel.stories'
+
+<Meta of={PhotoCarouselStories} />
+
+<Title>PhotoCarousel</Title>
+<Subtitle>Embla-based photo carousel with navigation dots and arrows</Subtitle>
+
+## Usage
+
+```tsx
+import { PhotoCarousel } from "@ainativekit/ui";
+import { Overlay } from "@ainativekit/ui";
+
+<PhotoCarousel
+  images={['photo1.jpg', 'photo2.jpg', 'photo3.jpg']}
+  aspectRatio="16/9"
+  topOverlay={
+    <Overlay background="#0066CC" height={32} align="center">
+      <span style={{ color: 'white' }}>Brand</span>
+    </Overlay>
+  }
+/>
+```
+
+<Canvas of={PhotoCarouselStories.Base} />
+
+## Reference
+
+<ArgTypes of={PhotoCarouselStories.Base} />
+
+## Examples
+
+### Square aspect ratio
+
+Instagram-style square photos.
+
+<Canvas of={PhotoCarouselStories.SquareAspect} />
+
+### With branding
+
+Add a branded overlay on top of photos.
+
+<Canvas of={PhotoCarouselStories.WithBranding} />
+
+### No navigation
+
+Hide dots and arrows for a cleaner presentation.
+
+<Canvas of={PhotoCarouselStories.NoNavigation} />
+
+### Single image
+
+Navigation controls are hidden when there's only one image.
+
+<Canvas of={PhotoCarouselStories.SingleImage} />
+
+### States
+
+Loading, error, and empty states are handled automatically.
+
+<Canvas of={PhotoCarouselStories.Loading} />
+
+<Canvas of={PhotoCarouselStories.Error} />
+
+<Canvas of={PhotoCarouselStories.Empty} />
+
+## Comparison with Album
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>PhotoCarousel</th>
+      <th>Album</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Use case</td>
+      <td>Inline photos</td>
+      <td>Photo galleries</td>
+    </tr>
+    <tr>
+      <td>Fullscreen</td>
+      <td>No</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Thumbnails</td>
+      <td>No</td>
+      <td>Yes (FilmStrip)</td>
+    </tr>
+    <tr>
+      <td>Multi-album</td>
+      <td>No</td>
+      <td>Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+Use PhotoCarousel for simple inline photo slideshows. Use Album for full photo gallery experiences with fullscreen viewing.
+
+## Notes
+
+- Built on [Embla Carousel](https://www.embla-carousel.com/)
+- Touch and mouse swipe support
+- Lazy loading for performance
+- Keyboard navigation support
+- Used internally by SummaryCard for multi-image display

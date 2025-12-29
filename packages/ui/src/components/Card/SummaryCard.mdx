@@ -1,0 +1,87 @@
+import { Canvas, Controls, ArgTypes, Meta, Subtitle, Title } from '@storybook/blocks'
+import * as SummaryCardStories from './SummaryCard.stories'
+
+<Meta of={SummaryCardStories} />
+
+<Title>SummaryCard</Title>
+<Subtitle>Card for displaying entity information with images, title, description, metadata, and actions</Subtitle>
+
+## Usage
+
+```tsx
+import { SummaryCard } from "@ainativekit/ui";
+```
+
+<Canvas of={SummaryCardStories.Base} />
+
+## Reference
+
+<ArgTypes of={SummaryCardStories.Base} />
+
+## Examples
+
+### Image layouts
+
+Single image displays large; multiple images (up to 3) display in a grid.
+
+<Canvas of={SummaryCardStories.ImageLayouts} />
+
+### Image aspect ratios
+
+Control image proportions with `imageAspectRatio` prop.
+
+<Canvas of={SummaryCardStories.ImageAspectRatios} />
+
+### Badges
+
+Add rating or status badges with full Badge API support.
+
+<Canvas of={SummaryCardStories.WithBadge} />
+
+### Metadata
+
+Display additional info like read time, date, or location with optional icons.
+
+<Canvas of={SummaryCardStories.WithMetadata} />
+
+### Compact size
+
+Use `size="compact"` for denser layouts (DiscoveryCard style).
+
+<Canvas of={SummaryCardStories.CompactSize} />
+
+### Flat variant
+
+Use `variant="flat"` for edge-to-edge layout without padding or elevation.
+
+<Canvas of={SummaryCardStories.FlatVariant} />
+
+### Loading
+
+Show skeleton placeholders while data is loading with `loading={true}`.
+
+<Canvas of={SummaryCardStories.Loading} />
+
+### Error
+
+Display an error message when content fails to load with `error={true}`. Add retry functionality with `onErrorRetry`.
+
+<Canvas of={SummaryCardStories.Error} />
+
+### Empty
+
+Show an empty state when there's no content. Customize with `emptyTitle` and `emptyMessage`.
+
+<Canvas of={SummaryCardStories.Empty} />
+
+### With overlay
+
+Add custom content overlays using `topOverlay` prop with `SummaryCard.Overlay`.
+
+<Canvas of={SummaryCardStories.WithOverlay} />
+
+### Real-world example
+
+Complete examples showing SummaryCard in typical use cases.
+
+<Canvas of={SummaryCardStories.RealWorld} />

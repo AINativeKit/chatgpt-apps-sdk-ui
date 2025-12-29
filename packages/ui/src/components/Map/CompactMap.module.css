@@ -1,10 +1,10 @@
 .container {
   position: relative;
   width: 100%;
-  border-radius: var(--ai-radius-xl);
+  border-radius: var(--radius-4xl);
   overflow: hidden;
-  background: var(--ai-color-bg-primary);
-  border: 1px solid var(--ai-color-border-light);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
 }
 
 .mapLayer {
@@ -17,25 +17,20 @@
   min-height: 0;
 }
 
-.emptyOverlay {
-  position: absolute;
-  inset: 0;
+.stateOverlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
-  padding: var(--ai-spacing-20);
-}
-
-.emptyOverlay > * {
-  pointer-events: auto;
+  width: 100%;
+  height: 100%;
+  padding: calc(var(--spacing) * 10);
 }
 
 .expandButton {
   position: absolute;
-  top: var(--ai-spacing-8);
-  right: var(--ai-spacing-8);
+  top: calc(var(--spacing) * 4);
+  right: calc(var(--spacing) * 4);
   z-index: 10;
-  background: var(--ai-color-bg-primary);
-  box-shadow: var(--ai-elevation-2-shadow);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-200);
 }

@@ -1,0 +1,187 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Getting Started" />
+
+# Getting Started
+
+AINativeKit UI extends [@openai/apps-sdk-ui](https://github.com/openai/apps-sdk-ui) with production-ready patterns for ChatGPT Apps.
+
+## Installation
+
+```bash
+npm install @ainativekit/ui @openai/apps-sdk-ui
+```
+
+## Setup
+
+Import the styles in your app's entry point:
+
+```tsx
+// Import OpenAI Apps SDK UI styles (base design system)
+import '@openai/apps-sdk-ui/css';
+
+// Import AINativeKit UI styles
+import '@ainativekit/ui/styles';
+```
+
+## Quick Start
+
+```tsx
+import { SummaryCard } from '@ainativekit/ui';
+import { StarFilled, Clock } from '@openai/apps-sdk-ui/components/Icon';
+
+function RestaurantCard({ restaurant }) {
+  return (
+    <SummaryCard
+      images={restaurant.image}
+      title={restaurant.name}
+      subtitle={restaurant.address}
+      description={restaurant.description}
+      metadata={[
+        { icon: <StarFilled />, label: restaurant.rating },
+        { icon: <Clock />, label: 'Open now' }
+      ]}
+      buttonText="Reserve"
+      onButtonClick={() => {}}
+    />
+  );
+}
+```
+
+## Architecture
+
+```
+┌─────────────────────────────────────────┐
+│           Your ChatGPT App              │
+├─────────────────────────────────────────┤
+│  @ainativekit/ui (Patterns)             │
+│  Card, Album, Carousel, List, Map       │
+├─────────────────────────────────────────┤
+│  @openai/apps-sdk-ui (Primitives)       │
+│  Button, Badge, Icon, Typography        │
+└─────────────────────────────────────────┘
+```
+
+## What's Included
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Components</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Cards</strong></td>
+      <td>Card, SummaryCard, ImageCard, ListCard</td>
+    </tr>
+    <tr>
+      <td><strong>Lists</strong></td>
+      <td>List, ListItem, AvatarList</td>
+    </tr>
+    <tr>
+      <td><strong>Media</strong></td>
+      <td>Album, Carousel, PhotoCarousel</td>
+    </tr>
+    <tr>
+      <td><strong>Maps</strong></td>
+      <td>Map, CompactMap, FullscreenMap</td>
+    </tr>
+    <tr>
+      <td><strong>Feedback</strong></td>
+      <td>Modal, Sidebar, Skeleton</td>
+    </tr>
+    <tr>
+      <td><strong>Utilities</strong></td>
+      <td>ExpandableText, Features, Overlay</td>
+    </tr>
+  </tbody>
+</table>
+
+## Design Tokens
+
+AINativeKit UI inherits all design tokens from `@openai/apps-sdk-ui`:
+
+- **Colors**: `--color-*`, `--gray-*`
+- **Typography**: `--font-*`, `--text-*`
+- **Spacing**: `--spacing`
+- **Radius**: `--radius-*`
+- **Shadows**: `--shadow-*`
+
+See the [apps-sdk-ui Storybook](https://openai.github.io/apps-sdk-ui) for the complete token reference.
+
+### Additional Tokens
+
+We add these breakpoints for responsive layouts:
+
+<table>
+  <thead>
+    <tr>
+      <th>Breakpoint</th>
+      <th>Value</th>
+      <th>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>xs</code></td>
+      <td>380px</td>
+      <td>Small mobile</td>
+    </tr>
+    <tr>
+      <td><code>sm</code></td>
+      <td>576px</td>
+      <td>Mobile / Widget</td>
+    </tr>
+    <tr>
+      <td><code>md</code></td>
+      <td>768px</td>
+      <td>Tablet</td>
+    </tr>
+    <tr>
+      <td><code>lg</code></td>
+      <td>1024px</td>
+      <td>Desktop</td>
+    </tr>
+    <tr>
+      <td><code>xl</code></td>
+      <td>1280px</td>
+      <td>Large desktop</td>
+    </tr>
+    <tr>
+      <td><code>2xl</code></td>
+      <td>1536px</td>
+      <td>Extra large</td>
+    </tr>
+  </tbody>
+</table>
+
+## Icons
+
+Use icons directly from `@openai/apps-sdk-ui`:
+
+```tsx
+import { StarFilled, MapPin, Clock } from '@openai/apps-sdk-ui/components/Icon';
+
+<StarFilled />
+<MapPin />
+<Clock />
+```
+
+All 417 icons are available. See the [apps-sdk-ui Icon gallery](https://openai.github.io/apps-sdk-ui) for the complete list.
+
+## TypeScript
+
+Full TypeScript support with exported types:
+
+```tsx
+import type { LocationData } from '@ainativekit/ui';
+import type { Album, Photo } from '@ainativekit/ui';
+```
+
+## Next Steps
+
+- Explore the **Introduction** story for interactive examples
+- Check **Gallery** for real-world patterns
+- Browse individual component docs for API details

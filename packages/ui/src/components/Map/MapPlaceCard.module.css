@@ -3,11 +3,11 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--ai-spacing-6);
-  padding: var(--ai-spacing-6);
-  background-color: var(--ai-color-bg-primary);
-  border-radius: var(--ai-radius-xl);
-  border: 1px solid var(--ai-color-border-light);
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 3);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-4xl);
+  border: 1px solid var(--color-border-subtle);
   cursor: pointer;
   user-select: none;
   transition:
@@ -19,19 +19,19 @@
 }
 
 .mapPlaceCard:hover {
-  background-color: var(--ai-color-bg-tertiary);
+  background-color: var(--color-surface-tertiary);
 }
 
 .mapPlaceCard:focus-visible {
-  outline: 2px solid var(--ai-color-brand-primary);
+  outline: 2px solid var(--color-background-info-solid);
   outline-offset: 2px;
 }
 
 /* Selected State - Carousel variant */
 .selected,
 .mapPlaceCard.selected {
-  background-color: var(--ai-color-bg-tertiary);
-  border-color: var(--ai-color-brand-primary);
+  background-color: var(--color-surface-tertiary);
+  border-color: var(--color-background-info-solid);
   border-width: 2px;
 }
 
@@ -48,14 +48,14 @@
 }
 
 .mapPlaceCard.variantList.selected {
-  background-color: var(--ai-color-bg-secondary);
+  background-color: var(--color-surface-secondary);
   border: none;
-  border-radius: var(--ai-radius-xl);
+  border-radius: var(--radius-4xl);
 }
 
 .mapPlaceCard.variantList:hover {
-  background-color: var(--ai-color-bg-tertiary);
-  border-radius: var(--ai-radius-xl);
+  background-color: var(--color-surface-tertiary);
+  border-radius: var(--radius-4xl);
 }
 
 /* Loading State */
@@ -65,7 +65,7 @@
 }
 
 .loadingCard:hover {
-  background-color: var(--ai-color-bg-primary);
+  background-color: var(--color-surface);
 }
 
 /* Error State */
@@ -73,7 +73,7 @@
   cursor: default;
   pointer-events: auto;
   min-height: 100px;
-  padding: var(--ai-spacing-8);
+  padding: calc(var(--spacing) * 4);
 }
 
 .errorContainer {
@@ -82,7 +82,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--ai-spacing-4);
+  gap: calc(var(--spacing) * 2);
   text-align: center;
 }
 
@@ -92,7 +92,7 @@
   pointer-events: none;
   min-height: 100px;
   justify-content: center;
-  padding: var(--ai-spacing-8);
+  padding: calc(var(--spacing) * 4);
 }
 
 .emptyContainer {
@@ -101,21 +101,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--ai-spacing-2);
+  gap: calc(var(--spacing) * 0.5);
   text-align: center;
+  width: 100%;
 }
 
 .emptyTitle {
-  font-size: var(--ai-font-size-body);
-  line-height: var(--ai-line-height-body);
-  font-weight: var(--ai-font-weight-body-emph);
-  color: var(--ai-color-text-tertiary);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-tertiary);
 }
 
 .emptyMessage {
-  font-size: var(--ai-font-size-caption);
-  line-height: var(--ai-line-height-caption);
-  color: var(--ai-color-text-tertiary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  color: var(--color-text-tertiary);
 }
 
 /* Thumbnail Container */
@@ -130,9 +131,9 @@
 .thumbnail {
   width: 100%;
   height: 100%;
-  border-radius: var(--ai-radius-lg);
+  border-radius: var(--radius-2xl);
   object-fit: cover;
-  border: 1px solid var(--ai-color-border-light);
+  border: 1px solid var(--color-border-subtle);
 }
 
 /* Skeleton Styles */
@@ -140,28 +141,23 @@
   width: 72px;
   height: 72px;
   flex-shrink: 0;
-  border-radius: var(--ai-radius-lg);
+  border-radius: var(--radius-2xl);
 }
 
 .skeletonTitle {
-  margin-bottom: var(--ai-spacing-2);
+  margin-bottom: var(--spacing);
 }
 
 .skeletonSubtitle {
   margin-bottom: 0;
 }
 
-/* Badge Positioning - Always positioned at top-right with margin */
+/* Badge - Positioned at top-right of card */
 .badge {
   position: absolute;
-  top: var(--ai-spacing-2);
-  right: var(--ai-spacing-2);
-  z-index: 1;
-}
-
-/* Chip needs more right spacing since it's wider than Badge */
-.badgeChip {
-  right: var(--ai-spacing-4);
+  top: calc(var(--spacing) * 2);
+  right: calc(var(--spacing) * 2);
+  z-index: 2;
 }
 
 /* Content */
@@ -175,11 +171,11 @@
 
 /* Title - body emphasis */
 .title {
-  font-size: var(--ai-font-size-body-emph);
-  line-height: var(--ai-line-height-body-emph);
-  font-weight: var(--ai-font-weight-medium);
-  letter-spacing: var(--ai-letter-spacing-body-emph);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--font-text-md-tracking);
+  color: var(--color-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -202,11 +198,11 @@
 
 /* Subtitle - body small regular, secondary color */
 .subtitle {
-  font-size: var(--ai-font-size-body-small);
-  line-height: var(--ai-line-height-body-small);
-  font-weight: var(--ai-font-weight-body-small);
-  letter-spacing: var(--ai-letter-spacing-body-small);
-  color: var(--ai-color-text-primary);
+  font-size: var(--font-text-sm-size);
+  line-height: var(--font-text-sm-line-height);
+  font-weight: var(--font-text-sm-weight);
+  letter-spacing: var(--font-text-sm-tracking);
+  color: var(--color-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -231,19 +227,19 @@
 .features {
   display: flex;
   align-items: center;
-  gap: var(--ai-spacing-2);
-  margin-top: var(--ai-spacing-2);
-  font-size: var(--ai-font-size-caption);
-  line-height: var(--ai-line-height-caption);
-  font-weight: var(--ai-font-weight-caption);
-  letter-spacing: var(--ai-letter-spacing-caption);
-  color: var(--ai-color-text-secondary);
+  gap: var(--spacing);
+  margin-top: var(--spacing);
+  font-size: var(--font-text-xs-size);
+  line-height: var(--font-text-xs-line-height);
+  font-weight: var(--font-text-xs-weight);
+  letter-spacing: var(--font-text-xs-tracking);
+  color: var(--color-text-secondary);
 }
 
 .feature {
   display: flex;
   align-items: center;
-  gap: var(--ai-spacing-1);
+  gap: calc(var(--spacing) * 0.5);
 }
 
 .featureIcon {
@@ -251,7 +247,7 @@
 }
 
 .separator {
-  color: var(--ai-color-text-tertiary);
+  color: var(--color-text-tertiary);
   padding: 0 2px;
 }
 
