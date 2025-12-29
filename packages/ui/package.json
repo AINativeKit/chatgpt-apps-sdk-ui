@@ -1,6 +1,6 @@
 {
   "name": "@ainativekit/ui",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "description": "Extension components for ChatGPT Apps SDK - Maps, Albums, Carousels and more. Built on @openai/apps-sdk-ui.",
   "type": "module",
   "main": "./dist/index.cjs",

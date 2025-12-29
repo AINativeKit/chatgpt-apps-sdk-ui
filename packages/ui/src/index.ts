@@ -26,7 +26,7 @@
 // Import component-specific CSS tokens
 import './tokens/tokens.css';
 
-export const version = '1.0.0-alpha.1';
+export const version = '1.0.0';
 
 // Export shared types (following apps-sdk-ui conventions)
 export * from './types';
