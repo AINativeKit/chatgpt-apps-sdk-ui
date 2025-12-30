@@ -9,7 +9,7 @@ npm install @ainativekit/ui
 ```
 
 ```tsx
-// SDK styles must be imported first
+// SDK styles must be imported first (in your entry point)
 import '@openai/apps-sdk-ui/css';
 import '@ainativekit/ui/styles';
 

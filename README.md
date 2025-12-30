@@ -239,6 +239,9 @@ import { Badge } from '@openai/apps-sdk-ui/components/Badge';
 // Alerts
 import { Alert } from '@openai/apps-sdk-ui/components/Alert';
 
+// Empty state
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
+
 // Breakpoints hook
 import { useBreakpoint } from '@openai/apps-sdk-ui/hooks/useBreakpoints';
 ```
