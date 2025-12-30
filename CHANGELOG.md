@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Breaking Changes
+
+- **Removed SDK Primitive Re-exports**: Button, Badge, Alert, and ButtonLink are no longer re-exported from `@ainativekit/ui`. Import them directly from `@openai/apps-sdk-ui`:
+  ```tsx
+  // Before (no longer works)
+  import { Button, Badge, Alert } from '@ainativekit/ui';
+
+  // After
+  import { Button } from '@openai/apps-sdk-ui/components/Button';
+  import { Badge } from '@openai/apps-sdk-ui/components/Badge';
+  import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+  ```
+
+### Why This Change
+
+Re-exporting SDK primitives caused CSS loading issues - SDK CSS variables (`--alert-gutter`, `--alert-gap`, etc.) weren't available when importing through AINativeKit. Direct imports ensure proper CSS variable loading.
+
 ## [1.0.0] - 2025-12-28
 
 ### Breaking Changes

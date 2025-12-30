@@ -5,11 +5,11 @@
  *
  * ## Setup
  *
- * 1. Import apps-sdk-ui styles in your CSS entry point:
- *    ```css
- *    @import "tailwindcss";
- *    @import "@openai/apps-sdk-ui/css";
- *    @import "@ainativekit/ui/styles";
+ * 1. Import SDK and AINativeKit styles in your entry point:
+ *    ```tsx
+ *    // In your main.tsx (JS imports for proper bundling)
+ *    import '@openai/apps-sdk-ui/css';
+ *    import '@ainativekit/ui/styles';
  *    ```
  *
  * 2. Wrap your app with AppsSDKUIProvider:
@@ -18,9 +18,19 @@
  *    <AppsSDKUIProvider><App /></AppsSDKUIProvider>
  *    ```
  *
- * Note: Primitives (Button, Badge, Alert, Icon, etc.) are re-exported from
- * @openai/apps-sdk-ui. This package provides extension components like
- * Map, Album, Carousel, Card variants, etc.
+ * ## Importing Components
+ *
+ * SDK primitives should be imported directly from @openai/apps-sdk-ui:
+ * ```tsx
+ * import { Button } from '@openai/apps-sdk-ui/components/Button';
+ * import { Badge } from '@openai/apps-sdk-ui/components/Badge';
+ * import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+ * ```
+ *
+ * AINativeKit pattern components are imported from this package:
+ * ```tsx
+ * import { Carousel, SummaryCard, Map, Album } from '@ainativekit/ui';
+ * ```
  */
 
 // Import component-specific CSS tokens
@@ -34,7 +44,7 @@ export * from './types';
 // Export all design tokens
 export * from './tokens';
 
-// Export all components (includes re-exports from apps-sdk-ui)
+// Export all components
 export * from './components';
 
 // Export hooks

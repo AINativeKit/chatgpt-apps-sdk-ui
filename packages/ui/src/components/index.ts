@@ -2,21 +2,20 @@
  * @ainativekit/ui Components
  *
  * Extension components for ChatGPT Apps SDK.
- * Primitives (Button, Badge, Alert, Icon, etc.) are provided by @openai/apps-sdk-ui.
+ *
+ * SDK Primitives (Button, Badge, Alert, Icon, etc.) should be imported directly
+ * from @openai/apps-sdk-ui. This package provides pattern components that build
+ * on top of the SDK primitives.
+ *
+ * @example
+ * // SDK primitives - import directly
+ * import { Button } from '@openai/apps-sdk-ui/components/Button';
+ * import { Badge } from '@openai/apps-sdk-ui/components/Badge';
+ * import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+ *
+ * // AINativeKit patterns - import from this package
+ * import { Carousel, SummaryCard, Map } from '@ainativekit/ui';
  */
-
-// =============================================================================
-// Re-export apps-sdk-ui primitives for convenience
-// Users can import from @ainativekit/ui or @openai/apps-sdk-ui directly
-// =============================================================================
-export { Button, ButtonLink } from '@openai/apps-sdk-ui/components/Button';
-export type { ButtonProps } from '@openai/apps-sdk-ui/components/Button';
-
-export { Badge } from '@openai/apps-sdk-ui/components/Badge';
-export type { BadgeProps } from '@openai/apps-sdk-ui/components/Badge';
-
-export { Alert } from '@openai/apps-sdk-ui/components/Alert';
-export type { AlertProps } from '@openai/apps-sdk-ui/components/Alert';
 
 // =============================================================================
 // Extension Components - Our value-add beyond apps-sdk-ui

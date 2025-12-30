@@ -9,8 +9,16 @@ npm install @ainativekit/ui
 ```
 
 ```tsx
-import { SummaryCard, Button } from '@ainativekit/ui';
+// SDK styles must be imported first
+import '@openai/apps-sdk-ui/css';
 import '@ainativekit/ui/styles';
+
+// SDK primitives - import directly
+import { Button } from '@openai/apps-sdk-ui/components/Button';
+import { Badge } from '@openai/apps-sdk-ui/components/Badge';
+
+// AINativeKit patterns - import from this package
+import { SummaryCard } from '@ainativekit/ui';
 
 function App() {
   return (
@@ -41,11 +49,10 @@ Best practices for component performance and optimization.
 ### [Primitives](/components/primitives/)
 Basic building block components.
 
-- [Badge](/components/primitives/badge.md)
-- [Button](/components/primitives/button.md)
-- [Chip](/components/primitives/chip.md)
-- [Alert](/components/primitives/alert.md)
-- [Icon](/components/primitives/icon.md)
+**SDK Primitives** (import from `@openai/apps-sdk-ui`):
+- Button, Badge, Alert, Icon, Chip, EmptyMessage, Image
+
+**Extension Primitives** (import from `@ainativekit/ui`):
 - [Skeleton](/components/primitives/skeleton.md)
 
 ### [Composed](/components/composed/)
