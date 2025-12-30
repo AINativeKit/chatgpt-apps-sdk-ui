@@ -224,21 +224,29 @@ function MyWidget() {
 
 ## Using apps-sdk-ui Primitives
 
-Icons, buttons, and other primitives come from `@openai/apps-sdk-ui`:
+Icons, buttons, and other primitives come directly from `@openai/apps-sdk-ui`:
 
 ```tsx
 // 700+ Icons
 import { StarFilled, Clock, MapPin } from '@openai/apps-sdk-ui/components/Icon';
 
-// Buttons (also re-exported from @ainativekit/ui)
+// Buttons
 import { Button } from '@openai/apps-sdk-ui/components/Button';
 
-// Badges (also re-exported from @ainativekit/ui)
+// Badges
 import { Badge } from '@openai/apps-sdk-ui/components/Badge';
+
+// Alerts
+import { Alert } from '@openai/apps-sdk-ui/components/Alert';
+
+// Empty state
+import { EmptyMessage } from '@openai/apps-sdk-ui/components/EmptyMessage';
 
 // Breakpoints hook
 import { useBreakpoint } from '@openai/apps-sdk-ui/hooks/useBreakpoints';
 ```
+
+> **Note:** AINativeKit does not re-export SDK primitives. Import Button, Badge, Alert, etc. directly from `@openai/apps-sdk-ui` to ensure CSS variables are loaded correctly.
 
 ## TypeScript
 

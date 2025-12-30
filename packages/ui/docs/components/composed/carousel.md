@@ -5,8 +5,12 @@ Component for building user interfaces.
 ## Import
 
 ```tsx
-import { Carousel } from '@ainativekit/ui';
+// SDK styles must be imported first (in your entry point)
+import '@openai/apps-sdk-ui/css';
 import '@ainativekit/ui/styles';
+
+// Then import the component
+import { Carousel } from '@ainativekit/ui';
 ```
 
 ## Basic Usage
